@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StartWave — Сервисы</title>
+  <meta
+    name="description"
+    content="StartWave — раздел полезных сервисов: почта, банки, платежи, Госуслуги, переводчики, поездки и нужные инструменты.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="page-container">
+    <header class="site-header">
+      <div class="header-container">
+        <div class="hero">
+          <h1 class="site-title">StartWave</h1>
+          <p class="site-subtitle">Понемногу, но регулярно.</p>
+        </div>
+
+        <div class="mini-clock" aria-label="Текущее время и дата">
+          <div class="mini-time" id="miniTime">15:06</div>
+          <div class="mini-date" id="miniDate">четверг, 4 июня</div>
+        </div>
+
+        <nav class="main-nav" aria-label="Основная навигация">
+          <a href="index.html" class="nav-button">Главная</a>
+          <a href="entertainment.html" class="nav-button">Развлечения</a>
+          <a href="services.html" class="nav-button active" aria-current="page">Сервисы</a>
+          <a href="bdo.html" class="nav-button">BDO</a>
+          <a href="ai.html" class="nav-button">AI</a>
+        </nav>
+      </div>
+    </header>
+
+    <form class="search-form" action="https://ya.ru/search/" method="get" target="_blank">
+      <label for="search-input" class="visually-hidden">Поиск в Яндексе</label>
+      <input
+        id="search-input"
+        type="search"
+        class="search-input"
+        name="text"
+        placeholder="Поиск в Яндексе...">
+      <button type="submit" class="search-button">Найти</button>
+    </form>
+
+    <main class="content-main">
+      <section class="page-intro">
+        <h2 class="page-title">Сервисы</h2>
+        <p class="page-subtitle">Почта, банки, документы, поездки и полезные инструменты</p>
+      </section>
+
+<section class="category-section" aria-labelledby="mail-title">
+  <h2 class="category-title" id="mail-title">📬 Почта и аккаунты</h2>
+  <div class="card-grid">
+    <a href="https://mail.yandex.ru/" class="link-card service-card" target="_blank" rel="noopener noreferrer">
+      <img src="assets/images/yandex-mail.jpg" alt="Яндекс Почта" class="card-image" loading="lazy">
+      <span class="card-label">Яндекс Почта</span>
+    </a>
+
+    <a href="https://mail.google.com/" class="link-card service-card" target="_blank" rel="noopener noreferrer">
+      <img src="assets/images/gmail.jpg" alt="Gmail" class="card-image" loading="lazy">
+      <span class="card-label">Gmail</span>
+    </a>
+
+    <a href="https://mail.ru/" class="link-card service-card" target="_blank" rel="noopener noreferrer">
+      <img src="assets/images/mailru.jpg" alt="Mail.ru" class="card-image" loading="lazy">
+      <span class="card-label">Mail.ru</span>
+    </a>
+  </div>
+</section>
+
+      <section class="category-section" aria-labelledby="bank-title">
+        <h2 class="category-title" id="bank-title">🏦 Банки и платежи</h2>
+        <div class="card-grid">
+          <a href="https://alfabank.ru/" class="link-card service-card" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/alfabank.jpg" alt="Альфа-Банк" class="card-image" loading="lazy">
+            <span class="card-label">Альфа-Банк</span>
+          </a>
+
+          <a href="https://www.tbank.ru/" class="link-card service-card" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/tbank.jpg" alt="Т-Банк" class="card-image" loading="lazy">
+            <span class="card-label">Т-Банк</span>
+          </a>
+
+          <a href="https://www.sberbank.ru/" class="link-card service-card" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/sberbank.jpg" alt="СберБанк" class="card-image" loading="lazy">
+            <span class="card-label">СберБанк</span>
+          </a>
+
+          <a href="https://mkb.ru/" class="link-card service-card" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/mkb.jpg" alt="МКБ" class="card-image" loading="lazy">
+            <span class="card-label">МКБ</span>
+          </a>
+
+          <a href="https://platipomiru.com/" class="link-card service-card" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/platipomiru.png" alt="Плати по миру" class="card-image" loading="lazy">
+            <span class="card-label">Плати по миру</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="category-section" aria-labelledby="docs-title">
+        <h2 class="category-title" id="docs-title">📄 Госуслуги и документы</h2>
+        <div class="card-grid">
+          <a href="https://www.gosuslugi.ru/" class="link-card service-card" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/gosuslugi.jpg" alt="Госуслуги" class="card-image" loading="lazy">
+            <span class="card-label">Госуслуги</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="category-section" aria-labelledby="translate-title">
+        <h2 class="category-title" id="translate-title">🌐 Переводчики</h2>
+        <div class="card-grid">
+          <a href="https://translate.yandex.ru/" class="link-card service-card" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/yandex-translate.jpg" alt="Яндекс Переводчик" class="card-image" loading="lazy">
+            <span class="card-label">Яндекс Переводчик</span>
+          </a>
+
+          <a href="https://translate.google.com/" class="link-card service-card" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/google-translate.jpg" alt="Google Translate" class="card-image" loading="lazy">
+            <span class="card-label">Google Translate</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="category-section" aria-labelledby="travel-title">
+        <h2 class="category-title" id="travel-title">✈️ Поездки и отдых</h2>
+        <div class="card-grid">
+          <a href="https://www.tutu.ru/" class="link-card service-card" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/tutu.jpg" alt="Tutu" class="card-image" loading="lazy">
+            <span class="card-label">Tutu</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="category-section" aria-labelledby="tools-title">
+        <h2 class="category-title" id="tools-title">🛠️ Полезные инструменты</h2>
+        <div class="card-grid">
+          <a href="https://tinypng.com/" class="link-card service-card" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/tinypng.jpg" alt="TinyPNG" class="card-image" loading="lazy">
+            <span class="card-label">TinyPNG</span>
+          </a>
+
+          <a href="https://www.speedtest.net/" class="link-card service-card" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/speedtest.jpg" alt="Speedtest" class="card-image" loading="lazy">
+            <span class="card-label">Speedtest</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="project-meta">
+        <p><strong>StartWave</strong> — проект, созданный 22 мая 2026 года.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Kameadril · StartWave</p>
+    </footer>
+  </div>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

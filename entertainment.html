@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StartWave — Развлечения</title>
+  <meta
+    name="description"
+    content="StartWave — раздел развлечений: игры, видео и музыка для отдыха.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="page-container">
+    <header class="site-header">
+      <div class="header-container">
+        <div class="hero">
+          <h1 class="site-title">StartWave</h1>
+          <p class="site-subtitle">Понемногу, но регулярно.</p>
+        </div>
+
+        <div class="mini-clock" aria-label="Текущее время и дата">
+          <div class="mini-time" id="miniTime">15:06</div>
+          <div class="mini-date" id="miniDate">четверг, 4 июня</div>
+        </div>
+
+        <nav class="main-nav" aria-label="Основная навигация">
+          <a href="index.html" class="nav-button">Главная</a>
+          <a href="entertainment.html" class="nav-button active" aria-current="page">Развлечения</a>
+          <a href="services.html" class="nav-button">Сервисы</a>
+          <a href="bdo.html" class="nav-button">BDO</a>
+          <a href="ai.html" class="nav-button">AI</a>
+        </nav>
+      </div>
+    </header>
+
+    <form class="search-form" action="https://ya.ru/search/" method="get" target="_blank">
+      <label for="search-input" class="visually-hidden">Поиск в Яндексе</label>
+      <input
+        id="search-input"
+        type="search"
+        class="search-input"
+        name="text"
+        placeholder="Поиск в Яндексе...">
+      <button type="submit" class="search-button">Найти</button>
+    </form>
+
+    <main class="content-main">
+      <section class="page-intro">
+        <h2 class="page-title">Развлечения</h2>
+        <p class="page-subtitle">Всё для отдыха, игр, видео и музыки</p>
+      </section>
+
+      <section class="category-section" aria-labelledby="games-title">
+        <h2 class="category-title" id="games-title">🎮 Игры</h2>
+        <div class="card-grid">
+          <a href="https://store.steampowered.com/" class="link-card entertainment-card" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/steam.jpg" alt="Steam" class="card-image" loading="lazy">
+            <span class="card-label">Steam</span>
+          </a>
+
+          <a href="https://store.epicgames.com/" class="link-card entertainment-card" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/epic.jpg" alt="Epic Games" class="card-image" loading="lazy">
+            <span class="card-label">Epic Games</span>
+          </a>
+
+          <a href="https://battle.net/" class="link-card entertainment-card" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/blizzard.jpg" alt="Battle.net" class="card-image" loading="lazy">
+            <span class="card-label">Battle.net</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="category-section" aria-labelledby="media-title">
+        <h2 class="category-title" id="media-title">🎥 Видео и музыка</h2>
+        <div class="card-grid">
+          <a href="https://rutube.ru/" class="link-card entertainment-card" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/rutube.jpg" alt="RuTube" class="card-image" loading="lazy">
+            <span class="card-label">RuTube</span>
+          </a>
+
+          <a href="https://vk.com/video" class="link-card entertainment-card" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/vk-video.jpg" alt="VK Видео" class="card-image" loading="lazy">
+            <span class="card-label">VK Видео</span>
+          </a>
+
+          <a href="https://music.yandex.ru/" class="link-card entertainment-card" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/yandex-music.jpg" alt="Яндекс Музыка" class="card-image" loading="lazy">
+            <span class="card-label">Яндекс Музыка</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Kameadril</p>
+    </footer>
+  </div>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

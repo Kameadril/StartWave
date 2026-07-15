@@ -1,0 +1,458 @@
+:root {
+  --text-color: #222;
+  --muted-color: #555;
+  --accent-color: #3b82f6;
+  --accent-dark: #2563eb;
+  --bg-overlay: rgba(248, 250, 252, 0.45);
+  --card-bg: rgba(255, 255, 255, 0.88);
+  --card-hover-bg: rgba(255, 255, 255, 0.96);
+  --border-color: rgba(255, 255, 255, 0.4);
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 10px 24px rgba(0, 0, 0, 0.12);
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --container-width: 1200px;
+  --content-width: 860px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  color: var(--text-color);
+  background-image:
+    linear-gradient(var(--bg-overlay), var(--bg-overlay)),
+    url("../images/fon.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+.page-container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-header {
+  padding-top: 28px;
+}
+
+.header-container {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero {
+  margin-bottom: 18px;
+}
+
+.site-title {
+  margin: 0;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-color);
+}
+
+.site-subtitle {
+  margin: 10px 0 0;
+  font-size: 1rem;
+  color: var(--muted-color);
+}
+
+.mini-clock {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 24px;
+  padding: 10px 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-sm);
+}
+
+.mini-time {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.mini-date {
+  font-size: 0.95rem;
+  color: var(--muted-color);
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.nav-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 112px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-color);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+}
+
+.nav-button:hover {
+  transform: translateY(-2px);
+  background: rgba(59, 130, 246, 0.12);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-button.active {
+  background: var(--accent-color);
+  color: #fff;
+  border-color: transparent;
+}
+
+.search-form {
+  display: flex;
+  max-width: 560px;
+  width: 100%;
+  margin: 28px auto 36px;
+  box-shadow: var(--shadow-sm);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  padding: 14px 16px;
+  font-size: 1rem;
+  color: var(--text-color);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.search-input::placeholder {
+  color: #777;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.search-button {
+  border: none;
+  padding: 14px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent-color);
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.search-button:hover {
+  background: var(--accent-dark);
+}
+
+.content-main {
+  flex: 1;
+  padding-bottom: 32px;
+}
+
+.page-intro {
+  max-width: var(--content-width);
+  margin: 0 auto 28px;
+  text-align: center;
+}
+
+.page-title {
+  margin: 0 0 10px;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+}
+
+.page-subtitle {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--muted-color);
+}
+
+.category-section {
+  max-width: var(--content-width);
+  margin: 0 auto 40px;
+}
+
+.category-title {
+  margin: 0 0 18px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.link-card,
+.ai-role-card,
+.bdo-card {
+  border-radius: var(--radius-md);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.link-card:hover,
+.ai-role-card:hover,
+.bdo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  background: var(--card-hover-bg);
+}
+
+.link-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.card-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  background: #eef2f7;
+}
+
+.card-label {
+  padding: 14px 12px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.news-card {
+  border-top: 4px solid #ef4444;
+}
+
+.tech-card {
+  border-top: 4px solid #22c55e;
+}
+
+.entertainment-card {
+  border-top: 4px solid #8b5cf6;
+}
+
+.social-card {
+  border-top: 4px solid #3b82f6;
+}
+
+.service-card {
+  border-top: 4px solid #f59e0b;
+}
+
+.page-block {
+  max-width: var(--content-width);
+  margin: 0 auto 40px;
+}
+
+.bdo-menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.bdo-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 130px;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.ai-role-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 170px;
+  padding: 22px 18px;
+  text-align: center;
+}
+
+.role-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.role-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.project-meta {
+  max-width: var(--content-width);
+  margin: 10px auto 0;
+  padding: 18px 20px;
+  text-align: center;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--shadow-sm);
+  color: var(--muted-color);
+}
+
+.site-footer {
+  padding: 10px 0 26px;
+  text-align: center;
+  color: var(--muted-color);
+  font-size: 0.95rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.nav-button:focus-visible,
+.link-card:focus-visible,
+.bdo-card:focus-visible,
+.search-input:focus-visible,
+.search-button:focus-visible {
+  outline: 3px solid rgba(59, 130, 246, 0.35);
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 0 12px;
+  }
+
+  .site-header {
+    padding-top: 20px;
+  }
+
+  .mini-clock {
+    margin-bottom: 20px;
+  }
+
+  .main-nav {
+    gap: 10px;
+  }
+
+  .nav-button {
+    min-width: 96px;
+    padding: 11px 14px;
+    font-size: 0.9rem;
+  }
+
+  .search-form {
+    margin: 24px auto 32px;
+  }
+
+  .card-grid,
+  .bdo-menu {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .card-image {
+    height: 135px;
+  }
+
+  .bdo-card,
+  .ai-role-card {
+    min-height: 150px;
+  }
+}
+
+@media (max-width: 520px) {
+  .main-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nav-button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .search-form {
+    flex-direction: column;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .search-input,
+  .search-button {
+    width: 100%;
+  }
+
+  .card-grid,
+  .bdo-menu {
+    grid-template-columns: 1fr;
+  }
+
+  .card-image {
+    height: 160px;
+  }
+
+  .page-title {
+    font-size: 1.7rem;
+  }
+
+  .category-title {
+    font-size: 1.3rem;
+  }
+}
