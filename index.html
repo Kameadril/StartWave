@@ -1,125 +1,257 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StartWave — Персональный портал</title>
-  <meta
-    name="description"
-    content="StartWave — персональный портал с быстрым доступом к новостям, развлечениям, сервисам, BDO и AI.">
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StartWave</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
-  <div class="page-container">
-    <header class="site-header">
-      <div class="header-container">
-        <div class="hero">
-          <h1 class="site-title">StartWave</h1>
-          <p class="site-subtitle">Понемногу, но регулярно.</p>
+
+<header class="header">
+
+    <div class="logo" aria-label="StartWave">
+        <span aria-hidden="true">🌊</span>
+        <div>
+            <h1>StartWave</h1>
         </div>
+    </div>
 
-        <div class="mini-clock" aria-label="Текущее время и дата">
-          <div class="mini-time" id="miniTime">15:06</div>
-          <div class="mini-date" id="miniDate">четверг, 4 июня</div>
-        </div>
 
-        <nav class="main-nav" aria-label="Основная навигация">
-          <a href="index.html" class="nav-button active" aria-current="page">Главная</a>
-          <a href="entertainment.html" class="nav-button">Развлечения</a>
-          <a href="services.html" class="nav-button">Сервисы</a>
-          <a href="bdo.html" class="nav-button">BDO</a>
-          <a href="ai.html" class="nav-button">AI</a>
-        </nav>
-      </div>
-    </header>
+    <nav class="navigation" aria-label="Основная навигация">
+        <a href="index.html" aria-current="page">Главная</a>
+        <a href="entertainment.html">Развлечения</a>
+        <a href="services.html">Сервисы</a>
+        <a href="ai.html">AI</a>
+    </nav>
 
-    <form class="search-form" action="https://ya.ru/search/" method="get" target="_blank">
-      <label for="search-input" class="visually-hidden">Поиск в Яндексе</label>
-      <input
+
+    <div class="datetime" aria-label="Текущее время и дата">
+        <span id="miniTime">00:00</span>
+        <small id="miniDate"></small>
+    </div>
+
+</header>
+
+
+
+<main>
+
+
+<section class="hero" aria-labelledby="hero-title">
+
+    <h2 id="hero-title">StartWave</h2>
+
+    <p>
+        Современная цифровая стартовая страница для удобного доступа к информации, сервисам и интересам.
+    </p>
+
+
+    <form class="search-box"
+          action="https://yandex.ru/search/"
+          method="get"
+          target="_blank">
+
+        <label for="search-input" class="visually-hidden">Поиск через Яндекс</label>
+
+        <input 
         id="search-input"
         type="search"
-        class="search-input"
         name="text"
-        placeholder="Поиск в Яндексе...">
-      <button type="submit" class="search-button">Найти</button>
+        placeholder="Что ты хочешь найти сегодня?">
+
+        <button type="submit">
+            Найти
+        </button>
+
     </form>
 
-    <main class="content-main">
-      <section class="page-intro">
-        <h2 class="page-title">Начальная страница</h2>
-        <p class="page-subtitle">Личный хаб для сайтов, сервисов и интересов</p>
-      </section>
 
-      <section class="category-section" aria-labelledby="news-title">
-        <h2 class="category-title" id="news-title">📰 Новости</h2>
-        <div class="card-grid">
-          <a href="https://lenta.ru/" class="link-card news-card" target="_blank" rel="noopener noreferrer">
-            <img src="assets/images/lenta.jpg" alt="Lenta.ru" class="card-image" loading="lazy">
-            <span class="card-label">Lenta</span>
-          </a>
-
-          <a href="https://www.ixbt.com/" class="link-card tech-card" target="_blank" rel="noopener noreferrer">
-            <img src="assets/images/ixbt.jpg" alt="iXBT" class="card-image" loading="lazy">
-            <span class="card-label">iXBT</span>
-          </a>
-
-          <a href="https://goha.ru/" class="link-card news-card" target="_blank" rel="noopener noreferrer">
-            <img src="assets/images/goha.jpg" alt="GoHa" class="card-image" loading="lazy">
-            <span class="card-label">GoHa</span>
-          </a>
-        </div>
-      </section>
-
-      <section class="category-section" aria-labelledby="entertainment-title">
-        <h2 class="category-title" id="entertainment-title">🎬 Развлечения</h2>
-        <div class="card-grid">
-          <a href="https://www.youtube.com/" class="link-card entertainment-card" target="_blank" rel="noopener noreferrer">
-            <img src="assets/images/youtube.jpg" alt="YouTube" class="card-image" loading="lazy">
-            <span class="card-label">YouTube</span>
-          </a>
-
-          <a href="https://www.kinopoisk.ru/" class="link-card entertainment-card" target="_blank" rel="noopener noreferrer">
-            <img src="assets/images/kinopoisk.jpg" alt="Кинопоиск" class="card-image" loading="lazy">
-            <span class="card-label">Кинопоиск</span>
-          </a>
-
-          <a href="https://www.twitch.tv/" class="link-card entertainment-card" target="_blank" rel="noopener noreferrer">
-            <img src="assets/images/twitch.jpg" alt="Twitch" class="card-image" loading="lazy">
-            <span class="card-label">Twitch</span>
-          </a>
-        </div>
-      </section>
-
-     <section class="category-section" aria-labelledby="social-title">
-  <h2 class="category-title" id="social-title">💬 Общение</h2>
-  <div class="card-grid">
-    <a href="https://vk.com/" class="link-card social-card" target="_blank" rel="noopener noreferrer">
-      <img src="assets/images/vk.jpg" alt="VK" class="card-image" loading="lazy">
-      <span class="card-label">VK</span>
-    </a>
-
-    <a href="https://web.telegram.org/" class="link-card social-card" target="_blank" rel="noopener noreferrer">
-      <img src="assets/images/telegram.jpg" alt="Telegram" class="card-image" loading="lazy">
-      <span class="card-label">Telegram</span>
-    </a>
-
-    <a href="https://web.max.ru/" class="link-card social-card" target="_blank" rel="noopener noreferrer">
-      <img src="assets/images/max.jpg" alt="MAX" class="card-image" loading="lazy">
-      <span class="card-label">MAX</span>
-    </a>
-  </div>
 </section>
 
-<section class="project-meta">
-  <p><strong>StartWave</strong> — проект, созданный 22 мая 2026 года.</p>
-</section>
-</main>
 
-<footer class="site-footer">
-  <p>&copy; 2026 Kameadril · StartWave</p>
-</footer>
+
+<section class="daily" aria-labelledby="daily-title">
+
+<h2 id="daily-title">Сегодня</h2>
+
+
+<div class="cards">
+
+
+<div class="card">
+    <h3>🕒 Время</h3>
+    <p id="cardTime">
+        00:00
+    </p>
 </div>
 
-  <script src="assets/js/script.js"></script>
+
+<div class="card">
+    <h3>📅 Календарь</h3>
+    <p id="cardDate">
+        Текущая дата
+    </p>
+</div>
+
+
+<div class="card">
+    <h3>🌤 Погода</h3>
+    <p>
+        Скоро здесь появится погода
+    </p>
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+<section class="directions" aria-labelledby="directions-title">
+
+<h2 id="directions-title">Основные разделы</h2>
+
+
+<div class="direction-grid">
+
+
+
+<a href="bdo.html"
+class="direction-card bdo">
+
+<h3>
+📜 Chronicles of Black Desert
+</h3>
+
+<p>
+Мир Black Desert.
+Гайды, история, ресурсы.
+</p>
+
+<span>
+Перейти в мир →
+</span>
+
+</a>
+
+
+
+
+<a href="entertainment.html"
+class="direction-card">
+
+<h3>
+🎬 Entertainment
+</h3>
+
+<p>
+Фильмы, сериалы,
+аниме и музыка.
+</p>
+
+<span>
+Открыть раздел →
+</span>
+
+</a>
+
+
+
+
+
+<a href="services.html"
+class="direction-card">
+
+<h3>
+🔧 Services
+</h3>
+
+<p>
+Полезные инструменты
+для жизни.
+</p>
+
+<span>
+Открыть раздел →
+</span>
+
+</a>
+
+
+
+
+
+<a href="ai.html"
+class="direction-card">
+
+<h3>
+🤖 AI
+</h3>
+
+<p>
+Инструменты искусственного интеллекта.
+</p>
+
+<span>
+Открыть раздел →
+</span>
+
+</a>
+
+
+
+</div>
+
+</section>
+
+
+
+
+<section class="about" aria-labelledby="about-title">
+
+<h2 id="about-title">
+О проекте
+</h2>
+
+<p>
+StartWave — цифровой хаб для сайтов,
+сервисов и интересов.
+</p>
+
+<p>
+Твоя цифровая точка старта.
+</p>
+
+<p>
+"Понемногу, но регулярно."
+</p>
+
+
+</section>
+
+
+</main>
+
+
+
+
+<footer>
+
+<p>
+© 2026 Kameadril · StartWave
+</p>
+
+</footer>
+
+
+
+<script src="assets/js/script.js"></script>
+
 </body>
 </html>
