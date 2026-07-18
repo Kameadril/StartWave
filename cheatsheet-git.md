@@ -174,3 +174,45 @@ git status → git diff → git add → git commit → git push
 ```
 
 Главное правило: сначала проверить изменения, затем сохранить их в коммите и только после этого отправлять на GitHub.
+
+## 10. Новый файл в Git
+
+Если Git показывает:
+
+```text
+Untracked files
+```
+
+Это значит, что файл новый и ещё не добавлен в историю Git.
+
+Сначала добавь нужный файл:
+
+```bash
+git add имя_файла
+```
+
+Например:
+
+```bash
+git add codex-cheatsheet.md
+```
+
+Затем проверь состояние:
+
+```bash
+git status
+```
+
+Если файл появился в разделе `Changes to be committed`, он готов к сохранению.
+
+Создай коммит:
+
+```bash
+git commit -m "описание"
+```
+
+Пример:
+
+```bash
+git commit -m "Add Codex cheatsheet"
+```
