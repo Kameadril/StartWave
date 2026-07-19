@@ -36,7 +36,7 @@ html {
 
 body {
   position: relative;
-  min-width: 320px;
+  min-width: 0;
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
@@ -249,6 +249,20 @@ main {
   color: #6d899f;
 }
 
+.search-engine-select {
+  flex: 0 0 auto;
+  padding: 0 32px 0 14px;
+  border: 0;
+  border-right: 1px solid var(--glass-border);
+  outline: 0;
+  color: var(--ocean-800);
+  background: transparent;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .search-box button {
   padding: 12px 24px;
   border: 0;
@@ -264,6 +278,11 @@ main {
   transform: translateY(-2px);
   box-shadow: 0 12px 26px rgba(2, 132, 199, 0.32);
   filter: saturate(1.12);
+}
+
+.page-container > .search-box {
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .daily,
@@ -440,6 +459,7 @@ footer p {
 
 .navigation a:focus-visible,
 .search-box input:focus-visible,
+.search-engine-select:focus-visible,
 .search-box button:focus-visible,
 .direction-card:focus-visible,
 .nav-button:focus-visible,
@@ -747,8 +767,17 @@ footer p {
   }
 
   .search-box input,
+  .search-engine-select,
   .search-box button {
     width: 100%;
+  }
+
+  .search-engine-select {
+    min-height: 44px;
+    padding: 0 14px;
+    border-right: 0;
+    border-bottom: 1px solid var(--glass-border);
+    text-align: center;
   }
 
   .search-box button {

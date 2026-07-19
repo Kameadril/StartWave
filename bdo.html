@@ -10,38 +10,41 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <div class="page-container">
-    <header class="site-header">
-      <div class="header-container">
-        <div class="hero">
-          <h1 class="site-title">StartWave</h1>
-          <p class="site-subtitle">Понемногу, но регулярно.</p>
-        </div>
-
-        <div class="mini-clock" aria-label="Текущее время и дата">
-          <div class="mini-time" id="miniTime">15:06</div>
-          <div class="mini-date" id="miniDate">четверг, 4 июня</div>
-        </div>
-
-        <nav class="main-nav" aria-label="Основная навигация">
-          <a href="index.html" class="nav-button">Главная</a>
-          <a href="entertainment.html" class="nav-button">Развлечения</a>
-          <a href="services.html" class="nav-button">Сервисы</a>
-          <a href="bdo.html" class="nav-button active" aria-current="page">BDO</a>
-          <a href="ai.html" class="nav-button">AI</a>
-        </nav>
+  <header class="header">
+    <div class="logo" aria-label="StartWave">
+      <span aria-hidden="true">🌊</span>
+      <div>
+        <h1>StartWave</h1>
       </div>
-    </header>
+    </div>
 
-    <form class="search-form" action="https://ya.ru/search/" method="get" target="_blank">
-      <label for="search-input" class="visually-hidden">Поиск в Яндексе</label>
+    <nav class="navigation" aria-label="Основная навигация">
+      <a href="index.html">Главная</a>
+      <a href="entertainment.html">Развлечения</a>
+      <a href="services.html">Сервисы</a>
+      <a href="ai.html">AI</a>
+    </nav>
+
+    <div class="datetime" aria-label="Текущее время и дата">
+      <span id="miniTime">00:00</span>
+      <small id="miniDate"></small>
+    </div>
+  </header>
+
+  <div class="page-container">
+
+    <form class="search-box" action="https://yandex.ru/search/" method="get" target="_blank">
+      <label for="search-input" class="visually-hidden">Поисковый запрос</label>
+      <select class="search-engine-select" aria-label="Поисковая система">
+        <option value="yandex">Яндекс</option>
+        <option value="google">Google</option>
+      </select>
       <input
         id="search-input"
         type="search"
-        class="search-input"
         name="text"
-        placeholder="Поиск в Яндексе...">
-      <button type="submit" class="search-button">Найти</button>
+        placeholder="Что ты хочешь найти сегодня?">
+      <button type="submit">Найти</button>
     </form>
 
     <main class="content-main">
@@ -75,7 +78,7 @@
     </main>
 
     <footer class="site-footer">
-      <p>&copy; 2026 Kameadril</p>
+      <p>&copy; 2026 Kameadril · StartWave</p>
     </footer>
   </div>
 
