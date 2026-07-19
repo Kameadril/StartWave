@@ -249,21 +249,48 @@ main {
   color: #6d899f;
 }
 
-.search-engine-select {
+.search-engine-switch {
+  display: inline-flex;
   flex: 0 0 auto;
-  padding: 0 32px 0 14px;
-  border: 0;
-  border-right: 1px solid var(--glass-border);
-  outline: 0;
-  color: var(--ocean-800);
-  background: transparent;
-  font: inherit;
-  font-size: 0.9rem;
-  font-weight: 700;
-  cursor: pointer;
+  align-items: center;
+  gap: 3px;
+  margin: 3px 0 3px 3px;
+  padding: 3px;
+  border: 1px solid rgba(14, 165, 233, 0.16);
+  border-radius: 999px;
+  background: rgba(224, 242, 254, 0.72);
 }
 
-.search-box button {
+.search-engine-switch .search-engine-option {
+  flex: 0 0 auto;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--muted);
+  background: transparent;
+  box-shadow: none;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 180ms ease, background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.search-engine-switch .search-engine-option:hover {
+  color: var(--ocean-800);
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: none;
+  transform: none;
+  filter: none;
+}
+
+.search-engine-switch .search-engine-option[aria-checked="true"] {
+  color: var(--ocean-800);
+  background: var(--white);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.16);
+}
+
+.search-box > button[type="submit"] {
   padding: 12px 24px;
   border: 0;
   border-radius: 999px;
@@ -274,7 +301,7 @@ main {
   transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
 }
 
-.search-box button:hover {
+.search-box > button[type="submit"]:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 26px rgba(2, 132, 199, 0.32);
   filter: saturate(1.12);
@@ -459,8 +486,8 @@ footer p {
 
 .navigation a:focus-visible,
 .search-box input:focus-visible,
-.search-engine-select:focus-visible,
-.search-box button:focus-visible,
+.search-engine-option:focus-visible,
+.search-box > button[type="submit"]:focus-visible,
 .direction-card:focus-visible,
 .nav-button:focus-visible,
 .link-card:focus-visible,
@@ -767,20 +794,18 @@ footer p {
   }
 
   .search-box input,
-  .search-engine-select,
-  .search-box button {
+  .search-engine-switch,
+  .search-box > button[type="submit"] {
     width: 100%;
   }
 
-  .search-engine-select {
-    min-height: 44px;
-    padding: 0 14px;
-    border-right: 0;
-    border-bottom: 1px solid var(--glass-border);
-    text-align: center;
+  .search-engine-switch {
+    justify-content: center;
+    margin: 0;
+    min-height: 46px;
   }
 
-  .search-box button {
+  .search-box > button[type="submit"] {
     border-radius: var(--radius-sm);
   }
 

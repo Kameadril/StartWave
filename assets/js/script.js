@@ -35,14 +35,16 @@ function saveSearchEngine(engine) {
 function applySearchEngine(form, engine) {
   const selectedEngine = searchEngines[engine] ? engine : 'yandex';
   const engineSettings = searchEngines[selectedEngine];
-  const engineSelect = form.querySelector('.search-engine-select');
+  const engineOptions = form.querySelectorAll('.search-engine-option');
   const searchInput = form.querySelector('input[type="search"]');
 
   form.action = engineSettings.action;
 
-  if (engineSelect) {
-    engineSelect.value = selectedEngine;
-  }
+  engineOptions.forEach((option) => {
+    const isSelected = option.dataset.engine === selectedEngine;
+    option.setAttribute('aria-checked', String(isSelected));
+    option.tabIndex = isSelected ? 0 : -1;
+  });
 
   if (searchInput) {
     searchInput.name = engineSettings.queryParameter;
@@ -53,16 +55,40 @@ function initializeSearchEngineSwitch() {
   const savedEngine = getSavedSearchEngine();
 
   searchForms.forEach((form) => {
-    const engineSelect = form.querySelector('.search-engine-select');
+    const engineOptions = Array.from(form.querySelectorAll('.search-engine-option'));
 
     applySearchEngine(form, savedEngine);
 
-    if (engineSelect) {
-      engineSelect.addEventListener('change', () => {
-        applySearchEngine(form, engineSelect.value);
-        saveSearchEngine(engineSelect.value);
+    engineOptions.forEach((option, optionIndex) => {
+      option.addEventListener('click', () => {
+        applySearchEngine(form, option.dataset.engine);
+        saveSearchEngine(option.dataset.engine);
       });
-    }
+
+      option.addEventListener('keydown', (event) => {
+        const previousKeys = ['ArrowLeft', 'ArrowUp'];
+        const nextKeys = ['ArrowRight', 'ArrowDown'];
+        let nextIndex = optionIndex;
+
+        if (previousKeys.includes(event.key)) {
+          nextIndex = (optionIndex - 1 + engineOptions.length) % engineOptions.length;
+        } else if (nextKeys.includes(event.key)) {
+          nextIndex = (optionIndex + 1) % engineOptions.length;
+        } else if (event.key === 'Home') {
+          nextIndex = 0;
+        } else if (event.key === 'End') {
+          nextIndex = engineOptions.length - 1;
+        } else {
+          return;
+        }
+
+        event.preventDefault();
+        const nextOption = engineOptions[nextIndex];
+        applySearchEngine(form, nextOption.dataset.engine);
+        saveSearchEngine(nextOption.dataset.engine);
+        nextOption.focus();
+      });
+    });
   });
 }
 
