@@ -116,6 +116,7 @@ button {
   align-items: center;
   gap: 12px;
   font-size: 2rem;
+  text-decoration: none;
 }
 
 .logo h1,
