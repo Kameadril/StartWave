@@ -80,37 +80,101 @@
 
 
 
-<section class="daily" aria-labelledby="daily-title">
+<section class="today-prototype" aria-labelledby="today-prototype-title">
 
-<h2 id="daily-title">Сегодня</h2>
+<h2 id="today-prototype-title">
+Сегодня
+</h2>
 
+<div class="today-widget-grid">
 
-<div class="cards">
+    <article class="today-widget">
+        <header class="widget-header">
+            <span class="widget-icon" aria-hidden="true">🕒</span>
+            <h3>Время</h3>
+        </header>
+        <div class="widget-body">
+            <p class="widget-data today-widget-value" id="prototypeTime">00:00</p>
+            <small class="widget-note" id="prototypeTimeDate">Сегодня</small>
+        </div>
+    </article>
 
+    <article class="today-widget">
+        <header class="widget-header">
+            <span class="widget-icon" aria-hidden="true">📅</span>
+            <h3>Календарь</h3>
+        </header>
+        <div class="widget-body">
+            <p class="widget-data today-widget-value" id="prototypeDate">Текущая дата</p>
+            <small class="widget-note" id="prototypeCalendarNote">Нет событий на сегодня</small>
+        </div>
+    </article>
 
-<div class="card">
-    <h3><span aria-hidden="true">🕒</span> Время</h3>
-    <p id="cardTime">
-        00:00
-    </p>
-</div>
+    <article class="today-widget">
+        <header class="widget-header">
+            <span class="widget-icon" aria-hidden="true">🌤</span>
+            <h3>Погода</h3>
+        </header>
+        <div class="widget-body">
+            <p class="widget-data today-widget-value" id="prototypeWeather">Загрузка</p>
+            <small class="widget-note" id="prototypeWeatherNote">Open-Meteo</small>
+        </div>
+    </article>
 
+    <article class="today-widget day-card-widget">
+        <header class="widget-header">
+            <span class="widget-icon" aria-hidden="true">🃏</span>
+            <h3>Карта дня</h3>
+        </header>
+        <div class="widget-body widget-body-card">
+        <button
+            type="button"
+            class="day-card-flip"
+            aria-pressed="false"
+            aria-label="Перевернуть карту дня">
 
-<div class="card">
-    <h3><span aria-hidden="true">📅</span> Календарь</h3>
-    <p id="cardDate">
-        Текущая дата
-    </p>
-</div>
+            <span class="day-card-inner">
+                <span class="day-card-face day-card-front">
+                    <span class="day-card-symbol" aria-hidden="true">▣</span>
+                    <small>Нажми, чтобы узнать карту дня</small>
+                    <span class="day-card-title">Открыть</span>
+                </span>
 
+                <span class="day-card-face day-card-back">
+                    <span class="day-card-message" id="prototypeCardTitle">Вдох</span>
+                    <small id="prototypeCardText">Один спокойный шаг важнее десяти шумных планов.</small>
+                </span>
+            </span>
 
-<div class="card">
-    <h3><span aria-hidden="true">🌤</span> Погода</h3>
-    <p>
-        Скоро здесь появится погода
-    </p>
-</div>
+        </button>
+        </div>
+    </article>
 
+    <article class="today-widget">
+        <header class="widget-header">
+            <span class="widget-icon" aria-hidden="true">♈</span>
+            <h3>Гороскоп</h3>
+        </header>
+        <div class="widget-body">
+            <p class="widget-data" id="prototypeHoroscope">
+                День подходит для мягкого старта и ясных решений.
+            </p>
+            <button type="button" class="prototype-mini-button">Открыть гороскоп</button>
+        </div>
+    </article>
+
+    <article class="today-widget">
+        <header class="widget-header">
+            <span class="widget-icon" aria-hidden="true">💬</span>
+            <h3>Цитата дня</h3>
+        </header>
+        <div class="widget-body">
+            <p class="widget-data" id="prototypeQuote">
+                «Маленький шаг тоже двигает волну».
+            </p>
+            <button type="button" class="prototype-mini-button quote-button">Новая цитата</button>
+        </div>
+    </article>
 
 </div>
 
