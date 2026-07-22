@@ -427,7 +427,6 @@ main {
   font-weight: 800;
 }
 
-.card:hover,
 .direction-card:hover {
   transform: translateY(-7px);
   border-color: rgba(125, 211, 252, 0.9);
