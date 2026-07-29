@@ -145,7 +145,8 @@ button {
   gap: 6px;
 }
 
-.navigation a {
+.navigation a,
+.navigation-link {
   padding: 9px 13px;
   border: 1px solid transparent;
   border-radius: 999px;
@@ -157,11 +158,16 @@ button {
 }
 
 .navigation a:hover,
-.navigation a[aria-current="page"] {
+.navigation a[aria-current="page"],
+.navigation-link[aria-current="page"] {
   color: var(--ocean-800);
   border-color: rgba(14, 165, 233, 0.2);
   background: rgba(255, 255, 255, 0.58);
   transform: translateY(-1px);
+}
+
+.navigation-link[aria-disabled="true"] {
+  cursor: default;
 }
 
 .datetime {
@@ -314,12 +320,14 @@ main {
 }
 
 .today-prototype,
+.bdo-coupons-widget,
 .directions,
 .about {
   margin-bottom: 72px;
 }
 
 .today-prototype > h2,
+.bdo-coupons-widget > h2,
 .directions > h2,
 .about > h2 {
   margin: 0 0 24px;
@@ -331,6 +339,266 @@ main {
 
 .today-prototype {
   text-align: center;
+}
+
+.bdo-coupons-widget {
+  padding: clamp(20px, 3vw, 28px);
+  overflow: hidden;
+  border: 1px solid rgba(245, 198, 103, 0.22);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(245, 198, 103, 0.14), transparent 22rem),
+    linear-gradient(145deg, rgba(8, 14, 25, 0.92), rgba(5, 10, 20, 0.78));
+  box-shadow:
+    0 22px 60px rgba(3, 7, 18, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: #f8ecd0;
+}
+
+.bdo-coupons-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.bdo-coupons-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.bdo-coupons-kicker {
+  display: block;
+  margin-bottom: 4px;
+  color: rgba(247, 216, 145, 0.72);
+  font-size: 0.76rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.bdo-coupons-heading h2 {
+  margin: 0;
+  color: #fff1c2;
+  font-size: clamp(1.3rem, 3vw, 1.85rem);
+  line-height: 1.2;
+}
+
+.bdo-coupons-all-link,
+.bdo-coupons-official-link {
+  flex: 0 0 auto;
+  padding: 9px 14px;
+  color: #f7d891;
+  border: 1px solid rgba(245, 198, 103, 0.28);
+  border-radius: 999px;
+  background: rgba(245, 198, 103, 0.08);
+  font-size: 0.9rem;
+  font-weight: 850;
+  text-decoration: none;
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.bdo-coupons-all-link:hover,
+.bdo-coupons-all-link:focus-visible,
+.bdo-coupons-official-link:hover,
+.bdo-coupons-official-link:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(245, 198, 103, 0.48);
+  background: rgba(245, 198, 103, 0.14);
+}
+
+.bdo-coupon-platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.bdo-coupon-platform-tab {
+  min-height: 38px;
+  padding: 0 14px;
+  color: rgba(255, 247, 223, 0.78);
+  border: 1px solid rgba(245, 198, 103, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  font-weight: 850;
+  transition: transform 180ms ease, color 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.bdo-coupon-platform-tab:hover,
+.bdo-coupon-platform-tab:focus-visible,
+.bdo-coupon-platform-tab[aria-selected="true"] {
+  transform: translateY(-1px);
+  color: #fff1c2;
+  border-color: rgba(245, 198, 103, 0.38);
+  background: rgba(245, 198, 103, 0.12);
+}
+
+.bdo-coupons-list {
+  display: grid;
+  gap: 10px;
+}
+
+.bdo-coupon-row {
+  display: grid;
+  grid-template-columns: 42px minmax(240px, 1fr) 152px 178px 190px;
+  gap: 14px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid rgba(245, 198, 103, 0.14);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.bdo-coupon-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(245, 198, 103, 0.24);
+  border-radius: 14px;
+  background: rgba(245, 198, 103, 0.08);
+  font-size: 1.35rem;
+}
+
+.bdo-coupon-code {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-items: center;
+  min-width: 0;
+}
+
+.bdo-coupon-code strong {
+  color: #fff7df;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: clamp(0.92rem, 2vw, 1.04rem);
+  letter-spacing: 0.04em;
+  overflow-wrap: anywhere;
+}
+
+.bdo-coupon-reward {
+  flex-basis: 100%;
+  color: rgba(255, 247, 223, 0.68);
+  font-size: 0.78rem;
+}
+
+.bdo-coupon-new {
+  padding: 3px 7px;
+  color: #201405;
+  border-radius: 999px;
+  background: #f7d891;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.bdo-coupon-copy {
+  justify-self: start;
+  width: 142px;
+  min-height: 36px;
+  padding: 0 12px;
+  color: #f7d891;
+  border: 1px solid rgba(245, 198, 103, 0.24);
+  border-radius: 999px;
+  background: rgba(245, 198, 103, 0.08);
+  font-weight: 850;
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.bdo-coupon-copy:hover,
+.bdo-coupon-copy:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(245, 198, 103, 0.46);
+  background: rgba(245, 198, 103, 0.14);
+}
+
+.bdo-coupon-status {
+  justify-self: start;
+  width: 168px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.bdo-coupon-status.is-active {
+  color: #bbf7d0;
+  background: rgba(34, 197, 94, 0.13);
+}
+
+.bdo-coupon-status.is-soon {
+  color: #fde68a;
+  background: rgba(234, 179, 8, 0.13);
+}
+
+.bdo-coupon-status.is-today {
+  color: #fecaca;
+  background: rgba(239, 68, 68, 0.14);
+}
+
+.bdo-coupon-status.is-expired {
+  color: rgba(226, 232, 240, 0.72);
+  background: rgba(148, 163, 184, 0.13);
+}
+
+.bdo-coupon-date {
+  justify-self: start;
+  width: 190px;
+  color: rgba(255, 247, 223, 0.76);
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+
+.bdo-coupon-date strong {
+  display: block;
+  color: #fff1c2;
+}
+
+.bdo-coupons-empty {
+  margin: 0;
+  color: rgba(255, 247, 223, 0.72);
+  font-weight: 750;
+}
+
+.bdo-coupons-empty-state {
+  padding: 18px;
+  border: 1px solid rgba(245, 198, 103, 0.14);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.bdo-coupons-empty-state strong,
+.bdo-coupons-empty-state span {
+  display: block;
+}
+
+.bdo-coupons-empty-state strong {
+  color: #fff1c2;
+}
+
+.bdo-coupons-empty-state span {
+  margin-top: 6px;
+  color: rgba(255, 247, 223, 0.72);
+}
+
+.bdo-coupons-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 14px;
+  color: rgba(255, 247, 223, 0.64);
+  border-top: 1px solid rgba(245, 198, 103, 0.12);
+  font-size: 0.82rem;
+}
+
+.bdo-coupons-meta strong {
+  color: rgba(255, 241, 194, 0.9);
 }
 
 .today-widget-grid {
@@ -943,6 +1211,845 @@ footer p {
   transform: translateY(-5px);
   background: var(--surface-hover);
   box-shadow: var(--shadow-md);
+}
+
+.bdo-direction-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.bdo-direction-card {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  min-height: 210px;
+  padding: 28px;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(224, 242, 254, 0.68)),
+    var(--surface);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+
+.bdo-direction-card:hover,
+.bdo-direction-card:focus-visible {
+  transform: translateY(-5px);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(186, 230, 253, 0.7)),
+    var(--surface-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.bdo-direction-card-peaceful {
+  border-color: rgba(34, 197, 94, 0.22);
+}
+
+.bdo-direction-card-combat {
+  border-color: rgba(14, 165, 233, 0.24);
+}
+
+.bdo-direction-icon {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: inset 0 0 0 1px var(--glass-border);
+  font-size: 2rem;
+}
+
+.bdo-direction-card h3 {
+  margin: 2px 0 10px;
+  color: var(--ocean-900);
+  font-size: clamp(1.5rem, 3vw, 2.05rem);
+}
+
+.bdo-direction-card p,
+.bdo-path-heading p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.bdo-path-heading {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.bdo-path-heading > span {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: inset 0 0 0 1px var(--glass-border);
+  font-size: 1.55rem;
+}
+
+.bdo-topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 14px;
+}
+
+.bdo-topic-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  height: 100%;
+  min-height: 126px;
+  padding: 17px;
+  overflow: hidden;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.bdo-topic-card img {
+  width: calc(100% + 34px);
+  max-width: none;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  margin: -17px -17px 4px;
+  object-fit: cover;
+  filter: saturate(0.92) contrast(1.03) brightness(0.82);
+  transition: transform 260ms ease, filter 260ms ease;
+}
+
+a.bdo-topic-card {
+  transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+
+a.bdo-topic-card:hover,
+a.bdo-topic-card:focus-visible {
+  transform: translateY(-4px);
+  background: var(--surface-hover);
+  box-shadow: var(--shadow-md);
+}
+
+a.bdo-topic-card:hover img,
+a.bdo-topic-card:focus-visible img {
+  transform: scale(1.04);
+  filter: saturate(1) contrast(1.08) brightness(0.9);
+}
+
+.bdo-topic-card > span {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(247, 216, 145, 0.48);
+  border-radius: 50%;
+  background: rgba(4, 8, 15, 0.68);
+  color: #f7d891;
+  font-size: 1.55rem;
+}
+
+.bdo-topic-card strong {
+  color: var(--ocean-900);
+  min-height: 2.6em;
+  line-height: 1.3;
+}
+
+.bdo-topic-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  min-height: 4.65em;
+  line-height: 1.55;
+}
+
+.bdo-topic-card small {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgba(224, 242, 254, 0.72);
+  color: var(--ocean-800);
+  font-weight: 800;
+}
+
+.bdo-topic-card.is-ready small {
+  background: rgba(220, 252, 231, 0.78);
+  color: #166534;
+}
+
+.bdo-topic-card.is-draft small {
+  background: rgba(254, 249, 195, 0.78);
+  color: #854d0e;
+}
+
+.bdo-topic-card.is-planned {
+  cursor: default;
+}
+
+.bdo-topic-card.is-planned small {
+  background: rgba(226, 232, 240, 0.78);
+  color: var(--muted);
+}
+
+.bdo-landing-body {
+  color: #f8ecd0;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(179, 137, 73, 0.2), transparent 34rem),
+    radial-gradient(circle at 15% 20%, rgba(37, 99, 235, 0.18), transparent 30rem),
+    linear-gradient(180deg, #060b16 0%, #08111f 46%, #04070d 100%);
+}
+
+.bdo-landing-body::before {
+  inset: 0;
+  width: auto;
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  border: 0;
+  border-radius: 0;
+  background:
+    linear-gradient(120deg, rgba(251, 191, 36, 0.12), transparent 28%),
+    linear-gradient(300deg, rgba(56, 189, 248, 0.12), transparent 30%),
+    radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.12), transparent 1px);
+  box-shadow: none;
+  filter: none;
+}
+
+.bdo-landing-body::after {
+  display: none;
+}
+
+.bdo-landing-body .header {
+  border-color: rgba(245, 198, 103, 0.24);
+  background: rgba(5, 10, 20, 0.72);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.32);
+}
+
+.bdo-landing-body .bdo-site-header {
+  position: fixed;
+  top: 18px;
+  right: 0;
+  left: 0;
+  z-index: 30;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  width: min(calc(100% - 56px), 1280px);
+  margin: 0 auto;
+  padding: 16px 22px;
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition: background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease, backdrop-filter 220ms ease, top 220ms ease;
+}
+
+.bdo-landing-body.is-bdo-header-scrolled .bdo-site-header {
+  top: 12px;
+  border-color: rgba(245, 198, 103, 0.18);
+  background: rgba(5, 10, 20, 0.48);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+}
+
+.bdo-landing-body .logo,
+.bdo-landing-body .navigation a,
+.bdo-landing-body .navigation-link {
+  color: #f8ecd0;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+}
+
+.bdo-landing-body .logo h1 {
+  color: #f7d891;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 2vw, 1.85rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.bdo-landing-body .navigation a:hover,
+.bdo-landing-body .navigation a:focus-visible,
+.bdo-landing-body .navigation a[aria-current="page"] {
+  color: #ffe7a8;
+  border-color: rgba(245, 198, 103, 0.32);
+  background: rgba(245, 198, 103, 0.12);
+}
+
+.bdo-landing-body .navigation-link {
+  opacity: 0.8;
+}
+
+.bdo-header-actions {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 10px;
+}
+
+.bdo-header-icon-button,
+.bdo-account-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  color: #f7d891;
+  border: 1px solid transparent;
+  background: transparent;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.bdo-header-icon-button {
+  width: 38px;
+  border-radius: 999px;
+  font-size: 1.25rem;
+}
+
+.bdo-account-button {
+  gap: 9px;
+  padding: 0 15px;
+  border-color: rgba(245, 198, 103, 0.44);
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 850;
+}
+
+.bdo-header-icon-button:hover,
+.bdo-header-icon-button:focus-visible,
+.bdo-account-button:hover,
+.bdo-account-button:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(245, 198, 103, 0.38);
+  background: rgba(245, 198, 103, 0.12);
+  box-shadow: 0 0 24px rgba(245, 198, 103, 0.12);
+}
+
+.bdo-header-notification {
+  position: relative;
+}
+
+.bdo-header-notification::after {
+  position: absolute;
+  top: 7px;
+  right: 8px;
+  width: 7px;
+  height: 7px;
+  content: "";
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.72);
+}
+
+.bdo-landing-container {
+  width: min(calc(100% - 32px), 1280px);
+}
+
+.bdo-landing-main {
+  padding-top: 22px;
+}
+
+.bdo-landing-hero {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: min(680px, 60vh);
+  margin-bottom: 426px;
+  padding: clamp(72px, 10vw, 116px) clamp(22px, 5vw, 72px) 0;
+  overflow: visible;
+  isolation: isolate;
+  border: 1px solid rgba(245, 198, 103, 0.2);
+  border-radius: 34px;
+  background: #070b12;
+  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.5);
+}
+
+.bdo-landing-media {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.bdo-landing-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: saturate(0.96) contrast(1.02);
+}
+
+.bdo-landing-hero::before,
+.bdo-landing-hero::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.bdo-landing-hero::before {
+  background:
+    linear-gradient(180deg, rgba(3, 7, 18, 0.2), rgba(3, 7, 18, 0.34)),
+    radial-gradient(circle at 50% 45%, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.3));
+}
+
+.bdo-landing-hero::after {
+  background:
+    linear-gradient(180deg, rgba(3, 7, 18, 0.1) 0%, transparent 34%, rgba(3, 7, 18, 0.62) 100%);
+}
+
+.bdo-landing-sky {
+  position: absolute;
+  top: 12%;
+  right: 11%;
+  width: clamp(64px, 8vw, 108px);
+  height: clamp(64px, 8vw, 108px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 234, 184, 0.95), rgba(255, 196, 89, 0.26) 56%, transparent 70%);
+  filter: blur(0.2px);
+  opacity: 0.78;
+}
+
+.bdo-landing-horizon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 38%;
+  border-radius: 0 0 34px 34px;
+  background:
+    linear-gradient(165deg, transparent 0 18%, rgba(8, 13, 22, 0.76) 19% 31%, transparent 32%),
+    linear-gradient(20deg, transparent 0 26%, rgba(8, 13, 22, 0.82) 27% 45%, transparent 46%),
+    linear-gradient(180deg, transparent, rgba(2, 6, 14, 0.9));
+}
+
+.bdo-landing-content {
+  width: min(760px, 100%);
+  margin: 0 auto 126px;
+  text-align: center;
+}
+
+.bdo-landing-separator {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 22px;
+}
+
+.bdo-landing-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  color: #f7d891;
+  font-weight: 850;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.bdo-landing-kicker::before,
+.bdo-landing-kicker::after {
+  width: 42px;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(247, 216, 145, 0.86));
+}
+
+.bdo-landing-kicker::after {
+  background: linear-gradient(90deg, rgba(247, 216, 145, 0.86), transparent);
+}
+
+.bdo-landing-content h2 {
+  margin: 0;
+  color: #fff7df;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.2rem, 9vw, 7.4rem);
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  line-height: 0.95;
+  text-shadow: 0 8px 34px rgba(0, 0, 0, 0.58);
+}
+
+.bdo-landing-content p {
+  width: min(650px, 100%);
+  margin: 22px auto 0;
+  color: rgba(255, 251, 238, 0.92);
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.65;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+}
+
+.bdo-landing-actions {
+  position: absolute;
+  right: clamp(20px, 7vw, 110px);
+  bottom: -386px;
+  left: clamp(20px, 7vw, 110px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.bdo-landing-body .bdo-direction-card {
+  align-items: flex-start;
+  min-height: 260px;
+  padding: clamp(24px, 3vw, 34px);
+  color: #fff5d8;
+  border-color: rgba(245, 198, 103, 0.32);
+  background:
+    linear-gradient(145deg, rgba(24, 30, 24, 0.78), rgba(7, 11, 20, 0.86)),
+    rgba(5, 10, 20, 0.72);
+  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.36);
+}
+
+.bdo-landing-body .bdo-direction-card:hover,
+.bdo-landing-body .bdo-direction-card:focus-visible {
+  transform: translateY(-6px) scale(1.015);
+  background:
+    linear-gradient(145deg, rgba(42, 46, 31, 0.88), rgba(10, 16, 28, 0.94)),
+    rgba(5, 10, 20, 0.84);
+  box-shadow: 0 30px 68px rgba(0, 0, 0, 0.46);
+}
+
+.bdo-landing-body .bdo-direction-card-combat {
+  background:
+    linear-gradient(145deg, rgba(58, 21, 21, 0.78), rgba(7, 11, 20, 0.86)),
+    rgba(5, 10, 20, 0.72);
+}
+
+.bdo-landing-body .bdo-direction-card-combat:hover,
+.bdo-landing-body .bdo-direction-card-combat:focus-visible {
+  background:
+    linear-gradient(145deg, rgba(78, 28, 24, 0.88), rgba(10, 16, 28, 0.94)),
+    rgba(5, 10, 20, 0.84);
+}
+
+.bdo-landing-body .bdo-direction-icon {
+  color: #f7d891;
+  border: 1px solid rgba(247, 216, 145, 0.7);
+  background: rgba(4, 8, 15, 0.58);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 28px rgba(245, 198, 103, 0.16);
+}
+
+.bdo-landing-body .bdo-direction-card h3 {
+  color: #f7d891;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.55rem, 2.4vw, 2.2rem);
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.bdo-landing-body .bdo-direction-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.bdo-landing-body .bdo-direction-card p {
+  color: rgba(255, 251, 238, 0.82);
+}
+
+.bdo-direction-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bdo-direction-list li {
+  display: flex;
+  min-height: 34px;
+  padding: 0;
+  border: 1px solid rgba(247, 216, 145, 0.2);
+  border-radius: 999px;
+  background: rgba(3, 7, 18, 0.34);
+  font-size: 0.85rem;
+  font-weight: 800;
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.bdo-direction-list li:hover {
+  transform: translateY(-1px);
+  border-color: rgba(247, 216, 145, 0.38);
+  background: rgba(247, 216, 145, 0.1);
+  box-shadow: 0 0 18px rgba(245, 198, 103, 0.12);
+}
+
+.bdo-direction-list a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 6px 10px;
+  color: rgba(255, 247, 223, 0.9);
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+}
+
+.bdo-route-preview {
+  padding-top: 8px;
+}
+
+.bdo-route-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.bdo-route-columns .page-block {
+  height: 100%;
+  margin-bottom: 24px;
+  padding: 24px;
+  border: 1px solid rgba(245, 198, 103, 0.14);
+  border-radius: var(--radius-lg);
+  background: rgba(6, 11, 20, 0.44);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+.bdo-landing-body .bdo-path-heading .category-title,
+.bdo-landing-body .project-meta {
+  color: #fff1c2;
+}
+
+.bdo-landing-body .bdo-path-heading p,
+.bdo-landing-body .project-meta p {
+  color: rgba(255, 251, 238, 0.74);
+}
+
+.bdo-landing-body .bdo-path-heading > span,
+.bdo-landing-body .bdo-topic-card,
+.bdo-landing-body .project-meta {
+  border-color: rgba(245, 198, 103, 0.2);
+  background:
+    linear-gradient(180deg, rgba(10, 16, 28, 0.68), rgba(4, 8, 14, 0.92)),
+    rgba(8, 14, 25, 0.68);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+}
+
+.bdo-landing-body .bdo-topic-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.bdo-landing-body .bdo-topic-card {
+  display: grid;
+  grid-template-rows: 112px 44px minmax(42px, auto) minmax(86px, 1fr) auto;
+  gap: 10px;
+  height: 378px;
+  min-height: 378px;
+}
+
+.bdo-landing-body .bdo-topic-card img {
+  width: calc(100% + 34px);
+  height: 112px;
+  aspect-ratio: auto;
+  margin: -17px -17px 0;
+}
+
+.bdo-landing-body .bdo-topic-card > span {
+  align-self: start;
+}
+
+.bdo-landing-body .bdo-topic-card strong,
+.bdo-landing-body .bdo-topic-card p {
+  min-height: 0;
+}
+
+.bdo-landing-body .bdo-topic-card small {
+  align-self: end;
+  justify-self: start;
+  margin-top: 0;
+}
+
+.bdo-landing-body a.bdo-topic-card:hover,
+.bdo-landing-body a.bdo-topic-card:focus-visible {
+  background: rgba(15, 23, 42, 0.84);
+  box-shadow:
+    0 24px 58px rgba(0, 0, 0, 0.42),
+    0 0 28px rgba(245, 198, 103, 0.14);
+}
+
+.bdo-landing-body .bdo-topic-card strong {
+  color: #fff1c2;
+}
+
+.bdo-landing-body .bdo-path-section,
+.bdo-topic-card {
+  scroll-margin-top: 128px;
+}
+
+.bdo-topic-card.is-bdo-target-highlight {
+  animation: bdoTargetGlow 1450ms ease-out;
+}
+
+.bdo-topic-card.is-bdo-route-active {
+  border-color: rgba(247, 216, 145, 0.42);
+  box-shadow:
+    0 20px 52px rgba(0, 0, 0, 0.36),
+    0 0 28px rgba(245, 198, 103, 0.16);
+}
+
+.bdo-floating-actions {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 35;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.bdo-floating-actions button {
+  pointer-events: auto;
+}
+
+.bdo-route-button,
+.bdo-top-button {
+  min-height: 44px;
+  padding: 11px 16px;
+  color: #f7d891;
+  border: 1px solid rgba(245, 198, 103, 0.28);
+  border-radius: 999px;
+  background: rgba(5, 10, 20, 0.62);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(16px) saturate(135%);
+  -webkit-backdrop-filter: blur(16px) saturate(135%);
+  font-weight: 850;
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, opacity 180ms ease;
+}
+
+.bdo-route-button:hover,
+.bdo-route-button:focus-visible,
+.bdo-top-button:hover,
+.bdo-top-button:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(245, 198, 103, 0.5);
+  background: rgba(19, 27, 41, 0.76);
+}
+
+.bdo-top-button {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.bdo-top-button.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.bdo-route-panel {
+  width: min(320px, calc(100vw - 32px));
+  max-height: min(540px, calc(100vh - 140px));
+  padding: 18px;
+  overflow: auto;
+  pointer-events: auto;
+  border: 1px solid rgba(245, 198, 103, 0.22);
+  border-radius: var(--radius-md);
+  background: rgba(5, 10, 20, 0.78);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+  transform: translateY(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+}
+
+.bdo-route-panel.is-open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.bdo-route-panel h2 {
+  margin: 0 0 14px;
+  color: #fff1c2;
+  font-size: 1rem;
+}
+
+.bdo-route-group + .bdo-route-group {
+  margin-top: 16px;
+}
+
+.bdo-route-group h3 {
+  margin: 0 0 8px;
+  color: #f7d891;
+  font-size: 0.92rem;
+}
+
+.bdo-route-list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bdo-route-list a {
+  display: block;
+  padding: 8px 10px;
+  color: rgba(255, 247, 223, 0.82);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.bdo-route-list a:hover,
+.bdo-route-list a:focus-visible,
+.bdo-route-list a.is-active {
+  color: #fff1c2;
+  border-color: rgba(245, 198, 103, 0.22);
+  background: rgba(245, 198, 103, 0.1);
+}
+
+@keyframes bdoTargetGlow {
+  0% {
+    box-shadow:
+      0 20px 52px rgba(0, 0, 0, 0.36),
+      0 0 0 rgba(245, 198, 103, 0);
+  }
+  28% {
+    box-shadow:
+      0 24px 58px rgba(0, 0, 0, 0.42),
+      0 0 0 5px rgba(245, 198, 103, 0.26),
+      0 0 42px rgba(245, 198, 103, 0.26);
+  }
+  100% {
+    box-shadow:
+      0 18px 42px rgba(0, 0, 0, 0.28),
+      0 0 0 rgba(245, 198, 103, 0);
+  }
 }
 
 .role-icon {
@@ -2456,6 +3563,19 @@ footer p {
     grid-column: auto;
   }
 
+  .bdo-coupon-row {
+    grid-template-columns: 42px minmax(0, 1fr) 152px;
+  }
+
+  .bdo-coupon-status {
+    grid-column: 2;
+  }
+
+  .bdo-coupon-date {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
   .learning-step-nav {
     grid-template-columns: 1fr;
   }
@@ -2467,6 +3587,7 @@ footer p {
 
   .bdo-split,
   .bdo-flow,
+  .bdo-topic-grid,
   .bdo-worker-slots-grid,
   .bdo-upgrade-benefits,
   .bdo-worker-type-grid,
@@ -2501,6 +3622,40 @@ footer p {
   .bdo-interface-info-card {
     position: static;
     min-height: auto;
+  }
+
+  .bdo-direction-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bdo-landing-body .bdo-site-header {
+    grid-template-columns: 1fr auto;
+    width: min(calc(100% - 32px), 1280px);
+    gap: 14px;
+  }
+
+  .bdo-landing-body .bdo-site-header .navigation {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .bdo-landing-hero {
+    min-height: 620px;
+    margin-bottom: 506px;
+  }
+
+  .bdo-landing-actions {
+    right: 28px;
+    bottom: -436px;
+    left: 28px;
+    gap: 16px;
+  }
+
+  .bdo-route-columns {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -2597,9 +3752,39 @@ footer p {
 
   .daily,
   .today-prototype,
+  .bdo-coupons-widget,
   .directions,
   .about {
     margin-bottom: 50px;
+  }
+
+  .bdo-coupons-heading {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bdo-coupons-actions {
+    justify-content: flex-start;
+  }
+
+  .bdo-coupons-all-link {
+    align-self: flex-start;
+  }
+
+  .bdo-coupon-row {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .bdo-coupon-status,
+  .bdo-coupon-date {
+    grid-column: auto;
+    grid-row: auto;
+    width: auto;
+  }
+
+  .bdo-coupon-copy {
+    width: 100%;
   }
 
   .cards,
@@ -2637,6 +3822,8 @@ footer p {
 
   .card-grid,
   .bdo-menu,
+  .bdo-direction-grid,
+  .bdo-topic-grid,
   .bdo-check-grid,
   .bdo-flow,
   .bdo-worker-slots-grid,
@@ -2653,6 +3840,118 @@ footer p {
 
   .bdo-hero {
     padding: 32px 22px;
+  }
+
+  .bdo-direction-card {
+    min-height: auto;
+    padding: 22px;
+  }
+
+  .bdo-landing-main {
+    padding-top: 12px;
+  }
+
+  .bdo-landing-hero {
+    min-height: 760px;
+    margin-bottom: 721px;
+    padding: 58px 18px 0;
+    border-radius: 24px;
+  }
+
+  .bdo-landing-content {
+    margin-bottom: 0;
+  }
+
+  .bdo-landing-kicker {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+  }
+
+  .bdo-landing-kicker::before,
+  .bdo-landing-kicker::after {
+    width: 24px;
+  }
+
+  .bdo-landing-actions {
+    right: 16px;
+    bottom: -681px;
+    left: 16px;
+    grid-template-columns: 1fr;
+  }
+
+  .bdo-landing-body .bdo-direction-card {
+    justify-content: flex-start;
+    min-height: 238px;
+  }
+
+  .bdo-direction-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bdo-landing-body .bdo-site-header {
+    top: 10px;
+    width: min(calc(100% - 20px), 1280px);
+    padding: 13px;
+    border-radius: 18px;
+  }
+
+  .bdo-landing-body.is-bdo-header-scrolled .bdo-site-header {
+    top: 8px;
+  }
+
+  .bdo-landing-body .logo h1 {
+    font-size: 1.22rem;
+  }
+
+  .bdo-header-actions {
+    gap: 4px;
+  }
+
+  .bdo-header-icon-button {
+    width: 34px;
+    min-height: 34px;
+  }
+
+  .bdo-account-button {
+    min-height: 34px;
+    padding: 0 10px;
+    font-size: 0;
+  }
+
+  .bdo-account-button span {
+    font-size: 0.95rem;
+  }
+
+  .bdo-landing-body .bdo-site-header .navigation {
+    gap: 4px;
+  }
+
+  .bdo-landing-body .bdo-site-header .navigation a,
+  .bdo-landing-body .bdo-site-header .navigation-link {
+    padding: 7px 10px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  .bdo-floating-actions {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .bdo-route-button,
+  .bdo-top-button {
+    min-height: 42px;
+    padding: 10px 13px;
+    font-size: 0.88rem;
+  }
+
+  .bdo-route-panel {
+    width: min(300px, calc(100vw - 24px));
+    max-height: min(470px, calc(100vh - 130px));
+  }
+
+  .bdo-path-heading {
+    flex-direction: column;
   }
 
   .bdo-hero-actions,
@@ -2679,6 +3978,8 @@ footer p {
   *::before,
   *::after {
     scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }

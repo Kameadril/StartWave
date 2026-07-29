@@ -12,6 +12,7 @@ const prototypeCardTitleElement = document.getElementById('prototypeCardTitle');
 const prototypeCardTextElement = document.getElementById('prototypeCardText');
 const prototypeHoroscopeElement = document.getElementById('prototypeHoroscope');
 const prototypeQuoteElement = document.getElementById('prototypeQuote');
+const bdoCouponsListElement = document.getElementById('bdoCouponsList');
 const searchForms = document.querySelectorAll('.search-box');
 const searchEngineStorageKey = 'startwave-search-engine';
 const searchEngines = {
@@ -134,6 +135,241 @@ function getSavedSearchEngine() {
   } catch {
     return 'yandex';
   }
+}
+
+function getCouponTimeState(expiresAt) {
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const expiresDate = new Date(`${expiresAt}T23:59:59`);
+  const expiresDay = new Date(expiresDate.getFullYear(), expiresDate.getMonth(), expiresDate.getDate());
+  const diffDays = Math.ceil((expiresDay - today) / 86400000);
+
+  if (diffDays < 0) {
+    return {
+      status: 'expired',
+      statusText: '⚫ Истёк',
+      timeLeft: 'Истёк'
+    };
+  }
+
+  if (diffDays === 0) {
+    return {
+      status: 'today',
+      statusText: '🔴 Заканчивается сегодня',
+      timeLeft: 'Сегодня'
+    };
+  }
+
+  if (diffDays <= 7) {
+    return {
+      status: 'soon',
+      statusText: '🟡 Скоро закончится',
+      timeLeft: `Осталось ${diffDays} ${getRussianDayWord(diffDays)}`
+    };
+  }
+
+  return {
+    status: 'active',
+    statusText: '🟢 Активен',
+    timeLeft: `Осталось ${diffDays} ${getRussianDayWord(diffDays)}`
+  };
+}
+
+function getRussianDayWord(dayCount) {
+  const lastDigit = dayCount % 10;
+  const lastTwoDigits = dayCount % 100;
+
+  if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
+    return 'дней';
+  }
+
+  if (lastDigit === 1) {
+    return 'день';
+  }
+
+  if (lastDigit >= 2 && lastDigit <= 4) {
+    return 'дня';
+  }
+
+  return 'дней';
+}
+
+function formatCouponDate(dateValue) {
+  return new Intl.DateTimeFormat('ru-RU', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  }).format(new Date(`${dateValue}T12:00:00`));
+}
+
+function formatCouponDateTime(dateValue) {
+  if (!dateValue) {
+    return 'ожидается';
+  }
+
+  return new Intl.DateTimeFormat('ru-RU', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  }).format(new Date(dateValue));
+}
+
+function initializeBdoCouponsWidget() {
+  if (!bdoCouponsListElement) {
+    return;
+  }
+
+  const couponData = window.startWaveBdoCoupons || {};
+  const platformTabsElement = document.getElementById('bdoCouponPlatforms');
+  const activationLinkElement = document.getElementById('bdoCouponActivationLink');
+  const couponsMetaElement = document.getElementById('bdoCouponsMeta');
+  const platforms = couponData.platforms || {};
+  const platformEntries = Object.entries(platforms);
+  const couponLimit = couponData.limit || 5;
+  let activePlatformKey = couponData.defaultPlatform && platforms[couponData.defaultPlatform]
+    ? couponData.defaultPlatform
+    : platformEntries[0]?.[0];
+
+  if (!activePlatformKey) {
+    bdoCouponsListElement.innerHTML = '<p class="bdo-coupons-empty">Пока нет данных о купонах.</p>';
+    return;
+  }
+
+  function createCouponRow(coupon) {
+    const timeState = getCouponTimeState(coupon.expiresAt);
+    const couponRow = document.createElement('article');
+    couponRow.className = 'bdo-coupon-row';
+
+    const couponIcon = document.createElement('span');
+    couponIcon.className = 'bdo-coupon-icon';
+    couponIcon.setAttribute('aria-hidden', 'true');
+    couponIcon.textContent = coupon.rewardIcon || '🎁';
+
+    const couponCode = document.createElement('div');
+    couponCode.className = 'bdo-coupon-code';
+
+    const couponCodeText = document.createElement('strong');
+    couponCodeText.textContent = coupon.code;
+
+    couponCode.append(couponCodeText);
+
+    if (coupon.isNew) {
+      const newBadge = document.createElement('span');
+      newBadge.className = 'bdo-coupon-new';
+      newBadge.textContent = 'NEW';
+      couponCode.append(newBadge);
+    }
+
+    const rewardDescription = document.createElement('span');
+    rewardDescription.className = 'bdo-coupon-reward';
+    rewardDescription.textContent = coupon.rewardDescription;
+    couponCode.append(rewardDescription);
+
+    const copyButton = document.createElement('button');
+    copyButton.className = 'bdo-coupon-copy';
+    copyButton.type = 'button';
+    copyButton.textContent = '📋 Скопировать';
+
+    copyButton.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(coupon.code);
+        copyButton.textContent = '✔ Скопировано';
+      } catch (error) {
+        copyButton.textContent = 'Код выделен';
+        window.getSelection()?.selectAllChildren(couponCodeText);
+      }
+
+      window.setTimeout(() => {
+        copyButton.textContent = '📋 Скопировать';
+      }, 2000);
+    });
+
+    const status = document.createElement('span');
+    status.className = `bdo-coupon-status is-${timeState.status}`;
+    status.textContent = timeState.statusText;
+
+    const date = document.createElement('span');
+    date.className = 'bdo-coupon-date';
+    date.innerHTML = `<strong>До ${formatCouponDate(coupon.expiresAt)}</strong>${timeState.timeLeft}`;
+
+    couponRow.append(couponIcon, couponCode, copyButton, status, date);
+    return couponRow;
+  }
+
+  function renderPlatformTabs() {
+    if (!platformTabsElement) {
+      return;
+    }
+
+    platformTabsElement.replaceChildren(...platformEntries.map(([platformKey, platform]) => {
+      const tabButton = document.createElement('button');
+      const isActive = platformKey === activePlatformKey;
+
+      tabButton.className = 'bdo-coupon-platform-tab';
+      tabButton.type = 'button';
+      tabButton.id = `bdoCouponTab-${platformKey}`;
+      tabButton.setAttribute('role', 'tab');
+      tabButton.setAttribute('aria-selected', String(isActive));
+      tabButton.dataset.platform = platformKey;
+      tabButton.textContent = `${platform.icon} ${platform.label}`;
+
+      tabButton.addEventListener('click', () => {
+        activePlatformKey = platformKey;
+        renderCouponsCenter();
+      });
+
+      return tabButton;
+    }));
+  }
+
+  function renderCouponsMeta() {
+    if (!couponsMetaElement) {
+      return;
+    }
+
+    const checkedLabels = (couponData.checkedPlatforms || [])
+      .map((platformKey) => platforms[platformKey]?.label)
+      .filter(Boolean)
+      .map((label) => `✔ ${label}`);
+
+    couponsMetaElement.innerHTML = `
+      <span>Последнее обновление: <strong>${formatCouponDateTime(couponData.lastUpdatedAt)}</strong></span>
+      <span>Проверено: <strong>${checkedLabels.join(' · ') || 'ожидается'}</strong></span>
+    `;
+  }
+
+  function renderCouponsList() {
+    const activePlatform = platforms[activePlatformKey];
+    const activeCoupons = (activePlatform.coupons || [])
+      .filter((coupon) => getCouponTimeState(coupon.expiresAt).status !== 'expired')
+      .slice(0, couponLimit);
+
+    if (activationLinkElement) {
+      activationLinkElement.href = activePlatform.activationUrl || '#bdo-coupons-title';
+    }
+
+    if (activeCoupons.length === 0) {
+      bdoCouponsListElement.innerHTML = `
+        <article class="bdo-coupons-empty-state">
+          <strong>На данный момент активных купонов нет.</strong>
+          <span>Последняя проверка: ${formatCouponDateTime(couponData.lastUpdatedAt)}</span>
+        </article>
+      `;
+      return;
+    }
+
+    bdoCouponsListElement.replaceChildren(...activeCoupons.map(createCouponRow));
+  }
+
+  function renderCouponsCenter() {
+    renderPlatformTabs();
+    renderCouponsList();
+    renderCouponsMeta();
+  }
+
+  renderCouponsCenter();
 }
 
 function saveSearchEngine(engine) {
@@ -475,9 +711,198 @@ function initializeLearningNavigation() {
   }
 }
 
+function initializeBdoLandingHeader() {
+  const bdoHeader = document.querySelector('.bdo-site-header');
+
+  if (!bdoHeader) {
+    return;
+  }
+
+  function updateBdoHeaderState() {
+    document.body.classList.toggle('is-bdo-header-scrolled', window.scrollY > 24);
+  }
+
+  updateBdoHeaderState();
+  window.addEventListener('scroll', updateBdoHeaderState, { passive: true });
+}
+
+function initializeBdoLandingNavigation() {
+  const bdoLanding = document.querySelector('.bdo-landing-body');
+  const routeItems = Array.from(document.querySelectorAll('[data-bdo-route-group][data-bdo-route-title]'));
+
+  if (!bdoLanding || routeItems.length === 0) {
+    return;
+  }
+
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const routeLinksByTarget = new Map();
+
+  function highlightTarget(target) {
+    if (!target) {
+      return;
+    }
+
+    target.classList.remove('is-bdo-target-highlight');
+    void target.offsetWidth;
+    target.classList.add('is-bdo-target-highlight');
+
+    window.setTimeout(() => {
+      target.classList.remove('is-bdo-target-highlight');
+    }, 1500);
+  }
+
+  function scrollToTarget(target) {
+    target.scrollIntoView({
+      behavior: reducedMotionQuery.matches ? 'auto' : 'smooth',
+      block: 'start'
+    });
+    highlightTarget(target);
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const targetId = link.getAttribute('href')?.slice(1);
+      const target = targetId ? document.getElementById(targetId) : null;
+
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+      history.pushState(null, '', `#${targetId}`);
+      scrollToTarget(target);
+    });
+  });
+
+  const floatingActions = document.createElement('div');
+  floatingActions.className = 'bdo-floating-actions';
+
+  const routePanel = document.createElement('div');
+  routePanel.className = 'bdo-route-panel';
+  routePanel.id = 'bdoRoutePanel';
+  routePanel.setAttribute('aria-label', 'Маршрут BDO');
+
+  const routeTitle = document.createElement('h2');
+  routeTitle.textContent = 'Маршрут BDO';
+  routePanel.append(routeTitle);
+
+  const groups = routeItems.reduce((groupMap, item) => {
+    const groupName = item.dataset.bdoRouteGroup;
+
+    if (!groupMap.has(groupName)) {
+      groupMap.set(groupName, []);
+    }
+
+    groupMap.get(groupName).push(item);
+    return groupMap;
+  }, new Map());
+
+  groups.forEach((items, groupName) => {
+    const groupBlock = document.createElement('section');
+    groupBlock.className = 'bdo-route-group';
+
+    const groupTitle = document.createElement('h3');
+    groupTitle.textContent = groupName;
+
+    const groupList = document.createElement('ol');
+    groupList.className = 'bdo-route-list';
+
+    items.forEach((item) => {
+      const listItem = document.createElement('li');
+      const routeLink = document.createElement('a');
+
+      routeLink.href = `#${item.id}`;
+      routeLink.textContent = item.dataset.bdoRouteTitle;
+      routeLink.dataset.routeTarget = item.id;
+
+      routeLink.addEventListener('click', () => {
+        routePanel.classList.remove('is-open');
+        routeButton.setAttribute('aria-expanded', 'false');
+      });
+
+      routeLinksByTarget.set(item.id, routeLink);
+      listItem.append(routeLink);
+      groupList.append(listItem);
+    });
+
+    groupBlock.append(groupTitle, groupList);
+    routePanel.append(groupBlock);
+  });
+
+  const routeButton = document.createElement('button');
+  routeButton.className = 'bdo-route-button';
+  routeButton.type = 'button';
+  routeButton.setAttribute('aria-controls', routePanel.id);
+  routeButton.setAttribute('aria-expanded', 'false');
+  routeButton.textContent = '🧭 Маршрут';
+
+  const topButton = document.createElement('button');
+  topButton.className = 'bdo-top-button';
+  topButton.type = 'button';
+  topButton.textContent = '↑ Наверх';
+
+  routeButton.addEventListener('click', () => {
+    const isOpen = routePanel.classList.toggle('is-open');
+    routeButton.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  topButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: reducedMotionQuery.matches ? 'auto' : 'smooth'
+    });
+  });
+
+  function updateTopButtonVisibility() {
+    topButton.classList.toggle('is-visible', window.scrollY > 420);
+  }
+
+  updateTopButtonVisibility();
+  window.addEventListener('scroll', updateTopButtonVisibility, { passive: true });
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      const visibleEntry = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((firstEntry, secondEntry) => secondEntry.intersectionRatio - firstEntry.intersectionRatio)[0];
+
+      if (!visibleEntry) {
+        return;
+      }
+
+      routeItems.forEach((item) => {
+        item.classList.toggle('is-bdo-route-active', item.id === visibleEntry.target.id);
+      });
+
+      routeLinksByTarget.forEach((link, targetId) => {
+        link.classList.toggle('is-active', targetId === visibleEntry.target.id);
+      });
+    }, {
+      rootMargin: '-28% 0px -58% 0px',
+      threshold: [0.12, 0.25, 0.45]
+    });
+
+    routeItems.forEach((item) => observer.observe(item));
+  }
+
+  floatingActions.append(routePanel, routeButton, topButton);
+  document.body.append(floatingActions);
+
+  if (window.location.hash) {
+    const initialTarget = document.getElementById(window.location.hash.slice(1));
+
+    if (initialTarget?.matches('[data-bdo-route-group]')) {
+      window.setTimeout(() => highlightTarget(initialTarget), 250);
+    }
+  }
+}
+
 startMiniClock();
 initializeSearchEngineSwitch();
+initializeBdoCouponsWidget();
 initializeTodayPrototype();
 initializeBdoInterfaceGuide();
 initializeLearningNavigation();
+initializeBdoLandingHeader();
+initializeBdoLandingNavigation();
 updatePrototypeWeather();

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StartWave — BDO Узлы</title>
+  <meta
+    name="description"
+    content="StartWave — краткая справка по узлам в Black Desert Online: зачем нужны узлы, как работает сеть и почему рабочий может не отправляться на добычу.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+  <header class="header">
+    <a class="logo" href="../index.html" aria-label="StartWave — на главную">
+      <span aria-hidden="true">🌊</span>
+      <div>
+        <h1>StartWave</h1>
+      </div>
+    </a>
+
+    <nav class="navigation" aria-label="Основная навигация">
+      <a href="../index.html">Главная</a>
+      <a href="../entertainment.html">Развлечения</a>
+      <a href="../services.html">Сервисы</a>
+      <a href="../ai.html">AI</a>
+    </nav>
+
+    <div class="datetime" aria-label="Текущее время и дата">
+      <span id="miniTime">00:00</span>
+      <small id="miniDate"></small>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <form class="search-box" action="https://yandex.ru/search/" method="get" target="_blank">
+      <label for="search-input" class="visually-hidden">Поисковый запрос</label>
+      <div class="search-engine-switch" role="radiogroup" aria-label="Поисковая система">
+        <button type="button" class="search-engine-option" data-engine="yandex" role="radio" aria-checked="true">Яндекс</button>
+        <button type="button" class="search-engine-option" data-engine="google" role="radio" aria-checked="false" tabindex="-1">Google</button>
+      </div>
+      <input
+        id="search-input"
+        type="search"
+        name="text"
+        placeholder="Что ты хочешь найти сегодня?">
+      <button type="submit">Найти</button>
+    </form>
+
+    <main class="content-main bdo-knowledge-page learning-page" data-learning-page data-learning-title="Узлы">
+      <nav class="learning-breadcrumbs" aria-label="Хлебные крошки обучения">
+        <a href="../index.html">StartWave</a>
+        <span aria-hidden="true">→</span>
+        <a href="../bdo.html">Chronicles of Black Desert</a>
+        <span aria-hidden="true">→</span>
+        <a href="../bdo.html#peaceful-life">Мирная жизнь</a>
+        <span aria-hidden="true">→</span>
+        <span aria-current="page">Узлы</span>
+      </nav>
+
+      <nav class="learning-step-nav" aria-label="Предыдущий и следующий шаг обучения">
+        <a class="learning-step-button learning-step-button-previous" href="bdo-workers.html">
+          <span>← Предыдущий шаг</span>
+          <strong>Рабочие</strong>
+        </a>
+        <a class="learning-step-button learning-step-button-next" href="bdo-resources.html">
+          <span>Следующий шаг →</span>
+          <strong>Ресурсы</strong>
+        </a>
+      </nav>
+
+      <section class="bdo-hero" id="page-start" aria-labelledby="nodes-title" data-route-item data-route-title="Старт">
+        <span class="bdo-hero-kicker">Chronicles of Black Desert</span>
+        <h2 id="nodes-title">🌲 Узлы</h2>
+        <p>Короткая справка о том, как связывать территории и открывать рабочим доступ к ресурсам.</p>
+        <div class="bdo-hero-actions" aria-label="Главные задачи страницы">
+          <span>Понять сеть</span>
+          <span>Подключить узел</span>
+          <span>Отправить рабочего</span>
+        </div>
+      </section>
+
+      <section class="bdo-section bdo-summary" id="what-is" aria-labelledby="what-is-title" data-route-item data-route-title="Что такое узлы">
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Быстрый ответ</span>
+          <h2 id="what-is-title">📌 Что такое узлы</h2>
+        </div>
+
+        <div class="bdo-split">
+          <article class="bdo-panel bdo-panel-strong">
+            <h3>Узел — это точка на карте, которую можно подключить к общей сети</h3>
+            <p>
+              Через узлы открывается доступ к добыче ресурсов, торговым маршрутам и некоторым игровым связкам.
+              Для рабочих особенно важны ресурсные узлы: именно туда они отправляются за материалами.
+            </p>
+          </article>
+
+          <div class="bdo-check-grid">
+            <article class="bdo-check-card">
+              <span aria-hidden="true">1</span>
+              <p>Узел должен быть связан с городом или уже подключённой территорией.</p>
+            </article>
+            <article class="bdo-check-card">
+              <span aria-hidden="true">2</span>
+              <p>Для подключения обычно нужны очки влияния.</p>
+            </article>
+            <article class="bdo-check-card">
+              <span aria-hidden="true">3</span>
+              <p>Ресурсный узел часто подключается отдельно от основной точки.</p>
+            </article>
+            <article class="bdo-check-card">
+              <span aria-hidden="true">4</span>
+              <p>Рабочий берёт материалы и относит их на склад своего города.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="bdo-section" id="why-needed" aria-labelledby="why-needed-title" data-route-item data-route-title="Для чего нужны">
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Практическая польза</span>
+          <h2 id="why-needed-title">🎯 Для чего они нужны</h2>
+        </div>
+
+        <div class="bdo-feature-grid">
+          <article class="bdo-feature-card">
+            <span class="bdo-feature-icon" aria-hidden="true">🌲</span>
+            <h3>Добыча ресурсов</h3>
+            <p>Рабочие могут приносить древесину, руду, растения и другие материалы с подключённых узлов.</p>
+          </article>
+          <article class="bdo-feature-card">
+            <span class="bdo-feature-icon" aria-hidden="true">🏠</span>
+            <h3>Производство</h3>
+            <p>Узлы помогают построить стабильную цепочку: ресурс → склад → мастерская → готовый предмет.</p>
+          </article>
+          <article class="bdo-feature-card">
+            <span class="bdo-feature-icon" aria-hidden="true">🧭</span>
+            <h3>Маршруты</h3>
+            <p>Сеть узлов показывает, откуда рабочие берут материалы и куда они возвращают добычу.</p>
+          </article>
+          <article class="bdo-feature-card">
+            <span class="bdo-feature-icon" aria-hidden="true">📦</span>
+            <h3>Запас материалов</h3>
+            <p>Даже простая сеть из нескольких узлов постепенно наполняет склад нужными ресурсами.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="bdo-section bdo-flow-section" id="how-network-works" aria-labelledby="network-title" data-route-item data-route-title="Как работает сеть">
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Механика</span>
+          <h2 id="network-title">⚙️ Как работает сеть узлов</h2>
+          <p>Сеть строится от города к нужной точке. Если связь разорвана, рабочий не сможет нормально работать на маршруте.</p>
+        </div>
+
+        <ol class="bdo-flow" aria-label="Схема сети узлов">
+          <li><span>🏙</span><strong>Город</strong></li>
+          <li><span>🌐</span><strong>Связанный узел</strong></li>
+          <li><span>🌲</span><strong>Ресурс</strong></li>
+          <li><span>⚒</span><strong>Рабочий</strong></li>
+          <li><span>📦</span><strong>Склад</strong></li>
+          <li><span>🏠</span><strong>Производство</strong></li>
+        </ol>
+      </section>
+
+      <section class="bdo-section" id="how-to-connect" aria-labelledby="connect-title" data-route-item data-route-title="Как подключить">
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Короткая инструкция</span>
+          <h2 id="connect-title">📝 Как подключить узел</h2>
+        </div>
+
+        <div class="bdo-check-grid">
+          <article class="bdo-check-card">
+            <span aria-hidden="true">1</span>
+            <p>Открой карту мира и выбери нужную территорию.</p>
+          </article>
+          <article class="bdo-check-card">
+            <span aria-hidden="true">2</span>
+            <p>Проверь, связан ли узел с городом или соседним подключённым узлом.</p>
+          </article>
+          <article class="bdo-check-card">
+            <span aria-hidden="true">3</span>
+            <p>Вложи очки влияния в основной узел.</p>
+          </article>
+          <article class="bdo-check-card">
+            <span aria-hidden="true">4</span>
+            <p>Если нужен ресурс, отдельно активируй ресурсную точку внутри узла.</p>
+          </article>
+          <article class="bdo-check-card">
+            <span aria-hidden="true">5</span>
+            <p>Назначь рабочего из подходящего города и проверь склад.</p>
+          </article>
+          <article class="bdo-check-card">
+            <span aria-hidden="true">6</span>
+            <p>Если кнопка назначения недоступна, проверь раздел с проблемами ниже.</p>
+          </article>
+        </div>
+      </section>
+
+      <aside class="bdo-startwave-tip" id="tips" aria-labelledby="tips-title" data-route-item data-route-title="Полезно знать">
+        <span class="bdo-tip-mark" aria-hidden="true">💡</span>
+        <div>
+          <h2 id="tips-title">Полезно знать</h2>
+          <p>
+            Не подключай всю карту сразу. Начни с одного города и нескольких узлов, которые дают нужные материалы.
+            Так проще понять, куда уходят очки влияния и какие ресурсы реально попадают на склад.
+          </p>
+          <p>
+            Точные требования к отдельным узлам лучше проверять в игре: расположение, стоимость и доступность могут зависеть от конкретной территории.
+          </p>
+        </div>
+      </aside>
+
+      <section class="bdo-section" id="worker-problems" aria-labelledby="problems-title" data-route-item data-route-title="Если рабочий не идёт">
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Быстрая диагностика</span>
+          <h2 id="problems-title">🚑 Если рабочий не может отправиться на узел</h2>
+          <p>Чаще всего проблема не в рабочем, а в связи узлов, складе или назначении города.</p>
+        </div>
+
+        <div class="bdo-faq-grid">
+          <article class="bdo-faq-card">
+            <h3>Узел не связан</h3>
+            <p>Проверь, идёт ли непрерывная цепочка от города до нужного узла.</p>
+          </article>
+          <article class="bdo-faq-card">
+            <h3>Ресурсная точка не активирована</h3>
+            <p>Иногда нужно вложить влияние не только в основной узел, но и в ресурс внутри него.</p>
+          </article>
+          <article class="bdo-faq-card">
+            <h3>Рабочий не из того города</h3>
+            <p>Рабочий привязан к своему городу. Проверь, откуда он должен идти на маршрут.</p>
+          </article>
+          <article class="bdo-faq-card">
+            <h3>Нет условий для работы</h3>
+            <p>Проверь выносливость рабочего, склад и доступность нужного задания в игре.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="bdo-section bdo-faq" id="faq" aria-labelledby="faq-title" data-route-item data-route-title="FAQ">
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Короткие ответы</span>
+          <h2 id="faq-title">❓ FAQ</h2>
+        </div>
+
+        <div class="bdo-faq-grid">
+          <article class="bdo-faq-card">
+            <h3>Можно ли вернуть очки влияния?</h3>
+            <p>Обычно очки влияния можно вернуть, отключив вложение. Перед массовыми изменениями лучше проверить конкретную связку в игре.</p>
+          </article>
+          <article class="bdo-faq-card">
+            <h3>Нужно ли подключать каждый узел?</h3>
+            <p>Нет. Подключай только те узлы, которые нужны для ресурсов, маршрута или текущей цели.</p>
+          </article>
+          <article class="bdo-faq-card">
+            <h3>Почему ресурс не появляется на складе?</h3>
+            <p>Проверь, назначен ли рабочий, активирована ли ресурсная точка и достаточно ли времени прошло для рабочего цикла.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="bdo-section bdo-next-learning" id="next-learning" aria-labelledby="next-learning-title" data-route-item data-route-title="Связанные материалы">
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Продолжить тему</span>
+          <h2 id="next-learning-title">🔗 Связанные материалы</h2>
+          <p>Эти темы помогут понять, как узлы работают вместе с рабочими, ресурсами и городом.</p>
+        </div>
+
+        <div class="bdo-next-learning-grid">
+          <article class="bdo-next-learning-card">
+            <span aria-hidden="true">⚒</span>
+            <h3>Рабочие</h3>
+            <p>Узнайте, как назначать рабочих на добычу и производство.</p>
+            <a href="bdo-workers.html">Перейти →</a>
+          </article>
+          <article class="bdo-next-learning-card">
+            <span aria-hidden="true">🌐</span>
+            <h3>Очки влияния</h3>
+            <p>Разберитесь, почему влияние важно для узлов, домов и развития сети.</p>
+            <a href="#how-to-connect">Перейти →</a>
+          </article>
+          <article class="bdo-next-learning-card">
+            <span aria-hidden="true">🏠</span>
+            <h3>Жильё</h3>
+            <p>Посмотрите, как городская инфраструктура связана с рабочими и производством.</p>
+            <a href="#worker-problems">Перейти →</a>
+          </article>
+          <article class="bdo-next-learning-card">
+            <span aria-hidden="true">📚</span>
+            <h3>Ресурсы</h3>
+            <p>Откройте список полезных материалов и внешних справочников по BDO.</p>
+            <a href="bdo-resources.html">Перейти →</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Kameadril · StartWave</p>
+    </footer>
+  </div>
+
+  <script src="../assets/js/script.js"></script>
+</body>
+</html>

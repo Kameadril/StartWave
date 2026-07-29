@@ -6,13 +6,12 @@
   <title>StartWave — BDO</title>
   <meta
     name="description"
-    content="StartWave — раздел BDO с материалами по профессиям: рыбалка, сбор, изготовление, алхимия, кулинария, фермерство, бартер, рабочие, полезные ресурсы и заметки.">
+    content="StartWave — раздел Black Desert Online с двумя направлениями: мирная жизнь, экономика и ремёсла, а также боевая жизнь, экипировка и развитие персонажа.">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
-  <header class="header">
+<body class="bdo-landing-body">
+  <header class="header bdo-site-header">
     <a class="logo" href="index.html" aria-label="StartWave — на главную">
-      <span aria-hidden="true">🌊</span>
       <div>
         <h1>StartWave</h1>
       </div>
@@ -20,59 +19,279 @@
 
     <nav class="navigation" aria-label="Основная навигация">
       <a href="index.html">Главная</a>
-      <a href="entertainment.html">Развлечения</a>
+      <a href="bdo.html" aria-current="page">BDO</a>
+      <span class="navigation-link" aria-disabled="true">WoW</span>
+      <a href="#peaceful-life">База знаний</a>
       <a href="services.html">Сервисы</a>
-      <a href="ai.html">AI</a>
+      <a href="ai.html">AI Hub</a>
     </nav>
 
-    <div class="datetime" aria-label="Текущее время и дата">
-      <span id="miniTime">00:00</span>
-      <small id="miniDate"></small>
+    <div class="bdo-header-actions" aria-label="Быстрые действия">
+      <button class="bdo-header-icon-button" type="button" aria-label="Поиск">⌕</button>
+      <button class="bdo-header-icon-button" type="button" aria-label="Закладки">⚑</button>
+      <button class="bdo-header-icon-button bdo-header-notification" type="button" aria-label="Уведомления">♢</button>
+      <button class="bdo-account-button" type="button">
+        <span aria-hidden="true">♙</span>
+        Личный кабинет
+        <span aria-hidden="true">⌄</span>
+      </button>
     </div>
   </header>
 
-  <div class="page-container">
+  <div class="page-container bdo-landing-container">
+    <main class="content-main bdo-landing-main">
+      <section class="bdo-landing-hero" aria-label="Black Desert">
+        <picture class="bdo-landing-media" aria-hidden="true">
+          <source
+            media="(max-width: 680px)"
+            type="image/webp"
+            srcset="assets/images/bdo/bdo-hero-startwave-mobile.webp 768w"
+            sizes="100vw">
+          <source
+            type="image/webp"
+            srcset="assets/images/bdo/bdo-hero-startwave-768.webp 768w, assets/images/bdo/bdo-hero-startwave.webp 1280w"
+            sizes="(max-width: 680px) 100vw, 1280px">
+          <img
+            src="assets/images/bdo/bdo-hero-startwave.webp"
+            alt=""
+            width="1280"
+            height="640"
+            fetchpriority="high"
+            decoding="async">
+        </picture>
 
-    <form class="search-box" action="https://yandex.ru/search/" method="get" target="_blank">
-      <label for="search-input" class="visually-hidden">Поисковый запрос</label>
-      <div class="search-engine-switch" role="radiogroup" aria-label="Поисковая система">
-        <button type="button" class="search-engine-option" data-engine="yandex" role="radio" aria-checked="true">Яндекс</button>
-        <button type="button" class="search-engine-option" data-engine="google" role="radio" aria-checked="false" tabindex="-1">Google</button>
-      </div>
-      <input
-        id="search-input"
-        type="search"
-        name="text"
-        placeholder="Что ты хочешь найти сегодня?">
-      <button type="submit">Найти</button>
-    </form>
+        <div class="bdo-landing-actions" aria-label="Выбор направления Black Desert">
+          <article class="bdo-direction-card bdo-direction-card-peaceful">
+            <span class="bdo-direction-icon" aria-hidden="true">🌿</span>
+            <div>
+              <h3><a href="#peaceful-life">Мирная жизнь</a></h3>
+              <p>Ремёсла, ресурсы, экономика и развитие.</p>
+              <ul class="bdo-direction-list" aria-label="Темы мирной жизни">
+                <li><a href="#bdo-workers">Рабочие</a></li>
+                <li><a href="#bdo-nodes">Узлы</a></li>
+                <li><a href="#bdo-gathering">Сбор</a></li>
+                <li><a href="#bdo-crafting">Производство</a></li>
+                <li><a href="#bdo-cooking">Кулинария</a></li>
+                <li><a href="#bdo-alchemy">Алхимия</a></li>
+                <li><a href="#bdo-fishing">Рыбалка</a></li>
+                <li><a href="#bdo-farming">Фермерство</a></li>
+                <li><a href="#bdo-trading">Торговля</a></li>
+                <li><a href="#bdo-barter">Бартер</a></li>
+              </ul>
+            </div>
+          </article>
 
-    <main class="content-main">
-      <section class="page-intro">
-        <h2 class="page-title">🎮 Black Desert Online</h2>
-        <p class="page-subtitle">Личный центр знаний по профессиям, экономике и полезным ресурсам BDO</p>
-      </section>
-
-      <section class="page-block" aria-labelledby="bdo-sections-title">
-        <h2 class="category-title" id="bdo-sections-title">Разделы</h2>
-        <div class="bdo-menu">
-          <a href="pages/bdo-fishing.html" class="bdo-card">Рыбалка</a>
-          <a href="pages/bdo-gathering.html" class="bdo-card">Сбор</a>
-          <a href="pages/bdo-crafting.html" class="bdo-card">Изготовление</a>
-          <a href="pages/bdo-alchemy.html" class="bdo-card">Алхимия</a>
-          <a href="pages/bdo-cooking.html" class="bdo-card">Кулинария</a>
-          <a href="pages/bdo-farming.html" class="bdo-card">Фермерство</a>
-          <a href="pages/bdo-barter.html" class="bdo-card">Бартер</a>
-          <a href="pages/bdo-workers.html" class="bdo-card">Рабочие</a>
-         <a href="pages/bdo-resources.html" class="bdo-card">Полезные ресурсы</a>
-          <a href="pages/bdo-notes.html" class="bdo-card">Заметки</a>
+          <article class="bdo-direction-card bdo-direction-card-combat">
+            <span class="bdo-direction-icon" aria-hidden="true">⚔</span>
+            <div>
+              <h3><a href="#combat-life">Боевая жизнь</a></h3>
+              <p>Экипировка, классы, PvE, PvP и сражения.</p>
+              <ul class="bdo-direction-list" aria-label="Темы боевой жизни">
+                <li><a href="#bdo-character">Персонаж</a></li>
+                <li><a href="#bdo-classes">Классы</a></li>
+                <li><a href="#bdo-gear">Экипировка</a></li>
+                <li><a href="#bdo-enhancement">Усиление экипировки</a></li>
+                <li><a href="#bdo-pve">PvE</a></li>
+                <li><a href="#bdo-pvp">PvP</a></li>
+                <li><a href="#bdo-spots">Места охоты</a></li>
+                <li><a href="#bdo-bosses">Боссы</a></li>
+                <li><a href="#bdo-guilds">Гильдии</a></li>
+              </ul>
+            </div>
+          </article>
         </div>
       </section>
 
+      <div class="bdo-landing-separator" aria-labelledby="bdo-landing-title">
+        <span class="bdo-landing-kicker" id="bdo-landing-title">База знаний StartWave</span>
+      </div>
+
+      <section class="bdo-coupons-widget" aria-labelledby="bdo-coupons-title">
+        <div class="bdo-coupons-heading">
+          <div>
+            <span class="bdo-coupons-kicker">Black Desert Online</span>
+            <h2 id="bdo-coupons-title">🎁 Актуальные купоны BDO</h2>
+          </div>
+          <div class="bdo-coupons-actions">
+            <a href="#bdo-coupons-title" class="bdo-coupons-official-link" id="bdoCouponActivationLink" target="_blank" rel="noopener noreferrer">🌐 Активировать купон</a>
+            <a href="#bdo-coupons-title" class="bdo-coupons-all-link">📚 Все купоны →</a>
+          </div>
+        </div>
+
+        <div class="bdo-coupon-platforms" id="bdoCouponPlatforms" role="tablist" aria-label="Платформа купонов BDO"></div>
+
+        <div class="bdo-coupons-list" id="bdoCouponsList" aria-live="polite">
+          <p class="bdo-coupons-empty">Загрузка купонов…</p>
+        </div>
+
+        <footer class="bdo-coupons-meta" id="bdoCouponsMeta"></footer>
+      </section>
+
+      <div class="bdo-route-columns" aria-label="Направления Black Desert">
+      <section class="page-block bdo-path-section bdo-route-preview" id="peaceful-life" aria-labelledby="peaceful-life-title">
+        <div class="bdo-path-heading">
+          <span aria-hidden="true">🌿</span>
+          <div>
+            <h2 class="category-title" id="peaceful-life-title">Мирная жизнь</h2>
+            <p>Экономика, рабочие, ресурсы и спокойное развитие аккаунта.</p>
+          </div>
+        </div>
+
+        <div class="bdo-topic-grid">
+          <a href="pages/bdo-workers.html" class="bdo-topic-card is-ready" id="bdo-workers" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Рабочие">
+            <img src="assets/images/bdo/bdo-card-workers.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>⚒</span>
+            <strong>Рабочие</strong>
+            <p>Управляй рабочими и автоматизируй добычу ресурсов.</p>
+            <small>Готово</small>
+          </a>
+          <a href="pages/bdo-nodes.html" class="bdo-topic-card is-ready" id="bdo-nodes" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Узлы">
+            <img src="assets/images/bdo/bdo-card-nodes.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>🌲</span>
+            <strong>Узлы</strong>
+            <p>Подключай территории и открывай доступ к ресурсам.</p>
+            <small>Готово</small>
+          </a>
+          <span class="bdo-topic-card is-planned" id="bdo-gathering" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Сбор">
+            <img src="assets/images/bdo/bdo-card-gathering.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>🪓</span>
+            <strong>Сбор</strong>
+            <p>Собирай ресурсы в мире и используй их для ремёсел.</p>
+            <small>Планируется</small>
+          </span>
+          <a href="pages/bdo-crafting.html" class="bdo-topic-card is-draft" id="bdo-crafting" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Производство">
+            <img src="assets/images/bdo/bdo-card-crafting.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>🏠</span>
+            <strong>Производство</strong>
+            <p>Создавай материалы и предметы через ремесленные цепочки.</p>
+            <small>Каркас</small>
+          </a>
+          <a href="pages/bdo-cooking.html" class="bdo-topic-card is-draft" id="bdo-cooking" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Кулинария">
+            <img src="assets/images/bdo/bdo-card-cooking.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>🍳</span>
+            <strong>Кулинария</strong>
+            <p>Готовь блюда для усилений, торговли и повседневной игры.</p>
+            <small>Каркас</small>
+          </a>
+          <a href="pages/bdo-alchemy.html" class="bdo-topic-card is-draft" id="bdo-alchemy" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Алхимия">
+            <img src="assets/images/bdo/bdo-card-alchemy.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>⚗</span>
+            <strong>Алхимия</strong>
+            <p>Создавай зелья и реагенты для битв и торговли.</p>
+            <small>Каркас</small>
+          </a>
+          <a href="pages/bdo-fishing.html" class="bdo-topic-card is-draft" id="bdo-fishing" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Рыбалка">
+            <img src="assets/images/bdo/bdo-card-fishing.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>🎣</span>
+            <strong>Рыбалка</strong>
+            <p>Используй море и водоёмы как спокойный источник дохода.</p>
+            <small>Каркас</small>
+          </a>
+          <a href="pages/bdo-farming.html" class="bdo-topic-card is-draft" id="bdo-farming" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Фермерство">
+            <img src="assets/images/bdo/bdo-card-farming.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>🌾</span>
+            <strong>Фермерство</strong>
+            <p>Выращивай культуры и получай стабильный запас материалов.</p>
+            <small>Каркас</small>
+          </a>
+          <span class="bdo-topic-card is-planned" id="bdo-trading" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Торговля">
+            <img src="assets/images/bdo/bdo-card-trading.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>💰</span>
+            <strong>Торговля</strong>
+            <p>Продавай товары и связывай экономику городов.</p>
+            <small>Планируется</small>
+          </span>
+          <a href="pages/bdo-barter.html" class="bdo-topic-card is-draft" id="bdo-barter" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Бартер">
+            <img src="assets/images/bdo/bdo-card-barter.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>⛵</span>
+            <strong>Бартер</strong>
+            <p>Обменивай грузы, развивай море и расширяй торговый путь.</p>
+            <small>Каркас</small>
+          </a>
+        </div>
+      </section>
+
+      <section class="page-block bdo-path-section" id="combat-life" aria-labelledby="combat-life-title">
+        <div class="bdo-path-heading">
+          <span aria-hidden="true">⚔</span>
+          <div>
+            <h2 class="category-title" id="combat-life-title">Боевая жизнь</h2>
+            <p>Боевой прогресс, экипировка, классы и активные игровые режимы.</p>
+          </div>
+        </div>
+
+        <div class="bdo-topic-grid">
+          <span class="bdo-topic-card is-planned" id="bdo-character" data-bdo-route-group="Боевая жизнь" data-bdo-route-title="Персонаж">
+            <img src="assets/images/bdo/bdo-card-character.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>👤</span>
+            <strong>Персонаж</strong>
+            <p>Развитие героя, уровни, навыки и характеристики.</p>
+            <small>Планируется</small>
+          </span>
+          <span class="bdo-topic-card is-planned" id="bdo-classes" data-bdo-route-group="Боевая жизнь" data-bdo-route-title="Классы">
+            <img src="assets/images/bdo/bdo-card-classes.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>🧙</span>
+            <strong>Классы</strong>
+            <p>Выбор персонажа, стиль боя и роль в контенте.</p>
+            <small>Планируется</small>
+          </span>
+          <span class="bdo-topic-card is-planned" id="bdo-gear" data-bdo-route-group="Боевая жизнь" data-bdo-route-title="Экипировка">
+            <img src="assets/images/bdo/bdo-card-gear.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>🛡</span>
+            <strong>Экипировка</strong>
+            <p>Снаряжение, оружие, броня и аксессуары.</p>
+            <small>Планируется</small>
+          </span>
+          <span class="bdo-topic-card is-planned" id="bdo-enhancement" data-bdo-route-group="Боевая жизнь" data-bdo-route-title="Усиление экипировки">
+            <img src="assets/images/bdo/bdo-card-enhance.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>✨</span>
+            <strong>Усиление экипировки</strong>
+            <p>Шансы, материалы и безопасная стратегия усиления.</p>
+            <small>Планируется</small>
+          </span>
+          <span class="bdo-topic-card is-planned" id="bdo-pve" data-bdo-route-group="Боевая жизнь" data-bdo-route-title="PvE">
+            <img src="assets/images/bdo/bdo-card-pve.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>👹</span>
+            <strong>PvE</strong>
+            <p>Данжи, задания и повседневный боевой контент.</p>
+            <small>Планируется</small>
+          </span>
+          <span class="bdo-topic-card is-planned" id="bdo-pvp" data-bdo-route-group="Боевая жизнь" data-bdo-route-title="PvP">
+            <img src="assets/images/bdo/bdo-card-pvp.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>⚔</span>
+            <strong>PvP</strong>
+            <p>Арены, осады, войны узлов и открытый PvP.</p>
+            <small>Планируется</small>
+          </span>
+          <span class="bdo-topic-card is-planned" id="bdo-spots" data-bdo-route-group="Боевая жизнь" data-bdo-route-title="Места охоты">
+            <img src="assets/images/bdo/bdo-card-spots.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>🗺</span>
+            <strong>Места охоты</strong>
+            <p>Локации для прокачки, фарма и серебра.</p>
+            <small>Планируется</small>
+          </span>
+          <span class="bdo-topic-card is-planned" id="bdo-bosses" data-bdo-route-group="Боевая жизнь" data-bdo-route-title="Боссы">
+            <img src="assets/images/bdo/bdo-card-bosses.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>🐉</span>
+            <strong>Боссы</strong>
+            <p>Мировые и полевые боссы, награды и тактика.</p>
+            <small>Планируется</small>
+          </span>
+          <span class="bdo-topic-card is-planned" id="bdo-guilds" data-bdo-route-group="Боевая жизнь" data-bdo-route-title="Гильдии">
+            <img src="assets/images/bdo/bdo-card-guilds.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>🏰</span>
+            <strong>Гильдии</strong>
+            <p>Командный контент, осады и совместные цели.</p>
+            <small>Планируется</small>
+          </span>
+        </div>
+      </section>
+      </div>
+
       <section class="project-meta">
         <p>
-          Этот раздел собирает информацию по профессиям, экономике и игровым системам BDO в одном месте,
-          чтобы не искать её по разным сайтам и ресурсам.
+          StartWave разделяет BDO на понятные маршруты. Сначала выбери направление, затем переходи к конкретной теме.
+          Материалы со статусом «Планируется» появятся позже и не ведут на пустые страницы.
         </p>
       </section>
     </main>
@@ -82,6 +301,7 @@
     </footer>
   </div>
 
+  <script src="assets/data/bdo-coupons.js"></script>
   <script src="assets/js/script.js"></script>
 </body>
 </html>
