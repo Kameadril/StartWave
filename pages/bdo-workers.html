@@ -6,163 +6,831 @@
   <title>StartWave — BDO Рабочие</title>
   <meta
     name="description"
-    content="StartWave — большая страница по рабочим в BDO: типы рабочих, города, стоимость, узлы, ресурсы и личные заметки.">
+    content="StartWave — база знаний по рабочим в Black Desert Online: найм, узлы, производство, ресурсы, имперская торговля и личные заметки.">
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
+
 <body>
-  <div class="page-container">
-    <header class="site-header">
-      <div class="header-container">
-        <div class="hero">
-          <h1 class="site-title">StartWave</h1>
-          <p class="site-subtitle">Понемногу, но регулярно.</p>
-        </div>
-
-        <div class="mini-clock" aria-label="Текущее время и дата">
-          <div class="mini-time" id="miniTime">15:06</div>
-          <div class="mini-date" id="miniDate">четверг, 4 июня</div>
-        </div>
-
-        <nav class="main-nav" aria-label="Основная навигация">
-          <a href="../index.html" class="nav-button">Главная</a>
-          <a href="../entertainment.html" class="nav-button">Развлечения</a>
-          <a href="../services.html" class="nav-button">Сервисы</a>
-          <a href="../bdo.html" class="nav-button active" aria-current="page">BDO</a>
-          <a href="../ai.html" class="nav-button">AI</a>
-        </nav>
+  <header class="header">
+    <a class="logo" href="../index.html" aria-label="StartWave — на главную">
+      <span aria-hidden="true">🌊</span>
+      <div>
+        <h1>StartWave</h1>
       </div>
-    </header>
+    </a>
 
-    <form class="search-form" action="https://ya.ru/search/" method="get" target="_blank">
-      <label for="search-input" class="visually-hidden">Поиск в Яндексе</label>
+    <nav class="navigation" aria-label="Основная навигация">
+      <a href="../index.html">Главная</a>
+      <a href="../entertainment.html">Развлечения</a>
+      <a href="../services.html">Сервисы</a>
+      <a href="../ai.html">AI</a>
+    </nav>
+
+    <div class="datetime" aria-label="Текущее время и дата">
+      <span id="miniTime">00:00</span>
+      <small id="miniDate"></small>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <form class="search-box" action="https://yandex.ru/search/" method="get" target="_blank">
+      <label for="search-input" class="visually-hidden">Поисковый запрос</label>
+      <div class="search-engine-switch" role="radiogroup" aria-label="Поисковая система">
+        <button type="button" class="search-engine-option" data-engine="yandex" role="radio" aria-checked="true">Яндекс</button>
+        <button type="button" class="search-engine-option" data-engine="google" role="radio" aria-checked="false" tabindex="-1">Google</button>
+      </div>
       <input
         id="search-input"
         type="search"
-        class="search-input"
         name="text"
-        placeholder="Поиск в Яндексе...">
-      <button type="submit" class="search-button">Найти</button>
+        placeholder="Что ты хочешь найти сегодня?">
+      <button type="submit">Найти</button>
     </form>
 
-    <main class="content-main">
-      <section class="page-intro">
-        <h2 class="page-title">👷 Рабочие в BDO</h2>
-        <p class="page-subtitle">Большая база знаний по рабочим, городам, узлам, ресурсам и производственным связкам</p>
-      </section>
+    <main class="content-main bdo-knowledge-page learning-page" data-learning-page data-learning-title="Рабочие">
+      <nav class="learning-breadcrumbs" aria-label="Хлебные крошки обучения">
+        <a href="../index.html">StartWave</a>
+        <span aria-hidden="true">→</span>
+        <a href="../bdo.html">Chronicles of Black Desert</a>
+        <span aria-hidden="true">→</span>
+        <span aria-current="page">Рабочие</span>
+      </nav>
 
-      <section class="category-section">
-        <h2 class="category-title">📌 Что такое рабочие</h2>
-        <div class="project-meta">
-          <p>
-            Здесь будет вводный блок о системе рабочих в Black Desert Online:
-            зачем они нужны, как работают, почему важны для экономики
-            и как связаны с узлами, ресурсами и производством.
-          </p>
+      <nav class="learning-step-nav" aria-label="Предыдущий и следующий шаг обучения">
+        <a class="learning-step-button learning-step-button-previous" href="../bdo.html">
+          <span>← Предыдущий шаг</span>
+          <strong>Раздел BDO</strong>
+        </a>
+        <a class="learning-step-button learning-step-button-next" href="bdo-gathering.html">
+          <span>Следующий шаг →</span>
+          <strong>Узлы</strong>
+        </a>
+      </nav>
+
+      <section class="bdo-hero" id="page-start" aria-labelledby="workers-title" data-route-item data-route-title="Старт">
+        <span class="bdo-hero-kicker">Chronicles of Black Desert</span>
+        <h2 id="workers-title">⚒ Рабочие</h2>
+        <p>Автоматизация добычи ресурсов и производства.</p>
+        <div class="bdo-hero-actions" aria-label="Главные задачи страницы">
+          <span>Понять систему</span>
+          <span>Запустить рабочих</span>
+          <span>Связать узлы</span>
         </div>
       </section>
 
-      <section class="category-section">
-        <h2 class="category-title">⚙️ Основы системы рабочих</h2>
-        <div class="project-meta">
-          <p>
-            В этот раздел можно добавить:
-            найм рабочих, жильё, связь с узлами, выносливость,
-            восстановление и базовые принципы работы системы.
-          </p>
+      <section class="bdo-section bdo-summary" id="workers-summary" aria-labelledby="workers-summary-title" data-route-item data-route-title="Кратко">
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Быстрый ответ</span>
+          <h2 id="workers-summary-title">📌 Кратко</h2>
+        </div>
+
+        <div class="bdo-summary-grid">
+          <article class="bdo-mini-card">
+            <span aria-hidden="true">⚒</span>
+            <p>Рабочие автоматически добывают ресурсы и выполняют производство.</p>
+          </article>
+          <article class="bdo-mini-card">
+            <span aria-hidden="true">🌲</span>
+            <p>Основная система строится вокруг подключённых узлов.</p>
+          </article>
+          <article class="bdo-mini-card">
+            <span aria-hidden="true">🍺</span>
+            <p>Рабочие тратят выносливость, которую нужно восстанавливать едой.</p>
+          </article>
+          <article class="bdo-mini-card">
+            <span aria-hidden="true">🏠</span>
+            <p>Для производства нужны город, склад, мастерская и подходящие материалы.</p>
+          </article>
+          <article class="bdo-mini-card">
+            <span aria-hidden="true">🧭</span>
+            <p>Чем лучше маршрут и рабочий, тем стабильнее поток ресурсов.</p>
+          </article>
         </div>
       </section>
 
-      <section class="category-section">
-        <h2 class="category-title">👤 Типы рабочих</h2>
-        <div class="project-meta">
-          <p>
-            Здесь будут типы рабочих:
-            гоблины, люди, гиганты.
-            Для каждого типа можно расписать плюсы, минусы,
-            скорость, выносливость и лучшие направления использования.
-          </p>
+      <section class="bdo-section" id="page-navigation" aria-labelledby="workers-nav-title" data-route-item data-route-title="Быстрая навигация">
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Куда перейти</span>
+          <h2 id="workers-nav-title">Быстрая навигация</h2>
+        </div>
+
+        <nav class="bdo-quick-nav" aria-label="Навигация по странице">
+          <a href="#what-is"><span>📖</span> Что это</a>
+          <a href="#how-it-works"><span>⚙</span> Как работает</a>
+          <a href="#production"><span>🏠</span> Производство</a>
+          <a href="#nodes"><span>🌲</span> Узлы</a>
+          <a href="#imperial"><span>📦</span> Имперская торговля</a>
+          <a href="#tips"><span>💡</span> Советы</a>
+          <a href="#notes"><span>📝</span> Мои заметки</a>
+        </nav>
+      </section>
+
+      <section class="bdo-section" id="what-is" aria-labelledby="what-is-title" data-route-item data-route-title="Что такое рабочие">
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Зачем это нужно</span>
+          <h2 id="what-is-title">Что такое рабочие</h2>
+        </div>
+
+        <div class="bdo-split">
+          <article class="bdo-panel bdo-panel-strong">
+            <h3>Рабочие превращают карту в экономическую систему</h3>
+            <p>
+              Ты нанимаешь рабочего в городе, подключаешь нужный узел и отправляешь его за ресурсами.
+              Пока персонаж занимается другими делами, рабочий приносит материалы на склад.
+            </p>
+          </article>
+
+          <div class="bdo-check-grid">
+            <article class="bdo-check-card">
+              <span aria-hidden="true">1</span>
+              <p>Выбери город, откуда рабочий будет работать.</p>
+            </article>
+            <article class="bdo-check-card">
+              <span aria-hidden="true">2</span>
+              <p>Найми рабочего и проверь его выносливость.</p>
+            </article>
+            <article class="bdo-check-card">
+              <span aria-hidden="true">3</span>
+              <p>Подключи узлы вкладом очков влияния.</p>
+            </article>
+            <article class="bdo-check-card">
+              <span aria-hidden="true">4</span>
+              <p>Отправь рабочего на добычу или производство.</p>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section class="category-section">
-        <h2 class="category-title">🏙️ Города и количество рабочих</h2>
-        <div class="project-meta">
-          <p>
-            Здесь можно будет собирать информацию по городам:
-            сколько рабочих в каждом городе,
-            какие узлы к ним привязаны,
-            для чего используется конкретный город
-            и как распределяются рабочие по инфраструктуре.
-          </p>
+      <section class="bdo-section bdo-interface-section" id="workers-interface" aria-labelledby="workers-interface-title" data-route-item data-route-title="Разбор интерфейса">
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Разбор интерфейса</span>
+          <h2 id="workers-interface-title">Как читать окно рабочих</h2>
+          <p>Наведи курсор на отмеченную область, чтобы узнать, за что она отвечает.</p>
+        </div>
+
+        <div class="bdo-interface-layout">
+          <div class="bdo-interface-stage">
+            <img
+              src="../assets/images/bdo-workers-interface.jpg"
+              alt="Окно Список рабочих в Black Desert Online"
+              class="bdo-interface-image">
+
+            <button type="button" class="bdo-interface-marker active" style="--x: 54%; --y: 19%;" data-interface-point="filters" aria-label="Фильтры Город и Ранг">1</button>
+            <button type="button" class="bdo-interface-marker" style="--x: 31%; --y: 27%;" data-interface-point="worker-rank" aria-label="Уровень, ранг и раса рабочего">2</button>
+            <button type="button" class="bdo-interface-marker" style="--x: 12%; --y: 35%;" data-interface-point="stamina" aria-label="Выносливость рабочего">3</button>
+            <button type="button" class="bdo-interface-marker" style="--x: 37%; --y: 32%;" data-interface-point="task-place" aria-label="Текущее место или задание">4</button>
+            <button type="button" class="bdo-interface-marker" style="--x: 64%; --y: 32%;" data-interface-point="worker-city" aria-label="Город рабочего">5</button>
+            <button type="button" class="bdo-interface-marker" style="--x: 36%; --y: 37%;" data-interface-point="work-time" aria-label="Время выполнения">6</button>
+            <button type="button" class="bdo-interface-marker" style="--x: 86%; --y: 32%;" data-interface-point="controls" aria-label="Кнопки управления">7</button>
+            <button type="button" class="bdo-interface-marker" style="--x: 27%; --y: 95%;" data-interface-point="recover" aria-label="Кнопка Восстановление">8</button>
+            <button type="button" class="bdo-interface-marker" style="--x: 73%; --y: 95%;" data-interface-point="repeat" aria-label="Кнопка Повтор">9</button>
+          </div>
+
+          <article class="bdo-interface-info-card" aria-live="polite">
+            <span class="bdo-interface-number" id="bdoInterfaceNumber">1</span>
+            <h3 id="bdoInterfaceTitle">Фильтры «Город» и «Ранг»</h3>
+            <p class="bdo-interface-example" id="bdoInterfaceExample">Пример: Велия, Ранг</p>
+            <p id="bdoInterfaceDescription">Позволяют быстро отобрать рабочих по городу и рангу.</p>
+
+            <div class="bdo-interface-memory">
+              <h4>Что важно запомнить</h4>
+              <p>Для начала достаточно смотреть на четыре вещи: место работы, оставшееся время, выносливость и город рабочего.</p>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section class="category-section">
-        <h2 class="category-title">💰 Стоимость системы рабочих</h2>
-        <div class="project-meta">
-          <p>
-            В этот блок можно вынести игровые затраты:
-            найм, жильё, вклад в узлы, расширение инфраструктуры.
-            Отдельно позже можно добавить заметки про удобства и траты за реальные деньги.
-          </p>
+      <section class="bdo-section bdo-worker-slots-section" id="worker-slots" aria-labelledby="worker-slots-title" data-route-item data-route-title="Количество рабочих">
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Расширение команды</span>
+          <h2 id="worker-slots-title">Как увеличить количество рабочих</h2>
+          <p>Начни с бесплатного места, затем расширяй город через бараки и только после этого думай о магазине.</p>
+        </div>
+
+        <div class="bdo-worker-slots-grid">
+          <article class="bdo-worker-slot-card">
+            <span class="bdo-worker-slot-number" aria-hidden="true">1</span>
+            <h3>Один рабочий бесплатно</h3>
+            <p>Каждый город предоставляет одно базовое бесплатное место для рабочего.</p>
+            <p>После найма первого рабочего для следующих нужны дополнительные места в бараках.</p>
+          </article>
+
+          <article class="bdo-worker-slot-card bdo-worker-slot-card-accent">
+            <span class="bdo-worker-slot-number" aria-hidden="true">2</span>
+            <h3>Бараки за очки влияния</h3>
+            <p>Купи дом в нужном городе за очки влияния и измени его назначение на «Бараки».</p>
+            <ul>
+              <li>не требует жемчуга;</li>
+              <li>использует обычную игровую механику;</li>
+              <li>подходит новичкам;</li>
+              <li>очки влияния можно вернуть, продав дом.</li>
+            </ul>
+          </article>
+
+          <article class="bdo-worker-slot-card">
+            <span class="bdo-worker-slot-number" aria-hidden="true">3</span>
+            <h3>Расширение из Pearl Shop</h3>
+            <p>Когда игровых возможностей уже не хватает, можно приобрести расширение бараков для нужного города.</p>
+            <ul>
+              <li>не расходует очки влияния;</li>
+              <li>быстро увеличивает лимит;</li>
+              <li>подходит для крупных сетей рабочих.</li>
+            </ul>
+          </article>
+        </div>
+
+        <ol class="bdo-worker-slots-flow" aria-label="Схема увеличения количества рабочих">
+          <li>1 бесплатный рабочий</li>
+          <li>Дом за очки влияния</li>
+          <li>Назначение «Бараки»</li>
+          <li>Дополнительные рабочие</li>
+          <li>Магазин только при необходимости</li>
+        </ol>
+
+        <aside class="bdo-worker-slots-tip" aria-label="Совет StartWave">
+          <span aria-hidden="true">💡</span>
+          <p>Сначала используй дома и бараки за очки влияния. Покупку расширений в магазине стоит рассматривать позже, когда влияние уже нужно для узлов, производства и других задач.</p>
+        </aside>
+      </section>
+
+      <section class="bdo-section bdo-worker-upgrade-section" id="worker-upgrade" aria-labelledby="worker-upgrade-title" data-route-item data-route-title="Улучшение рабочих">
+        <div class="bdo-worker-upgrade-hero">
+          <span class="bdo-section-kicker">Рост эффективности</span>
+          <h2 id="worker-upgrade-title">⭐ Улучшение рабочих</h2>
+          <p>Повышение рабочего позволяет получить более высокий ранг, улучшенные характеристики и сделать производство более эффективным.</p>
+        </div>
+
+        <article class="bdo-upgrade-warning">
+          <span aria-hidden="true">⚠</span>
+          <div>
+            <h3>Важно</h3>
+            <p>Повышение ранга становится доступно только после достижения рабочим 40 уровня. До этого момента кнопка повышения недоступна.</p>
+          </div>
+        </article>
+
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Зачем улучшать</span>
+          <h2>Что даёт повышение ранга</h2>
+        </div>
+
+        <div class="bdo-upgrade-benefits">
+          <article class="bdo-upgrade-benefit-card">
+            <span aria-hidden="true">✔</span>
+            <h3>Более высокая скорость</h3>
+            <p>Рабочий быстрее закрывает циклы добычи и производства.</p>
+          </article>
+          <article class="bdo-upgrade-benefit-card">
+            <span aria-hidden="true">✔</span>
+            <h3>Лучшие характеристики</h3>
+            <p>С ростом ранга рабочий становится полезнее для важных задач.</p>
+          </article>
+          <article class="bdo-upgrade-benefit-card">
+            <span aria-hidden="true">✔</span>
+            <h3>Эффективная работа</h3>
+            <p>Один сильный рабочий может заметно ускорить ключевую цепочку.</p>
+          </article>
+          <article class="bdo-upgrade-benefit-card">
+            <span aria-hidden="true">✔</span>
+            <h3>Ценные рабочие</h3>
+            <p>Повышение помогает развивать уже найденных удачных рабочих.</p>
+          </article>
+        </div>
+
+        <p class="bdo-upgrade-note">Улучшение особенно заметно там, где рабочий постоянно занят: на древесине, руде, производстве и других повторяемых маршрутах.</p>
+
+        <div class="bdo-upgrade-layout">
+          <article class="bdo-upgrade-panel">
+            <div class="bdo-section-heading bdo-section-heading-left">
+              <span class="bdo-section-kicker">Ранги</span>
+              <h2>Схема повышения</h2>
+            </div>
+
+            <ol class="bdo-rank-ladder" aria-label="Схема рангов рабочих">
+              <li><span>1</span><strong>Новичок</strong></li>
+              <li><span>2</span><strong>Ученик</strong></li>
+              <li><span>3</span><strong>Профессионал</strong></li>
+              <li><span>4</span><strong>Эксперт</strong></li>
+              <li><span>5</span><strong>Мастер</strong></li>
+            </ol>
+          </article>
+
+          <article class="bdo-upgrade-panel">
+            <div class="bdo-section-heading bdo-section-heading-left">
+              <span class="bdo-section-kicker">Экзамен</span>
+              <h2>Как происходит повышение</h2>
+            </div>
+
+            <ol class="bdo-upgrade-steps" aria-label="Шаги повышения рабочего">
+              <li><span>Шаг 1</span><strong>Прокачать рабочего до 40 уровня</strong></li>
+              <li><span>Шаг 2</span><strong>Открыть список рабочих</strong></li>
+              <li><span>Шаг 3</span><strong>Выбрать рабочего</strong></li>
+              <li><span>Шаг 4</span><strong>Нажать кнопку «Повышение»</strong></li>
+              <li><span>Шаг 5</span><strong>Подтвердить начало экзамена</strong></li>
+              <li><span>Шаг 6</span><strong>Экзамен длится 8 часов</strong></li>
+              <li><span>Шаг 7</span><strong>Получить результат</strong></li>
+            </ol>
+          </article>
+        </div>
+
+        <section class="bdo-upgrade-exam" aria-labelledby="upgrade-exam-title">
+          <div class="bdo-section-heading">
+            <span class="bdo-section-kicker">Что происходит внутри</span>
+            <h2 id="upgrade-exam-title">Экзамен на повышение</h2>
+            <p>После подтверждения рабочий уходит на экзамен. Это не мгновенное действие, а отдельный игровой процесс.</p>
+          </div>
+
+          <div class="bdo-exam-detail-grid">
+            <article class="bdo-exam-detail-card">
+              <span aria-hidden="true">⏳</span>
+              <h3>8 часов ожидания</h3>
+              <p>Экзамен длится 8 часов. До завершения результата не будет видно.</p>
+            </article>
+            <article class="bdo-exam-detail-card">
+              <span aria-hidden="true">🎲</span>
+              <h3>Шанс зависит от ранга</h3>
+              <p>Вероятность повышения зависит от текущего ранга рабочего: чем выше ранг, тем ценнее успешный результат.</p>
+            </article>
+            <article class="bdo-exam-detail-card">
+              <span aria-hidden="true">🔁</span>
+              <h3>После успеха — новая прокачка</h3>
+              <p>При успешном повышении уровень и навыки рабочего сбрасываются. После этого его нужно снова прокачивать.</p>
+            </article>
+          </div>
+        </section>
+
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Результат</span>
+          <h2>Что происходит после экзамена</h2>
+        </div>
+
+        <div class="bdo-exam-result-grid">
+          <article class="bdo-exam-result-card bdo-exam-result-success">
+            <span aria-hidden="true">🟢</span>
+            <h3>Успех</h3>
+            <ul>
+              <li>рабочий повышает ранг;</li>
+              <li>характеристики увеличиваются;</li>
+              <li>уровень и навыки сбрасываются;</li>
+              <li>рабочего нужно снова прокачивать.</li>
+            </ul>
+          </article>
+          <article class="bdo-exam-result-card bdo-exam-result-fail">
+            <span aria-hidden="true">🔴</span>
+            <h3>Неудача</h3>
+            <ul>
+              <li>рабочий остаётся прежнего ранга;</li>
+              <li>не исчезает;</li>
+              <li>расходуется одна попытка;</li>
+              <li>если попытки остались, можно попробовать снова.</li>
+            </ul>
+          </article>
+        </div>
+
+        <section class="bdo-upgrade-attempts" aria-labelledby="upgrade-attempts-title">
+          <div class="bdo-section-heading">
+            <span class="bdo-section-kicker">Механика экзамена</span>
+            <h2 id="upgrade-attempts-title">🎲 Попытки повышения</h2>
+            <p>Каждый рабочий имеет ограниченное количество попыток повышения.</p>
+          </div>
+
+          <div class="bdo-attempts-grid">
+            <article class="bdo-attempt-card">
+              <h3>После 40 уровня</h3>
+              <p>Рабочий может пройти экзамен на следующий ранг только после достижения 40 уровня.</p>
+            </article>
+            <article class="bdo-attempt-card">
+              <h3>Если экзамен не пройден</h3>
+              <ul>
+                <li>рабочий остаётся прежнего ранга;</li>
+                <li>расходуется одна попытка;</li>
+                <li>если попытки ещё остались, экзамен можно повторить.</li>
+              </ul>
+            </article>
+            <article class="bdo-attempt-card">
+              <h3>Если попытки закончились</h3>
+              <ul>
+                <li>дальнейшее повышение этого рабочего становится невозможным;</li>
+                <li>для нового шанса нужно нанять другого рабочего и снова прокачать его до 40 уровня.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="bdo-attempt-flow" aria-label="Схема попыток повышения рабочего">
+            <ol class="bdo-attempt-flow-main">
+              <li>Рабочий</li>
+              <li>40 уровень</li>
+              <li>Экзамен</li>
+            </ol>
+
+            <div class="bdo-attempt-branches">
+              <ol class="bdo-attempt-branch bdo-attempt-branch-success" aria-label="Успешное повышение">
+                <li>Успех</li>
+                <li>Следующий ранг</li>
+              </ol>
+
+              <ol class="bdo-attempt-branch bdo-attempt-branch-fail" aria-label="Неудачное повышение">
+                <li>Неудача</li>
+                <li>Минус одна попытка</li>
+                <li>Есть попытки?</li>
+                <li>Да → повторить экзамен</li>
+                <li>Нет → нанять нового рабочего</li>
+                <li>Снова прокачать до 40 уровня</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <article class="bdo-upgrade-recommendation">
+          <div>
+            <span class="bdo-section-kicker">Приоритет</span>
+            <h2>Кого повышать первым</h2>
+            <p>Рекомендуется сначала довести до 40 уровня рабочих, которые постоянно заняты в основных производственных цепочках. После этого можно постепенно отправлять их на экзамены повышения.</p>
+            <p>Порядок не универсален: он зависит от того, какие ресурсы и производства важнее именно для вашей сети.</p>
+          </div>
+
+          <div class="bdo-upgrade-priority-list" aria-label="Примеры приоритетных направлений">
+            <span>🌲 добыча древесины</span>
+            <span>⛏ добыча руды</span>
+            <span>🏠 производство</span>
+          </div>
+        </article>
+
+        <aside class="bdo-upgrade-calm-tip" aria-label="Совет StartWave о неудачных экзаменах">
+          <span aria-hidden="true">💡</span>
+          <div>
+            <h2>Совет StartWave</h2>
+            <p>Не стоит переживать из-за неудачного экзамена. Неудачи являются частью механики Black Desert.</p>
+            <p>При построении большой сети рабочих заранее учитывайте, что часть работников может не пройти все попытки повышения. Это нормальная игровая ситуация.</p>
+          </div>
+        </aside>
+
+        <section class="bdo-worker-choice" aria-labelledby="worker-choice-title">
+          <div class="bdo-section-heading">
+            <span class="bdo-section-kicker">Выбор под стиль игры</span>
+            <h2 id="worker-choice-title">Какого рабочего выбрать?</h2>
+            <p>В Black Desert нет универсального рабочего. Выбор зависит от вашего стиля игры.</p>
+          </div>
+
+          <div class="bdo-worker-type-grid">
+            <article class="bdo-worker-type-card">
+              <span class="bdo-worker-type-icon" aria-hidden="true">🪓</span>
+              <h3>Гиганты</h3>
+              <h4>Преимущества</h4>
+              <ul>
+                <li>высокая выносливость;</li>
+                <li>реже требуют восстановления;</li>
+                <li>хорошо подходят для длительных маршрутов.</li>
+              </ul>
+              <h4>Недостаток</h4>
+              <p>Более низкая скорость.</p>
+              <p class="bdo-worker-type-fit">Подходят тем, кто играет спокойно и не хочет постоянно обслуживать сеть рабочих.</p>
+            </article>
+
+            <article class="bdo-worker-type-card">
+              <span class="bdo-worker-type-icon" aria-hidden="true">⚡</span>
+              <h3>Гоблины</h3>
+              <h4>Преимущества</h4>
+              <ul>
+                <li>высокая скорость;</li>
+                <li>быстро выполняют задания.</li>
+              </ul>
+              <h4>Недостатки</h4>
+              <ul>
+                <li>быстро расходуют выносливость;</li>
+                <li>требуют более частого обслуживания.</li>
+              </ul>
+              <p class="bdo-worker-type-fit">Подходят активным игрокам.</p>
+            </article>
+
+            <article class="bdo-worker-type-card">
+              <span class="bdo-worker-type-icon" aria-hidden="true">⚖</span>
+              <h3>Люди</h3>
+              <h4>Преимущества</h4>
+              <ul>
+                <li>универсальные характеристики;</li>
+                <li>хороший баланс.</li>
+              </ul>
+              <h4>Недостаток</h4>
+              <p>Не являются лучшими ни по скорости, ни по выносливости.</p>
+              <p class="bdo-worker-type-fit">Подходят тем, кто хочет универсальное решение.</p>
+            </article>
+          </div>
+
+          <section class="bdo-worker-ranks" aria-labelledby="worker-ranks-title">
+            <div class="bdo-section-heading">
+              <span class="bdo-section-kicker">Качество рабочего</span>
+              <h2 id="worker-ranks-title">Ранги рабочих</h2>
+              <p>В Black Desert рабочие имеют несколько рангов. Чем выше ранг, тем лучше базовые характеристики рабочего и выше потенциал развития.</p>
+            </div>
+
+            <div class="bdo-worker-rank-grid">
+              <article class="bdo-worker-rank-card">
+                <span aria-hidden="true">⚪</span>
+                <h3>Рабочий</h3>
+                <p>Начальный ранг. Подходит для старта игры.</p>
+              </article>
+              <article class="bdo-worker-rank-card">
+                <span aria-hidden="true">🔵</span>
+                <h3>Профессионал</h3>
+                <p>Хороший универсальный вариант. Используется большинством игроков.</p>
+              </article>
+              <article class="bdo-worker-rank-card">
+                <span aria-hidden="true">🟡</span>
+                <h3>Эксперт</h3>
+                <p>Высокие характеристики. Отличный выбор для постоянной сети рабочих.</p>
+              </article>
+              <article class="bdo-worker-rank-card">
+                <span aria-hidden="true">🟠</span>
+                <h3>Мастер</h3>
+                <p>Максимальный обычный ранг рабочего. Требует успешного прохождения экзаменов повышения.</p>
+              </article>
+            </div>
+
+            <aside class="bdo-rank-startwave-tip" aria-label="Совет StartWave по рангам рабочих">
+              <span aria-hidden="true">💡</span>
+              <div>
+                <h3>Совет StartWave</h3>
+                <p>Не стоит стремиться как можно быстрее получить только мастеров.</p>
+                <p>Для большинства производственных цепочек профессионалы и эксперты уже отлично справляются со своей задачей. Повышение до мастера требует времени, удачи и ограниченного количества попыток.</p>
+              </div>
+            </aside>
+          </section>
+
+          <section class="bdo-worker-filter-section" aria-labelledby="worker-filter-title">
+            <div class="bdo-section-heading">
+              <span class="bdo-section-kicker">Навигация по списку</span>
+              <h2 id="worker-filter-title">Фильтр рабочих</h2>
+              <p>Фильтр помогает быстро найти рабочих нужного ранга, особенно если в городе уже большая сеть.</p>
+            </div>
+
+            <div class="bdo-worker-filter-layout">
+              <figure class="bdo-worker-filter-image">
+                <img src="../assets/images/bdo-workers-interface.jpg" alt="Фильтр города и ранга в списке рабочих Black Desert">
+                <figcaption>На скриншоте фильтр ранга находится в верхней части окна списка рабочих.</figcaption>
+              </figure>
+
+              <div class="bdo-worker-filter-list">
+                <article>
+                  <h3>Все</h3>
+                  <p>Показывает всех рабочих.</p>
+                </article>
+                <article>
+                  <h3>Рабочий</h3>
+                  <p>Показывает только рабочих начального ранга.</p>
+                </article>
+                <article>
+                  <h3>Профессионал</h3>
+                  <p>Отображает только профессионалов.</p>
+                </article>
+                <article>
+                  <h3>Эксперт</h3>
+                  <p>Показывает только экспертов.</p>
+                </article>
+                <article>
+                  <h3>Мастер</h3>
+                  <p>Показывает только мастеров.</p>
+                </article>
+              </div>
+            </div>
+
+            <p class="bdo-worker-filter-hint">Этот фильтр особенно полезен, если в городе работает большое количество рабочих.</p>
+          </section>
+
+          <div class="bdo-worker-compare" aria-label="Сравнение типов рабочих">
+            <div class="bdo-worker-compare-row bdo-worker-compare-head">
+              <span>Параметр</span>
+              <strong>Гоблин</strong>
+              <strong>Человек</strong>
+              <strong>Гигант</strong>
+            </div>
+            <div class="bdo-worker-compare-row">
+              <span>Скорость</span>
+              <strong>★★★★★</strong>
+              <strong>★★★☆☆</strong>
+              <strong>★★☆☆☆</strong>
+            </div>
+            <div class="bdo-worker-compare-row">
+              <span>Выносливость</span>
+              <strong>★★☆☆☆</strong>
+              <strong>★★★☆☆</strong>
+              <strong>★★★★★</strong>
+            </div>
+            <div class="bdo-worker-compare-row">
+              <span>Частота обслуживания</span>
+              <strong>часто</strong>
+              <strong>средне</strong>
+              <strong>редко</strong>
+            </div>
+            <div class="bdo-worker-compare-row">
+              <span>Подходит новичкам</span>
+              <strong>★★★☆☆</strong>
+              <strong>★★★★☆</strong>
+              <strong>★★★★☆</strong>
+            </div>
+            <div class="bdo-worker-compare-row">
+              <span>Подходит для большой сети</span>
+              <strong>★★★☆☆</strong>
+              <strong>★★★☆☆</strong>
+              <strong>★★★★★</strong>
+            </div>
+          </div>
+
+          <div class="bdo-section-heading">
+            <span class="bdo-section-kicker">Практический выбор</span>
+            <h2>🎮 Какой стиль игры подходит вам?</h2>
+          </div>
+
+          <div class="bdo-playstyle-grid">
+            <article class="bdo-playstyle-card">
+              <span aria-hidden="true">⚡</span>
+              <h3>Заходите несколько раз в день</h3>
+              <p>Попробуйте гоблинов: они быстро выполняют задания, если вы готовы чаще следить за выносливостью.</p>
+            </article>
+            <article class="bdo-playstyle-card">
+              <span aria-hidden="true">🪓</span>
+              <h3>Играете вечером после работы</h3>
+              <p>Обратите внимание на гигантов: их удобно оставлять на длинных маршрутах.</p>
+            </article>
+            <article class="bdo-playstyle-card">
+              <span aria-hidden="true">🌊</span>
+              <h3>Только начинаете играть</h3>
+              <p>Люди или гиганты станут спокойным выбором, пока вы разбираетесь с узлами и производством.</p>
+            </article>
+          </div>
+        </section>
+
+        <aside class="bdo-worker-philosophy" aria-label="Совет StartWave по выбору рабочих">
+          <span aria-hidden="true">💡</span>
+          <div>
+            <h2>Совет StartWave</h2>
+            <p>Не существует «лучшей» расы рабочих. Самая эффективная сеть — та, которую удобно обслуживать именно вам.</p>
+            <p>Разные игроки используют разные стратегии: одни строят сеть только из гигантов, другие предпочитают гоблинов, третьи комбинируют разные типы рабочих. Все эти подходы имеют право на существование.</p>
+            <p>Философия StartWave — объяснять преимущества каждого варианта, а не навязывать единственно правильный путь.</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="bdo-section bdo-flow-section" id="how-it-works" aria-labelledby="flow-title" data-route-item data-route-title="Как работает система">
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Процесс</span>
+          <h2 id="flow-title">Как работает система</h2>
+        </div>
+
+        <ol class="bdo-flow" aria-label="Схема работы системы рабочих">
+          <li><span>⚡</span><strong>Энергия</strong></li>
+          <li><span>🤝</span><strong>Найм</strong></li>
+          <li><span>🌐</span><strong>Подключение узлов</strong></li>
+          <li><span>⚒</span><strong>Работа</strong></li>
+          <li><span>🌿</span><strong>Ресурсы</strong></li>
+          <li><span>🏠</span><strong>Производство</strong></li>
+        </ol>
+      </section>
+
+      <section class="bdo-section" id="production" aria-labelledby="capabilities-title" data-route-item data-route-title="Возможности рабочих">
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Что можно делать</span>
+          <h2 id="capabilities-title">Возможности рабочих</h2>
+        </div>
+
+        <div class="bdo-feature-grid">
+          <article class="bdo-feature-card" id="nodes">
+            <span class="bdo-feature-icon" aria-hidden="true">🌲</span>
+            <h3>Добыча дерева</h3>
+            <p>Рабочие собирают древесину и побочные материалы с лесных узлов.</p>
+          </article>
+          <article class="bdo-feature-card">
+            <span class="bdo-feature-icon" aria-hidden="true">⛏</span>
+            <h3>Руда</h3>
+            <p>Подходят для стабильного запаса камня, металлов и редких ресурсов.</p>
+          </article>
+          <article class="bdo-feature-card">
+            <span class="bdo-feature-icon" aria-hidden="true">🌿</span>
+            <h3>Растения</h3>
+            <p>Помогают закрывать потребности кулинарии, алхимии и торговли.</p>
+          </article>
+          <article class="bdo-feature-card">
+            <span class="bdo-feature-icon" aria-hidden="true">🏠</span>
+            <h3>Производство</h3>
+            <p>Запускают обработку материалов в мастерских и домах города.</p>
+          </article>
+          <article class="bdo-feature-card" id="imperial">
+            <span class="bdo-feature-icon" aria-hidden="true">📦</span>
+            <h3>Имперские ящики</h3>
+            <p>Готовят цепочки материалов для упаковки и сдачи имперке.</p>
+          </article>
+          <article class="bdo-feature-card">
+            <span class="bdo-feature-icon" aria-hidden="true">🍺</span>
+            <h3>Пиво</h3>
+            <p>Пиво и еда возвращают рабочим выносливость для новых задач.</p>
+          </article>
+          <article class="bdo-feature-card">
+            <span class="bdo-feature-icon" aria-hidden="true">⚗</span>
+            <h3>Алхимия</h3>
+            <p>Поставляют травы, порошки и базовые материалы для рецептов.</p>
+          </article>
         </div>
       </section>
 
-      <section class="category-section">
-        <h2 class="category-title">🧭 Рабочие по направлениям</h2>
-        <div class="project-meta">
+      <aside class="bdo-startwave-tip" id="tips" aria-labelledby="tip-title" data-route-item data-route-title="Совет StartWave">
+        <span class="bdo-tip-mark" aria-hidden="true">💡</span>
+        <div>
+          <h2 id="tip-title">Совет StartWave</h2>
           <p>
-            Здесь можно будет разделить рабочих по направлениям:
-            добыча ресурсов, производство, кулинария, алхимия,
-            ящики, имперка, замок и другие полезные сценарии.
+            Не начинай с идеальной сети. Выбери один город, пару полезных узлов и один понятный результат:
+            например, запас дерева, руды или ингредиентов для пива. Система рабочих лучше раскрывается через
+            маленькую стабильную цепочку, а не через попытку сразу подключить всю карту.
           </p>
+        </div>
+      </aside>
+
+      <section class="bdo-section" id="related-pages" aria-labelledby="related-title" data-route-item data-route-title="Связанные страницы">
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Продолжить маршрут</span>
+          <h2 id="related-title">Связанные страницы</h2>
+        </div>
+
+        <div class="bdo-related-grid">
+          <a href="bdo-gathering.html" class="bdo-related-card"><span>🌲</span> Узлы</a>
+          <a href="bdo-resources.html" class="bdo-related-card"><span>📚</span> Ресурсы</a>
+          <a href="bdo-crafting.html" class="bdo-related-card"><span>🏠</span> Производство</a>
+          <a href="bdo-cooking.html" class="bdo-related-card"><span>🍳</span> Кулинария</a>
+          <a href="bdo-alchemy.html" class="bdo-related-card"><span>⚗</span> Алхимия</a>
+          <a href="bdo-barter.html" class="bdo-related-card"><span>⛵</span> Бартер</a>
         </div>
       </section>
 
-      <section class="category-section">
-        <h2 class="category-title">⛏️ Где что добывают</h2>
-        <div class="project-meta">
-          <p>
-            Здесь будет собираться практическая часть:
-            какой ресурс добывается, на каком узле,
-            к какому городу он относится
-            и для чего потом используется в игре.
-          </p>
+      <section class="bdo-section" id="notes" aria-labelledby="notes-title" data-route-item data-route-title="Мои заметки">
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Личное пространство</span>
+          <h2 id="notes-title">📝 Мои заметки</h2>
+        </div>
+
+        <div class="bdo-empty-state">
+          <p>Здесь позже появится место для личных наблюдений: города, узлы, рабочие, маршруты и удачные цепочки производства.</p>
         </div>
       </section>
 
-      <section class="category-section">
-        <h2 class="category-title">🔗 Полезные связки</h2>
-        <div class="project-meta">
-          <p>
-            В этот раздел можно вынести удобные цепочки:
-            город → рабочие → узлы → ресурсы → производство,
-            а также полезные стартовые и прибыльные схемы.
-          </p>
+      <section class="bdo-section bdo-faq" id="faq" aria-labelledby="faq-title" data-route-item data-route-title="Частые вопросы">
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Стандарт BDO Wiki</span>
+          <h2 id="faq-title">❓ Частые вопросы</h2>
+        </div>
+
+        <div class="bdo-faq-grid">
+          <article class="bdo-faq-card">
+            <h3>Можно ли иметь несколько рабочих?</h3>
+            <p>Ответ будет добавлен позже.</p>
+          </article>
+          <article class="bdo-faq-card">
+            <h3>Как восстановить выносливость?</h3>
+            <p>Ответ будет добавлен позже.</p>
+          </article>
+          <article class="bdo-faq-card">
+            <h3>Какого рабочего выбрать?</h3>
+            <p>Ответ будет добавлен позже.</p>
+          </article>
+          <article class="bdo-faq-card">
+            <h3>Почему рабочий не работает?</h3>
+            <p>Ответ будет добавлен позже.</p>
+          </article>
         </div>
       </section>
 
-      <section class="category-section">
-        <h2 class="category-title">💳 Рабочие и реальные деньги</h2>
-        <div class="project-meta">
-          <p>
-            Здесь можно будет отдельно и аккуратно описать,
-            что в системе рабочих связано с удобством за реальные деньги,
-            что ускоряется, что покупается и насколько это вообще оправдано.
-          </p>
+      <section class="bdo-section bdo-next-learning" id="next-learning" aria-labelledby="next-learning-title" data-route-item data-route-title="Что изучить дальше">
+        <div class="bdo-section-heading">
+          <span class="bdo-section-kicker">Следующий шаг</span>
+          <h2 id="next-learning-title">📚 Что изучить дальше?</h2>
+          <p>Теперь, когда вы познакомились с системой рабочих, можно перейти к следующим темам.</p>
         </div>
-      </section>
 
-      <section class="category-section">
-        <h2 class="category-title">📝 Мои заметки</h2>
-        <div class="project-meta">
-          <p>
-            Здесь можно будет записывать личные наблюдения:
-            сколько рабочих используется в каждом городе,
-            какие узлы оказались полезнее,
-            какие связки работают лучше
-            и что стоит проверить позже.
-          </p>
+        <div class="bdo-next-learning-grid">
+          <article class="bdo-next-learning-card">
+            <span aria-hidden="true">🌲</span>
+            <h3>Узлы</h3>
+            <p>Узнайте, как подключать территории и назначать рабочих на добычу ресурсов.</p>
+            <a href="bdo-gathering.html">Перейти →</a>
+          </article>
+
+          <article class="bdo-next-learning-card">
+            <span aria-hidden="true">⭐</span>
+            <h3>Повышение рабочих</h3>
+            <p>Подробное руководство по экзаменам, шансам, попыткам и развитию рабочих.</p>
+            <a href="#worker-upgrade">Перейти →</a>
+          </article>
+
+          <article class="bdo-next-learning-card">
+            <span aria-hidden="true">🎯</span>
+            <h3>Навыки рабочих</h3>
+            <p>Узнайте, какие навыки получают рабочие и как они влияют на работу и производство.</p>
+            <a href="#worker-upgrade">Перейти →</a>
+          </article>
+
+          <article class="bdo-next-learning-card">
+            <span aria-hidden="true">🏪</span>
+            <h3>Аукцион рабочих</h3>
+            <p>Разберитесь, как покупать, продавать и выбирать готовых рабочих.</p>
+            <a href="#worker-choice-title">Перейти →</a>
+          </article>
         </div>
       </section>
     </main>

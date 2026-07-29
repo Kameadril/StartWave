@@ -962,6 +962,1476 @@ footer p {
   padding: 12px 0 28px;
 }
 
+.learning-page {
+  position: relative;
+}
+
+.learning-breadcrumbs,
+.learning-step-nav {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.learning-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 750;
+}
+
+.learning-breadcrumbs a {
+  color: var(--ocean-700);
+  text-decoration: none;
+}
+
+.learning-breadcrumbs a:hover {
+  color: var(--ocean-900);
+}
+
+.learning-step-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.learning-step-button {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-height: 86px;
+  padding: 18px 20px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  color: var(--text);
+  text-decoration: none;
+  transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+
+.learning-step-button:hover {
+  transform: translateY(-3px);
+  background: var(--surface-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.learning-step-button span {
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.learning-step-button strong {
+  color: var(--ocean-800);
+  font-size: 1.05rem;
+}
+
+.learning-step-button-next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.learning-card {
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.learning-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+}
+
+.learning-floating-actions {
+  position: fixed;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 20;
+  display: grid;
+  gap: 10px;
+  justify-items: end;
+  pointer-events: none;
+}
+
+.learning-floating-actions button,
+.learning-route-panel {
+  pointer-events: auto;
+}
+
+.learning-floating-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 12px 16px;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  color: var(--ocean-800);
+  font-weight: 900;
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+  cursor: pointer;
+  transition: transform 180ms ease, background-color 180ms ease, opacity 180ms ease;
+}
+
+.learning-floating-actions button:hover {
+  transform: translateY(-2px);
+  background: var(--surface-hover);
+}
+
+.learning-top-button {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.learning-top-button.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.learning-route-panel {
+  display: none;
+  width: min(320px, calc(100vw - 36px));
+  max-height: min(520px, calc(100vh - 150px));
+  overflow: auto;
+  padding: 16px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+}
+
+.learning-route-panel.is-open {
+  display: block;
+}
+
+.learning-route-panel h2 {
+  margin: 0 0 12px;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.learning-route-list {
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.learning-route-list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.learning-route-list a::before {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(14, 165, 233, 0.35);
+  content: "";
+}
+
+.learning-route-list a:hover,
+.learning-route-list a.is-active {
+  border-color: rgba(14, 165, 233, 0.2);
+  background: rgba(224, 242, 254, 0.62);
+  color: var(--ocean-800);
+}
+
+.learning-route-list a.is-active::before {
+  background: var(--ocean-600);
+}
+
+.bdo-knowledge-page {
+  width: min(100%, var(--content-width));
+}
+
+.bdo-hero,
+.bdo-section,
+.bdo-startwave-tip {
+  margin-bottom: 42px;
+}
+
+.bdo-hero {
+  padding: clamp(36px, 6vw, 64px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 88% 18%, rgba(125, 211, 252, 0.34), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(224, 242, 254, 0.5));
+  box-shadow: var(--shadow-sm), var(--glow), inset 0 1px 0 rgba(255, 255, 255, 0.76);
+  text-align: center;
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+}
+
+.bdo-hero-kicker,
+.bdo-section-kicker {
+  display: inline-flex;
+  margin-bottom: 10px;
+  color: var(--ocean-700);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bdo-hero h2 {
+  margin: 0;
+  color: var(--ocean-950);
+  font-size: clamp(2.5rem, 7vw, 4.8rem);
+  font-weight: 850;
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.bdo-hero p {
+  max-width: 620px;
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 650;
+}
+
+.bdo-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.bdo-hero-actions span,
+.bdo-mini-card,
+.bdo-panel,
+.bdo-check-card,
+.bdo-feature-card,
+.bdo-related-card,
+.bdo-empty-state,
+.bdo-faq-card {
+  border: 1px solid var(--glass-border);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+}
+
+.bdo-hero-actions span {
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: var(--ocean-800);
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.bdo-section-heading {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.bdo-section-heading h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(1.55rem, 4vw, 2.15rem);
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+
+.bdo-summary-grid,
+.bdo-feature-grid,
+.bdo-related-grid,
+.bdo-faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+}
+
+.bdo-mini-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 116px;
+  padding: 18px;
+  border-radius: var(--radius-md);
+}
+
+.bdo-mini-card span,
+.bdo-feature-icon,
+.bdo-tip-mark,
+.bdo-related-card span {
+  flex: 0 0 auto;
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.bdo-mini-card p,
+.bdo-panel p,
+.bdo-check-card p,
+.bdo-feature-card p,
+.bdo-startwave-tip p,
+.bdo-empty-state p,
+.bdo-faq-card p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.bdo-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 18px;
+}
+
+.bdo-panel {
+  padding: 28px;
+  border-radius: var(--radius-lg);
+}
+
+.bdo-panel-strong {
+  background:
+    radial-gradient(circle at 90% 10%, rgba(125, 211, 252, 0.24), transparent 34%),
+    var(--surface);
+}
+
+.bdo-panel h3,
+.bdo-feature-card h3,
+.bdo-faq-card h3 {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: 1.12rem;
+}
+
+.bdo-check-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.bdo-check-card {
+  min-height: 120px;
+  padding: 18px;
+  border-radius: var(--radius-md);
+}
+
+.bdo-check-card span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 12px;
+  border-radius: 999px;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--ocean-700), var(--ocean-500));
+  font-weight: 850;
+}
+
+.bdo-quick-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+}
+
+.bdo-quick-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 74px;
+  padding: 16px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+
+.bdo-quick-nav a:hover,
+.bdo-related-card:hover {
+  transform: translateY(-4px);
+  background: var(--surface-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.bdo-flow {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.bdo-flow li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 116px;
+  padding: 18px 12px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.bdo-flow li:not(:last-child)::after {
+  position: absolute;
+  top: 50%;
+  right: -13px;
+  z-index: 1;
+  content: "→";
+  color: var(--ocean-700);
+  font-weight: 850;
+  transform: translateY(-50%);
+}
+
+.bdo-flow span {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.bdo-flow strong {
+  color: var(--text);
+  font-size: 0.92rem;
+}
+
+.bdo-feature-card {
+  min-height: 190px;
+  padding: 22px;
+  border-radius: var(--radius-md);
+}
+
+.bdo-feature-icon {
+  display: inline-flex;
+  margin-bottom: 16px;
+}
+
+.bdo-startwave-tip {
+  display: flex;
+  gap: 18px;
+  padding: 26px;
+  border: 1px solid rgba(14, 165, 233, 0.22);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 8% 20%, rgba(186, 230, 253, 0.5), transparent 34%),
+    rgba(255, 255, 255, 0.62);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+.bdo-startwave-tip h2 {
+  margin: 0 0 10px;
+  color: var(--ocean-800);
+  font-size: 1.35rem;
+}
+
+.bdo-related-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 88px;
+  padding: 18px;
+  border-radius: var(--radius-md);
+  color: var(--text);
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+
+.bdo-empty-state {
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.bdo-faq-card {
+  min-height: 128px;
+  padding: 20px;
+  border-radius: var(--radius-md);
+}
+
+.bdo-next-learning {
+  padding: clamp(24px, 4vw, 34px);
+  border: 1px solid rgba(14, 165, 233, 0.18);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 88% 14%, rgba(125, 211, 252, 0.28), transparent 34%),
+    rgba(255, 255, 255, 0.54);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+.bdo-next-learning-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.bdo-next-learning-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 238px;
+  padding: 22px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.bdo-next-learning-card > span {
+  display: inline-flex;
+  margin-bottom: 14px;
+  font-size: 1.65rem;
+}
+
+.bdo-next-learning-card h3 {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: 1.08rem;
+}
+
+.bdo-next-learning-card p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.bdo-next-learning-card a {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 18px;
+  color: var(--ocean-700);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.bdo-next-learning-card a:hover {
+  color: var(--ocean-900);
+}
+
+.bdo-section-heading p {
+  max-width: 620px;
+  margin: 10px auto 0;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.bdo-worker-slots-section {
+  scroll-margin-top: 96px;
+}
+
+.bdo-worker-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.bdo-worker-slot-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 248px;
+  padding: 22px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(240, 249, 255, 0.58));
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.82);
+}
+
+.bdo-worker-slot-card-accent {
+  border-color: rgba(14, 165, 233, 0.28);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(186, 230, 253, 0.56), transparent 36%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.84), rgba(224, 242, 254, 0.58));
+}
+
+.bdo-worker-slot-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--ocean-600), var(--ocean-400));
+  color: white;
+  font-weight: 900;
+  box-shadow: 0 10px 22px rgba(14, 165, 233, 0.22);
+}
+
+.bdo-worker-slot-card h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.08rem;
+}
+
+.bdo-worker-slot-card p,
+.bdo-worker-slot-card li {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.bdo-worker-slot-card ul {
+  display: grid;
+  gap: 7px;
+  padding-left: 18px;
+  margin: 0;
+}
+
+.bdo-worker-slots-flow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  padding: 0;
+  margin: 18px 0 0;
+  list-style: none;
+}
+
+.bdo-worker-slots-flow li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 76px;
+  padding: 14px 12px;
+  border: 1px solid rgba(14, 165, 233, 0.18);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.66);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-align: center;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+.bdo-worker-slots-flow li:not(:last-child)::after {
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  z-index: 1;
+  content: "→";
+  color: var(--ocean-700);
+  font-weight: 900;
+  transform: translateY(-50%);
+}
+
+.bdo-worker-slots-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px;
+  margin-top: 18px;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.66);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+.bdo-worker-slots-tip span {
+  font-size: 1.35rem;
+}
+
+.bdo-worker-slots-tip p {
+  margin: 0;
+  color: var(--text);
+  font-weight: 750;
+  line-height: 1.55;
+}
+
+.bdo-worker-upgrade-section {
+  display: grid;
+  gap: 24px;
+}
+
+.bdo-worker-upgrade-hero,
+.bdo-upgrade-panel,
+.bdo-upgrade-recommendation,
+.bdo-worker-philosophy {
+  border: 1px solid var(--glass-border);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+}
+
+.bdo-worker-upgrade-hero {
+  padding: clamp(28px, 5vw, 44px);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 88% 18%, rgba(125, 211, 252, 0.34), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.74), rgba(224, 242, 254, 0.54));
+  text-align: center;
+}
+
+.bdo-worker-upgrade-hero h2 {
+  margin: 0;
+  color: var(--ocean-950);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.bdo-worker-upgrade-hero p {
+  max-width: 720px;
+  margin: 16px auto 0;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.bdo-upgrade-warning,
+.bdo-upgrade-calm-tip {
+  display: flex;
+  gap: 16px;
+  padding: 22px;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 8% 20%, rgba(186, 230, 253, 0.46), transparent 34%),
+    rgba(255, 255, 255, 0.66);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+.bdo-upgrade-warning {
+  border-color: rgba(245, 158, 11, 0.24);
+  background:
+    radial-gradient(circle at 8% 20%, rgba(254, 240, 138, 0.32), transparent 34%),
+    rgba(255, 255, 255, 0.66);
+}
+
+.bdo-upgrade-warning > span,
+.bdo-upgrade-calm-tip > span {
+  flex: 0 0 auto;
+  font-size: 1.55rem;
+}
+
+.bdo-upgrade-warning h3,
+.bdo-upgrade-calm-tip h2 {
+  margin: 0 0 8px;
+  color: var(--ocean-800);
+  font-size: 1.25rem;
+}
+
+.bdo-upgrade-warning p,
+.bdo-upgrade-calm-tip p {
+  margin: 0;
+  color: var(--text);
+  font-weight: 750;
+  line-height: 1.55;
+}
+
+.bdo-upgrade-calm-tip p + p {
+  margin-top: 8px;
+}
+
+.bdo-upgrade-benefits,
+.bdo-worker-type-grid,
+.bdo-playstyle-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.bdo-upgrade-benefits {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.bdo-worker-type-grid,
+.bdo-playstyle-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.bdo-upgrade-benefit-card,
+.bdo-exam-result-card,
+.bdo-worker-type-card,
+.bdo-playstyle-card {
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.bdo-upgrade-benefit-card {
+  min-height: 160px;
+  padding: 20px;
+}
+
+.bdo-upgrade-benefit-card span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 14px;
+  border-radius: 999px;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--ocean-600), var(--ocean-400));
+  font-weight: 900;
+}
+
+.bdo-upgrade-benefit-card h3,
+.bdo-exam-result-card h3,
+.bdo-worker-type-card h3,
+.bdo-playstyle-card h3 {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: 1.08rem;
+}
+
+.bdo-upgrade-benefit-card p,
+.bdo-upgrade-note,
+.bdo-upgrade-panel p,
+.bdo-exam-result-card li,
+.bdo-upgrade-recommendation p,
+.bdo-worker-type-card p,
+.bdo-worker-type-card li,
+.bdo-playstyle-card p,
+.bdo-worker-philosophy p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.bdo-upgrade-note {
+  padding: 18px 20px;
+  border: 1px solid rgba(14, 165, 233, 0.16);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.58);
+  text-align: center;
+}
+
+.bdo-upgrade-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.bdo-upgrade-panel {
+  padding: 24px;
+  border-radius: var(--radius-lg);
+}
+
+.bdo-section-heading-left {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.bdo-section-heading-left p {
+  margin-left: 0;
+}
+
+.bdo-rank-ladder,
+.bdo-upgrade-steps {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.bdo-rank-ladder li,
+.bdo-upgrade-steps li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid rgba(14, 165, 233, 0.18);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.bdo-rank-ladder li:not(:last-child)::after,
+.bdo-upgrade-steps li:not(:last-child)::after {
+  position: absolute;
+  bottom: -14px;
+  left: 28px;
+  content: "↓";
+  color: var(--ocean-700);
+  font-weight: 900;
+}
+
+.bdo-rank-ladder span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--ocean-700), var(--ocean-500));
+  font-weight: 900;
+}
+
+.bdo-rank-ladder strong,
+.bdo-upgrade-steps strong {
+  color: var(--text);
+}
+
+.bdo-upgrade-steps span {
+  min-width: 70px;
+  color: var(--ocean-800);
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.bdo-exam-result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.bdo-upgrade-attempts {
+  display: grid;
+  gap: 18px;
+}
+
+.bdo-upgrade-exam,
+.bdo-worker-ranks,
+.bdo-worker-filter-section {
+  display: grid;
+  gap: 18px;
+}
+
+.bdo-exam-detail-grid,
+.bdo-worker-rank-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.bdo-exam-detail-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.bdo-worker-rank-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.bdo-exam-detail-card,
+.bdo-worker-rank-card,
+.bdo-worker-filter-list article {
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.bdo-exam-detail-card,
+.bdo-worker-rank-card {
+  min-height: 172px;
+  padding: 22px;
+}
+
+.bdo-exam-detail-card span,
+.bdo-worker-rank-card span {
+  display: inline-flex;
+  margin-bottom: 14px;
+  font-size: 1.55rem;
+}
+
+.bdo-exam-detail-card h3,
+.bdo-worker-rank-card h3,
+.bdo-worker-filter-list h3,
+.bdo-rank-startwave-tip h3 {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: 1.08rem;
+}
+
+.bdo-exam-detail-card p,
+.bdo-worker-rank-card p,
+.bdo-worker-filter-list p,
+.bdo-worker-filter-hint,
+.bdo-rank-startwave-tip p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.bdo-rank-startwave-tip {
+  display: flex;
+  gap: 16px;
+  padding: 22px;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 8% 20%, rgba(186, 230, 253, 0.46), transparent 34%),
+    rgba(255, 255, 255, 0.66);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+.bdo-rank-startwave-tip > span {
+  flex: 0 0 auto;
+  font-size: 1.55rem;
+}
+
+.bdo-rank-startwave-tip p + p {
+  margin-top: 8px;
+}
+
+.bdo-worker-filter-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.bdo-worker-filter-image {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.76);
+}
+
+.bdo-worker-filter-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.bdo-worker-filter-image figcaption {
+  padding: 12px 14px 14px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-align: center;
+}
+
+.bdo-worker-filter-list {
+  display: grid;
+  gap: 10px;
+}
+
+.bdo-worker-filter-list article {
+  padding: 16px;
+}
+
+.bdo-worker-filter-hint {
+  padding: 16px 18px;
+  border: 1px solid rgba(14, 165, 233, 0.16);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.58);
+  text-align: center;
+}
+
+.bdo-attempts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.bdo-attempt-card {
+  min-height: 178px;
+  padding: 22px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.bdo-attempt-card h3 {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: 1.08rem;
+}
+
+.bdo-attempt-card p,
+.bdo-attempt-card li {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.bdo-attempt-card ul {
+  display: grid;
+  gap: 7px;
+  padding-left: 18px;
+  margin: 0;
+}
+
+.bdo-attempt-flow {
+  display: grid;
+  gap: 14px;
+  padding: 22px;
+  border: 1px solid rgba(14, 165, 233, 0.18);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 50% 8%, rgba(186, 230, 253, 0.42), transparent 34%),
+    rgba(255, 255, 255, 0.58);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.76);
+}
+
+.bdo-attempt-flow-main,
+.bdo-attempt-branch {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.bdo-attempt-flow-main {
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.bdo-attempt-flow-main li,
+.bdo-attempt-branch li {
+  position: relative;
+  padding: 14px 16px;
+  border: 1px solid rgba(14, 165, 233, 0.18);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text);
+  font-weight: 850;
+  text-align: center;
+}
+
+.bdo-attempt-flow-main li:not(:last-child)::after,
+.bdo-attempt-branch li:not(:last-child)::after {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  content: "↓";
+  color: var(--ocean-700);
+  font-weight: 900;
+  transform: translateX(-50%);
+}
+
+.bdo-attempt-branches {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.bdo-attempt-branch-success li:first-child {
+  border-color: rgba(34, 197, 94, 0.28);
+  background: rgba(220, 252, 231, 0.72);
+}
+
+.bdo-attempt-branch-fail li:first-child {
+  border-color: rgba(248, 113, 113, 0.24);
+  background: rgba(254, 226, 226, 0.68);
+}
+
+.bdo-exam-result-card,
+.bdo-worker-type-card,
+.bdo-playstyle-card {
+  padding: 22px;
+}
+
+.bdo-exam-result-card span,
+.bdo-worker-type-icon,
+.bdo-playstyle-card span {
+  display: inline-flex;
+  margin-bottom: 14px;
+  font-size: 1.55rem;
+}
+
+.bdo-exam-result-card ul,
+.bdo-worker-type-card ul {
+  display: grid;
+  gap: 7px;
+  padding-left: 18px;
+  margin: 0;
+}
+
+.bdo-exam-result-success {
+  border-color: rgba(34, 197, 94, 0.24);
+  background:
+    radial-gradient(circle at 12% 16%, rgba(187, 247, 208, 0.44), transparent 34%),
+    var(--surface);
+}
+
+.bdo-exam-result-fail {
+  border-color: rgba(248, 113, 113, 0.22);
+  background:
+    radial-gradient(circle at 12% 16%, rgba(254, 202, 202, 0.34), transparent 34%),
+    var(--surface);
+}
+
+.bdo-upgrade-recommendation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.7fr);
+  gap: 18px;
+  align-items: center;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 92% 18%, rgba(186, 230, 253, 0.42), transparent 36%),
+    rgba(255, 255, 255, 0.66);
+}
+
+.bdo-upgrade-recommendation h2 {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+}
+
+.bdo-upgrade-priority-list {
+  display: grid;
+  gap: 10px;
+}
+
+.bdo-upgrade-priority-list span {
+  padding: 12px 14px;
+  border: 1px solid rgba(14, 165, 233, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--ocean-800);
+  font-weight: 850;
+}
+
+.bdo-worker-choice {
+  display: grid;
+  gap: 20px;
+}
+
+.bdo-worker-type-card h4 {
+  margin: 14px 0 8px;
+  color: var(--ocean-800);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.bdo-worker-type-fit {
+  padding-top: 14px;
+  margin-top: auto !important;
+  color: var(--text) !important;
+  font-weight: 800 !important;
+}
+
+.bdo-worker-compare {
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.74);
+}
+
+.bdo-worker-compare-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) repeat(3, minmax(90px, 0.72fr));
+  gap: 10px;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(14, 165, 233, 0.12);
+}
+
+.bdo-worker-compare-row:last-child {
+  border-bottom: 0;
+}
+
+.bdo-worker-compare-head {
+  background: rgba(224, 242, 254, 0.62);
+}
+
+.bdo-worker-compare-row span {
+  color: var(--text);
+  font-weight: 850;
+}
+
+.bdo-worker-compare-row strong {
+  color: var(--ocean-800);
+  font-weight: 900;
+  text-align: center;
+}
+
+.bdo-playstyle-card {
+  min-height: 178px;
+}
+
+.bdo-worker-philosophy {
+  display: flex;
+  gap: 18px;
+  padding: 26px;
+  border-radius: var(--radius-lg);
+  border-color: rgba(14, 165, 233, 0.22);
+  background:
+    radial-gradient(circle at 8% 20%, rgba(186, 230, 253, 0.5), transparent 34%),
+    rgba(255, 255, 255, 0.62);
+}
+
+.bdo-worker-philosophy > span {
+  flex: 0 0 auto;
+  font-size: 1.6rem;
+}
+
+.bdo-worker-philosophy h2 {
+  margin: 0 0 10px;
+  color: var(--ocean-800);
+  font-size: 1.35rem;
+}
+
+.bdo-worker-philosophy p + p {
+  margin-top: 10px;
+}
+
+.bdo-interface-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.bdo-interface-stage {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.44);
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.bdo-interface-stage::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: rgba(6, 54, 95, 0);
+  transition: background-color 220ms ease;
+}
+
+.bdo-interface-stage:has(.bdo-interface-marker:hover)::after,
+.bdo-interface-stage:has(.bdo-interface-marker.active)::after {
+  background: rgba(6, 54, 95, 0.08);
+}
+
+.bdo-interface-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.bdo-interface-marker {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--ocean-700), var(--ocean-500));
+  box-shadow: 0 10px 24px rgba(2, 132, 199, 0.38);
+  font-size: 0.88rem;
+  font-weight: 850;
+  transform: translate(-50%, -50%);
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.bdo-interface-marker:hover,
+.bdo-interface-marker:focus-visible,
+.bdo-interface-marker.active {
+  background: linear-gradient(135deg, #075985, #38bdf8);
+  box-shadow: 0 0 0 8px rgba(186, 230, 253, 0.36), 0 14px 30px rgba(2, 132, 199, 0.42);
+  transform: translate(-50%, -50%) scale(1.12);
+}
+
+.bdo-interface-info-card {
+  position: sticky;
+  top: 18px;
+  min-height: 420px;
+  padding: 26px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 92% 12%, rgba(186, 230, 253, 0.42), transparent 34%),
+    var(--surface-strong);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+}
+
+.bdo-interface-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--ocean-700), var(--ocean-500));
+  box-shadow: 0 10px 24px rgba(2, 132, 199, 0.24);
+  font-weight: 850;
+}
+
+.bdo-interface-info-card h3 {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  line-height: 1.2;
+}
+
+.bdo-interface-info-card p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.bdo-interface-example {
+  margin-bottom: 14px !important;
+  color: var(--ocean-800) !important;
+  font-weight: 800 !important;
+}
+
+.bdo-interface-memory {
+  margin-top: 28px;
+  padding: 18px;
+  border: 1px solid rgba(14, 165, 233, 0.18);
+  border-radius: var(--radius-md);
+  background: rgba(224, 242, 254, 0.58);
+}
+
+.bdo-interface-memory h4 {
+  margin: 0 0 8px;
+  color: var(--ocean-800);
+  font-size: 1rem;
+}
+
 @media (max-width: 900px) {
   .header {
     grid-template-columns: 1fr auto;
@@ -984,6 +2454,53 @@ footer p {
   .today-widget:nth-child(5),
   .today-widget:nth-child(6) {
     grid-column: auto;
+  }
+
+  .learning-step-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .learning-step-button-next {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .bdo-split,
+  .bdo-flow,
+  .bdo-worker-slots-grid,
+  .bdo-upgrade-benefits,
+  .bdo-worker-type-grid,
+  .bdo-playstyle-grid,
+  .bdo-attempts-grid,
+  .bdo-exam-detail-grid,
+  .bdo-worker-rank-grid,
+  .bdo-next-learning-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bdo-worker-slots-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .bdo-upgrade-layout,
+  .bdo-upgrade-recommendation,
+  .bdo-attempt-branches,
+  .bdo-worker-filter-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .bdo-flow li:not(:last-child)::after,
+  .bdo-worker-slots-flow li:not(:last-child)::after {
+    display: none;
+  }
+
+  .bdo-interface-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .bdo-interface-info-card {
+    position: static;
+    min-height: auto;
   }
 }
 
@@ -1024,6 +2541,26 @@ footer p {
 
   .navigation a {
     text-align: center;
+  }
+
+  .learning-breadcrumbs {
+    justify-content: flex-start;
+  }
+
+  .learning-floating-actions {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .learning-floating-actions button {
+    min-height: 42px;
+    padding: 10px 13px;
+    font-size: 0.88rem;
+  }
+
+  .learning-route-panel {
+    width: min(300px, calc(100vw - 24px));
+    max-height: min(470px, calc(100vh - 130px));
   }
 
   .hero {
@@ -1099,8 +2636,41 @@ footer p {
   }
 
   .card-grid,
-  .bdo-menu {
+  .bdo-menu,
+  .bdo-check-grid,
+  .bdo-flow,
+  .bdo-worker-slots-grid,
+  .bdo-upgrade-benefits,
+  .bdo-worker-type-grid,
+  .bdo-playstyle-grid,
+  .bdo-exam-result-grid,
+  .bdo-attempts-grid,
+  .bdo-exam-detail-grid,
+  .bdo-worker-rank-grid,
+  .bdo-next-learning-grid {
     grid-template-columns: 1fr;
+  }
+
+  .bdo-hero {
+    padding: 32px 22px;
+  }
+
+  .bdo-hero-actions,
+  .bdo-startwave-tip,
+  .bdo-worker-slots-tip,
+  .bdo-worker-philosophy,
+  .bdo-upgrade-warning,
+  .bdo-upgrade-calm-tip,
+  .bdo-rank-startwave-tip {
+    flex-direction: column;
+  }
+
+  .bdo-worker-compare {
+    overflow-x: auto;
+  }
+
+  .bdo-worker-compare-row {
+    min-width: 620px;
   }
 }
 

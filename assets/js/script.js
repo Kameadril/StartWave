@@ -70,6 +70,62 @@ const weatherCodeDescriptions = {
   96: 'Гроза с градом',
   99: 'Сильная гроза с градом'
 };
+const bdoInterfacePoints = {
+  filters: {
+    number: '1',
+    title: 'Фильтры «Город» и «Ранг»',
+    example: 'Пример: Велия, Ранг',
+    description: 'Позволяют быстро отобрать рабочих по городу и рангу.'
+  },
+  'worker-rank': {
+    number: '2',
+    title: 'Уровень, ранг и раса рабочего',
+    example: 'Пример: Ур.34 Мастер-гигант',
+    description: 'Строка показывает уровень рабочего, его ранг и расу.'
+  },
+  stamina: {
+    number: '3',
+    title: 'Выносливость',
+    example: 'Пример: 23/35',
+    description: 'Показывает текущую и максимальную выносливость рабочего. Она расходуется во время выполнения рабочих циклов.'
+  },
+  'task-place': {
+    number: '4',
+    title: 'Текущее место или задание',
+    example: 'Пример: Каменный зал',
+    description: 'Показывает, куда отправлен рабочий или где выполняется его текущее задание.'
+  },
+  'worker-city': {
+    number: '5',
+    title: 'Город рабочего',
+    example: 'Пример: Кальфеон',
+    description: 'Город, к которому привязан рабочий и из которого начинается его маршрут.'
+  },
+  'work-time': {
+    number: '6',
+    title: 'Время выполнения',
+    example: 'Пример: 2 ч. 27 мин.',
+    description: 'Время, оставшееся до окончания текущего рабочего цикла.'
+  },
+  controls: {
+    number: '7',
+    title: 'Кнопки управления',
+    example: '',
+    description: 'Позволяют открыть информацию о рабочем, изменить или остановить задание и управлять повторением работы.'
+  },
+  recover: {
+    number: '8',
+    title: 'Кнопка «Восстановление»',
+    example: '',
+    description: 'Используется для восстановления выносливости рабочих с помощью подходящей еды.'
+  },
+  repeat: {
+    number: '9',
+    title: 'Кнопка «Повтор»',
+    example: '',
+    description: 'Позволяет снова отправить рабочих на ранее назначенные задания.'
+  }
+};
 
 function getSavedSearchEngine() {
   try {
@@ -277,7 +333,151 @@ function initializeTodayPrototype() {
   }
 }
 
+function initializeBdoInterfaceGuide() {
+  const markers = document.querySelectorAll('.bdo-interface-marker');
+  const numberElement = document.getElementById('bdoInterfaceNumber');
+  const titleElement = document.getElementById('bdoInterfaceTitle');
+  const exampleElement = document.getElementById('bdoInterfaceExample');
+  const descriptionElement = document.getElementById('bdoInterfaceDescription');
+
+  if (!markers.length || !numberElement || !titleElement || !exampleElement || !descriptionElement) {
+    return;
+  }
+
+  function setActivePoint(pointId) {
+    const point = bdoInterfacePoints[pointId];
+
+    if (!point) {
+      return;
+    }
+
+    markers.forEach((marker) => {
+      marker.classList.toggle('active', marker.dataset.interfacePoint === pointId);
+    });
+
+    numberElement.textContent = point.number;
+    titleElement.textContent = point.title;
+    exampleElement.textContent = point.example;
+    exampleElement.hidden = !point.example;
+    descriptionElement.textContent = point.description;
+  }
+
+  markers.forEach((marker) => {
+    const pointId = marker.dataset.interfacePoint;
+
+    marker.addEventListener('mouseenter', () => setActivePoint(pointId));
+    marker.addEventListener('focus', () => setActivePoint(pointId));
+    marker.addEventListener('click', () => setActivePoint(pointId));
+  });
+
+  setActivePoint(markers[0].dataset.interfacePoint);
+}
+
+function initializeLearningNavigation() {
+  const learningPage = document.querySelector('[data-learning-page]');
+
+  if (!learningPage) {
+    return;
+  }
+
+  const routeSections = Array.from(learningPage.querySelectorAll('[data-route-item][id]'));
+
+  if (!routeSections.length || document.querySelector('.learning-floating-actions')) {
+    return;
+  }
+
+  const floatingActions = document.createElement('div');
+  floatingActions.className = 'learning-floating-actions';
+
+  const routePanel = document.createElement('aside');
+  routePanel.className = 'learning-route-panel';
+  routePanel.id = 'learningRoutePanel';
+  routePanel.setAttribute('aria-label', 'Маршрут обучения');
+
+  const routeTitle = document.createElement('h2');
+  routeTitle.textContent = 'Маршрут страницы';
+
+  const routeList = document.createElement('ol');
+  routeList.className = 'learning-route-list';
+
+  const routeLinks = routeSections.map((section) => {
+    const routeItem = document.createElement('li');
+    const routeLink = document.createElement('a');
+    const sectionTitle = section.dataset.routeTitle || section.querySelector('h2')?.textContent?.trim() || section.id;
+
+    routeLink.href = `#${section.id}`;
+    routeLink.textContent = sectionTitle;
+    routeLink.dataset.routeTarget = section.id;
+
+    routeLink.addEventListener('click', () => {
+      routePanel.classList.remove('is-open');
+      routeButton.setAttribute('aria-expanded', 'false');
+    });
+
+    routeItem.append(routeLink);
+    routeList.append(routeItem);
+
+    return routeLink;
+  });
+
+  routePanel.append(routeTitle, routeList);
+
+  const routeButton = document.createElement('button');
+  routeButton.className = 'learning-route-button';
+  routeButton.type = 'button';
+  routeButton.setAttribute('aria-controls', routePanel.id);
+  routeButton.setAttribute('aria-expanded', 'false');
+  routeButton.textContent = '🧭 Маршрут';
+
+  const topButton = document.createElement('button');
+  topButton.className = 'learning-top-button';
+  topButton.type = 'button';
+  topButton.textContent = '↑ Наверх';
+
+  routeButton.addEventListener('click', () => {
+    const isOpen = routePanel.classList.toggle('is-open');
+    routeButton.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  topButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  floatingActions.append(routePanel, routeButton, topButton);
+  document.body.append(floatingActions);
+
+  function updateTopButtonVisibility() {
+    topButton.classList.toggle('is-visible', window.scrollY > 420);
+  }
+
+  updateTopButtonVisibility();
+  window.addEventListener('scroll', updateTopButtonVisibility, { passive: true });
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      const visibleEntry = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((firstEntry, secondEntry) => secondEntry.intersectionRatio - firstEntry.intersectionRatio)[0];
+
+      if (!visibleEntry) {
+        return;
+      }
+
+      routeLinks.forEach((link) => {
+        link.classList.toggle('is-active', link.dataset.routeTarget === visibleEntry.target.id);
+      });
+    }, {
+      rootMargin: '-20% 0px -65% 0px',
+      threshold: [0.1, 0.25, 0.5]
+    });
+
+    routeSections.forEach((section) => observer.observe(section));
+  }
+}
+
 startMiniClock();
 initializeSearchEngineSwitch();
 initializeTodayPrototype();
+initializeBdoInterfaceGuide();
+initializeLearningNavigation();
 updatePrototypeWeather();
