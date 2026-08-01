@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
-<body>
+<body class="bdo-archive-body bdo-resource-atlas-body bdo-worker-atlas-body">
   <header class="header">
     <a class="logo" href="../index.html" aria-label="StartWave — на главную">
       <span aria-hidden="true">🌊</span>
@@ -70,7 +70,7 @@
       </nav>
 
       <section class="bdo-hero" id="page-start" aria-labelledby="workers-title" data-route-item data-route-title="Старт">
-        <span class="bdo-hero-kicker">Chronicles of Black Desert</span>
+        <span class="bdo-hero-kicker">STARTWAVE BDO ARCHIVE</span>
         <h2 id="workers-title">⚒ Рабочие</h2>
         <p>Автоматизация добычи ресурсов и производства.</p>
         <div class="bdo-hero-actions" aria-label="Главные задачи страницы">
@@ -78,6 +78,40 @@
           <span>Запустить рабочих</span>
           <span>Связать узлы</span>
         </div>
+      </section>
+
+      <section class="bdo-node-atlas-section" id="worker-atlas" aria-labelledby="worker-atlas-title" data-route-item data-route-title="Атлас рабочих">
+        <div class="bdo-resource-hero bdo-worker-archive-hero">
+          <p class="bdo-resource-kicker">World Data Layer · Worker Layer v0.1</p>
+          <h2 id="worker-atlas-title">👷 Атлас рабочих</h2>
+          <p>Архивный слой для проверенных записей о рабочих и их будущих связях с городами, узлами, ресурсами и производством.</p>
+          <div class="bdo-resource-summary" aria-label="Сводка слоя рабочих">
+            <span><strong id="workerArchiveResultCount">0 записей</strong> в коллекции</span>
+            <span><strong>0</strong> подтверждённых связей</span>
+            <span><strong>v0.1</strong> версия схемы</span>
+          </div>
+        </div>
+
+        <div class="bdo-node-relation-flow" aria-label="Модель связей">
+          <span>🏰 Город</span><i aria-hidden="true">→</i><span>🗺 Узел</span><i aria-hidden="true">→</i><span>🌲 Ресурс</span><i aria-hidden="true">→</i><span>👷 Рабочий</span><i aria-hidden="true">→</i><span>⚒ Производство</span><i aria-hidden="true">→</i><span>📦 Предмет</span>
+        </div>
+
+        <section class="bdo-resource-toolbar" aria-label="Поиск по атласу рабочих">
+          <label for="workerArchiveSearch">Поиск по названию, типу, городу, региону или ID</label>
+          <input id="workerArchiveSearch" type="search" placeholder="Начните вводить запрос…" autocomplete="off">
+        </section>
+
+        <div class="bdo-resource-section-heading">
+          <div><p class="bdo-resource-kicker">Verified records only</p><h2>Архивные записи</h2></div>
+          <span class="bdo-resource-verified-badge">Источник структуры: SW-GAMES BDO-DATA-009</span>
+        </div>
+        <div class="bdo-resource-grid" id="bdoWorkerGrid" aria-live="polite" aria-busy="false"></div>
+        <p class="bdo-resource-empty" id="workerArchiveEmptyState">Подтверждённых рабочих пока нет. Структура готова к безопасному наполнению.</p>
+
+        <section class="bdo-resource-data-note" aria-labelledby="worker-policy-title">
+          <div><p class="bdo-resource-kicker">Data policy</p><h2 id="worker-policy-title">Только подтверждённые данные</h2></div>
+          <p>Конкретные рабочие, характеристики, энергия, скорость, прибыль, время производства, задачи и связи не добавляются без отдельной проверки источников.</p>
+        </section>
       </section>
 
       <section class="bdo-section bdo-summary" id="workers-summary" aria-labelledby="workers-summary-title" data-route-item data-route-title="Кратко">
@@ -843,5 +877,7 @@
   </div>
 
   <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/bdo-world-relations.js"></script>
+  <script src="../assets/js/bdo-workers.js"></script>
 </body>
 </html>

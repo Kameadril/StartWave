@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "0.1.0",
+  "collectionId": "bdo-production-atlas",
+  "title": "Атлас производства",
+  "updatedAt": "2026-08-01",
+  "stage": "SW-GAMES BDO-DATA-010",
+  "entitySchema": {
+    "id": "string",
+    "name": "string",
+    "productionType": "string",
+    "inputResources": "string[]",
+    "outputItems": "string[]",
+    "professions": "string[]",
+    "cities": "string[]",
+    "workers": "string[]",
+    "recipes": "string[]",
+    "images": "string[]",
+    "source": "string[]",
+    "checkedAt": "YYYY-MM-DD",
+    "status": "unresearched|researching|verified"
+  },
+  "relationModel": ["city", "node", "resource", "worker", "production", "item"],
+  "verificationPolicy": {
+    "status": "structure-only",
+    "source": "SW-GAMES BDO-DATA-010",
+    "scope": "Создана только структура Production Layer. Рецепты, количества материалов, время производства, цены, прибыль и экономические расчёты добавляются только после отдельной проверки источника."
+  },
+  "productions": []
+}

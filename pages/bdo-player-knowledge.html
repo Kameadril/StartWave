@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StartWave — Прогресс знаний игрока BDO</title>
+  <meta name="description" content="Личный журнал и прогресс исследования проверенных цепочек знаний STARTWAVE BDO ARCHIVE.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bdo-archive-body bdo-resource-atlas-body bdo-player-knowledge-body">
+  <header class="header bdo-site-header">
+    <a class="logo" href="../index.html" aria-label="StartWave — на главную"><h1>StartWave</h1></a>
+    <nav class="navigation" aria-label="Основная навигация">
+      <a href="../index.html">Главная</a><a href="../bdo.html">BDO</a><a href="bdo-cities.html">Города</a>
+      <a href="bdo-resources.html">Ресурсы</a><a href="bdo-knowledge-chain.html">Цепочки</a>
+      <a href="bdo-player-knowledge.html" aria-current="page">Мой прогресс</a>
+    </nav>
+  </header>
+  <div class="page-container bdo-resource-atlas bdo-player-knowledge">
+    <main class="content-main">
+      <nav class="bdo-archive-breadcrumbs" aria-label="Хлебные крошки"><a href="../bdo.html">BDO Archive</a><span aria-hidden="true">/</span><span>Мой прогресс</span></nav>
+      <section class="bdo-resource-hero" aria-labelledby="player-progress-title">
+        <p class="bdo-resource-kicker">Player Knowledge Progress · v0.1</p>
+        <h2 id="player-progress-title">Личный путь исследователя</h2>
+        <p>Игрок → исследование → открытые знания → следующий шаг. Прогресс показывает личный маршрут, не подменяя проверенные данные мира.</p>
+        <div class="bdo-resource-summary" aria-label="Сводка прогресса">
+          <span><strong id="progressStudied">—</strong> изучено</span><span><strong id="progressResearching">—</strong> исследуется</span><span><strong id="progressPercent">—</strong> прогресса</span>
+        </div>
+      </section>
+      <section class="bdo-player-progress__legend" aria-label="Статусы изучения">
+        <span><i class="is-unknown" aria-hidden="true"></i> Неизвестно</span><span><i class="is-researching" aria-hidden="true"></i> Исследуется</span><span><i class="is-studied" aria-hidden="true"></i> Изучено</span>
+      </section>
+      <section class="bdo-player-progress__layout">
+        <article class="bdo-player-progress__chain" aria-labelledby="playerChainTitle" aria-busy="true">
+          <header><div><p class="bdo-resource-kicker">Активная цепочка</p><h2 id="playerChainTitle">Загрузка…</h2></div><a id="openExplorerLink" href="bdo-knowledge-chain.html">Открыть Explorer →</a></header>
+          <div class="bdo-player-progress__meter" aria-label="Прогресс цепочки"><span id="progressMeter"></span></div>
+          <ol id="playerStageList"></ol>
+        </article>
+        <aside class="bdo-player-journal" aria-labelledby="journalTitle">
+          <header><p class="bdo-resource-kicker">Player Journey</p><h2 id="journalTitle">Журнал исследователя</h2></header>
+          <ol id="journalList"></ol>
+          <p class="bdo-player-journal__notice">Записи журнала отражают прогресс игрока. Они не подтверждают игровые связи.</p>
+        </aside>
+      </section>
+      <section class="bdo-resource-data-note" aria-labelledby="ai-ready-title"><h2 id="ai-ready-title">Подготовка к AI-рекомендациям</h2><p>Структура готова передавать будущему помощнику изученные ступени и цели игрока. Рекомендации отключены до появления проверенных связей и не смогут создавать игровые факты.</p></section>
+    </main>
+    <footer class="site-footer"><p>&copy; 2026 Kameadril · StartWave</p></footer>
+  </div>
+  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/bdo-player-knowledge.js"></script>
+</body>
+</html>

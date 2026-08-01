@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "0.1.0",
+  "collectionId": "bdo-city-atlas",
+  "title": "Атлас городов",
+  "updatedAt": "2026-08-01",
+  "entitySchema": {
+    "id": "string",
+    "name": "string",
+    "region": "string",
+    "cityType": "string",
+    "description": "string",
+    "nodes": "string[]",
+    "resources": "string[]",
+    "production": "string[]",
+    "trade": "string[]",
+    "images": "string[]",
+    "coordinates": "object|null",
+    "source": "string[]",
+    "checkedAt": "YYYY-MM-DD",
+    "status": "unresearched|researching|verified",
+    "relations": {
+      "mapPoints": "string[]",
+      "playerJourneySteps": "string[]"
+    }
+  },
+  "relationModel": ["city", "node", "resource", "worker", "production"],
+  "verificationPolicy": {
+    "status": "basic-record-verified",
+    "source": "SW-GAMES BDO-DATA-007",
+    "scope": "Подтверждены название Кальфеона, принадлежность к территории Кальфеон и тип крупного города. Координаты и игровые связи остаются пустыми до отдельной проверки."
+  },
+  "cities": [
+    {
+      "id": "bdo-city-calpheon",
+      "name": "Кальфеон",
+      "region": "Кальфеон",
+      "cityType": "Крупный город",
+      "description": "Кальфеон — крупный город одноимённой территории мира Black Desert.",
+      "nodes": [],
+      "resources": [],
+      "production": [],
+      "trade": [],
+      "images": [],
+      "coordinates": null,
+      "source": [
+        "https://www.naeu.playblackdesert.com/en-US/Wiki?wikiNo=43",
+        "https://www.naeu.playblackdesert.com/en-US/News/Detail?countryType=en-US&groupContentNo=9763"
+      ],
+      "checkedAt": "2026-08-01",
+      "status": "verified",
+      "relations": {
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    }
+  ]
+}

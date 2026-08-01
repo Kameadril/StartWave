@@ -9,7 +9,7 @@
     content="StartWave — раздел Black Desert Online с двумя направлениями: мирная жизнь, экономика и ремёсла, а также боевая жизнь, экипировка и развитие персонажа.">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="bdo-landing-body">
+<body class="bdo-landing-body bdo-archive-body">
   <header class="header bdo-site-header">
     <a class="logo" href="index.html" aria-label="StartWave — на главную">
       <div>
@@ -68,9 +68,11 @@
               <p>Ремёсла, ресурсы, экономика и развитие.</p>
               <ul class="bdo-direction-list" aria-label="Темы мирной жизни">
                 <li><a href="#bdo-workers">Рабочие</a></li>
+                <li><a href="#bdo-cities">Города</a></li>
                 <li><a href="#bdo-nodes">Узлы</a></li>
                 <li><a href="#bdo-gathering">Сбор</a></li>
                 <li><a href="#bdo-crafting">Производство</a></li>
+                <li><a href="#bdo-items">Предметы</a></li>
                 <li><a href="#bdo-cooking">Кулинария</a></li>
                 <li><a href="#bdo-alchemy">Алхимия</a></li>
                 <li><a href="#bdo-fishing">Рыбалка</a></li>
@@ -138,6 +140,17 @@
         </div>
 
         <div class="bdo-topic-grid">
+          <a href="pages/bdo-player-knowledge.html" class="bdo-topic-card is-ready" id="bdo-player-progress" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Мой прогресс">
+            <img src="assets/images/bdo/bdo-card-gathering.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>📖</span><strong>Мой прогресс</strong><p>Продолжай Player Journey через открытые знания и следующие шаги.</p><small>1 цепочка</small>
+          </a>
+          <a href="pages/bdo-cities.html" class="bdo-topic-card is-ready" id="bdo-cities" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Города">
+            <img src="assets/images/bdo/bdo-card-nodes.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>🏰</span>
+            <strong>Города</strong>
+            <p>Начни путь по World Data Layer с проверенных городских записей.</p>
+            <small>1 запись</small>
+          </a>
           <a href="pages/bdo-workers.html" class="bdo-topic-card is-ready" id="bdo-workers" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Рабочие">
             <img src="assets/images/bdo/bdo-card-workers.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
             <span>⚒</span>
@@ -152,19 +165,23 @@
             <p>Подключай территории и открывай доступ к ресурсам.</p>
             <small>Готово</small>
           </a>
-          <span class="bdo-topic-card is-planned" id="bdo-gathering" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Сбор">
+          <a href="pages/bdo-resources.html" class="bdo-topic-card is-ready" id="bdo-gathering" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Ресурсы">
             <img src="assets/images/bdo/bdo-card-gathering.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
             <span>🪓</span>
-            <strong>Сбор</strong>
-            <p>Собирай ресурсы в мире и используй их для ремёсел.</p>
-            <small>Планируется</small>
-          </span>
-          <a href="pages/bdo-crafting.html" class="bdo-topic-card is-draft" id="bdo-crafting" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Производство">
+            <strong>Ресурсы</strong>
+            <p>Исследуй проверенные записи природных ресурсов в World Data Layer.</p>
+            <small>14 записей</small>
+          </a>
+          <a href="pages/bdo-crafting.html" class="bdo-topic-card is-ready" id="bdo-crafting" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Производство">
             <img src="assets/images/bdo/bdo-card-crafting.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
             <span>🏠</span>
             <strong>Производство</strong>
             <p>Создавай материалы и предметы через ремесленные цепочки.</p>
             <small>Каркас</small>
+          </a>
+          <a href="pages/bdo-items.html" class="bdo-topic-card is-ready" id="bdo-items" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Предметы">
+            <img src="assets/images/bdo/bdo-card-crafting.webp" alt="" width="480" height="320" loading="lazy" decoding="async">
+            <span>📦</span><strong>Предметы</strong><p>Заверши базовую цепочку мира в архиве проверенных предметов.</p><small>Готово</small>
           </a>
           <a href="pages/bdo-cooking.html" class="bdo-topic-card is-draft" id="bdo-cooking" data-bdo-route-group="Мирная жизнь" data-bdo-route-title="Кулинария">
             <img src="assets/images/bdo/bdo-card-cooking.webp" alt="" width="480" height="320" loading="lazy" decoding="async">

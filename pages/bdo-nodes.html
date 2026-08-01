@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
-<body>
+<body class="bdo-archive-body bdo-resource-atlas-body bdo-node-atlas-body">
   <header class="header">
     <a class="logo" href="../index.html" aria-label="StartWave — на главную">
       <span aria-hidden="true">🌊</span>
@@ -59,9 +59,9 @@
       </nav>
 
       <nav class="learning-step-nav" aria-label="Предыдущий и следующий шаг обучения">
-        <a class="learning-step-button learning-step-button-previous" href="bdo-workers.html">
+        <a class="learning-step-button learning-step-button-previous" href="bdo-cities.html">
           <span>← Предыдущий шаг</span>
-          <strong>Рабочие</strong>
+          <strong>Города</strong>
         </a>
         <a class="learning-step-button learning-step-button-next" href="bdo-resources.html">
           <span>Следующий шаг →</span>
@@ -70,7 +70,7 @@
       </nav>
 
       <section class="bdo-hero" id="page-start" aria-labelledby="nodes-title" data-route-item data-route-title="Старт">
-        <span class="bdo-hero-kicker">Chronicles of Black Desert</span>
+        <span class="bdo-hero-kicker">STARTWAVE BDO ARCHIVE</span>
         <h2 id="nodes-title">🌲 Узлы</h2>
         <p>Короткая справка о том, как связывать территории и открывать рабочим доступ к ресурсам.</p>
         <div class="bdo-hero-actions" aria-label="Главные задачи страницы">
@@ -78,6 +78,46 @@
           <span>Подключить узел</span>
           <span>Отправить рабочего</span>
         </div>
+      </section>
+
+      <section class="bdo-node-atlas-section" id="node-atlas" aria-labelledby="node-atlas-title" data-route-item data-route-title="Атлас узлов">
+        <div class="bdo-resource-hero bdo-node-archive-hero">
+          <p class="bdo-resource-kicker">World Data Layer · Node Layer v0.1</p>
+          <h2 id="node-atlas-title">🗺 Атлас узлов</h2>
+          <p>Архивная структура для подтверждённых узлов мира и будущих связей с городами, ресурсами, рабочими, производством, картой и Player Journey.</p>
+          <div class="bdo-resource-summary" aria-label="Сводка слоя узлов">
+            <span><strong>0</strong> подтверждённых узлов</span>
+            <span><strong>0</strong> игровых связей</span>
+            <span><strong>2026-08-01</strong> структура проверена</span>
+          </div>
+        </div>
+
+        <div class="bdo-node-relation-flow" aria-label="Модель связей">
+          <span>Город</span><i aria-hidden="true">→</i><span>Узел</span><i aria-hidden="true">→</i><span>Ресурс</span><i aria-hidden="true">→</i><span>Рабочий</span><i aria-hidden="true">→</i><span>Производство</span>
+        </div>
+
+        <section class="bdo-resource-toolbar" aria-label="Поиск по атласу узлов">
+          <label for="nodeArchiveSearch">Поиск по узлам</label>
+          <input id="nodeArchiveSearch" type="search" placeholder="Название, регион, тип или ID…" autocomplete="off">
+          <output id="nodeArchiveResultCount" for="nodeArchiveSearch" aria-live="polite">0 записей</output>
+        </section>
+
+        <section class="bdo-node-map-placeholder" aria-labelledby="node-map-title">
+          <div><p class="bdo-resource-kicker">Map layer · reserved</p><h2 id="node-map-title">Карта узлов</h2></div>
+          <p id="nodeMapState">Карта ожидает подтверждённых координат.</p>
+        </section>
+
+        <div class="bdo-resource-section-heading">
+          <div><p>Коллекция · World Data Layer</p><h2>Записи узлов</h2></div>
+          <span class="bdo-resource-verified-badge">Источник структуры: SW-GAMES BDO-DATA-006</span>
+        </div>
+        <div class="bdo-resource-grid" id="bdoNodeGrid" aria-live="polite" aria-busy="false"></div>
+        <p class="bdo-resource-empty" id="nodeArchiveEmptyState">Подтверждённых узлов пока нет. Структура готова к безопасному наполнению.</p>
+
+        <section class="bdo-resource-data-note" aria-labelledby="node-policy-title">
+          <h2 id="node-policy-title">Политика данных Node Layer</h2>
+          <p>Координаты остаются <code>null</code>, а массивы ресурсов, рабочих, производства, изображений, карты и Player Journey — пустыми до проверки источника. Влияние, энергия, цены и экономические данные в слой не входят.</p>
+        </section>
       </section>
 
       <section class="bdo-section bdo-summary" id="what-is" aria-labelledby="what-is-title" data-route-item data-route-title="Что такое узлы">
@@ -302,5 +342,7 @@
   </div>
 
   <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/bdo-world-relations.js"></script>
+  <script src="../assets/js/bdo-nodes.js"></script>
 </body>
 </html>

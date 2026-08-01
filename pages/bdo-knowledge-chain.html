@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StartWave — Исследование цепочек знаний BDO</title>
+  <meta name="description" content="STARTWAVE BDO ARCHIVE: интерактивное исследование подтверждённых цепочек знаний мира Black Desert Online.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bdo-archive-body bdo-resource-atlas-body bdo-chain-explorer-body">
+  <header class="header bdo-site-header">
+    <a class="logo" href="../index.html" aria-label="StartWave — на главную"><h1>StartWave</h1></a>
+    <nav class="navigation" aria-label="Основная навигация">
+      <a href="../index.html">Главная</a>
+      <a href="../bdo.html" aria-current="page">BDO</a>
+      <a href="bdo-cities.html">Города</a>
+      <a href="bdo-nodes.html">Узлы</a>
+      <a href="bdo-resources.html">Ресурсы</a>
+      <a href="bdo-knowledge-chain.html" aria-current="page">Цепочки</a>
+    </nav>
+  </header>
+
+  <div class="page-container bdo-resource-atlas bdo-chain-explorer">
+    <main class="content-main">
+      <nav class="bdo-archive-breadcrumbs" aria-label="Хлебные крошки">
+        <a href="../bdo.html">BDO Archive</a><span aria-hidden="true">/</span><span>Исследование цепочек</span>
+      </nav>
+
+      <section class="bdo-resource-hero bdo-chain-explorer__hero" aria-labelledby="chain-explorer-title">
+        <p class="bdo-resource-kicker">Knowledge Chain Explorer · v0.1</p>
+        <h2 id="chain-explorer-title">Путь знания через архив</h2>
+        <p>Исследуйте путь от подтверждённого ресурса до связанных слоёв мира. Архив показывает только проверенные связи и честно отмечает неизвестные ступени.</p>
+        <div class="bdo-resource-summary" aria-label="Сводка Explorer">
+          <span><strong id="chainCount">—</strong> цепочек</span>
+          <span><strong id="verifiedStageCount">—</strong> подтверждённых ступеней</span>
+          <span><strong id="edgeCount">—</strong> связей в графе</span>
+        </div>
+      </section>
+
+      <section class="bdo-chain-explorer__controls" aria-label="Выбор цепочки">
+        <label for="chainSelector">Архивная цепочка</label>
+        <select id="chainSelector" aria-describedby="chainSelectorHint"></select>
+        <span id="chainSelectorHint">Список формируется из Knowledge Graph и готов к будущим цепочкам.</span>
+      </section>
+
+      <section class="bdo-chain-explorer__legend" aria-label="Статусы ступеней">
+        <span><i class="is-verified" aria-hidden="true"></i> Подтверждено</span>
+        <span><i class="is-researching" aria-hidden="true"></i> Исследуется</span>
+        <span><i class="is-unknown" aria-hidden="true"></i> Неизвестно</span>
+      </section>
+
+      <aside class="bdo-chain-explorer__player-link" aria-label="Прогресс игрока">
+        <div><p class="bdo-resource-kicker">Player Journey</p><strong>Продолжить личное исследование</strong><span>Сверьте открытые знания и следующий шаг цепочки.</span></div>
+        <a href="bdo-player-knowledge.html">Мой прогресс →</a>
+      </aside>
+
+      <section class="bdo-chain-explorer__canvas" aria-labelledby="active-chain-title" aria-live="polite" aria-busy="true">
+        <header>
+          <div>
+            <p class="bdo-resource-kicker">Knowledge Graph · SW-GAMES BDO-DATA-013</p>
+            <h2 id="active-chain-title">Загрузка цепочки…</h2>
+          </div>
+          <span id="activeChainVersion"></span>
+        </header>
+        <ol id="chainStageList" class="bdo-chain-explorer__path"></ol>
+      </section>
+
+      <section class="bdo-resource-data-note" aria-labelledby="chain-policy-title">
+        <h2 id="chain-policy-title">Правило достоверности</h2>
+        <p>Пустая ступень означает отсутствие подтверждённых данных, а не отсутствие объекта в игре. Узлы, рабочие, производство и предметы не связываются с ресурсом до проверки источников.</p>
+      </section>
+    </main>
+    <footer class="site-footer"><p>&copy; 2026 Kameadril · StartWave</p></footer>
+  </div>
+
+  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/bdo-knowledge-chain.js"></script>
+</body>
+</html>

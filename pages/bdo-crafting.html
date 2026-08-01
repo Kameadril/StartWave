@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StartWave — BDO Изготовление</title>
+  <title>StartWave — BDO Атлас производства</title>
   <meta
     name="description"
-    content="StartWave — раздел BDO по изготовлению: структура, заметки и будущая база знаний.">
+    content="StartWave BDO Archive — проверенные данные о производстве и связях ресурсов, рабочих, городов, рецептов и предметов.">
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body>
+<body class="bdo-archive-body bdo-resource-atlas-body bdo-production-atlas-body">
   <div class="page-container">
     <header class="site-header">
       <div class="header-container">
@@ -44,7 +44,49 @@
       <button type="submit" class="search-button">Найти</button>
     </form>
 
-    <main class="content-main">
+    <main class="content-main bdo-knowledge-page">
+      <nav class="learning-breadcrumbs" aria-label="Хлебные крошки">
+        <a href="../index.html">StartWave</a><span aria-hidden="true">→</span><a href="../bdo.html">Chronicles of Black Desert</a><span aria-hidden="true">→</span><span aria-current="page">Производство</span>
+      </nav>
+
+      <section class="bdo-node-atlas-section" id="production-atlas" aria-labelledby="production-atlas-title">
+        <div class="bdo-resource-hero bdo-production-archive-hero">
+          <p class="bdo-resource-kicker">World Data Layer · Production Layer v0.1</p>
+          <h2 id="production-atlas-title">⚒ Атлас производства</h2>
+          <p>Структура для проверенных записей о входных ресурсах, выходных предметах, профессиях, городах, рабочих, рецептах и источниках.</p>
+          <div class="bdo-resource-summary" aria-label="Сводка слоя производства">
+            <span><strong id="productionArchiveResultCount">0 записей</strong> в коллекции</span>
+            <span><strong>0</strong> подтверждённых связей</span>
+            <span><strong>v0.1</strong> версия схемы</span>
+          </div>
+        </div>
+
+        <div class="bdo-node-relation-flow" aria-label="Цепочка мира">
+          <span>🏰 Город</span><i aria-hidden="true">→</i><span>🗺 Узел</span><i aria-hidden="true">→</i><span>🌲 Ресурс</span><i aria-hidden="true">→</i><span>👷 Рабочий</span><i aria-hidden="true">→</i><span>⚒ Производство</span><i aria-hidden="true">→</i><span>📦 Предмет</span>
+        </div>
+
+        <section class="bdo-resource-toolbar" aria-label="Поиск по атласу производства">
+          <label for="productionArchiveSearch">Поиск по названию, типу, статусу или ID</label>
+          <input id="productionArchiveSearch" type="search" placeholder="Начните вводить запрос…" autocomplete="off">
+        </section>
+
+        <div class="bdo-resource-section-heading">
+          <div><p class="bdo-resource-kicker">Verified records only</p><h2>Архивные записи</h2></div>
+          <span class="bdo-resource-verified-badge">Источник структуры: SW-GAMES BDO-DATA-010</span>
+        </div>
+        <div class="bdo-resource-grid" id="bdoProductionGrid" aria-live="polite" aria-busy="false"></div>
+        <p class="bdo-resource-empty" id="productionArchiveEmptyState">Подтверждённых производств пока нет. Структура готова к безопасному наполнению.</p>
+
+        <section class="bdo-resource-data-note" aria-labelledby="production-record-title">
+          <div><p class="bdo-resource-kicker">Production record</p><h2 id="production-record-title">Структура архивной записи</h2></div>
+          <p>Стабильный ID · название · тип производства · входные ресурсы · выходные предметы · связанные профессии · города · рабочие · рецепты · изображения · источник · дата проверки · статус.</p>
+        </section>
+
+        <section class="bdo-resource-data-note" aria-labelledby="production-policy-title">
+          <div><p class="bdo-resource-kicker">Data policy</p><h2 id="production-policy-title">Только подтверждённые данные</h2></div>
+          <p>Конкретные рецепты, количества материалов, время производства, цены, прибыль и экономические расчёты не добавляются без отдельной проверки источников.</p>
+        </section>
+      </section>
       <section class="page-intro">
         <h2 class="page-title">🛠️ Изготовление в BDO</h2>
         <p class="page-subtitle">Каркас страницы для будущей базы знаний по производству, мастерским и ресурсам</p>
@@ -92,5 +134,7 @@
   </div>
 
   <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/bdo-world-relations.js"></script>
+  <script src="../assets/js/bdo-productions.js"></script>
 </body>
 </html>

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "0.1.0",
+  "collectionId": "bdo-node-atlas",
+  "title": "Атлас узлов",
+  "updatedAt": "2026-08-01",
+  "entitySchema": {
+    "id": "string",
+    "name": "string",
+    "region": "string",
+    "nodeType": "string",
+    "resources": "string[]",
+    "workers": "string[]",
+    "production": "string[]",
+    "images": "string[]",
+    "coordinates": "object|null",
+    "source": "string",
+    "checkedAt": "YYYY-MM-DD",
+    "status": "unresearched|researching|verified",
+    "relations": {
+      "city": "string|null",
+      "mapPoints": "string[]",
+      "playerJourneySteps": "string[]"
+    }
+  },
+  "relationModel": ["city", "node", "resource", "worker", "production"],
+  "verificationPolicy": {
+    "status": "structure-only",
+    "source": "SW-GAMES BDO-DATA-006",
+    "scope": "Создана только структура Node Layer. Узлы, координаты и связи добавляются после отдельной проверки источника."
+  },
+  "nodes": []
+}

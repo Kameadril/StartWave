@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "0.1.0",
+  "collectionId": "bdo-item-atlas",
+  "title": "Атлас предметов",
+  "updatedAt": "2026-08-01",
+  "stage": "SW-GAMES BDO-DATA-011",
+  "entitySchema": {
+    "id": "string",
+    "name": "string",
+    "category": "string",
+    "itemType": "string",
+    "acquisition": "string[]",
+    "usage": "string[]",
+    "resources": "string[]",
+    "productions": "string[]",
+    "recipes": "string[]",
+    "cities": "string[]",
+    "images": "string[]",
+    "source": "string[]",
+    "checkedAt": "YYYY-MM-DD",
+    "status": "unresearched|researching|verified"
+  },
+  "relationModel": ["city", "node", "resource", "worker", "production", "item"],
+  "verificationPolicy": {
+    "status": "structure-only",
+    "source": "SW-GAMES BDO-DATA-011",
+    "scope": "Создана только структура Item Layer. Конкретные предметы, рецепты, количества материалов, цены, аукцион, прибыль и экономические расчёты добавляются только после отдельной проверки источника."
+  },
+  "items": []
+}

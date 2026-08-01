@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "0.2.0",
+  "collectionId": "bdo-knowledge-graph",
+  "title": "Связи мира",
+  "updatedAt": "2026-08-01",
+  "stage": "SW-GAMES BDO-DATA-013",
+  "entityTypes": {
+    "city": { "label": "Города", "icon": "🏰", "route": "bdo-cities.html" },
+    "node": { "label": "Узлы", "icon": "🗺", "route": "bdo-nodes.html" },
+    "resource": { "label": "Ресурсы", "icon": "🌲", "route": "bdo-resources.html" },
+    "worker": { "label": "Рабочие", "icon": "👷", "route": "bdo-workers.html" },
+    "production": { "label": "Производство", "icon": "⚒", "route": "bdo-crafting.html" },
+    "recipe": { "label": "Рецепты", "icon": "📜", "route": null },
+    "item": { "label": "Предметы", "icon": "📦", "route": "bdo-items.html" }
+  },
+  "relationChain": ["city", "node", "resource", "worker", "production", "item"],
+  "relationAliases": {
+    "city": { "nodes": "node", "resources": "resource", "production": "production" },
+    "node": { "city": "city", "resources": "resource", "workers": "worker", "production": "production" },
+    "resource": { "nodes": "node", "workers": "worker", "recipes": "production", "items": "item" },
+    "worker": { "hireCity": "city", "nodes": "node", "resources": "resource", "production": "production" },
+    "production": { "inputResources": "resource", "outputItems": "item", "cities": "city", "workers": "worker", "recipes": "recipe" },
+    "item": { "resources": "resource", "productions": "production", "recipes": "recipe", "cities": "city" }
+  },
+  "entities": {
+    "city": [{ "id": "bdo-city-calpheon", "name": "Кальфеон" }],
+    "node": [],
+    "resource": [
+      { "id": "bdo-resource-wood-ash", "name": "Ясень" },
+      { "id": "bdo-resource-wood-maple", "name": "Клён" },
+      { "id": "bdo-resource-wood-pine", "name": "Сосна" },
+      { "id": "bdo-resource-wood-alder", "name": "Ольха" },
+      { "id": "bdo-resource-wood-log", "name": "Бревно" },
+      { "id": "bdo-resource-wood-cypress", "name": "Кипарис" },
+      { "id": "bdo-resource-wood-cedar", "name": "Кедр" },
+      { "id": "bdo-resource-wood-fir", "name": "Пихта" },
+      { "id": "bdo-resource-wood-acacia", "name": "Акация" },
+      { "id": "bdo-resource-wood-palm", "name": "Пальма" },
+      { "id": "bdo-resource-wood-elder", "name": "Бузина" },
+      { "id": "bdo-resource-wood-mossy", "name": "Мшистая древесина" },
+      { "id": "bdo-resource-wood-thornwood", "name": "Терновая древесина" },
+      { "id": "bdo-resource-wood-snowfield-cedar", "name": "Древесина снежного кедра" }
+    ],
+    "worker": [],
+    "production": [],
+    "recipe": [],
+    "item": []
+  },
+  "edges": [],
+  "knowledgeChains": [
+    {
+      "id": "bdo-chain-wood-ash-v0-1",
+      "title": "Путь ресурса: Ясень",
+      "version": "0.1",
+      "rootEntity": { "type": "resource", "id": "bdo-resource-wood-ash" },
+      "status": "awaiting-verified-relations",
+      "stages": [
+        { "type": "resource", "entityIds": ["bdo-resource-wood-ash"], "status": "verified" },
+        { "type": "node", "entityIds": [], "status": "awaiting-data" },
+        { "type": "worker", "entityIds": [], "status": "awaiting-data" },
+        { "type": "production", "entityIds": [], "status": "awaiting-data" },
+        { "type": "item", "entityIds": [], "status": "awaiting-data" }
+      ]
+    }
+  ],
+  "policy": {
+    "verifiedRelationsOnly": true,
+    "emptyRelationsAreValid": true,
+    "futureUse": ["knowledge-graph", "ai-recommendations"]
+  }
+}

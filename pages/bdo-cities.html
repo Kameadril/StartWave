@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StartWave — Атлас городов BDO</title>
+  <meta name="description" content="STARTWAVE BDO ARCHIVE: проверенный слой городов Black Desert Online и будущие связи с узлами, картой и Player Journey.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bdo-archive-body bdo-resource-atlas-body bdo-city-atlas-body">
+  <header class="header bdo-site-header">
+    <a class="logo" href="../index.html" aria-label="StartWave — на главную"><h1>StartWave</h1></a>
+    <nav class="navigation" aria-label="Основная навигация">
+      <a href="../index.html">Главная</a>
+      <a href="../bdo.html" aria-current="page">BDO</a>
+      <a href="bdo-cities.html" aria-current="page">Города</a>
+      <a href="bdo-nodes.html">Узлы</a>
+      <a href="bdo-resources.html">Ресурсы</a>
+    </nav>
+  </header>
+
+  <div class="page-container bdo-resource-atlas">
+    <main class="content-main">
+      <nav class="bdo-archive-breadcrumbs" aria-label="Хлебные крошки">
+        <a href="../bdo.html">BDO Archive</a><span aria-hidden="true">/</span><span>Атлас городов</span>
+      </nav>
+
+      <section class="bdo-resource-hero bdo-city-archive-hero" aria-labelledby="city-atlas-title">
+        <p class="bdo-resource-kicker">World Data Layer · City Layer v0.1</p>
+        <h2 id="city-atlas-title">🏰 Атлас городов</h2>
+        <p>Верхний уровень архива мира: проверенные записи городов и безопасно подготовленные связи с узлами, ресурсами, производством, торговлей, картой и Player Journey.</p>
+        <div class="bdo-resource-summary" aria-label="Сводка коллекции">
+          <span><strong>1</strong> город</span>
+          <span><strong>0</strong> неподтверждённых связей</span>
+          <span><strong>2026-08-01</strong> проверено</span>
+        </div>
+      </section>
+
+      <div class="bdo-node-relation-flow" aria-label="Модель связей World Data Layer">
+        <span>Город</span><i aria-hidden="true">→</i><span>Узел</span><i aria-hidden="true">→</i><span>Ресурс</span><i aria-hidden="true">→</i><span>Рабочий</span><i aria-hidden="true">→</i><span>Производство</span>
+      </div>
+
+      <section class="bdo-resource-toolbar" aria-label="Поиск по атласу городов">
+        <label for="cityArchiveSearch">Поиск по городам</label>
+        <input id="cityArchiveSearch" type="search" placeholder="Название, регион, тип или ID…" autocomplete="off">
+        <output id="cityArchiveResultCount" for="cityArchiveSearch" aria-live="polite">1 из 1 записей</output>
+      </section>
+
+      <section class="bdo-node-map-placeholder" aria-labelledby="city-map-title">
+        <div><p class="bdo-resource-kicker">Map layer · reserved</p><h2 id="city-map-title">Карта городов</h2></div>
+        <p id="cityMapState">Карта ожидает подтверждённых координат городов.</p>
+      </section>
+
+      <section aria-labelledby="city-collection-title">
+        <div class="bdo-resource-section-heading">
+          <div><p>Коллекция · World Data Layer</p><h2 id="city-collection-title">Записи городов</h2></div>
+          <span class="bdo-resource-verified-badge">Структура: SW-GAMES BDO-DATA-007</span>
+        </div>
+        <div class="bdo-resource-grid" id="bdoCityGrid" aria-live="polite" aria-busy="false"></div>
+        <p class="bdo-resource-empty" id="cityArchiveEmptyState" hidden>Записей по этому запросу нет.</p>
+      </section>
+
+      <section class="bdo-resource-data-note" aria-labelledby="city-policy-title">
+        <h2 id="city-policy-title">Политика данных City Layer</h2>
+        <p>Для Кальфеона подтверждены только базовая идентичность, территория и тип города. Связанные узлы, ресурсы, производство, торговля, изображения, карта и Player Journey остаются пустыми; координаты — <code>null</code>. NPC, цены, маршруты и экономические значения не добавлены.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer"><p>&copy; 2026 Kameadril · StartWave</p></footer>
+  </div>
+
+  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/bdo-world-relations.js"></script>
+  <script src="../assets/js/bdo-cities.js"></script>
+</body>
+</html>

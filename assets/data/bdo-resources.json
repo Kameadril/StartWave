@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "0.2.0",
+  "collectionId": "bdo-resource-atlas-wood",
+  "title": "Атлас древесных ресурсов",
+  "updatedAt": "2026-08-01",
+  "verificationPolicy": {
+    "status": "seed-list-verified",
+    "source": "SW-GAMES BDO-DATA-005",
+    "scope": "Подтверждены только названия и принадлежность к базовой коллекции древесных ресурсов. Связи с узлами, рабочими, рецептами и экономикой не заполнены."
+  },
+  "resources": [
+    {"id":"bdo-resource-wood-ash","name":"Ясень","category":"Природный ресурс","resourceType":"Древесный ресурс","verification":{"status":"seed-list-verified","source":"SW-GAMES BDO-DATA-005","checkedAt":"2026-08-01"},"relations":{"nodes":[],"workers":[],"recipes":[],"items":[],"mapPoints":[],"playerJourneySteps":[]}},
+    {"id":"bdo-resource-wood-maple","name":"Клён","category":"Природный ресурс","resourceType":"Древесный ресурс","verification":{"status":"seed-list-verified","source":"SW-GAMES BDO-DATA-005","checkedAt":"2026-08-01"},"relations":{"nodes":[],"workers":[],"recipes":[],"items":[],"mapPoints":[],"playerJourneySteps":[]}},
+    {"id":"bdo-resource-wood-pine","name":"Сосна","category":"Природный ресурс","resourceType":"Древесный ресурс","verification":{"status":"seed-list-verified","source":"SW-GAMES BDO-DATA-005","checkedAt":"2026-08-01"},"relations":{"nodes":[],"workers":[],"recipes":[],"items":[],"mapPoints":[],"playerJourneySteps":[]}},
+    {"id":"bdo-resource-wood-alder","name":"Ольха","category":"Природный ресурс","resourceType":"Древесный ресурс","verification":{"status":"seed-list-verified","source":"SW-GAMES BDO-DATA-005","checkedAt":"2026-08-01"},"relations":{"nodes":[],"workers":[],"recipes":[],"items":[],"mapPoints":[],"playerJourneySteps":[]}},
+    {"id":"bdo-resource-wood-log","name":"Бревно","category":"Природный ресурс","resourceType":"Базовый древесный материал","verification":{"status":"seed-list-verified","source":"SW-GAMES BDO-DATA-005","checkedAt":"2026-08-01"},"relations":{"nodes":[],"workers":[],"recipes":[],"items":[],"mapPoints":[],"playerJourneySteps":[]}},
+    {"id":"bdo-resource-wood-cypress","name":"Кипарис","category":"Природный ресурс","resourceType":"Древесный ресурс","verification":{"status":"seed-list-verified","source":"SW-GAMES BDO-DATA-005","checkedAt":"2026-08-01"},"relations":{"nodes":[],"workers":[],"recipes":[],"items":[],"mapPoints":[],"playerJourneySteps":[]}},
+    {"id":"bdo-resource-wood-cedar","name":"Кедр","category":"Природный ресурс","resourceType":"Древесный ресурс","verification":{"status":"seed-list-verified","source":"SW-GAMES BDO-DATA-005","checkedAt":"2026-08-01"},"relations":{"nodes":[],"workers":[],"recipes":[],"items":[],"mapPoints":[],"playerJourneySteps":[]}},
+    {"id":"bdo-resource-wood-fir","name":"Пихта","category":"Природный ресурс","resourceType":"Древесный ресурс","verification":{"status":"seed-list-verified","source":"SW-GAMES BDO-DATA-005","checkedAt":"2026-08-01"},"relations":{"nodes":[],"workers":[],"recipes":[],"items":[],"mapPoints":[],"playerJourneySteps":[]}},
+    {"id":"bdo-resource-wood-acacia","name":"Акация","category":"Природный ресурс","resourceType":"Древесный ресурс","verification":{"status":"seed-list-verified","source":"SW-GAMES BDO-DATA-005","checkedAt":"2026-08-01"},"relations":{"nodes":[],"workers":[],"recipes":[],"items":[],"mapPoints":[],"playerJourneySteps":[]}},
+    {"id":"bdo-resource-wood-palm","name":"Пальма","category":"Природный ресурс","resourceType":"Древесный ресурс","verification":{"status":"seed-list-verified","source":"SW-GAMES BDO-DATA-005","checkedAt":"2026-08-01"},"relations":{"nodes":[],"workers":[],"recipes":[],"items":[],"mapPoints":[],"playerJourneySteps":[]}},
+    {"id":"bdo-resource-wood-elder","name":"Бузина","category":"Природный ресурс","resourceType":"Древесный ресурс","verification":{"status":"seed-list-verified","source":"SW-GAMES BDO-DATA-005","checkedAt":"2026-08-01"},"relations":{"nodes":[],"workers":[],"recipes":[],"items":[],"mapPoints":[],"playerJourneySteps":[]}},
+    {"id":"bdo-resource-wood-mossy","name":"Мшистая древесина","category":"Природный ресурс","resourceType":"Древесный ресурс","verification":{"status":"seed-list-verified","source":"SW-GAMES BDO-DATA-005","checkedAt":"2026-08-01"},"relations":{"nodes":[],"workers":[],"recipes":[],"items":[],"mapPoints":[],"playerJourneySteps":[]}},
+    {"id":"bdo-resource-wood-thornwood","name":"Терновая древесина","category":"Природный ресурс","resourceType":"Древесный ресурс","verification":{"status":"seed-list-verified","source":"SW-GAMES BDO-DATA-005","checkedAt":"2026-08-01"},"relations":{"nodes":[],"workers":[],"recipes":[],"items":[],"mapPoints":[],"playerJourneySteps":[]}},
+    {"id":"bdo-resource-wood-snowfield-cedar","name":"Древесина снежного кедра","category":"Природный ресурс","resourceType":"Древесный ресурс","verification":{"status":"seed-list-verified","source":"SW-GAMES BDO-DATA-005","checkedAt":"2026-08-01"},"relations":{"nodes":[],"workers":[],"recipes":[],"items":[],"mapPoints":[],"playerJourneySteps":[]}}
+  ]
+}

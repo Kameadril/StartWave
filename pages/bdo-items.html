@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>StartWave — BDO Атлас предметов</title><meta name="description" content="StartWave BDO Archive — структура проверенных предметов и их связей с ресурсами, производствами, рецептами и городами."><link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bdo-archive-body bdo-resource-atlas-body bdo-item-atlas-body">
+  <div class="page-container">
+    <header class="site-header"><div class="header-container"><div class="hero"><h1 class="site-title">StartWave</h1><p class="site-subtitle">Понемногу, но регулярно.</p></div><div class="mini-clock" aria-label="Текущее время и дата"><div class="mini-time" id="miniTime">15:06</div><div class="mini-date" id="miniDate">четверг, 4 июня</div></div><nav class="main-nav" aria-label="Основная навигация"><a href="../index.html" class="nav-button">Главная</a><a href="../entertainment.html" class="nav-button">Развлечения</a><a href="../services.html" class="nav-button">Сервисы</a><a href="../bdo.html" class="nav-button active" aria-current="page">BDO</a><a href="../ai.html" class="nav-button">AI</a></nav></div></header>
+    <form class="search-form" action="https://ya.ru/search/" method="get" target="_blank"><label for="search-input" class="visually-hidden">Поиск в Яндексе</label><input id="search-input" type="search" class="search-input" name="text" placeholder="Поиск в Яндексе..."><button type="submit" class="search-button">Найти</button></form>
+    <main class="content-main bdo-knowledge-page">
+      <nav class="learning-breadcrumbs" aria-label="Хлебные крошки"><a href="../index.html">StartWave</a><span aria-hidden="true">→</span><a href="../bdo.html">Chronicles of Black Desert</a><span aria-hidden="true">→</span><span aria-current="page">Предметы</span></nav>
+      <section class="bdo-node-atlas-section" id="item-atlas" aria-labelledby="item-atlas-title">
+        <div class="bdo-resource-hero bdo-item-archive-hero"><p class="bdo-resource-kicker">World Data Layer · Item Layer v0.1</p><h2 id="item-atlas-title">📦 Атлас предметов</h2><p>Архивная структура для проверенных предметов, способов получения и использования, а также связей с ресурсами, производствами, рецептами и городами.</p><div class="bdo-resource-summary" aria-label="Сводка слоя предметов"><span><strong id="itemArchiveResultCount">0 записей</strong> в коллекции</span><span><strong>0</strong> подтверждённых связей</span><span><strong>v0.1</strong> версия схемы</span></div></div>
+        <div class="bdo-node-relation-flow" aria-label="Цепочка мира"><span>🏰 Город</span><i aria-hidden="true">→</i><span>🗺 Узел</span><i aria-hidden="true">→</i><span>🌲 Ресурс</span><i aria-hidden="true">→</i><span>👷 Рабочий</span><i aria-hidden="true">→</i><span>⚒ Производство</span><i aria-hidden="true">→</i><span>📦 Предмет</span></div>
+        <section class="bdo-resource-toolbar" aria-label="Поиск по атласу предметов"><label for="itemArchiveSearch">Поиск по названию, категории, типу или ID</label><input id="itemArchiveSearch" type="search" placeholder="Начните вводить запрос…" autocomplete="off"></section>
+        <div class="bdo-resource-section-heading"><div><p class="bdo-resource-kicker">Verified records only</p><h2>Архивные записи</h2></div><span class="bdo-resource-verified-badge">Источник структуры: SW-GAMES BDO-DATA-011</span></div>
+        <div class="bdo-resource-grid" id="bdoItemGrid" aria-live="polite" aria-busy="false"></div><p class="bdo-resource-empty" id="itemArchiveEmptyState">Подтверждённых предметов пока нет. Структура готова к безопасному наполнению.</p>
+        <section class="bdo-resource-data-note" aria-labelledby="item-record-title"><div><p class="bdo-resource-kicker">Item record</p><h2 id="item-record-title">Структура архивной записи</h2></div><p>Стабильный ID · название · категория · тип · получение · использование · связанные ресурсы · производства · рецепты · города · изображения · источник · дата проверки · статус.</p></section>
+        <section class="bdo-resource-data-note" aria-labelledby="item-policy-title"><div><p class="bdo-resource-kicker">Data policy</p><h2 id="item-policy-title">Только подтверждённые данные</h2></div><p>Конкретные предметы, рецепты, количества материалов, цены, аукцион, прибыль и экономические расчёты не добавляются без отдельной проверки источников.</p></section>
+      </section>
+    </main>
+    <footer class="site-footer"><p>&copy; 2026 Kameadril · StartWave</p></footer>
+  </div>
+  <script src="../assets/js/script.js"></script><script src="../assets/js/bdo-world-relations.js"></script><script src="../assets/js/bdo-items.js"></script>
+</body>
+</html>
