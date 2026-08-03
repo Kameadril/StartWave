@@ -1,29 +1,42 @@
 {
-  "schemaVersion": "0.1.0",
+  "schemaVersion": "0.2.0",
   "collectionId": "bdo-production-atlas",
-  "title": "Атлас производства",
-  "updatedAt": "2026-08-01",
-  "stage": "SW-GAMES BDO-DATA-010",
+  "title": "Calpheon Production Archive",
+  "updatedAt": "2026-08-04",
+  "stage": "SW-GAMES BDO-DATA-013",
   "entitySchema": {
     "id": "string",
     "name": "string",
     "productionType": "string",
-    "inputResources": "string[]",
-    "outputItems": "string[]",
+    "description": "string",
+    "inputItemIds": "string[]",
+    "outputItemIds": "string[]",
+    "chainItemIds": "string[]",
     "professions": "string[]",
     "cities": "string[]",
     "workers": "string[]",
     "recipes": "string[]",
-    "images": "string[]",
     "source": "string[]",
     "checkedAt": "YYYY-MM-DD",
-    "status": "unresearched|researching|verified"
+    "status": "curated|verified"
   },
-  "relationModel": ["city", "node", "resource", "worker", "production", "item"],
-  "verificationPolicy": {
-    "status": "structure-only",
-    "source": "SW-GAMES BDO-DATA-010",
-    "scope": "Создана только структура Production Layer. Рецепты, количества материалов, время производства, цены, прибыль и экономические расчёты добавляются только после отдельной проверки источника."
-  },
-  "productions": []
+  "relationModel": ["resource", "item", "production", "worker", "city", "trade"],
+  "productions": [
+    {
+      "id": "SW-PROD-001",
+      "name": "Кальфеонская древесная цепочка",
+      "productionType": "Обработка древесины и упаковка",
+      "description": "Путь от исходной древесины через обработанные материалы к готовому имперскому торговому грузу.",
+      "inputItemIds": ["SW-ITEM-013", "SW-ITEM-016"],
+      "outputItemIds": ["SW-ITEM-017"],
+      "chainItemIds": ["SW-ITEM-013", "SW-ITEM-014", "SW-ITEM-015", "SW-ITEM-016", "SW-ITEM-017"],
+      "professions": ["Обработка", "Упаковка", "Имперская торговля"],
+      "cities": ["Кальфеон"],
+      "workers": ["Рабочий мастерской упаковки"],
+      "recipes": ["wood-plank", "plywood", "pine-plank", "pine-plywood", "calpheon-timber-crate"],
+      "source": ["StartWave Calpheon Archive starter chain"],
+      "checkedAt": "2026-08-04",
+      "status": "curated"
+    }
+  ]
 }

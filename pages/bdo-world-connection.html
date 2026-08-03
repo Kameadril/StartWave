@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StartWave — Связанный мир BDO</title>
+  <meta name="description" content="Первый обзор слоёв мира BDO: Кальфеон, Knowledge Layer, Ясень и ожидающие подтверждения связи.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bdo-archive-body bdo-resource-atlas-body bdo-world-view-body">
+  <header class="header bdo-site-header"><a class="logo" href="../index.html" aria-label="StartWave — на главную"><h1>StartWave</h1></a><nav class="navigation" aria-label="Основная навигация"><a href="../index.html">Главная</a><a href="../bdo.html">BDO</a><a href="bdo-world-connection.html" aria-current="page">Мир</a><a href="bdo-region-calpheon.html">Регион</a><a href="bdo-knowledge-layer.html">Знания</a><a href="bdo-resources.html">Ресурсы</a></nav></header>
+  <div class="page-container bdo-resource-atlas"><main class="content-main" id="bdoWorldView" aria-busy="true">
+    <nav class="bdo-archive-breadcrumbs" aria-label="Хлебные крошки"><a href="../bdo.html">BDO Archive</a><span aria-hidden="true">/</span><span>Связанный мир</span></nav>
+    <section class="bdo-resource-hero bdo-world-view__hero" aria-labelledby="worldViewTitle"><p class="bdo-resource-kicker">BDO DATA EXPANSION v0.7 · First World Connection View</p><h2 id="worldViewTitle">Мир как система слоёв</h2><p>Первый общий экран архива показывает, какие части мира уже существуют в данных, а где связи ещё ждут подтверждения.</p><div class="bdo-resource-summary"><span><strong id="worldVerifiedCount">—</strong> подтверждённые записи</span><span><strong id="worldRelationCount">—</strong> игровые связи</span><span><strong id="worldAwaitingCount">—</strong> ожидающие слои</span></div></section>
+    <section class="bdo-world-canvas" aria-labelledby="worldCanvasTitle"><header><div><p class="bdo-resource-kicker">World connection canvas · foundation</p><h2 id="worldCanvasTitle">Первый фрагмент мира</h2></div><span class="bdo-world-canvas__legend"><i aria-hidden="true"></i> Пунктир — контекст, не игровая связь</span></header><div class="bdo-world-canvas__stage" id="worldConnectionStage" aria-live="polite"><p class="bdo-resource-empty">Загрузка слоёв…</p></div></section>
+    <section class="bdo-world-status" aria-labelledby="worldStatusTitle"><div><p class="bdo-resource-kicker">Knowledge Graph</p><h2 id="worldStatusTitle">Статус связей</h2></div><p id="worldRelationStatus">Проверка графа…</p><small>Совместное отображение Кальфеона и Ясеня помогает исследовать архив, но не подтверждает связь между ними.</small></section>
+    <section class="bdo-world-future" aria-labelledby="worldFutureTitle"><header><div><p class="bdo-resource-kicker">Future world layers</p><h2 id="worldFutureTitle">Следующие точки соединения</h2></div><span>Появятся только после проверки данных</span></header><div id="worldFutureLayers"></div></section>
+    <section class="bdo-world-map-reserve" aria-labelledby="worldMapTitle"><span aria-hidden="true">⌖</span><div><p class="bdo-resource-kicker">Interactive world map · reserved</p><h2 id="worldMapTitle">Основа будущей карты</h2><p>Экран уже разделяет объекты, слои и связи. Пространственное размещение откроется, когда появятся подтверждённые координаты.</p></div><small>Координаты не добавлены</small></section>
+    <section class="bdo-resource-data-note"><h2>Граница достоверности</h2><p>Экран читает существующие данные Кальфеона, Ясеня, Knowledge Layer и Knowledge Graph. NPC, монстры, координаты, рецепты, цены и экономика не добавлены; сам граф не изменён.</p></section>
+  </main><footer class="site-footer"><p>&copy; 2026 Kameadril · StartWave</p></footer></div>
+  <script src="../assets/js/script.js"></script><script src="../assets/js/bdo-world-connection.js"></script>
+</body>
+</html>

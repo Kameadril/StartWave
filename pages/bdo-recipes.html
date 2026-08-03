@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calpheon Recipe Archive — рецепты BDO | StartWave</title>
+  <meta name="description" content="Рецепты Black Desert Online: связи предметов, необходимых материалов, производства и результата в Calpheon Archive.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bdo-archive-body bdo-resource-atlas-body bdo-production-atlas-body">
+  <div class="page-container">
+    <header class="site-header"><div class="header-container"><div class="hero"><h1 class="site-title">StartWave</h1><p class="site-subtitle">Понемногу, но регулярно.</p></div><div class="mini-clock" aria-label="Текущее время и дата"><div class="mini-time" id="miniTime">15:06</div><div class="mini-date" id="miniDate">четверг, 4 июня</div></div><nav class="main-nav" aria-label="Основная навигация"><a href="../index.html" class="nav-button">Главная</a><a href="../entertainment.html" class="nav-button">Развлечения</a><a href="../services.html" class="nav-button">Сервисы</a><a href="../bdo.html" class="nav-button active" aria-current="page">BDO</a><a href="../ai.html" class="nav-button">AI</a></nav></div></header>
+    <form class="search-form" action="https://ya.ru/search/" method="get" target="_blank"><label for="search-input" class="visually-hidden">Поиск в Яндексе</label><input id="search-input" type="search" class="search-input" name="text" placeholder="Поиск в Яндексе..."><button type="submit" class="search-button">Найти</button></form>
+
+    <main class="content-main bdo-knowledge-page" data-learning-page data-learning-title="Рецепты">
+      <nav class="learning-breadcrumbs" aria-label="Хлебные крошки"><a href="../index.html">StartWave</a><span aria-hidden="true">→</span><a href="../bdo.html">Chronicles of Black Desert</a><span aria-hidden="true">→</span><span aria-current="page">Рецепты</span></nav>
+      <nav class="learning-step-nav" aria-label="Предыдущий и следующий раздел"><a class="learning-step-button learning-step-button-previous" href="bdo-items.html"><span>← Предыдущий раздел</span><strong>Архив предметов</strong></a><a class="learning-step-button learning-step-button-next" href="bdo-production.html"><span>Следующий раздел →</span><strong>Производственные цепочки</strong></a></nav>
+
+      <section class="bdo-hero" id="page-start" aria-labelledby="recipes-title" data-route-item data-route-title="Старт">
+        <span class="bdo-hero-kicker">STARTWAVE BDO ARCHIVE · CALPHEON RECIPE ARCHIVE</span>
+        <h2 id="recipes-title">📜 Рецепты BDO</h2>
+        <p>Рецепт становится связующим звеном между предметом, необходимыми материалами, производственным процессом и результатом. Все переходы опираются на стабильные ID архивов.</p>
+        <div class="bdo-hero-actions" aria-label="Этапы рецепта"><span>Предмет</span><span>Рецепт</span><span>Материалы</span><span>Производство</span><span>Результат</span></div>
+      </section>
+
+      <section class="bdo-node-atlas-section" id="recipe-atlas" aria-labelledby="recipe-atlas-title">
+        <div class="bdo-resource-hero bdo-production-archive-hero"><p class="bdo-resource-kicker">World Data Layer · Recipe Layer v0.1</p><h2 id="recipe-atlas-title">📜 Calpheon Recipe Archive</h2><p>Архив читает рецепты из отдельной коллекции и сопоставляет материалы и результаты с Item Archive, а способ изготовления — с Production Archive.</p><div class="bdo-resource-summary" aria-label="Сводка слоя рецептов"><span><strong id="recipeArchiveResultCount">0 рецептов</strong> в коллекции</span><span><strong id="recipeArchiveRelationCount">0 связей</strong> подготовлено</span><span><strong>v0.1</strong> версия схемы</span></div></div>
+
+        <div class="bdo-node-relation-flow" aria-label="Общая модель рецепта"><span>📦 Предмет</span><i aria-hidden="true">→</i><span>📜 Рецепт</span><i aria-hidden="true">→</i><span>🧺 Материалы</span><i aria-hidden="true">→</i><span>⚒ Производство</span><i aria-hidden="true">→</i><span>✨ Результат</span></div>
+
+        <section class="bdo-resource-toolbar" aria-label="Поиск по рецептам"><label for="recipeArchiveSearch">Поиск по рецепту, материалу, результату, способу или ID</label><input id="recipeArchiveSearch" type="search" placeholder="Например: фанера, рубка или SW-RECIPE-001" autocomplete="off"></section>
+        <div class="bdo-resource-section-heading"><div><p class="bdo-resource-kicker">Calpheon Archive collection</p><h2>Рецепты</h2></div><span class="bdo-resource-verified-badge">Связано с Item и Production Archive</span></div>
+        <div class="bdo-resource-grid" id="bdoRecipeGrid" aria-live="polite" aria-busy="true"></div>
+        <p class="bdo-resource-empty" id="recipeArchiveEmptyState" hidden>По выбранным условиям рецепты не найдены.</p>
+
+        <section class="bdo-resource-data-note" aria-labelledby="recipe-record-title"><div><p class="bdo-resource-kicker">Recipe record v0.1</p><h2 id="recipe-record-title">Связь данных</h2></div><p>Каждый рецепт имеет стабильный ID, хранит ID необходимых предметов, результата и производственной цепочки. Названия выводятся из действующих архивов, поэтому переименование карточки не разрывает связи.</p></section>
+        <section class="bdo-resource-data-note" aria-labelledby="recipe-policy-title"><div><p class="bdo-resource-kicker">Data policy</p><h2 id="recipe-policy-title">Структура без неподтверждённых чисел</h2></div><p>Стартовая коллекция фиксирует состав и направление рецептов. Точные количества материалов, время изготовления, цены и прибыль будут добавлены только после отдельной проверки источников.</p></section>
+      </section>
+
+      <section class="bdo-section bdo-next-learning" id="related-archives" aria-labelledby="related-archives-title" data-route-item data-route-title="Связанные архивы"><div class="bdo-section-heading"><span class="bdo-section-kicker">Продолжить исследование</span><h2 id="related-archives-title">Связанные разделы</h2><p>Откройте карточки входных материалов, итоговых предметов и полные производственные цепочки.</p></div><div class="bdo-next-learning-grid"><article class="bdo-next-learning-card"><span aria-hidden="true">📦</span><h3>Архив предметов</h3><p>Материалы и результаты каждого рецепта.</p><a href="bdo-items.html">Открыть предметы →</a></article><article class="bdo-next-learning-card"><span aria-hidden="true">⚒</span><h3>Производство</h3><p>Путь от сырья до готового товара.</p><a href="bdo-production.html">Открыть производство →</a></article><article class="bdo-next-learning-card"><span aria-hidden="true">🌲</span><h3>Атлас ресурсов</h3><p>Источники исходных материалов.</p><a href="bdo-resources.html">Открыть ресурсы →</a></article><article class="bdo-next-learning-card"><span aria-hidden="true">👷</span><h3>Рабочие</h3><p>Участники мастерских и упаковки.</p><a href="bdo-workers.html">Открыть рабочих →</a></article></div></section>
+    </main>
+    <footer class="site-footer"><p>&copy; 2026 Kameadril · StartWave</p></footer>
+  </div>
+  <script src="../assets/js/script.js"></script><script src="../assets/js/bdo-world-relations.js"></script><script src="../assets/js/bdo-recipes.js"></script>
+</body>
+</html>

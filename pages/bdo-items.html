@@ -1,22 +1,50 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>StartWave — BDO Атлас предметов</title><meta name="description" content="StartWave BDO Archive — структура проверенных предметов и их связей с ресурсами, производствами, рецептами и городами."><link rel="stylesheet" href="../assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calpheon Item Archive — предметы BDO | StartWave</title>
+  <meta name="description" content="Архив предметов Black Desert Online: получение, применение и связи с ресурсами, производством, рецептами и городами.">
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body class="bdo-archive-body bdo-resource-atlas-body bdo-item-atlas-body">
   <div class="page-container">
     <header class="site-header"><div class="header-container"><div class="hero"><h1 class="site-title">StartWave</h1><p class="site-subtitle">Понемногу, но регулярно.</p></div><div class="mini-clock" aria-label="Текущее время и дата"><div class="mini-time" id="miniTime">15:06</div><div class="mini-date" id="miniDate">четверг, 4 июня</div></div><nav class="main-nav" aria-label="Основная навигация"><a href="../index.html" class="nav-button">Главная</a><a href="../entertainment.html" class="nav-button">Развлечения</a><a href="../services.html" class="nav-button">Сервисы</a><a href="../bdo.html" class="nav-button active" aria-current="page">BDO</a><a href="../ai.html" class="nav-button">AI</a></nav></div></header>
     <form class="search-form" action="https://ya.ru/search/" method="get" target="_blank"><label for="search-input" class="visually-hidden">Поиск в Яндексе</label><input id="search-input" type="search" class="search-input" name="text" placeholder="Поиск в Яндексе..."><button type="submit" class="search-button">Найти</button></form>
-    <main class="content-main bdo-knowledge-page">
+    <main class="content-main bdo-knowledge-page" data-learning-page data-learning-title="Предметы">
       <nav class="learning-breadcrumbs" aria-label="Хлебные крошки"><a href="../index.html">StartWave</a><span aria-hidden="true">→</span><a href="../bdo.html">Chronicles of Black Desert</a><span aria-hidden="true">→</span><span aria-current="page">Предметы</span></nav>
+      <nav class="learning-step-nav" aria-label="Предыдущий и следующий раздел">
+        <a class="learning-step-button learning-step-button-previous" href="bdo-production.html"><span>← Предыдущий раздел</span><strong>Производственные цепочки</strong></a>
+        <a class="learning-step-button learning-step-button-next" href="bdo-recipes.html"><span>Следующий раздел →</span><strong>Архив рецептов</strong></a>
+      </nav>
+
+      <section class="bdo-hero" id="page-start" aria-labelledby="items-title" data-route-item data-route-title="Старт">
+        <span class="bdo-hero-kicker">STARTWAVE BDO ARCHIVE · CALPHEON ITEM ARCHIVE</span>
+        <h2 id="items-title">📦 Архив предметов BDO</h2>
+        <p>Материалы, товары и предметы мира Black Desert, связанные в единую базу знаний: где получить, как произвести и где использовать.</p>
+        <div class="bdo-hero-actions" aria-label="Категории архива">
+          <span>Материалы</span><span>Производство</span><span>Кулинария</span><span>Алхимия</span><span>Рыбалка</span><span>Торговля</span>
+        </div>
+      </section>
+
       <section class="bdo-node-atlas-section" id="item-atlas" aria-labelledby="item-atlas-title">
-        <div class="bdo-resource-hero bdo-item-archive-hero"><p class="bdo-resource-kicker">World Data Layer · Item Layer v0.1</p><h2 id="item-atlas-title">📦 Атлас предметов</h2><p>Архивная структура для проверенных предметов, способов получения и использования, а также связей с ресурсами, производствами, рецептами и городами.</p><div class="bdo-resource-summary" aria-label="Сводка слоя предметов"><span><strong id="itemArchiveResultCount">0 записей</strong> в коллекции</span><span><strong>0</strong> подтверждённых связей</span><span><strong>v0.1</strong> версия схемы</span></div></div>
+        <div class="bdo-resource-hero bdo-item-archive-hero"><p class="bdo-resource-kicker">World Data Layer · Item Layer v0.2</p><h2 id="item-atlas-title">📦 Calpheon Item Archive</h2><p>Полевая картотека материалов, инструментов, еды, алхимии и торговых ценностей: способы получения, практическое применение и связи с другими объектами мира.</p><div class="bdo-resource-summary" aria-label="Сводка слоя предметов"><span><strong id="itemArchiveTotalCount">0 предметов</strong> в базе</span><span><strong id="itemArchiveRelationCount">0 связей</strong> подготовлено</span><span><strong>v0.2</strong> версия схемы</span></div></div>
         <div class="bdo-node-relation-flow" aria-label="Цепочка мира"><span>🏰 Город</span><i aria-hidden="true">→</i><span>🗺 Узел</span><i aria-hidden="true">→</i><span>🌲 Ресурс</span><i aria-hidden="true">→</i><span>👷 Рабочий</span><i aria-hidden="true">→</i><span>⚒ Производство</span><i aria-hidden="true">→</i><span>📦 Предмет</span></div>
-        <section class="bdo-resource-toolbar" aria-label="Поиск по атласу предметов"><label for="itemArchiveSearch">Поиск по названию, категории, типу или ID</label><input id="itemArchiveSearch" type="search" placeholder="Начните вводить запрос…" autocomplete="off"></section>
-        <div class="bdo-resource-section-heading"><div><p class="bdo-resource-kicker">Verified records only</p><h2>Архивные записи</h2></div><span class="bdo-resource-verified-badge">Источник структуры: SW-GAMES BDO-DATA-011</span></div>
-        <div class="bdo-resource-grid" id="bdoItemGrid" aria-live="polite" aria-busy="false"></div><p class="bdo-resource-empty" id="itemArchiveEmptyState">Подтверждённых предметов пока нет. Структура готова к безопасному наполнению.</p>
-        <section class="bdo-resource-data-note" aria-labelledby="item-record-title"><div><p class="bdo-resource-kicker">Item record</p><h2 id="item-record-title">Структура архивной записи</h2></div><p>Стабильный ID · название · категория · тип · получение · использование · связанные ресурсы · производства · рецепты · города · изображения · источник · дата проверки · статус.</p></section>
+        <section class="bdo-resource-toolbar bdo-item-toolbar" aria-label="Поиск и фильтры по атласу предметов"><label for="itemArchiveSearch">Поиск по названию, категории, типу или ID</label><input id="itemArchiveSearch" type="search" placeholder="Например: древесина, зелье или SW-ITEM-001" autocomplete="off"><button class="bdo-item-search-clear" id="itemArchiveClear" type="button">Очистить</button><div class="bdo-item-category-list" id="itemArchiveCategories" aria-label="Категории предметов"></div></section>
+        <div class="bdo-resource-section-heading"><div><p class="bdo-resource-kicker">Calpheon Archive collection</p><h2>Предметы</h2></div><span class="bdo-resource-verified-badge" id="itemArchiveResultCount">Загрузка записей…</span></div>
+        <div class="bdo-resource-grid bdo-item-grid" id="bdoItemGrid" aria-live="polite" aria-busy="true"></div><p class="bdo-resource-empty" id="itemArchiveEmptyState" hidden>По выбранным условиям предметы не найдены. Измените категорию или поисковый запрос.</p>
+        <section class="bdo-resource-data-note" aria-labelledby="item-record-title"><div><p class="bdo-resource-kicker">Item record v0.2</p><h2 id="item-record-title">Структура архивной записи</h2></div><p>Стабильный ID · название · категория · тип · качество · получение · производство · использование · связи · ресурсы · рецепты · города · источник · дата проверки · статус. Связи хранятся по ID, поэтому карточки можно объединять в рецепты и производственные цепочки без изменения разметки.</p></section>
         <section class="bdo-resource-data-note" aria-labelledby="item-policy-title"><div><p class="bdo-resource-kicker">Data policy</p><h2 id="item-policy-title">Только подтверждённые данные</h2></div><p>Конкретные предметы, рецепты, количества материалов, цены, аукцион, прибыль и экономические расчёты не добавляются без отдельной проверки источников.</p></section>
+      </section>
+
+      <section class="bdo-section bdo-next-learning" id="related-archives" aria-labelledby="related-archives-title" data-route-item data-route-title="Связанные архивы">
+        <div class="bdo-section-heading"><span class="bdo-section-kicker">Продолжить исследование</span><h2 id="related-archives-title">Связанные разделы</h2><p>Перейдите к источникам предметов и производственным системам BDO Archive.</p></div>
+        <div class="bdo-next-learning-grid">
+          <article class="bdo-next-learning-card"><span aria-hidden="true">🌲</span><h3>Атлас ресурсов</h3><p>Природные материалы и их связи с узлами мира.</p><a href="bdo-resources.html">Открыть архив →</a></article>
+          <article class="bdo-next-learning-card"><span aria-hidden="true">⚒</span><h3>Производство</h3><p>Обработка материалов и создание готовых предметов.</p><a href="bdo-production.html">Перейти к производству →</a></article>
+          <article class="bdo-next-learning-card"><span aria-hidden="true">📜</span><h3>Рецепты</h3><p>Необходимые материалы, способы производства и результаты.</p><a href="bdo-recipes.html">Открыть рецепты →</a></article>
+          <article class="bdo-next-learning-card"><span aria-hidden="true">👷</span><h3>Рабочие</h3><p>Автоматическая добыча ресурсов для будущих цепочек.</p><a href="bdo-workers.html">Открыть архив рабочих →</a></article>
+        </div>
       </section>
     </main>
     <footer class="site-footer"><p>&copy; 2026 Kameadril · StartWave</p></footer>

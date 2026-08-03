@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "0.2.0",
+  "schemaVersion": "0.4.0",
   "collectionId": "bdo-knowledge-graph",
   "title": "Связи мира",
-  "updatedAt": "2026-08-01",
+  "updatedAt": "2026-08-02",
   "stage": "SW-GAMES BDO-DATA-013",
   "entityTypes": {
     "city": { "label": "Города", "icon": "🏰", "route": "bdo-cities.html" },
@@ -21,6 +21,25 @@
     "worker": { "hireCity": "city", "nodes": "node", "resources": "resource", "production": "production" },
     "production": { "inputResources": "resource", "outputItems": "item", "cities": "city", "workers": "worker", "recipes": "recipe" },
     "item": { "resources": "resource", "productions": "production", "recipes": "recipe", "cities": "city" }
+  },
+  "chainArchitecture": {
+    "version": "0.3",
+    "stageOrder": ["resource", "node", "worker", "production", "item"],
+    "stageContract": {
+      "type": "entityTypes key",
+      "position": "integer",
+      "role": "string",
+      "entityIds": "verified entity id[]",
+      "status": "verified|researching|awaiting-data",
+      "verificationRequirement": "string"
+    },
+    "allowedStatuses": ["verified", "researching", "awaiting-data"],
+    "rules": [
+      "entityIds contain only separately verified records",
+      "edges contain only separately verified relations",
+      "an empty entityIds array is a valid awaiting state",
+      "player progress is not evidence for a world relation"
+    ]
   },
   "entities": {
     "city": [{ "id": "bdo-city-calpheon", "name": "Кальфеон" }],
@@ -47,19 +66,61 @@
     "item": []
   },
   "edges": [],
+  "livingObjectPreviews": [
+    {
+      "id": "bdo-living-object-ash-v0-4",
+      "version": "0.4",
+      "objectRef": { "type": "resource", "id": "bdo-resource-wood-ash", "status": "verified" },
+      "contextRef": { "type": "city", "id": "bdo-city-calpheon", "status": "context-only" },
+      "contextNote": "Кальфеон — контекст исследования. Игровая связь с ресурсом не подтверждена.",
+      "chainId": "bdo-chain-wood-ash-v0-1",
+      "status": "living-preview"
+    }
+  ],
+  "regionPreparations": [
+    {
+      "id": "bdo-region-preparation-calpheon-v0-2",
+      "title": "Кальфеонский регион",
+      "version": "0.2",
+      "status": "researching",
+      "cityRef": { "type": "city", "id": "bdo-city-calpheon", "status": "verified" },
+      "chainId": "bdo-chain-calpheon-preparation-v0-2",
+      "scope": "Первый живой прототип региона. Кальфеон подтверждён как город; ступени ресурс → узел → рабочий → производство → предмет остаются тестовым каркасом до проверки игровых связей.",
+      "constraints": {
+        "verifiedRelationsOnly": true,
+        "coordinates": null,
+        "economyIncluded": false,
+        "recipesIncluded": false
+      }
+    }
+  ],
   "knowledgeChains": [
     {
-      "id": "bdo-chain-wood-ash-v0-1",
-      "title": "Путь ресурса: Ясень",
-      "version": "0.1",
-      "rootEntity": { "type": "resource", "id": "bdo-resource-wood-ash" },
-      "status": "awaiting-verified-relations",
+      "id": "bdo-chain-calpheon-preparation-v0-2",
+      "title": "Кальфеон: каркас первой живой цепочки",
+      "version": "0.2",
+      "rootEntity": { "type": "city", "id": "bdo-city-calpheon" },
+      "status": "test-awaiting-verified-relations",
       "stages": [
-        { "type": "resource", "entityIds": ["bdo-resource-wood-ash"], "status": "verified" },
+        { "type": "resource", "entityIds": [], "status": "awaiting-data" },
         { "type": "node", "entityIds": [], "status": "awaiting-data" },
         { "type": "worker", "entityIds": [], "status": "awaiting-data" },
         { "type": "production", "entityIds": [], "status": "awaiting-data" },
         { "type": "item", "entityIds": [], "status": "awaiting-data" }
+      ]
+    },
+    {
+      "id": "bdo-chain-wood-ash-v0-1",
+      "title": "Первая подтверждённая цепочка: Ясень",
+      "version": "0.4",
+      "rootEntity": { "type": "resource", "id": "bdo-resource-wood-ash" },
+      "status": "architecture-ready-awaiting-verified-relations",
+      "stages": [
+        { "position": 1, "type": "resource", "role": "chain-root", "entityIds": ["bdo-resource-wood-ash"], "status": "verified", "verificationRequirement": "verified resource record" },
+        { "position": 2, "type": "node", "role": "resource-source", "entityIds": [], "status": "awaiting-data", "verificationRequirement": "verified node record and verified node-to-resource relation" },
+        { "position": 3, "type": "worker", "role": "node-worker", "entityIds": [], "status": "awaiting-data", "verificationRequirement": "verified worker record and verified worker-to-node relation" },
+        { "position": 4, "type": "production", "role": "resource-processing", "entityIds": [], "status": "awaiting-data", "verificationRequirement": "verified production record and verified input relation" },
+        { "position": 5, "type": "item", "role": "production-output", "entityIds": [], "status": "awaiting-data", "verificationRequirement": "verified item record and verified production output relation" }
       ]
     }
   ],

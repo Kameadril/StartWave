@@ -2,28 +2,81 @@
   const grid = document.getElementById('bdoItemGrid');
   const search = document.getElementById('itemArchiveSearch');
   const count = document.getElementById('itemArchiveResultCount');
+  const total = document.getElementById('itemArchiveTotalCount');
+  const relationCount = document.getElementById('itemArchiveRelationCount');
+  const categories = document.getElementById('itemArchiveCategories');
+  const clear = document.getElementById('itemArchiveClear');
   const empty = document.getElementById('itemArchiveEmptyState');
-  if (!grid || !search || !count || !empty) return;
+  if (!grid || !search || !count || !total || !relationCount || !categories || !clear || !empty) return;
 
   const normalize = (value) => String(value ?? '').toLocaleLowerCase('ru-RU').trim();
-  const statusLabels = { unresearched: 'Не исследовано', researching: 'Исследуется', verified: 'Подтверждено' };
+  const statusLabels = { unresearched: 'Не исследовано', researching: 'Исследуется', verified: 'Проверено', curated: 'Архивная запись' };
   const listCount = (value) => Array.isArray(value) ? value.length : 0;
+  const escapeHtml = (value) => String(value ?? '').replace(/[&<>"]/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[character]);
+  const glyphs = { 'Материалы': '◆', 'Инструменты': '⚒', 'Кулинария': '♨', 'Алхимия': '⚗', 'Торговля': '◈' };
+  const renderList = (values, emptyText) => {
+    const entries = Array.isArray(values) ? values : [];
+    return entries.length
+      ? `<ul>${entries.map((entry) => `<li>${escapeHtml(typeof entry === 'string' ? entry : entry.label)}</li>`).join('')}</ul>`
+      : `<p class="bdo-item-detail-empty">${emptyText}</p>`;
+  };
   const createCard = (item) => {
     const article = document.createElement('article');
     article.className = 'bdo-resource-record bdo-item-record';
     article.id = item.id;
     article.dataset.itemId = item.id;
     article.innerHTML = `
-      <header class="bdo-resource-record__header"><span class="bdo-resource-record__glyph" aria-hidden="true">📦</span><div><p class="bdo-resource-record__eyebrow">Item record</p><h3>${item.name}</h3></div><span class="bdo-resource-record__status">${statusLabels[item.status] || item.status}</span></header>
-      <dl class="bdo-resource-record__facts"><div><dt>ID</dt><dd><code>${item.id}</code></dd></div><div><dt>Категория</dt><dd>${item.category}</dd></div><div><dt>Тип</dt><dd>${item.itemType}</dd></div><div><dt>Дата проверки</dt><dd><time datetime="${item.checkedAt}">${item.checkedAt}</time></dd></div></dl>
-      <div class="bdo-resource-record__relations" aria-label="Связи предмета"><span class="bdo-resource-record__relations-title">Подтверждённые связи</span><span>Получение: <strong>${listCount(item.acquisition)}</strong></span><span>Использование: <strong>${listCount(item.usage)}</strong></span><span>Ресурсы: <strong>${listCount(item.resources)}</strong></span><span>Производства: <strong>${listCount(item.productions)}</strong></span><span>Рецепты: <strong>${listCount(item.recipes)}</strong></span><span>Города: <strong>${listCount(item.cities)}</strong></span><span>Изображения: <strong>${listCount(item.images)}</strong></span><span>Источники: <strong>${listCount(item.source)}</strong></span></div>`;
+      <header class="bdo-resource-record__header"><span class="bdo-resource-record__glyph" aria-hidden="true">${glyphs[item.category] || '📦'}</span><div><p class="bdo-resource-record__eyebrow">${escapeHtml(item.category)}</p><h3>${escapeHtml(item.name)}</h3></div><span class="bdo-resource-record__status"><i aria-hidden="true"></i>${escapeHtml(statusLabels[item.status] || item.status)}</span></header>
+      <p class="bdo-item-record__description">${escapeHtml(item.description)}</p>
+      <dl class="bdo-resource-record__facts"><div><dt>ID</dt><dd><code>${escapeHtml(item.id)}</code></dd></div><div><dt>Тип</dt><dd>${escapeHtml(item.itemType)}</dd></div><div><dt>Качество</dt><dd>${escapeHtml(item.grade)}</dd></div><div><dt>Проверено</dt><dd><time datetime="${escapeHtml(item.checkedAt)}">${escapeHtml(item.checkedAt)}</time></dd></div></dl>
+      <div class="bdo-item-record__details"><section><h4>Получение</h4>${renderList(item.acquisition, 'Способ получения уточняется.')}</section><section><h4>Производство</h4>${renderList(item.production, 'Производственная цепочка уточняется.')}</section><section><h4>Использование</h4>${renderList(item.usage, 'Применение уточняется.')}</section><section><h4>Связи</h4>${renderList(item.relatedObjects, 'Связи будут добавлены позднее.')}</section></div>
+      <div class="bdo-resource-record__relations" aria-label="Связи предмета"><span class="bdo-resource-record__relations-title">Индекс связей</span><span>Предметы: <strong>${listCount(item.relatedItemIds)}</strong></span><span>Ресурсы: <strong>${listCount(item.resources)}</strong></span><span>Производства: <strong>${listCount(item.productions)}</strong></span><span>Рецепты: <strong>${listCount(item.recipes)}</strong></span><span>Города: <strong>${listCount(item.cities)}</strong></span></div>`;
     window.BdoWorldRelations?.attach(article, 'item', item);
     return article;
   };
-  const render = (items) => { grid.replaceChildren(...items.map(createCard)); count.textContent = `${items.length} записей`; empty.hidden = items.length !== 0; };
-  fetch('../assets/data/bdo-items.json').then((response) => { if (!response.ok) throw new Error(`Item data request failed: ${response.status}`); return response.json(); }).then((data) => {
-    const items = Array.isArray(data.items) ? data.items : [];
-    render(items);
-    search.addEventListener('input', () => { const query = normalize(search.value); render(items.filter((item) => normalize(`${item.name} ${item.category} ${item.itemType} ${item.id}`).includes(query))); });
-  }).catch(() => { count.textContent = 'Данные недоступны'; empty.hidden = false; empty.textContent = 'Не удалось загрузить архив предметов.'; });
+  let activeCategory = 'Все';
+  let allItems = [];
+  const pluralize = (value) => value % 10 === 1 && value % 100 !== 11 ? 'предмет' : value % 10 >= 2 && value % 10 <= 4 && (value % 100 < 12 || value % 100 > 14) ? 'предмета' : 'предметов';
+  const render = () => {
+    const query = normalize(search.value);
+    const items = allItems.filter((item) => {
+      const categoryMatches = activeCategory === 'Все' || item.category === activeCategory;
+      const haystack = `${item.name} ${item.category} ${item.itemType} ${item.id} ${item.description}`;
+      return categoryMatches && normalize(haystack).includes(query);
+    });
+    grid.replaceChildren(...items.map(createCard));
+    grid.setAttribute('aria-busy', 'false');
+    count.textContent = `Показано ${items.length} из ${allItems.length}`;
+    empty.hidden = items.length !== 0;
+  };
+  const renderCategories = () => {
+    const names = ['Все', ...new Set(allItems.map((item) => item.category))];
+    categories.replaceChildren(...names.map((name) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'bdo-item-category';
+      button.textContent = name;
+      button.setAttribute('aria-pressed', String(name === activeCategory));
+      button.addEventListener('click', () => { activeCategory = name; renderCategories(); render(); });
+      return button;
+    }));
+  };
+  fetch('../assets/data/bdo-items.json').then((response) => {
+    if (!response.ok) throw new Error(`Item data request failed: ${response.status}`);
+    return response.json();
+  }).then((data) => {
+    allItems = Array.isArray(data.items) ? data.items : [];
+    const relations = allItems.reduce((sum, item) => sum + ['relatedItemIds', 'resources', 'productions', 'recipes', 'cities'].reduce((subtotal, key) => subtotal + listCount(item[key]), 0), 0);
+    total.textContent = `${allItems.length} ${pluralize(allItems.length)}`;
+    relationCount.textContent = `${relations} связей`;
+    renderCategories();
+    render();
+    search.addEventListener('input', render);
+    clear.addEventListener('click', () => { search.value = ''; activeCategory = 'Все'; renderCategories(); render(); search.focus(); });
+  }).catch(() => {
+    grid.setAttribute('aria-busy', 'false');
+    count.textContent = 'Данные недоступны';
+    empty.hidden = false;
+    empty.textContent = 'Не удалось загрузить архив предметов.';
+  });
 })();

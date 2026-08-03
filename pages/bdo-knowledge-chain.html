@@ -27,7 +27,7 @@
       </nav>
 
       <section class="bdo-resource-hero bdo-chain-explorer__hero" aria-labelledby="chain-explorer-title">
-        <p class="bdo-resource-kicker">Knowledge Chain Explorer · v0.1</p>
+        <p class="bdo-resource-kicker">Knowledge Chain Explorer · v0.4</p>
         <h2 id="chain-explorer-title">Путь знания через архив</h2>
         <p>Исследуйте путь от подтверждённого ресурса до связанных слоёв мира. Архив показывает только проверенные связи и честно отмечает неизвестные ступени.</p>
         <div class="bdo-resource-summary" aria-label="Сводка Explorer">
@@ -49,6 +49,21 @@
         <span><i class="is-unknown" aria-hidden="true"></i> Неизвестно</span>
       </section>
 
+      <section class="bdo-region-preparation" id="first-living-region" aria-labelledby="region-preparation-title" hidden>
+        <div class="bdo-region-preparation__seal" aria-hidden="true">C</div>
+        <div class="bdo-region-preparation__copy">
+          <p class="bdo-resource-kicker">First Living Region · v0.2</p>
+          <h2 id="region-preparation-title">Кальфеонский регион</h2>
+          <p id="regionPreparationScope"></p>
+          <div class="bdo-region-preparation__facts" aria-label="Границы прототипа">
+            <span><strong id="regionPreparationCity">—</strong> подтверждённый город</span>
+            <span>Координаты не добавлены</span>
+            <span>Экономика и рецепты исключены</span>
+          </div>
+        </div>
+        <a id="regionPreparationCityLink" href="bdo-cities.html">Открыть запись города <span aria-hidden="true">→</span></a>
+      </section>
+
       <aside class="bdo-chain-explorer__player-link" aria-label="Прогресс игрока">
         <div><p class="bdo-resource-kicker">Player Journey</p><strong>Продолжить личное исследование</strong><span>Сверьте открытые знания и следующий шаг цепочки.</span></div>
         <a href="bdo-player-knowledge.html">Мой прогресс →</a>
@@ -67,7 +82,7 @@
 
       <section class="bdo-resource-data-note" aria-labelledby="chain-policy-title">
         <h2 id="chain-policy-title">Правило достоверности</h2>
-        <p>Пустая ступень означает отсутствие подтверждённых данных, а не отсутствие объекта в игре. Узлы, рабочие, производство и предметы не связываются с ресурсом до проверки источников.</p>
+        <p>Пустая ступень означает отсутствие подтверждённых данных, а не отсутствие объекта в игре. Для каждой следующей ступени требуется отдельно подтверждённая запись и отдельно подтверждённая связь с предыдущим слоем.</p>
       </section>
     </main>
     <footer class="site-footer"><p>&copy; 2026 Kameadril · StartWave</p></footer>

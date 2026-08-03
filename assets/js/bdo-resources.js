@@ -3,6 +3,7 @@
   const search = document.getElementById('archiveSearch');
   const count = document.getElementById('archiveResultCount');
   const empty = document.getElementById('archiveEmptyState');
+  let totalCount = 0;
 
   if (!grid || !search || !count || !empty) return;
 
@@ -13,6 +14,8 @@
     article.className = 'bdo-resource-record';
     article.id = resource.id;
     article.dataset.resourceId = resource.id;
+    const isLivingPreview = resource.id === 'bdo-resource-wood-ash';
+    if (isLivingPreview) article.classList.add('bdo-resource-record--living');
 
     const relationFields = Object.keys(resource.relations)
       .map((key) => `<span>${key}: <strong>0</strong></span>`)
@@ -22,10 +25,10 @@
       <header class="bdo-resource-record__header">
         <span class="bdo-resource-record__glyph" aria-hidden="true">${resource.name === 'Бревно' ? '🪵' : '🌲'}</span>
         <div>
-          <p class="bdo-resource-record__eyebrow">Resource record</p>
+          <p class="bdo-resource-record__eyebrow">${isLivingPreview ? 'Living Object · v0.4' : 'Resource record'}</p>
           <h3>${resource.name}</h3>
         </div>
-        <span class="bdo-resource-record__status">Проверено</span>
+        <span class="bdo-resource-record__status"><i aria-hidden="true"></i> Проверено</span>
       </header>
       <dl class="bdo-resource-record__facts">
         <div><dt>ID</dt><dd><code>${resource.id}</code></dd></div>
@@ -34,7 +37,7 @@
         <div><dt>Источник</dt><dd>${resource.verification.source}</dd></div>
         <div><dt>Дата проверки</dt><dd><time datetime="${resource.verification.checkedAt}">${resource.verification.checkedAt}</time></dd></div>
       </dl>
-      <div class="bdo-resource-record__relations" aria-label="Поля будущих связей">
+      <div class="bdo-resource-record__relations" aria-label="Технические поля будущих связей">
         <span class="bdo-resource-record__relations-title">Будущие связи</span>
         ${relationFields}
       </div>`;
@@ -46,7 +49,7 @@
 
   const render = (resources) => {
     grid.replaceChildren(...resources.map(createCard));
-    count.textContent = `${resources.length} из 14 записей`;
+    count.textContent = `${resources.length} из ${totalCount} записей`;
     empty.hidden = resources.length !== 0;
   };
 
@@ -57,6 +60,7 @@
     })
     .then((data) => {
       const resources = data.resources || [];
+      totalCount = resources.length;
       render(resources);
       search.addEventListener('input', () => {
         const query = normalize(search.value);

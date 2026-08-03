@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.5.0",
+  "collectionId": "bdo-region-views",
+  "title": "Региональные представления",
+  "updatedAt": "2026-08-02",
+  "verificationPolicy": {
+    "verifiedRelationsOnly": true,
+    "contextIsNotWorldRelation": true,
+    "emptyRelationsAreValid": true
+  },
+  "regions": [
+    {
+      "id": "bdo-region-view-calpheon-v0-5",
+      "name": "Кальфеон",
+      "version": "0.5",
+      "status": "researching",
+      "cityContext": {
+        "entityId": "bdo-city-calpheon",
+        "status": "verified",
+        "note": "Кальфеон подтверждён как город и показан как контекст исследования региона."
+      },
+      "livingObjects": [
+        {
+          "entityId": "bdo-resource-wood-ash",
+          "type": "resource",
+          "status": "verified",
+          "placement": "research-context",
+          "note": "Ясень показан внутри исследовательского представления. Игровая связь с Кальфеоном не подтверждена."
+        }
+      ],
+      "confirmedWorldRelations": [],
+      "awaitingLayers": [
+        { "type": "node", "label": "Узлы", "route": "bdo-nodes.html" },
+        { "type": "worker", "label": "Рабочие", "route": "bdo-workers.html" },
+        { "type": "production", "label": "Производство", "route": "bdo-crafting.html" },
+        { "type": "item", "label": "Предметы", "route": "bdo-items.html" }
+      ],
+      "map": { "status": "awaiting-verified-data", "coordinates": null },
+      "explorer": { "status": "foundation-ready" }
+    }
+  ]
+}

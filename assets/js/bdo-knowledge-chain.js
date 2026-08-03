@@ -7,6 +7,11 @@
   const chainCount = document.getElementById('chainCount');
   const verifiedCount = document.getElementById('verifiedStageCount');
   const edgeCount = document.getElementById('edgeCount');
+  const regionPanel = document.getElementById('first-living-region');
+  const regionTitle = document.getElementById('region-preparation-title');
+  const regionScope = document.getElementById('regionPreparationScope');
+  const regionCity = document.getElementById('regionPreparationCity');
+  const regionCityLink = document.getElementById('regionPreparationCityLink');
 
   if (!selector || !canvas || !list || !title || !version) return;
 
@@ -59,6 +64,21 @@
     canvas.setAttribute('aria-busy', 'false');
   };
 
+  const renderRegionPreparation = (graph, chain) => {
+    const preparation = (graph.regionPreparations || []).find((entry) => entry.chainId === chain.id);
+    if (!preparation || !regionPanel) {
+      if (regionPanel) regionPanel.hidden = true;
+      return;
+    }
+
+    const city = (graph.entities?.city || []).find((entity) => entity.id === preparation.cityRef?.id);
+    regionTitle.textContent = preparation.title;
+    regionScope.textContent = preparation.scope;
+    regionCity.textContent = city?.name || 'Город ожидает проверки';
+    regionCityLink.href = city ? `bdo-cities.html#${encodeURIComponent(city.id)}` : 'bdo-cities.html';
+    regionPanel.hidden = false;
+  };
+
   fetch('../assets/data/bdo-knowledge-graph.json')
     .then((response) => {
       if (!response.ok) throw new Error(`Knowledge graph request failed: ${response.status}`);
@@ -91,7 +111,10 @@
 
       const selectChain = () => {
         const chain = chains.find((entry) => entry.id === selector.value) || chains[0];
-        if (chain) renderChain(graph, chain);
+        if (chain) {
+          renderRegionPreparation(graph, chain);
+          renderChain(graph, chain);
+        }
       };
 
       const requestedChain = new URLSearchParams(window.location.search).get('chain');

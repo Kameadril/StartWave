@@ -12,6 +12,37 @@
     ? list(entity.relations?.city)
     : list(entity[field] ?? entity.relations?.[field]);
 
+  const createLivingObjectPreview = (entityType, entity, graph) => {
+    const preview = (graph.livingObjectPreviews || []).find((entry) =>
+      entry.objectRef?.type === entityType && entry.objectRef?.id === entity.id);
+    if (!preview) return null;
+
+    const contextMeta = graph.entityTypes[preview.contextRef?.type];
+    const contextEntity = (graph.entities?.[preview.contextRef?.type] || [])
+      .find((entry) => entry.id === preview.contextRef?.id);
+    const chain = (graph.knowledgeChains || []).find((entry) => entry.id === preview.chainId);
+    const verifiedCount = chain?.stages.filter((stage) => stage.status === 'verified').length || 0;
+    const awaitingCount = chain?.stages.filter((stage) => stage.status === 'awaiting-data').length || 0;
+
+    const section = document.createElement('section');
+    section.className = 'bdo-living-object';
+    section.setAttribute('aria-label', `Живой объект: ${entity.name}`);
+    section.innerHTML = `<header>
+      <div><p>Living Object Preview · v${preview.version}</p><h4>Объект мира в архиве</h4></div>
+      <span class="bdo-living-object__state"><i aria-hidden="true"></i> Запись подтверждена</span>
+    </header>
+    <div class="bdo-living-object__context">
+      <span class="bdo-living-object__seal" aria-hidden="true">C</span>
+      <div><p>Регион-контекст</p><strong>${contextEntity?.name || 'Контекст ожидает проверки'}</strong><span>${preview.contextNote}</span></div>
+      ${contextMeta?.route ? `<a href="${contextMeta.route}${contextEntity ? `#${encodeURIComponent(contextEntity.id)}` : ''}">Открыть слой <span aria-hidden="true">→</span></a>` : ''}
+    </div>
+    <div class="bdo-living-object__path">
+      <div><p>Путь ресурса</p><strong>${verifiedCount} подтверждён · ${awaitingCount} ожидают связей</strong></div>
+      <a href="bdo-knowledge-chain.html?chain=${encodeURIComponent(preview.chainId)}">Открыть Explorer <span aria-hidden="true">→</span></a>
+    </div>`;
+    return section;
+  };
+
   const createWorldRelations = (entityType, entity, graph) => {
     const section = document.createElement('section');
     section.className = 'bdo-world-relations';
@@ -30,14 +61,14 @@
       const route = meta.route
         ? `<a class="bdo-world-relations__layer-link" href="${meta.route}">Открыть слой →</a>`
         : '<span class="bdo-world-relations__reserved">Слой зарезервирован</span>';
-      return `<article class="bdo-world-relations__card">
+      return `<article class="bdo-world-relations__card ${ids.length ? 'has-relations' : 'is-awaiting'}">
         <span class="bdo-world-relations__icon" aria-hidden="true">${meta.icon}</span>
         <div><h4>${meta.label} <strong>${ids.length}</strong></h4>
-        <div class="bdo-world-relations__objects">${links || '<span>Подтверждённых связей пока нет</span>'}</div>${route}</div>
+        <div class="bdo-world-relations__objects">${links || '<span>Ожидает подтверждённой связи</span>'}</div>${route}</div>
       </article>`;
     }).join('');
 
-    section.innerHTML = `<header><p>Knowledge Graph · v0.1</p><h4>Связи мира</h4></header><div class="bdo-world-relations__grid">${cards}</div>`;
+    section.innerHTML = `<header><p>Knowledge Graph · автоматическое отображение</p><h4>Будущие связи объекта</h4><span>Пустое состояние не означает отсутствие объекта в игре.</span></header><div class="bdo-world-relations__grid">${cards}</div>`;
     return section;
   };
 
@@ -67,7 +98,9 @@
         </div></article>${connector}</li>`;
     }).join('');
 
-    section.innerHTML = `<header><p>First Knowledge Chain · v0.1</p><h4>${chain.title}</h4><span>1 подтверждённая ступень · ложных связей нет</span><a class="bdo-knowledge-chain__explorer-link" href="bdo-knowledge-chain.html?chain=${encodeURIComponent(chain.id)}">Исследовать всю цепочку →</a></header><ol>${stages}</ol>`;
+    const verifiedStageCount = chain.stages.filter((stage) => stage.status === 'verified').length;
+    const awaitingStageCount = chain.stages.filter((stage) => stage.status === 'awaiting-data').length;
+    section.innerHTML = `<header><p>First Confirmed Chain Architecture · v${chain.version}</p><h4>${chain.title}</h4><span>${verifiedStageCount} подтверждённая ступень · ${awaitingStageCount} ожидают данных · ложных связей нет</span><a class="bdo-knowledge-chain__explorer-link" href="bdo-knowledge-chain.html?chain=${encodeURIComponent(chain.id)}">Исследовать всю цепочку →</a></header><ol>${stages}</ol>`;
     return section;
   };
 
@@ -75,6 +108,8 @@
     attach(container, entityType, entity) {
       if (!container) return;
       loadGraph().then((graph) => {
+        const preview = createLivingObjectPreview(entityType, entity, graph);
+        if (preview) container.append(preview);
         const chain = createKnowledgeChain(entityType, entity, graph);
         if (chain) container.append(chain);
         container.append(createWorldRelations(entityType, entity, graph));

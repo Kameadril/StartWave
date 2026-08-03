@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StartWave — Регион Кальфеон BDO</title>
+  <meta name="description" content="STARTWAVE BDO ARCHIVE: первый исследовательский вид региона Кальфеон без неподтверждённых игровых связей.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bdo-archive-body bdo-resource-atlas-body bdo-region-view-body">
+  <header class="header bdo-site-header">
+    <a class="logo" href="../index.html" aria-label="StartWave — на главную"><h1>StartWave</h1></a>
+    <nav class="navigation" aria-label="Основная навигация">
+      <a href="../index.html">Главная</a><a href="../bdo.html" aria-current="page">BDO</a><a href="bdo-cities.html">Города</a><a href="bdo-nodes.html">Узлы</a><a href="bdo-resources.html">Атлас ресурсов</a><a href="bdo-region-calpheon.html" aria-current="page">Регион</a>
+    </nav>
+  </header>
+  <div class="page-container bdo-resource-atlas">
+    <main class="content-main" id="bdoRegionView" aria-busy="true">
+      <nav class="bdo-archive-breadcrumbs" aria-label="Хлебные крошки"><a href="../bdo.html">BDO Archive</a><span aria-hidden="true">/</span><span>Регион Кальфеон</span></nav>
+      <section class="bdo-resource-hero bdo-region-view__hero" aria-labelledby="regionViewTitle">
+        <p class="bdo-resource-kicker">First Region View · v0.5</p><h2 id="regionViewTitle">Кальфеон</h2>
+        <p>Первый региональный экран архива. Он объединяет подтверждённые записи в исследовательском контексте, не превращая этот контекст в выдуманную игровую связь.</p>
+        <div class="bdo-resource-summary"><span><strong>1</strong> подтверждённый город</span><span><strong>1</strong> живой объект</span><span><strong>0</strong> игровых связей</span></div>
+      </section>
+      <section class="bdo-region-context" aria-labelledby="regionCityName">
+        <div class="bdo-region-context__seal" aria-hidden="true">C</div><div><p class="bdo-resource-kicker">Контекст исследования · город</p><h2 id="regionCityName">Загрузка…</h2><p id="regionCityNote"></p></div><a id="regionCityLink" href="bdo-cities.html">Открыть запись города →</a>
+      </section>
+      <section class="bdo-region-section" aria-labelledby="regionObjectsTitle"><header><p class="bdo-resource-kicker">Архив внутри региона</p><h2 id="regionObjectsTitle">Живые объекты</h2><span>Показываются только подтверждённые записи</span></header><div id="regionLivingObjects"></div></section>
+      <section class="bdo-region-relation-state" aria-labelledby="regionRelationsTitle"><div><p class="bdo-resource-kicker">Knowledge Graph</p><h2 id="regionRelationsTitle">Игровые связи</h2></div><p id="regionConfirmedRelations">Проверка данных…</p><small>Присутствие «Ясеня» на этом экране означает контекст исследования, а не доказанную связь с Кальфеоном. <a href="bdo-knowledge-layer.html">Открыть слой знаний →</a></small></section>
+      <section class="bdo-region-section" aria-labelledby="regionLayersTitle"><header><p class="bdo-resource-kicker">Regional Explorer · foundation</p><h2 id="regionLayersTitle">Ожидающие слои</h2><span>Откроются автоматически после подтверждения данных</span></header><ul class="bdo-region-layers" id="regionAwaitingLayers"></ul></section>
+      <section class="bdo-region-map" aria-labelledby="regionMapTitle"><div aria-hidden="true">⌖</div><section><p class="bdo-resource-kicker">Map layer · reserved</p><h2 id="regionMapTitle">Региональная карта</h2><p id="regionMapState">Проверка доступных данных…</p></section><a href="bdo-nodes.html">Открыть слой узлов →</a></section>
+      <section class="bdo-resource-data-note"><h2>Граница достоверности</h2><p>Новые узлы, NPC, монстры, координаты, рецепты, цены и экономические данные не добавлены. Существующие связи Knowledge Graph не изменены; неизвестные связи сохранены как состояния ожидания.</p></section>
+    </main>
+    <footer class="site-footer"><p>&copy; 2026 Kameadril · StartWave</p></footer>
+  </div>
+  <script src="../assets/js/script.js"></script><script src="../assets/js/bdo-region-view.js"></script>
+</body>
+</html>
