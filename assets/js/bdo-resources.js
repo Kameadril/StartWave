@@ -14,14 +14,14 @@
     article.className = 'bdo-resource-record';
     article.id = resource.id;
     article.dataset.resourceId = resource.id;
-    const isLivingPreview = resource.id === 'bdo-resource-wood-pine';
+    const isLivingPreview = Boolean(resource.archive);
     if (isLivingPreview) article.classList.add('bdo-resource-record--living');
 
     const relationFields = Object.entries(resource.relations)
       .map(([key, values]) => `<span>${key}: <strong>${values.length}</strong></span>`)
       .join('');
 
-    const pineArchive = resource.archive ? `
+    const resourceArchive = resource.archive ? `
       <div class="bdo-resource-record__archive">
         <p class="bdo-resource-record__eyebrow">Calpheon Resource Archive</p>
         <h4>${resource.archive.title}</h4>
@@ -53,7 +53,7 @@
         <span class="bdo-resource-record__relations-title">${resource.archive ? 'Связи Calpheon Archive' : 'Будущие связи'}</span>
         ${relationFields}
       </div>
-      ${pineArchive}`;
+      ${resourceArchive}`;
 
     window.BdoWorldRelations?.attach(article, 'resource', resource);
 
