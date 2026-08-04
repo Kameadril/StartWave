@@ -14,12 +14,24 @@
     article.className = 'bdo-resource-record';
     article.id = resource.id;
     article.dataset.resourceId = resource.id;
-    const isLivingPreview = resource.id === 'bdo-resource-wood-ash';
+    const isLivingPreview = resource.id === 'bdo-resource-wood-pine';
     if (isLivingPreview) article.classList.add('bdo-resource-record--living');
 
-    const relationFields = Object.keys(resource.relations)
-      .map((key) => `<span>${key}: <strong>0</strong></span>`)
+    const relationFields = Object.entries(resource.relations)
+      .map(([key, values]) => `<span>${key}: <strong>${values.length}</strong></span>`)
       .join('');
+
+    const pineArchive = resource.archive ? `
+      <div class="bdo-resource-record__archive">
+        <p class="bdo-resource-record__eyebrow">Calpheon Resource Archive</p>
+        <h4>${resource.archive.title}</h4>
+        <p>${resource.archive.description}</p>
+        <div class="bdo-resource-record__archive-links">
+          <a href="bdo-items.html">Предметы: ${resource.relations.items.length}</a>
+          <a href="bdo-recipes.html">Рецепты: ${resource.relations.recipes.length}</a>
+          <a href="bdo-production.html">Производство: ${resource.relations.productions.length}</a>
+        </div>
+      </div>` : '';
 
     article.innerHTML = `
       <header class="bdo-resource-record__header">
@@ -38,9 +50,10 @@
         <div><dt>Дата проверки</dt><dd><time datetime="${resource.verification.checkedAt}">${resource.verification.checkedAt}</time></dd></div>
       </dl>
       <div class="bdo-resource-record__relations" aria-label="Технические поля будущих связей">
-        <span class="bdo-resource-record__relations-title">Будущие связи</span>
+        <span class="bdo-resource-record__relations-title">${resource.archive ? 'Связи Calpheon Archive' : 'Будущие связи'}</span>
         ${relationFields}
-      </div>`;
+      </div>
+      ${pineArchive}`;
 
     window.BdoWorldRelations?.attach(article, 'resource', resource);
 
