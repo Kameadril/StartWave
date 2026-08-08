@@ -52,7 +52,7 @@
       <header class="bdo-resource-record__header">
         <span class="bdo-resource-record__glyph" aria-hidden="true">${resource.name === 'Бревно' ? '🪵' : '🌲'}</span>
         <div>
-          <p class="bdo-resource-record__eyebrow">${isLivingPreview ? 'Living Object · v0.4' : 'Resource record'}</p>
+          <p class="bdo-resource-record__eyebrow">${isLivingPreview ? 'Living Object · v0.5' : 'Resource record'}</p>
           <h3>${resource.name}</h3>
         </div>
         <span class="bdo-resource-record__status"><i aria-hidden="true"></i> Проверено</span>
