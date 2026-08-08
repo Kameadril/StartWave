@@ -33,6 +33,8 @@
         </div>
       </div>` : '';
 
+    const productionSequence = resource.atlas?.productionSequence ? `<section><h4>Производственная последовательность</h4><p class="bdo-item-detail-empty">${resource.atlas.productionSequence}</p></section>` : '';
+
     const atlasView = resource.atlas ? `
       <section class="bdo-item-record__details" aria-label="Atlas-путь ресурса ${resource.atlas.title}">
         <div class="bdo-node-relation-flow" aria-label="Ресурс, получение, обработка и использование">
@@ -43,6 +45,7 @@
         <section><h4>Тип получения</h4><p class="bdo-item-detail-empty">${resource.atlas.acquisitionType}</p></section>
         <section><h4>Обработка</h4><p class="bdo-item-detail-empty">${resource.atlas.processing}</p></section>
         <section><h4>Возможное использование</h4><p class="bdo-item-detail-empty">${resource.atlas.usage}</p></section>
+        ${productionSequence}
       </section>` : '';
 
     article.innerHTML = `
