@@ -4,10 +4,11 @@
   const count = document.getElementById('itemArchiveResultCount');
   const total = document.getElementById('itemArchiveTotalCount');
   const relationCount = document.getElementById('itemArchiveRelationCount');
+  const moduleCount = document.getElementById('itemArchiveModuleCount');
   const categories = document.getElementById('itemArchiveCategories');
   const clear = document.getElementById('itemArchiveClear');
   const empty = document.getElementById('itemArchiveEmptyState');
-  if (!grid || !search || !count || !total || !relationCount || !categories || !clear || !empty) return;
+  if (!grid || !search || !count || !total || !relationCount || !moduleCount || !categories || !clear || !empty) return;
 
   const normalize = (value) => String(value ?? '').toLocaleLowerCase('ru-RU').trim();
   const statusLabels = { unresearched: 'Не исследовано', researching: 'Исследуется', verified: 'Проверено', curated: 'Архивная запись' };
@@ -23,13 +24,15 @@
   const createCard = (item) => {
     const article = document.createElement('article');
     article.className = 'bdo-resource-record bdo-item-record';
+    if (item.archive) article.classList.add('bdo-resource-record--living');
     article.id = item.id;
     article.dataset.itemId = item.id;
+    const archiveModule = item.archive ? `<section><p class="bdo-resource-record__eyebrow">Calpheon Item Archive · Item module</p><h4>${escapeHtml(item.archive.title)}</h4><p class="bdo-item-detail-empty">${escapeHtml(item.archive.description)}</p></section>` : '';
     article.innerHTML = `
       <header class="bdo-resource-record__header"><span class="bdo-resource-record__glyph" aria-hidden="true">${glyphs[item.category] || '📦'}</span><div><p class="bdo-resource-record__eyebrow">${escapeHtml(item.category)}</p><h3>${escapeHtml(item.name)}</h3></div><span class="bdo-resource-record__status"><i aria-hidden="true"></i>${escapeHtml(statusLabels[item.status] || item.status)}</span></header>
       <p class="bdo-item-record__description">${escapeHtml(item.description)}</p>
       <dl class="bdo-resource-record__facts"><div><dt>ID</dt><dd><code>${escapeHtml(item.id)}</code></dd></div><div><dt>Тип</dt><dd>${escapeHtml(item.itemType)}</dd></div><div><dt>Качество</dt><dd>${escapeHtml(item.grade)}</dd></div><div><dt>Проверено</dt><dd><time datetime="${escapeHtml(item.checkedAt)}">${escapeHtml(item.checkedAt)}</time></dd></div></dl>
-      <div class="bdo-item-record__details"><section><h4>Получение</h4>${renderList(item.acquisition, 'Способ получения уточняется.')}</section><section><h4>Производство</h4>${renderList(item.production, 'Производственная цепочка уточняется.')}</section><section><h4>Использование</h4>${renderList(item.usage, 'Применение уточняется.')}</section><section><h4>Связи</h4>${renderList(item.relatedObjects, 'Связи будут добавлены позднее.')}</section></div>
+      <div class="bdo-item-record__details">${archiveModule}<section><h4>Получение</h4>${renderList(item.acquisition, 'Способ получения уточняется.')}</section><section><h4>Производство</h4>${renderList(item.production, 'Производственная цепочка уточняется.')}</section><section><h4>Использование</h4>${renderList(item.usage, 'Применение уточняется.')}</section><section><h4>Связи</h4>${renderList(item.relatedObjects, 'Связи будут добавлены позднее.')}</section></div>
       <div class="bdo-resource-record__relations" aria-label="Связи предмета"><span class="bdo-resource-record__relations-title">Индекс связей</span><span>Предметы: <strong>${listCount(item.relatedItemIds)}</strong></span><span>Ресурсы: <strong>${listCount(item.resources)}</strong></span><span>Производства: <strong>${listCount(item.productions)}</strong></span><span>Рецепты: <strong>${listCount(item.recipes)}</strong></span><span>Города: <strong>${listCount(item.cities)}</strong></span></div>`;
     window.BdoWorldRelations?.attach(article, 'item', item);
     return article;
@@ -69,6 +72,7 @@
     const relations = allItems.reduce((sum, item) => sum + ['relatedItemIds', 'resources', 'productions', 'recipes', 'cities'].reduce((subtotal, key) => subtotal + listCount(item[key]), 0), 0);
     total.textContent = `${allItems.length} ${pluralize(allItems.length)}`;
     relationCount.textContent = `${relations} связей`;
+    moduleCount.textContent = `${allItems.filter((item) => item.archive).length} модуль`;
     renderCategories();
     render();
     search.addEventListener('input', render);
