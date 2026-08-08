@@ -33,6 +33,18 @@
         </div>
       </div>` : '';
 
+    const atlasView = resource.atlas ? `
+      <section class="bdo-item-record__details" aria-label="Atlas-путь ресурса ${resource.atlas.title}">
+        <div class="bdo-node-relation-flow" aria-label="Ресурс, получение, обработка и использование">
+          <span>🌲 Ресурс</span><i aria-hidden="true">→</i><span>🪓 Получение</span><i aria-hidden="true">→</i><span>⚒ Обработка</span><i aria-hidden="true">→</i><span>📦 Использование</span>
+        </div>
+        <section><p class="bdo-resource-record__eyebrow">Atlas resource view · test</p><h4>${resource.atlas.title}</h4><p class="bdo-item-detail-empty">${resource.atlas.summary}</p></section>
+        <section><h4>Источник получения</h4><p class="bdo-item-detail-empty">${resource.atlas.source}</p></section>
+        <section><h4>Тип получения</h4><p class="bdo-item-detail-empty">${resource.atlas.acquisitionType}</p></section>
+        <section><h4>Обработка</h4><p class="bdo-item-detail-empty">${resource.atlas.processing}</p></section>
+        <section><h4>Возможное использование</h4><p class="bdo-item-detail-empty">${resource.atlas.usage}</p></section>
+      </section>` : '';
+
     article.innerHTML = `
       <header class="bdo-resource-record__header">
         <span class="bdo-resource-record__glyph" aria-hidden="true">${resource.name === 'Бревно' ? '🪵' : '🌲'}</span>
@@ -53,7 +65,8 @@
         <span class="bdo-resource-record__relations-title">${resource.archive ? 'Связи Calpheon Archive' : 'Будущие связи'}</span>
         ${relationFields}
       </div>
-      ${resourceArchive}`;
+      ${resourceArchive}
+      ${atlasView}`;
 
     window.BdoWorldRelations?.attach(article, 'resource', resource);
 
