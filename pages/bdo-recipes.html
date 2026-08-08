@@ -24,7 +24,7 @@
       </section>
 
       <section class="bdo-node-atlas-section" id="recipe-atlas" aria-labelledby="recipe-atlas-title">
-        <div class="bdo-resource-hero bdo-production-archive-hero"><p class="bdo-resource-kicker">World Data Layer · Recipe Layer v0.1</p><h2 id="recipe-atlas-title">📜 Calpheon Recipe Archive</h2><p>Архив читает рецепты из отдельной коллекции и сопоставляет материалы и результаты с Item Archive, а способ изготовления — с Production Archive.</p><div class="bdo-resource-summary" aria-label="Сводка слоя рецептов"><span><strong id="recipeArchiveResultCount">0 рецептов</strong> в коллекции</span><span><strong id="recipeArchiveRelationCount">0 связей</strong> подготовлено</span><span><strong>v0.1</strong> версия схемы</span></div></div>
+        <div class="bdo-resource-hero bdo-production-archive-hero"><p class="bdo-resource-kicker">World Data Layer · Recipe Layer v0.2</p><h2 id="recipe-atlas-title">📜 Calpheon Recipe Archive</h2><p>Первый безопасный модуль открывает существующий рецепт SW-RECIPE-001: «Бревно» (SW-ITEM-013) переходит в «Доску» (SW-ITEM-014) без добавления новых материалов и связей.</p><div class="bdo-resource-summary" aria-label="Сводка слоя рецептов"><span><strong id="recipeArchiveResultCount">0 рецептов</strong> в коллекции</span><span><strong id="recipeArchiveRelationCount">0 связей</strong> подготовлено</span><span><strong id="recipeArchiveModuleCount">0 модулей</strong> открыто</span><span><strong>v0.2</strong> версия схемы</span></div></div>
 
         <div class="bdo-node-relation-flow" aria-label="Общая модель рецепта"><span>📦 Предмет</span><i aria-hidden="true">→</i><span>📜 Рецепт</span><i aria-hidden="true">→</i><span>🧺 Материалы</span><i aria-hidden="true">→</i><span>⚒ Производство</span><i aria-hidden="true">→</i><span>✨ Результат</span></div>
 
@@ -33,7 +33,7 @@
         <div class="bdo-resource-grid" id="bdoRecipeGrid" aria-live="polite" aria-busy="true"></div>
         <p class="bdo-resource-empty" id="recipeArchiveEmptyState" hidden>По выбранным условиям рецепты не найдены.</p>
 
-        <section class="bdo-resource-data-note" aria-labelledby="recipe-record-title"><div><p class="bdo-resource-kicker">Recipe record v0.1</p><h2 id="recipe-record-title">Связь данных</h2></div><p>Каждый рецепт имеет стабильный ID, хранит ID необходимых предметов, результата и производственной цепочки. Названия выводятся из действующих архивов, поэтому переименование карточки не разрывает связи.</p></section>
+        <section class="bdo-resource-data-note" aria-labelledby="recipe-record-title"><div><p class="bdo-resource-kicker">Recipe record v0.2</p><h2 id="recipe-record-title">Связь данных</h2></div><p>Каждый рецепт имеет стабильный ID, хранит ID необходимых предметов, результата и производственной цепочки. Первый модуль использует существующую запись SW-RECIPE-001 и существующие предметы SW-ITEM-013 и SW-ITEM-014.</p></section>
         <section class="bdo-resource-data-note" aria-labelledby="recipe-policy-title"><div><p class="bdo-resource-kicker">Data policy</p><h2 id="recipe-policy-title">Структура без неподтверждённых чисел</h2></div><p>Стартовая коллекция фиксирует состав и направление рецептов. Точные количества материалов, время изготовления, цены и прибыль будут добавлены только после отдельной проверки источников.</p></section>
       </section>
 

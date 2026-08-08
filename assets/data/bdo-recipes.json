@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "0.1.0",
+  "schemaVersion": "0.2.0",
   "collectionId": "bdo-recipe-archive",
   "title": "Calpheon Recipe Archive",
-  "updatedAt": "2026-08-04",
+  "updatedAt": "2026-08-08",
   "stage": "SW-GAMES BDO-DATA-014",
   "entitySchema": {
     "id": "string",
@@ -10,6 +10,7 @@
     "name": "string",
     "recipeType": "string",
     "description": "string",
+    "archive": "object|null",
     "materialItemIds": "string[]",
     "resultItemId": "string",
     "productionIds": "string[]",
@@ -25,7 +26,7 @@
     "scope": "Стартовые связи рецептов с Item Archive и Production Archive. Точные количества, время и экономика не публикуются до отдельной проверки источников."
   },
   "recipes": [
-    {"id":"SW-RECIPE-001","legacyId":"wood-plank","name":"Обработка брёвен в доски","recipeType":"Обработка древесины","description":"Базовый этап древесной цепочки: исходное бревно превращается в обработанную доску.","materialItemIds":["SW-ITEM-013"],"resultItemId":"SW-ITEM-014","productionIds":["SW-PROD-001"],"method":"Рубка","workplace":"Меню обработки","source":["StartWave Calpheon Archive starter chain"],"checkedAt":"2026-08-04","status":"curated"},
+    {"id":"SW-RECIPE-001","legacyId":"wood-plank","name":"Обработка брёвен в доски","recipeType":"Обработка древесины","description":"Базовый этап древесной цепочки: исходное бревно превращается в обработанную доску.","archive":{"title":"Модуль рецепта: бревно в доску","description":"Первый модуль Calpheon Recipe Archive использует существующую подтверждённую запись SW-RECIPE-001: SW-ITEM-013 переходит в SW-ITEM-014. Модуль не добавляет новых материалов или игровых связей.","status":"curated","source":"StartWave Calpheon Archive starter chain","checkedAt":"2026-08-04"},"materialItemIds":["SW-ITEM-013"],"resultItemId":"SW-ITEM-014","productionIds":["SW-PROD-001"],"method":"Рубка","workplace":"Меню обработки","source":["StartWave Calpheon Archive starter chain"],"checkedAt":"2026-08-04","status":"curated"},
     {"id":"SW-RECIPE-002","legacyId":"plywood","name":"Обработка досок в фанеру","recipeType":"Обработка древесины","description":"Следующий этап уплотнения древесного материала для ремесла и упаковочных производств.","materialItemIds":["SW-ITEM-014"],"resultItemId":"SW-ITEM-015","productionIds":["SW-PROD-001"],"method":"Рубка","workplace":"Меню обработки","source":["StartWave Calpheon Archive starter chain"],"checkedAt":"2026-08-04","status":"curated"},
     {"id":"SW-RECIPE-003","legacyId":"pine-plank","name":"Доски из сосновой древесины","recipeType":"Региональная обработка древесины","description":"Сосновая древесина проходит первичную обработку и включается в кальфеонскую древесную ветку.","materialItemIds":["SW-ITEM-016"],"resultItemId":"SW-ITEM-014","productionIds":["SW-PROD-001"],"method":"Рубка","workplace":"Меню обработки","source":["StartWave Calpheon Archive starter chain"],"checkedAt":"2026-08-04","status":"curated"},
     {"id":"SW-RECIPE-004","legacyId":"pine-plywood","name":"Фанера из сосновых досок","recipeType":"Региональная обработка древесины","description":"Обработанные доски переходят в более плотный материал для производственной цепочки Кальфеона.","materialItemIds":["SW-ITEM-014"],"resultItemId":"SW-ITEM-015","productionIds":["SW-PROD-001"],"method":"Рубка","workplace":"Меню обработки","source":["StartWave Calpheon Archive starter chain"],"checkedAt":"2026-08-04","status":"curated"},

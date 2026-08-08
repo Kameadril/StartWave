@@ -3,9 +3,10 @@
   const search = document.getElementById('recipeArchiveSearch');
   const resultCount = document.getElementById('recipeArchiveResultCount');
   const relationCount = document.getElementById('recipeArchiveRelationCount');
+  const moduleCount = document.getElementById('recipeArchiveModuleCount');
   const empty = document.getElementById('recipeArchiveEmptyState');
 
-  if (!grid || !search || !resultCount || !empty) return;
+  if (!grid || !search || !resultCount || !moduleCount || !empty) return;
 
   const normalize = (value) => String(value ?? '').toLocaleLowerCase('ru-RU').trim();
   const list = (value) => Array.isArray(value) ? value : [];
@@ -25,6 +26,7 @@
   const createCard = (recipe, itemsById, productionsById) => {
     const article = document.createElement('article');
     article.className = 'bdo-resource-record bdo-production-record';
+    if (recipe.archive) article.classList.add('bdo-resource-record--living');
     article.id = recipe.id;
     article.dataset.recipeId = recipe.id;
 
@@ -34,6 +36,19 @@
 
     const description = document.createElement('p');
     description.textContent = recipe.description;
+
+    const archiveModule = recipe.archive ? document.createElement('section') : null;
+    if (archiveModule) {
+      archiveModule.className = 'bdo-resource-data-note';
+      const kicker = document.createElement('p');
+      kicker.className = 'bdo-resource-kicker';
+      kicker.textContent = 'Calpheon Recipe Archive · Recipe module';
+      const title = document.createElement('h4');
+      title.textContent = recipe.archive.title;
+      const note = document.createElement('p');
+      note.textContent = recipe.archive.description;
+      archiveModule.append(kicker, title, note);
+    }
 
     const flow = document.createElement('div');
     flow.className = 'bdo-node-relation-flow';
@@ -73,7 +88,9 @@
     const resultTitle = document.createElement('strong'); resultTitle.textContent = 'Результат'; result.append(resultTitle);
     const resultLinks = document.createElement('div'); resultLinks.className = 'bdo-resource-record__links'; resultLinks.append(linkedItem(itemsById.get(recipe.resultItemId), recipe.resultItemId)); result.append(resultLinks);
 
-    article.append(header, description, flow, facts, materials, result);
+    article.append(header, description);
+    if (archiveModule) article.append(archiveModule);
+    article.append(flow, facts, materials, result);
     return article;
   };
 
@@ -100,6 +117,7 @@
       empty.hidden = visible.length > 0;
     };
     relationCount.textContent = `${recipes.reduce((sum, recipe) => sum + list(recipe.materialItemIds).length + list(recipe.productionIds).length + 1, 0)} связей`;
+    moduleCount.textContent = `${recipes.filter((recipe) => recipe.archive).length} модуль`;
     search.addEventListener('input', render);
     render();
   }).catch((error) => {
