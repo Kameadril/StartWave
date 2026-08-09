@@ -24,7 +24,33 @@
     return link;
   };
 
-  const createCard = (production, itemsById) => {
+  const recipeOperation = (recipe, itemsById) => {
+    const operation = document.createElement('div');
+    operation.className = 'bdo-production-operation';
+
+    const materials = document.createElement('div');
+    materials.className = 'bdo-production-operation__materials';
+    list(recipe.materialItemIds).forEach((id, index) => {
+      const item = itemsById.get(id);
+      if (!item) return;
+      if (index) materials.append(document.createTextNode(' + '));
+      materials.append(itemLink(item));
+    });
+
+    const method = document.createElement('span');
+    method.className = 'bdo-production-operation__method';
+    method.textContent = recipe.method;
+
+    const result = itemsById.get(recipe.resultItemId);
+    const resultNode = document.createElement('div');
+    resultNode.className = 'bdo-production-operation__result';
+    if (result) resultNode.append(itemLink(result));
+
+    operation.append(materials, method, resultNode);
+    return operation;
+  };
+
+  const createCard = (production, itemsById, recipesById) => {
     const article = document.createElement('article');
     article.className = 'bdo-resource-record bdo-production-record';
     article.id = production.id;
@@ -38,21 +64,29 @@
     description.textContent = production.description;
 
     const flow = document.createElement('div');
-    flow.className = 'bdo-node-relation-flow';
+    flow.className = 'bdo-production-flow';
     flow.setAttribute('aria-label', `Этапы цепочки «${production.name}»`);
-    list(production.chainItemIds).forEach((id, index) => {
-      const item = itemsById.get(id);
-      if (!item) return;
-      if (flow.childElementCount) {
-        const arrow = document.createElement('i');
-        arrow.setAttribute('aria-hidden', 'true');
-        arrow.textContent = '→';
-        flow.append(arrow);
-      }
-      const step = document.createElement('span');
-      step.append(itemLink(item));
-      flow.append(step);
+
+    const preparation = document.createElement('section');
+    preparation.className = 'bdo-production-phase bdo-production-phase--preparation';
+    preparation.innerHTML = '<p class="bdo-production-phase__label">Подготовка и обработка материалов</p>';
+    list(production.preparationRecipeIds).forEach((id) => {
+      const recipe = recipesById.get(id);
+      if (recipe) preparation.append(recipeOperation(recipe, itemsById));
     });
+
+    const assembly = document.createElement('section');
+    assembly.className = 'bdo-production-phase bdo-production-phase--assembly';
+    assembly.innerHTML = '<p class="bdo-production-phase__label">Финальная сборка</p>';
+    const assemblyRecipe = recipesById.get(production.assemblyRecipeId);
+    if (assemblyRecipe) {
+      assembly.append(recipeOperation(assemblyRecipe, itemsById));
+      const workplace = document.createElement('p');
+      workplace.className = 'bdo-production-phase__workplace';
+      workplace.textContent = assemblyRecipe.workplace;
+      assembly.append(workplace);
+    }
+    flow.append(preparation, assembly);
 
     const facts = document.createElement('dl');
     facts.className = 'bdo-resource-record__facts';
@@ -69,12 +103,14 @@
 
   Promise.all([
     loadJson('../assets/data/bdo-productions.json'),
-    loadJson('../assets/data/bdo-items.json')
-  ]).then(([productionData, itemData]) => {
+    loadJson('../assets/data/bdo-items.json'),
+    loadJson('../assets/data/bdo-recipes.json')
+  ]).then(([productionData, itemData, recipeData]) => {
     const productions = list(productionData.productions);
     const itemsById = new Map(list(itemData.items).map((item) => [item.id, item]));
+    const recipesById = new Map(list(recipeData.recipes).map((recipe) => [recipe.id, recipe]));
     const render = (records) => {
-      grid.replaceChildren(...records.map((record) => createCard(record, itemsById)));
+      grid.replaceChildren(...records.map((record) => createCard(record, itemsById, recipesById)));
       grid.setAttribute('aria-busy', 'false');
       count.textContent = `${records.length} цепочка`;
       if (relationCount) relationCount.textContent = `${records.reduce((sum, record) => sum + list(record.chainItemIds).length, 0)} предметных связей`;
