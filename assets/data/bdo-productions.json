@@ -60,6 +60,24 @@
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-09",
       "status": "curated"
+    },
+    {
+      "id": "SW-PROD-003",
+      "name": "Сборка ящика с древесиной ясеня",
+      "productionType": "Упаковка и финальная сборка",
+      "description": "Древесина ясеня и порошок черного камня параллельно сходятся в один ящик с древесиной ясеня.",
+      "inputItemIds": ["SW-ITEM-001", "SW-ITEM-018"],
+      "outputItemIds": ["SW-ITEM-024"],
+      "chainItemIds": ["SW-ITEM-001", "SW-ITEM-018", "SW-ITEM-024"],
+      "preparationRecipeIds": [],
+      "assemblyRecipeId": "SW-RECIPE-008",
+      "professions": [],
+      "cities": [],
+      "workers": [],
+      "recipes": ["ash-timber-crate"],
+      "source": ["Данные, предоставленные пользователем"],
+      "checkedAt": "2026-08-09",
+      "status": "curated"
     }
   ]
 }
