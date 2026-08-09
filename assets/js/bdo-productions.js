@@ -81,14 +81,18 @@
     const assembly = document.createElement('section');
     assembly.className = 'bdo-production-phase bdo-production-phase--assembly';
     assembly.innerHTML = '<p class="bdo-production-phase__label">Финальная сборка</p>';
-    const assemblyRecipe = recipesById.get(production.assemblyRecipeId);
-    if (assemblyRecipe) {
+    const assemblyRecipeIds = list(production.assemblyRecipeIds).length
+      ? production.assemblyRecipeIds
+      : [production.assemblyRecipeId].filter(Boolean);
+    assemblyRecipeIds.forEach((recipeId) => {
+      const assemblyRecipe = recipesById.get(recipeId);
+      if (!assemblyRecipe) return;
       assembly.append(recipeOperation(assemblyRecipe, itemsById));
       const workplace = document.createElement('p');
       workplace.className = 'bdo-production-phase__workplace';
       workplace.textContent = assemblyRecipe.workplace;
       assembly.append(workplace);
-    }
+    });
     flow.append(preparation, assembly);
 
     const facts = document.createElement('dl');
