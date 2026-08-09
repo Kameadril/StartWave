@@ -54,9 +54,8 @@
     flow.className = 'bdo-node-relation-flow';
     flow.setAttribute('aria-label', `Связи рецепта «${recipe.name}»`);
     const flowSteps = [
-      ['Предмет', list(recipe.materialItemIds)[0]],
-      ['Рецепт', null],
       ['Материалы', null],
+      ['Рецепт', null],
       ['Производство', list(recipe.productionIds)[0]],
       ['Результат', recipe.resultItemId]
     ];
@@ -64,7 +63,16 @@
       if (index) { const arrow = document.createElement('i'); arrow.setAttribute('aria-hidden', 'true'); arrow.textContent = '→'; flow.append(arrow); }
       const step = document.createElement('span');
       if (label === 'Рецепт') step.textContent = `📜 ${recipe.id}`;
-      else if (label === 'Материалы') step.textContent = `🧺 ${list(recipe.materialItemIds).length}`;
+      else if (label === 'Материалы') {
+        step.append('🧺 ');
+        list(recipe.materialItemIds).forEach((materialId, materialIndex) => {
+          if (materialIndex) step.append(' + ');
+          const material = linkedItem(itemsById.get(materialId), materialId);
+          const quantity = recipe.materialQuantities?.[materialId];
+          if (quantity) material.append(` ×${quantity}`);
+          step.append(material);
+        });
+      }
       else if (label === 'Производство') {
         const production = productionsById.get(id);
         const link = document.createElement('a'); link.href = `bdo-production.html#${id}`; link.textContent = `⚒ ${production?.name || id}`; step.append(link);
@@ -80,7 +88,12 @@
     materials.className = 'bdo-resource-record__relations';
     const title = document.createElement('strong'); title.textContent = 'Необходимые материалы'; materials.append(title);
     const materialList = document.createElement('div'); materialList.className = 'bdo-resource-record__links';
-    list(recipe.materialItemIds).forEach((id) => materialList.append(linkedItem(itemsById.get(id), id)));
+    list(recipe.materialItemIds).forEach((id) => {
+      const material = linkedItem(itemsById.get(id), id);
+      const quantity = recipe.materialQuantities?.[id];
+      if (quantity) material.append(` ×${quantity}`);
+      materialList.append(material);
+    });
     materials.append(materialList);
 
     const result = document.createElement('div');

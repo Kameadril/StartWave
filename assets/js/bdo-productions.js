@@ -34,7 +34,10 @@
       const item = itemsById.get(id);
       if (!item) return;
       if (index) materials.append(document.createTextNode(' + '));
-      materials.append(itemLink(item));
+      const material = itemLink(item);
+      const quantity = recipe.materialQuantities?.[id];
+      if (quantity) material.append(` ×${quantity}`);
+      materials.append(material);
     });
 
     const method = document.createElement('span');
