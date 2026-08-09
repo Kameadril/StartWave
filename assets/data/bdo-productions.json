@@ -78,6 +78,24 @@
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-09",
       "status": "curated"
+    },
+    {
+      "id": "SW-PROD-004",
+      "name": "Сборка ящика с древесиной клёна",
+      "productionType": "Упаковка и финальная сборка",
+      "description": "Древесина клёна и порошок черного камня параллельно сходятся в один ящик с древесиной клёна.",
+      "inputItemIds": ["SW-ITEM-025", "SW-ITEM-018"],
+      "outputItemIds": ["SW-ITEM-026"],
+      "chainItemIds": ["SW-ITEM-025", "SW-ITEM-018", "SW-ITEM-026"],
+      "preparationRecipeIds": [],
+      "assemblyRecipeId": "SW-RECIPE-009",
+      "professions": [],
+      "cities": [],
+      "workers": [],
+      "recipes": ["maple-timber-crate"],
+      "source": ["Данные, предоставленные пользователем"],
+      "checkedAt": "2026-08-09",
+      "status": "curated"
     }
   ]
 }
