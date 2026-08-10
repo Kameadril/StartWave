@@ -168,6 +168,24 @@
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-10",
       "status": "curated"
+    },
+    {
+      "id": "SW-PROD-009",
+      "name": "Сборка ящика с древесиной кипариса",
+      "productionType": "Упаковка и финальная сборка",
+      "description": "Древесина кипариса и порошок черного камня параллельно сходятся в один ящик с древесиной кипариса.",
+      "inputItemIds": ["SW-ITEM-035", "SW-ITEM-018"],
+      "outputItemIds": ["SW-ITEM-036"],
+      "chainItemIds": ["SW-ITEM-035", "SW-ITEM-018", "SW-ITEM-036"],
+      "preparationRecipeIds": [],
+      "assemblyRecipeId": "SW-RECIPE-014",
+      "professions": [],
+      "cities": [],
+      "workers": [],
+      "recipes": ["cypress-timber-crate"],
+      "source": ["Данные, предоставленные пользователем"],
+      "checkedAt": "2026-08-10",
+      "status": "curated"
     }
   ]
 }
