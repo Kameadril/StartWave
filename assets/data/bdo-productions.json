@@ -150,6 +150,24 @@
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-10",
       "status": "curated"
+    },
+    {
+      "id": "SW-PROD-008",
+      "name": "Сборка ящика с древесиной акации",
+      "productionType": "Упаковка и финальная сборка",
+      "description": "Древесина акации и порошок черного камня параллельно сходятся в один ящик с древесиной акации.",
+      "inputItemIds": ["SW-ITEM-033", "SW-ITEM-018"],
+      "outputItemIds": ["SW-ITEM-034"],
+      "chainItemIds": ["SW-ITEM-033", "SW-ITEM-018", "SW-ITEM-034"],
+      "preparationRecipeIds": [],
+      "assemblyRecipeId": "SW-RECIPE-013",
+      "professions": [],
+      "cities": [],
+      "workers": [],
+      "recipes": ["acacia-timber-crate"],
+      "source": ["Данные, предоставленные пользователем"],
+      "checkedAt": "2026-08-10",
+      "status": "curated"
     }
   ]
 }
