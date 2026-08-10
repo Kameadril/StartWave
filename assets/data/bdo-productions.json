@@ -114,6 +114,24 @@
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-09",
       "status": "curated"
+    },
+    {
+      "id": "SW-PROD-006",
+      "name": "Сборка ящика с древесиной ольхи",
+      "productionType": "Упаковка и финальная сборка",
+      "description": "Древесина ольхи и порошок черного камня параллельно сходятся в один ящик с древесиной ольхи.",
+      "inputItemIds": ["SW-ITEM-029", "SW-ITEM-018"],
+      "outputItemIds": ["SW-ITEM-030"],
+      "chainItemIds": ["SW-ITEM-029", "SW-ITEM-018", "SW-ITEM-030"],
+      "preparationRecipeIds": [],
+      "assemblyRecipeId": "SW-RECIPE-011",
+      "professions": [],
+      "cities": [],
+      "workers": [],
+      "recipes": ["alder-timber-crate"],
+      "source": ["Данные, предоставленные пользователем"],
+      "checkedAt": "2026-08-10",
+      "status": "curated"
     }
   ]
 }
