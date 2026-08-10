@@ -132,6 +132,24 @@
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-10",
       "status": "curated"
+    },
+    {
+      "id": "SW-PROD-007",
+      "name": "Сборка ящика с древесиной пихты",
+      "productionType": "Упаковка и финальная сборка",
+      "description": "Древесина пихты и порошок черного камня параллельно сходятся в один ящик с древесиной пихты.",
+      "inputItemIds": ["SW-ITEM-031", "SW-ITEM-018"],
+      "outputItemIds": ["SW-ITEM-032"],
+      "chainItemIds": ["SW-ITEM-031", "SW-ITEM-018", "SW-ITEM-032"],
+      "preparationRecipeIds": [],
+      "assemblyRecipeId": "SW-RECIPE-012",
+      "professions": [],
+      "cities": [],
+      "workers": [],
+      "recipes": ["fir-timber-crate"],
+      "source": ["Данные, предоставленные пользователем"],
+      "checkedAt": "2026-08-10",
+      "status": "curated"
     }
   ]
 }
