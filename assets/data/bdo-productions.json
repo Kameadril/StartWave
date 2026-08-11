@@ -186,6 +186,24 @@
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-10",
       "status": "curated"
+    },
+    {
+      "id": "SW-PROD-010",
+      "name": "Сборка ящика с древесиной пальмы",
+      "productionType": "Упаковка и финальная сборка",
+      "description": "Древесина пальмы и порошок черного камня параллельно сходятся в один ящик с древесиной пальмы.",
+      "inputItemIds": ["SW-ITEM-037", "SW-ITEM-018"],
+      "outputItemIds": ["SW-ITEM-038"],
+      "chainItemIds": ["SW-ITEM-037", "SW-ITEM-018", "SW-ITEM-038"],
+      "preparationRecipeIds": [],
+      "assemblyRecipeId": "SW-RECIPE-015",
+      "professions": [],
+      "cities": [],
+      "workers": [],
+      "recipes": ["palm-timber-crate"],
+      "source": ["Данные, предоставленные пользователем"],
+      "checkedAt": "2026-08-11",
+      "status": "curated"
     }
   ]
 }
