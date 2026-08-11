@@ -231,6 +231,24 @@
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-11",
       "status": "curated"
+    },
+    {
+      "id": "SW-PROD-012",
+      "name": "Сборка ящика с древесиной из Медии",
+      "productionType": "Упаковка и финальная сборка",
+      "description": "Фанера из пихты, фанера из акации и порошок черного камня параллельно сходятся в один ящик с древесиной из Медии.",
+      "inputItemIds": ["SW-ITEM-041", "SW-ITEM-042", "SW-ITEM-018"],
+      "outputItemIds": ["SW-ITEM-043"],
+      "chainItemIds": ["SW-ITEM-041", "SW-ITEM-042", "SW-ITEM-018", "SW-ITEM-043"],
+      "preparationRecipeIds": [],
+      "assemblyRecipeId": "SW-RECIPE-017",
+      "professions": [],
+      "cities": [],
+      "workers": [],
+      "recipes": ["mediah-timber-crate"],
+      "source": ["Данные, предоставленные пользователем"],
+      "checkedAt": "2026-08-11",
+      "status": "curated"
     }
   ]
 }
