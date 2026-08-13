@@ -41,8 +41,7 @@
       "recipes": ["calpheon-timber-crate"],
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-09",
-      "status": "curated"
-    },
+      "status": "curated","archive":{"title":"Модуль production: Сборка ящика с древесиной из Кальфеона","description":"Подтверждённый production-модуль SW-PROD-001; используются только существующие входы и выходы.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-09"},"atlas":{"view":"Production Atlas View","title":"Сборка ящика с древесиной из Кальфеона","summary":"SW-ITEM-019 + SW-ITEM-020 + SW-ITEM-021 + SW-ITEM-018 → SW-ITEM-017.","source":"SW-PROD-001","productionSequence":"SW-ITEM-019 + SW-ITEM-020 + SW-ITEM-021 + SW-ITEM-018 → SW-PROD-001 → SW-ITEM-017."}},
     {
       "id": "SW-PROD-002",
       "name": "Сборка ящика с древесиной из Баленоса",
@@ -59,8 +58,7 @@
       "recipes": ["balenos-timber-crate-workshop-level-1", "balenos-timber-crate-workshop-level-2"],
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-09",
-      "status": "curated"
-    },
+      "status": "curated","archive":{"title":"Модуль production: Сборка ящика с древесиной из Баленоса","description":"Подтверждённый production-модуль SW-PROD-002; используются только существующие входы и выходы.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-09"},"atlas":{"view":"Production Atlas View","title":"Сборка ящика с древесиной из Баленоса","summary":"SW-ITEM-002 + SW-ITEM-022 + SW-ITEM-018 → SW-ITEM-023.","source":"SW-PROD-002","productionSequence":"SW-ITEM-002 + SW-ITEM-022 + SW-ITEM-018 → SW-PROD-002 → SW-ITEM-023."}},
     {
       "id": "SW-PROD-003",
       "name": "Сборка ящика с древесиной ясеня",
@@ -128,8 +126,7 @@
       "recipes": ["alder-timber-crate"],
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-10",
-      "status": "curated"
-    },
+      "status": "curated","archive":{"title":"Модуль production: Сборка ящика с древесиной ольхи","description":"Подтверждённый production-модуль SW-PROD-006; используются только существующие входы и выходы.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-10"},"atlas":{"view":"Production Atlas View","title":"Сборка ящика с древесиной ольхи","summary":"SW-ITEM-029 + SW-ITEM-018 → SW-ITEM-030.","source":"SW-PROD-006","productionSequence":"SW-ITEM-029 + SW-ITEM-018 → SW-PROD-006 → SW-ITEM-030."}},
     {
       "id": "SW-PROD-007",
       "name": "Сборка ящика с древесиной пихты",
@@ -146,8 +143,7 @@
       "recipes": ["fir-timber-crate"],
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-10",
-      "status": "curated"
-    },
+      "status": "curated","archive":{"title":"Модуль production: Сборка ящика с древесиной пихты","description":"Подтверждённый production-модуль SW-PROD-007; используются только существующие входы и выходы.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-10"},"atlas":{"view":"Production Atlas View","title":"Сборка ящика с древесиной пихты","summary":"SW-ITEM-031 + SW-ITEM-018 → SW-ITEM-032.","source":"SW-PROD-007","productionSequence":"SW-ITEM-031 + SW-ITEM-018 → SW-PROD-007 → SW-ITEM-032."}},
     {
       "id": "SW-PROD-008",
       "name": "Сборка ящика с древесиной акации",
@@ -164,8 +160,7 @@
       "recipes": ["acacia-timber-crate"],
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-10",
-      "status": "curated"
-    },
+      "status": "curated","archive":{"title":"Модуль production: Сборка ящика с древесиной акации","description":"Подтверждённый production-модуль SW-PROD-008; используются только существующие входы и выходы.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-10"},"atlas":{"view":"Production Atlas View","title":"Сборка ящика с древесиной акации","summary":"SW-ITEM-033 + SW-ITEM-018 → SW-ITEM-034.","source":"SW-PROD-008","productionSequence":"SW-ITEM-033 + SW-ITEM-018 → SW-PROD-008 → SW-ITEM-034."}},
     {
       "id": "SW-PROD-009",
       "name": "Сборка ящика с древесиной кипариса",
@@ -182,8 +177,7 @@
       "recipes": ["cypress-timber-crate"],
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-10",
-      "status": "curated"
-    },
+      "status": "curated","archive":{"title":"Модуль production: Сборка ящика с древесиной кипариса","description":"Подтверждённый production-модуль SW-PROD-009; используются только существующие входы и выходы.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-10"},"atlas":{"view":"Production Atlas View","title":"Сборка ящика с древесиной кипариса","summary":"SW-ITEM-035 + SW-ITEM-018 → SW-ITEM-036.","source":"SW-PROD-009","productionSequence":"SW-ITEM-035 + SW-ITEM-018 → SW-PROD-009 → SW-ITEM-036."}},
     {
       "id": "SW-PROD-010",
       "name": "Сборка ящика с древесиной пальмы",
@@ -200,8 +194,7 @@
       "recipes": ["palm-timber-crate"],
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-11",
-      "status": "curated"
-    },
+      "status": "curated","archive":{"title":"Модуль production: Сборка ящика с древесиной пальмы","description":"Подтверждённый production-модуль SW-PROD-010; используются только существующие входы и выходы.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-11"},"atlas":{"view":"Production Atlas View","title":"Сборка ящика с древесиной пальмы","summary":"SW-ITEM-037 + SW-ITEM-018 → SW-ITEM-038.","source":"SW-PROD-010","productionSequence":"SW-ITEM-037 + SW-ITEM-018 → SW-PROD-010 → SW-ITEM-038."}},
     {
       "id": "SW-PROD-011",
       "name": "Сборка ящика с древесиной бузины",
@@ -227,8 +220,7 @@
       "recipes": ["elder-timber-crate"],
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-11",
-      "status": "curated"
-    },
+      "status": "curated","archive":{"title":"Модуль production: Сборка ящика с древесиной бузины","description":"Подтверждённый production-модуль SW-PROD-011; используются только существующие входы и выходы.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-11"},"atlas":{"view":"Production Atlas View","title":"Сборка ящика с древесиной бузины","summary":"SW-ITEM-039 + SW-ITEM-018 → SW-ITEM-040.","source":"SW-PROD-011","productionSequence":"SW-ITEM-039 + SW-ITEM-018 → SW-PROD-011 → SW-ITEM-040."}},
     {
       "id": "SW-PROD-012",
       "name": "Сборка ящика с древесиной из Медии",
@@ -245,8 +237,7 @@
       "recipes": ["mediah-timber-crate"],
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-11",
-      "status": "curated"
-    },
+      "status": "curated","archive":{"title":"Модуль production: Сборка ящика с древесиной из Медии","description":"Подтверждённый production-модуль SW-PROD-012; используются только существующие входы и выходы.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-11"},"atlas":{"view":"Production Atlas View","title":"Сборка ящика с древесиной из Медии","summary":"SW-ITEM-041 + SW-ITEM-042 + SW-ITEM-018 → SW-ITEM-043.","source":"SW-PROD-012","productionSequence":"SW-ITEM-041 + SW-ITEM-042 + SW-ITEM-018 → SW-PROD-012 → SW-ITEM-043."}},
     {
       "id": "SW-PROD-013",
       "name": "Сборка ящика с древесиной из Серендии",
@@ -263,7 +254,6 @@
       "recipes": ["serendia-timber-crate"],
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-11",
-      "status": "curated"
-    }
+      "status": "curated","archive":{"title":"Модуль production: Сборка ящика с древесиной из Серендии","description":"Подтверждённый production-модуль SW-PROD-013; используются только существующие входы и выходы.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-11"},"atlas":{"view":"Production Atlas View","title":"Сборка ящика с древесиной из Серендии","summary":"SW-ITEM-022 + SW-ITEM-044 + SW-ITEM-018 → SW-ITEM-045.","source":"SW-PROD-013","productionSequence":"SW-ITEM-022 + SW-ITEM-044 + SW-ITEM-018 → SW-PROD-013 → SW-ITEM-045."}}
   ]
 }
