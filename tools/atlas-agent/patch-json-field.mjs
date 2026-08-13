@@ -13,7 +13,7 @@ const file = path.resolve(root, relativeFile);
 if (path.relative(root, file).startsWith('..')) throw new Error('Path must stay inside project root');
 const field = JSON.parse((fieldSpec.startsWith('@') ? fs.readFileSync(path.resolve(root, fieldSpec.slice(1)), 'utf8') : fieldSpec).replace(/^\uFEFF/, ''));
 if (!field || typeof field.name !== 'string' || !Object.prototype.hasOwnProperty.call(field, 'value')) throw new Error('Field JSON must be {"name":string,"value":...}');
-const text = fs.readFileSync(file, 'utf8');
+const text = fs.readFileSync(file, 'utf8').replace(/^\uFEFF/, '');
 const parsed = JSON.parse(text);
 const collection = Object.values(parsed).find(value => Array.isArray(value) && value.some(x => x && typeof x === 'object' && typeof x.id === 'string'));
 if (!collection) throw new Error('No entity collection found');
@@ -36,8 +36,19 @@ if (objectEnd < 0) throw new Error('Unable to determine object boundary');
 const originalObject = text.slice(objectStart, objectEnd + 1);
 const keyRe = new RegExp(`([,{]\\s*)"${field.name.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')}"\\s*:`);
 let replacement;
-if (keyRe.test(originalObject)) {
-  replacement = originalObject.replace(keyRe, (m, prefix) => `${prefix}"${field.name}":${JSON.stringify(field.value)}`);
+const parts=field.name.split('.');
+if(parts.length>1){
+  if(parts.length!==2) throw new Error('Only one nested object path is supported');
+  const nestedKey=parts[0], leaf=parts[1];
+  const nestedRe=new RegExp(`"${nestedKey.replace(/[.*+?^${}()|[\\]\\]/g,'\\$&')}"\\s*:\\s*\\{`); const nm=originalObject.match(nestedRe); if(!nm) throw new Error('Missing intermediate object');
+  const ns=originalObject.indexOf('{',nm.index), ne=(()=>{let d=0,q=false,e=false;for(let i=ns;i<originalObject.length;i++){const c=originalObject[i];if(q){if(e)e=false;else if(c==='\\\\')e=true;else if(c==='"')q=false;continue}if(c==='"')q=true;else if(c==='{')d++;else if(c==='}'&&--d===0)return i}return -1})(); if(ne<0) throw new Error('Nested bounds');
+  const nested=originalObject.slice(ns,ne+1), lr=new RegExp(`([,{]\\s*)"${leaf.replace(/[.*+?^${}()|[\\]\\]/g,'\\$&')}"\\s*:`); if(!lr.test(nested)) throw new Error('Missing nested field');
+  let value=field.value; if(field.operation==='APPEND_UNIQUE'){const cur=JSON.parse(nested.match(new RegExp(`"${leaf}"\\s*:\\s*(\\[[^\\]]*\\])`))[1]); if(!cur.includes(value)) cur.push(value); value=cur;}
+  const leafValueRe=new RegExp(`([,{]\\s*)"${leaf.replace(/[.*+?^${}()|[\\]\\]/g,'\\$&')}"\\s*:\\s*\\[[^\\]]*\\]`);
+  const nextNested=nested.replace(leafValueRe,(m,prefix)=>`${prefix}"${leaf}":${JSON.stringify(value)}`); replacement=originalObject.slice(0,ns)+nextNested+originalObject.slice(ne+1);
+} else if (keyRe.test(originalObject)) {
+  let value=field.value; if(field.operation==='APPEND_UNIQUE'){const cur=JSON.parse(originalObject.match(new RegExp(`"${field.name}"\\s*:\\s*(\\[[^\\]]*\\])`))[1]); if(!cur.includes(value))cur.push(value); value=cur;}
+  replacement = originalObject.replace(keyRe, (m, prefix) => `${prefix}"${field.name}":${JSON.stringify(value)}`);
 } else {
   const body = originalObject.slice(0, -1).trimEnd();
   const comma = body.endsWith('{') ? '' : ',';
@@ -47,7 +58,8 @@ const nextText = text.slice(0, objectStart) + replacement + text.slice(objectEnd
 const nextParsed = JSON.parse(nextText);
 const nextCollection = Object.values(nextParsed).find(value => Array.isArray(value) && value.some(x => x && typeof x === 'object' && typeof x.id === 'string'));
 const nextEntity = nextCollection.find(x => x && x.id === entityId);
-if (JSON.stringify(nextEntity[field.name]) !== JSON.stringify(field.value)) throw new Error('Post-patch field verification failed');
+const verifyValue=parts.length>1 ? nextEntity[parts[0]]?.[parts[1]] : nextEntity[field.name];
+if (field.operation==='APPEND_UNIQUE' ? !Array.isArray(verifyValue)||!verifyValue.includes(field.value) : JSON.stringify(verifyValue) !== JSON.stringify(field.value)) throw new Error('Post-patch field verification failed');
 const beforeOthers = collection.filter(x => x.id !== entityId);
 const afterOthers = nextCollection.filter(x => x.id !== entityId);
 if (JSON.stringify(beforeOthers) !== JSON.stringify(afterOthers)) throw new Error('Non-target entities changed');
