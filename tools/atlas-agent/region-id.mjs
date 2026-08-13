@@ -1,0 +1,6 @@
+import fs from 'node:fs'; import path from 'node:path';
+const ROOT=process.cwd();
+const map={А:'A',Б:'B',В:'V',Г:'G',Д:'D',Е:'E',Ё:'Yo',Ж:'Zh',З:'Z',И:'I',Й:'Y',К:'K',Л:'L',М:'M',Н:'N',О:'O',П:'P',Р:'R',С:'S',Т:'T',У:'U',Ф:'F',Х:'Kh',Ц:'Ts',Ч:'Ch',Ш:'Sh',Щ:'Shch',Ъ:'',Ы:'Y',Ь:'',Э:'E',Ю:'Yu',Я:'Ya'};
+export function slug(value){let s=String(value).normalize('NFKC').split('').map(c=>map[c.toUpperCase()]??c).join('').toLowerCase();return s.replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');}
+export function regionId(name){const semanticSlug=slug(name);if(!semanticSlug)throw Error('EMPTY_SLUG');const id=`BDO-REGION-${semanticSlug}`;if(!/^BDO-REGION-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id))throw Error('INVALID_REGION_ID');return {name,semanticSlug,regionId:id};}
+const args=process.argv.slice(2); if(args[0]==='--simulate'){const rows=JSON.parse(fs.readFileSync(path.resolve(ROOT,args[1]),'utf8'));const out=rows.map(x=>({...x,...regionId(x.name),status:'SIMULATED'}));if(new Set(out.map(x=>x.regionId)).size!==out.length)throw Error('SIMULATION_DUPLICATE_ID');console.log(JSON.stringify(out,null,2));}else if(args.length===1){console.log(JSON.stringify({...regionId(args[0]),status:'SIMULATED'},null,2));}else throw Error('Usage: node region-id.mjs <literal-region> | --simulate <relative-json>');
