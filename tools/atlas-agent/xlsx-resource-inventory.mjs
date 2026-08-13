@@ -7,8 +7,9 @@ const items=JSON.parse(fs.readFileSync('assets/data/bdo-items.json')).items;
 const itemById=new Map(items.map(x=>[x.id,x])), resourceById=new Map(resources.map(x=>[x.id,x]));
 const groups={complete:[],existingResourceNeedsLinkReview:[],missingResource:[],missingItem:[],missingBoth:[],ambiguous:[],nonResource:[]};
 for(const name of [...new Set(rows.map(x=>x.resource))]){
-  const itemCandidates=items.filter(i=>i.name===name || (i.relatedObjects||[]).includes(name));
-  const resourceCandidates=resources.filter(r=>r.name===name);
+  const exactItems=items.filter(i=>i.name===name);
+  const itemCandidates=exactItems.length ? exactItems : items.filter(i=>(i.relatedObjects||[]).includes(name));
+  const resourceCandidates=resources.filter(r=>r.name===name || r.relations?.items?.some(id=>itemCandidates.some(i=>i.id===id)));
   const resourceIds=[...new Set(itemCandidates.flatMap(i=>i.resources||[]).filter(id=>resourceById.has(id)).concat(resourceCandidates.map(r=>r.id)))];
   const itemIds=itemCandidates.map(i=>i.id);
   const xlsxRows=rows.filter(x=>x.resource===name);
