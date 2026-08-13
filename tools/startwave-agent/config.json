@@ -1,0 +1,1 @@
+{"schemaVersion":1,"model":"qwen2.5-coder:7b","ollamaUrl":"http://localhost:11434","num_ctx":32768,"num_predict":2048,"pollIntervalMs":2000,"requestTimeoutMs":300000,"maxPromptChars":12000,"maxFileBytes":262144,"maxFiles":20}

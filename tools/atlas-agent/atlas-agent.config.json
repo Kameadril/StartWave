@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "atlasDirectory": "assets/data",
+  "reportDirectory": ".startwave-agent/logs",
+  "files": {
+    "bdo-cities.json": "cities",
+    "bdo-items.json": "items",
+    "bdo-knowledge-graph.json": null,
+    "bdo-knowledge-layer.json": null,
+    "bdo-nodes.json": "nodes",
+    "bdo-player-knowledge.json": null,
+    "bdo-productions.json": "productions",
+    "bdo-recipes.json": "recipes",
+    "bdo-region-views.json": "regions",
+    "bdo-resources.json": "resources",
+    "bdo-workers.json": "workers"
+  },
+  "idPatterns": {
+    "items": "^SW-ITEM-[0-9]{3,}$",
+    "recipes": "^SW-RECIPE-[0-9]{3,}$",
+    "productions": "^SW-PROD-[0-9]{3,}$"
+  },
+  "requiredFields": {
+    "items": ["id", "name", "category", "itemType", "description", "checkedAt", "status"],
+    "recipes": ["id", "legacyId", "name", "recipeType", "materialItemIds", "resultItemId", "productionIds", "checkedAt", "status"],
+    "productions": ["id", "name", "productionType", "inputItemIds", "outputItemIds", "chainItemIds", "checkedAt", "status"],
+    "resources": ["id", "name", "category", "resourceType", "verification", "relations"],
+    "cities": ["id", "name", "checkedAt", "status", "relations"],
+    "nodes": ["id", "name", "checkedAt", "status"],
+    "workers": ["id", "name", "checkedAt", "status"],
+    "regions": ["id", "name", "status"]
+  },
+  "emptyLayers": ["nodes", "workers", "edges", "worldRelations"],
+  "allowedStatuses": ["curated", "verified", "seed-list-verified", "researching", "awaiting-data", "context-only", "living-preview", "test-awaiting-verified-relations"]
+}
+
