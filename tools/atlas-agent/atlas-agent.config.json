@@ -12,6 +12,7 @@
     "bdo-productions.json": "productions",
     "bdo-recipes.json": "recipes",
     "bdo-region-views.json": "regions",
+    "bdo-regions.json": "regions",
     "bdo-resources.json": "resources",
     "bdo-workers.json": "workers"
   },
@@ -33,4 +34,3 @@
   "emptyLayers": ["nodes", "workers", "edges", "worldRelations"],
   "allowedStatuses": ["curated", "verified", "seed-list-verified", "researching", "awaiting-data", "context-only", "living-preview", "test-awaiting-verified-relations"]
 }
-

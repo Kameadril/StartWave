@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "0.1.0",
+  "collectionId": "bdo-regions",
+  "title": "BDO Regions",
+  "updatedAt": "2026-08-14",
+  "verificationPolicy": {"status":"source-verified","source":"data-source/BlackDesert - Узлы Ресурсов.xlsx","scope":"Region foundation only; Nodes and gameplay relations are added in separate verified stages."},
+  "regions": [
+    {"id":"BDO-REGION-balenos","name":"Баленос","source":{"sheet":"+ Фильтр узлы + ресурсы","sourceRows":[4,148],"xlsxRows":145,"uniqueNodes":38,"uniqueResources":66},"checkedAt":"2026-08-14","status":"verified","relations":{"nodes":[]}},
+    {"id":"BDO-REGION-serendiya","name":"Серендия","source":{"sheet":"+ Фильтр узлы + ресурсы","sourceRows":[149,201],"xlsxRows":53,"uniqueNodes":15,"uniqueResources":41},"checkedAt":"2026-08-14","status":"verified","relations":{"nodes":[]}},
+    {"id":"BDO-REGION-kalfeon","name":"Кальфеон","source":{"sheet":"+ Фильтр узлы + ресурсы","sourceRows":[202,350],"xlsxRows":149,"uniqueNodes":46,"uniqueResources":83},"checkedAt":"2026-08-14","status":"verified","relations":{"nodes":[]}},
+    {"id":"BDO-REGION-mediya","name":"Медия","source":{"sheet":"+ Фильтр узлы + ресурсы","sourceRows":[351,440],"xlsxRows":90,"uniqueNodes":23,"uniqueResources":59},"checkedAt":"2026-08-14","status":"verified","relations":{"nodes":[]}},
+    {"id":"BDO-REGION-valensiya","name":"Валенсия","source":{"sheet":"+ Фильтр узлы + ресурсы","sourceRows":[441,545],"xlsxRows":105,"uniqueNodes":34,"uniqueResources":53},"checkedAt":"2026-08-14","status":"verified","relations":{"nodes":[]}},
+    {"id":"BDO-REGION-kamasilviya","name":"Камасильвия","source":{"sheet":"+ Фильтр узлы + ресурсы","sourceRows":[546,570],"xlsxRows":25,"uniqueNodes":11,"uniqueResources":24},"checkedAt":"2026-08-14","status":"verified","relations":{"nodes":[]}},
+    {"id":"BDO-REGION-drigan","name":"Дриган","source":{"sheet":"+ Фильтр узлы + ресурсы","sourceRows":[571,602],"xlsxRows":32,"uniqueNodes":11,"uniqueResources":28},"checkedAt":"2026-08-14","status":"verified","relations":{"nodes":[]}},
+    {"id":"BDO-REGION-odillita","name":"Одиллита","source":{"sheet":"+ Фильтр узлы + ресурсы","sourceRows":[603,621],"xlsxRows":19,"uniqueNodes":8,"uniqueResources":16},"checkedAt":"2026-08-14","status":"verified","relations":{"nodes":[]}},
+    {"id":"BDO-REGION-gory-vechnoy-zimy","name":"Горы вечной зимы","source":{"sheet":"+ Фильтр узлы + ресурсы","sourceRows":[622,643],"xlsxRows":22,"uniqueNodes":10,"uniqueResources":19},"checkedAt":"2026-08-14","status":"verified","relations":{"nodes":[]}},
+    {"id":"BDO-REGION-strana-utra","name":"Страна Утра","source":{"sheet":"+ Фильтр узлы + ресурсы","sourceRows":[644,689],"xlsxRows":46,"uniqueNodes":13,"uniqueResources":35},"checkedAt":"2026-08-14","status":"verified","relations":{"nodes":[]}}
+  ]
+}
