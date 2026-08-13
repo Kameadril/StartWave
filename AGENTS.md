@@ -10,3 +10,6 @@ These rules apply to this repository and all descendants.
 - Store generated Atlas Worker reports only under `.startwave-agent/logs/`; reports must not contain secrets or full source-file contents.
 - Classify validator findings as `ERROR`, `WARNING`, or `INFO`. Validation errors must produce a non-zero exit code.
 
+## Approved Node ID rule
+
+`APPROVED_NODE_ID_RULE = BDO-NODE-<region-slug>-<node-slug>`. Node IDs are immutable after creation; literal Russian `name` and `region` are stored separately and may change independently. The fixed offline transliteration mapping is implemented in `tools/atlas-agent/node-id.mjs`. Existing-ID collisions return `ID_COLLISION` and require manual resolution; random suffixes and timestamps are forbidden. XLSX-to-Node creation must use this helper.

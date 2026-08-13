@@ -1,0 +1,7 @@
+import fs from 'node:fs';
+import path from 'node:path';
+const ROOT=process.cwd();
+const MAP=Object.freeze({а:'a',б:'b',в:'v',г:'g',д:'d',е:'e',ё:'yo',ж:'zh',з:'z',и:'i',й:'y',к:'k',л:'l',м:'m',н:'n',о:'o',п:'p',р:'r',с:'s',т:'t',у:'u',ф:'f',х:'kh',ц:'ts',ч:'ch',ш:'sh',щ:'shch',ъ:'',ы:'y',ь:'',э:'e',ю:'yu',я:'ya'});
+export const slug=value=>[...String(value).normalize('NFKC').toLowerCase()].map(c=>MAP[c]??c).join('').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+export const nodeId=(region,name)=>{const regionSlug=slug(region),nodeSlug=slug(name);if(!regionSlug||!nodeSlug)throw Error('EMPTY_SLUG');const id=`BDO-NODE-${regionSlug}-${nodeSlug}`;if(!/^BDO-NODE-[a-z0-9]+(?:-[a-z0-9]+)+$/.test(id))throw Error('INVALID_NODE_ID');return{region,name,regionSlug,nodeSlug,nodeId:id};};
+const args=process.argv.slice(2);if(args[0]==='--simulate'){const rows=JSON.parse(fs.readFileSync(path.resolve(ROOT,args[1]),'utf8'));const nodes=JSON.parse(fs.readFileSync(path.join(ROOT,'assets/data/bdo-nodes.json'),'utf8')).nodes??[];const occupied=new Map(nodes.map(n=>[n.id,n.name]));const out=rows.map(r=>{const x=nodeId(r.region,r.name);return{...r,...x,status:occupied.has(x.nodeId)&&occupied.get(x.nodeId)!==r.name?'ID_COLLISION':'SIMULATED'};});if(new Set(out.map(x=>x.nodeId)).size!==out.length)throw Error('SIMULATION_DUPLICATE_ID');console.log(JSON.stringify(out,null,2));}else if(args.length===2){const x=nodeId(args[0],args[1]);x.status='SIMULATED';console.log(JSON.stringify(x,null,2));}else throw Error('Usage: node node-id.mjs <region> <name> | --simulate <file>');

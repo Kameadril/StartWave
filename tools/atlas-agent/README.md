@@ -13,7 +13,8 @@ From the repository root:
 
 - `validate` prints `ERROR`, `WARNING`, and `INFO` findings.
 - `report` performs the same validation and writes a timestamped JSON report to `.startwave-agent/logs/`.
+
+Approved Node ID rule: `BDO-NODE-<region-slug>-<node-slug>`. Use `node tools/atlas-agent/node-id.mjs --simulate <relative-json>` for deterministic offline simulation. Literal names remain separate from immutable IDs; collisions return `ID_COLLISION` and require manual resolution.
 - Exit code `0` means no errors; `1` means validation errors; `2` means invocation or configuration failure. Warnings do not fail validation.
 
 The worker checks JSON/top-level structure, required fields, IDs and uniqueness, references, recipe/production/item consistency, applicable symmetric relations, dates/statuses, non-canonical legacy references, and intentionally empty layers. It has no auto-fix mode, network access, package dependencies, or command-execution feature.
-
