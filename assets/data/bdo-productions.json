@@ -77,8 +77,7 @@
       "recipes": ["ash-timber-crate"],
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-09",
-      "status": "curated"
-    },
+      "status": "curated","atlas":{"view":"Production Atlas View","title":"Сборка ящика с древесиной ясеня","summary":"SW-ITEM-001 и SW-ITEM-018 → SW-ITEM-024","source":"SW-PROD-003","productionSequence":"SW-ITEM-001 + SW-ITEM-018 → SW-PROD-003 → SW-ITEM-024"},"archive":{"title":"Модуль production SW-PROD-003","description":"Подтверждённый production-модуль SW-PROD-003; новые связи и игровые сведения не добавлены.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-09"}},
     {
       "id": "SW-PROD-004",
       "name": "Сборка ящика с древесиной клёна",
@@ -95,8 +94,7 @@
       "recipes": ["maple-timber-crate"],
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-09",
-      "status": "curated"
-    },
+      "status": "curated","atlas":{"view":"Production Atlas View","title":"Сборка ящика с древесиной клёна","summary":"SW-ITEM-025 и SW-ITEM-018 → SW-ITEM-026","source":"SW-PROD-004","productionSequence":"SW-ITEM-025 + SW-ITEM-018 → SW-PROD-004 → SW-ITEM-026"},"archive":{"title":"Модуль production SW-PROD-004","description":"Подтверждённый production-модуль SW-PROD-004; новые связи и игровые сведения не добавлены.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-09"}},
     {
       "id": "SW-PROD-005",
       "name": "Сборка ящика с древесиной сосны",
@@ -113,8 +111,7 @@
       "recipes": ["pine-timber-crate"],
       "source": ["Данные, предоставленные пользователем"],
       "checkedAt": "2026-08-09",
-      "status": "curated"
-    },
+      "status": "curated","atlas":{"view":"Production Atlas View","title":"Сборка ящика с древесиной сосны","summary":"SW-ITEM-027 и SW-ITEM-018 → SW-ITEM-028","source":"SW-PROD-005","productionSequence":"SW-ITEM-027 + SW-ITEM-018 → SW-PROD-005 → SW-ITEM-028"},"archive":{"title":"Модуль production SW-PROD-005","description":"Подтверждённый production-модуль SW-PROD-005; новые связи и игровые сведения не добавлены.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-09"}},
     {
       "id": "SW-PROD-006",
       "name": "Сборка ящика с древесиной ольхи",
