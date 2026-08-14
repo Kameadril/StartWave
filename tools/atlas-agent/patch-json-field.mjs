@@ -48,7 +48,8 @@ if(parts.length>1){
   const nextNested=nested.replace(leafValueRe,(m,prefix)=>`${prefix}"${leaf}":${JSON.stringify(value)}`); replacement=originalObject.slice(0,ns)+nextNested+originalObject.slice(ne+1);
 } else if (keyRe.test(originalObject)) {
   let value=field.value; if(field.operation==='APPEND_UNIQUE'){const cur=JSON.parse(originalObject.match(new RegExp(`"${field.name}"\\s*:\\s*(\\[[^\\]]*\\])`))[1]); if(!cur.includes(value))cur.push(value); value=cur;}
-  replacement = originalObject.replace(keyRe, (m, prefix) => `${prefix}"${field.name}":${JSON.stringify(value)}`);
+  const valueRe = Array.isArray(value) ? new RegExp(`([,{]\\s*)"${field.name.replace(/[.*+?^${}()|[\\]\\]/g,'\\\\$&')}"\\s*:\\s*\\[[^\\]]*\\]`) : keyRe;
+  replacement = originalObject.replace(valueRe, (m, prefix) => `${prefix}"${field.name}":${JSON.stringify(value)}`);
 } else {
   const body = originalObject.slice(0, -1).trimEnd();
   const comma = body.endsWith('{') ? '' : ',';
