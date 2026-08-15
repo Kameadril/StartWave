@@ -1817,7 +1817,30 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "id": "bdo-resource-aloe",
+      "name": "Алоэ",
+      "category": "Природный ресурс",
+      "resourceType": "Растительный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-136 + BlackDesert XLSX",
+        "checkedAt": "2026-08-16"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-mediya-ferma-ekhto"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-136"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
     }
+
 
 
 

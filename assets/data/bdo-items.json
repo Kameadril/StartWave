@@ -1128,7 +1128,22 @@
       ],
       "recipes": [],
       "productions": []
+    },
+    {
+      "id": "SW-ITEM-136",
+      "name": "Алоэ",
+      "category": "Природный ресурс",
+      "itemType": "Растение",
+      "description": "Алоэ",
+      "checkedAt": "2026-08-16",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-aloe"
+      ],
+      "recipes": [],
+      "productions": []
     }
+
 
 
 

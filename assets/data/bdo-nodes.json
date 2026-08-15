@@ -1078,9 +1078,7 @@
       "id": "BDO-NODE-mediya-ferma-ekhto",
       "name": "Ферма Эхто",
       "region": "Медия",
-      "resources": [
-        "bdo-resource-industrial-crop-khlopok"
-      ],
+      "resources":["bdo-resource-industrial-crop-khlopok","bdo-resource-aloe"],
       "workers": [],
       "production": [],
       "images": [],
