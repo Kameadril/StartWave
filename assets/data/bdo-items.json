@@ -890,7 +890,67 @@
       ],
       "recipes": [],
       "productions": []
+    },
+    {
+      "id": "SW-ITEM-119",
+      "name": "Пшеница",
+      "category": "Природный ресурс",
+      "itemType": "Зерновая культура",
+      "description": "Пшеница",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-grain-pshenitsa"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-120",
+      "name": "Ячмень",
+      "category": "Природный ресурс",
+      "itemType": "Зерновая культура",
+      "description": "Ячмень",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-grain-yachmen"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-121",
+      "name": "Кукуруза",
+      "category": "Природный ресурс",
+      "itemType": "Зерновая культура",
+      "description": "Кукуруза",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-grain-kukuruza"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-122",
+      "name": "Рис",
+      "category": "Природный ресурс",
+      "itemType": "Зерновая культура",
+      "description": "Рис",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-grain-ris"
+      ],
+      "recipes": [],
+      "productions": []
     }
+
+
+
+
 
 
 

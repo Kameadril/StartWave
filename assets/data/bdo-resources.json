@@ -1443,7 +1443,99 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "id": "bdo-resource-grain-pshenitsa",
+      "name": "Пшеница",
+      "category": "Природный ресурс",
+      "resourceType": "Зерновой ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-119; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-serendiya-ferma-kosta","BDO-NODE-serendiya-plantatsiya-moretti","BDO-NODE-kalfeon-severnoe-pole-pshenitsy"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-119"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-grain-yachmen",
+      "name": "Ячмень",
+      "category": "Природный ресурс",
+      "resourceType": "Зерновой ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-120; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-kalfeon-severnoe-pole-pshenitsy","BDO-NODE-drigan-polya-dvenkruna","BDO-NODE-drigan-ferma-maraka"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-120"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-grain-kukuruza",
+      "name": "Кукуруза",
+      "category": "Природный ресурс",
+      "resourceType": "Зерновой ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-121; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-drigan-polya-dvenkruna","BDO-NODE-drigan-ferma-maraka","BDO-NODE-balenos-ferma-toskani"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-121"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-grain-ris",
+      "name": "Рис",
+      "category": "Природный ресурс",
+      "resourceType": "Зерновой ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-122; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-strana-utra-risovaya-derevnya"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-122"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
     }
+
+
+
+
 
 
 
