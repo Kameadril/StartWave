@@ -1,1 +1,25 @@
-{"schemaVersion":1,"model":"qwen2.5-coder:7b","ollamaUrl":"http://localhost:11434","num_ctx":32768,"num_predict":2048,"pollIntervalMs":2000,"requestTimeoutMs":300000,"maxPromptChars":12000,"maxFileBytes":262144,"maxFiles":20}
+{
+  "schemaVersion": 1,
+  "model": "qwen2.5-coder:7b",
+  "ollamaUrl": "http://localhost:11434",
+  "num_ctx": 32768,
+  "num_predict": 2048,
+  "pollIntervalMs": 2000,
+  "requestTimeoutMs": 300000,
+  "maxPromptChars": 12000,
+  "maxFileBytes": 262144,
+  "maxFiles": 20,
+  "bdoWebSearch": {
+    "enabled": true,
+    "allowedHosts": [
+      "naeu.playblackdesert.com",
+      "bdoalerts.net",
+      "api.bdoalerts.net",
+      "garmoth.com"
+    ],
+    "couponsUrl": "https://api.bdoalerts.net/api/coupons",
+    "maxSources": 3,
+    "maxCharsPerSource": 6000,
+    "timeoutMs": 15000
+  }
+}

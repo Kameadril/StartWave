@@ -2,7 +2,7 @@
 param(
     [Parameter(Mandatory=$true,Position=0)][ValidateSet('start','once','submit','status')][string]$Command,
     [Parameter(Position=1)][string]$Prompt,
-    [ValidateSet('llm-only','atlas-analysis')][string]$Type='llm-only',
+    [ValidateSet('llm-only','atlas-analysis','bdo-web-search')][string]$Type='llm-only',
     [string[]]$Files=@(), [switch]$NoValidation, [string]$Id
 )
 $ErrorActionPreference='Stop'
@@ -22,6 +22,6 @@ try {
         try{$Writer=[IO.StreamWriter]::new($Stream,[Text.UTF8Encoding]::new($false));$Writer.WriteLine(($Job|ConvertTo-Json -Depth 5 -Compress));$Writer.Dispose()}finally{if($Stream){$Stream.Dispose()}}
         Write-Output $Id; exit 0
     }
-    if(-not $Id){Get-ChildItem (Join-Path $State 'runs') -Filter '*.json'|Sort-Object LastWriteTime -Descending|Select-Object -First 10|ForEach-Object{Get-Content -Raw $_.FullName|ConvertFrom-Json|Select-Object id,status,finishedAt}}
-    else{$Result=Join-Path (Join-Path $State 'runs') "$Id.json";if(Test-Path $Result){Get-Content -Raw $Result}elseif(Test-Path (Join-Path (Join-Path $State 'claims') "$Id.json")){"RUNNING $Id"}elseif(Test-Path (Join-Path (Join-Path $State 'queue') "$Id.json")){"QUEUED $Id"}else{"NOT_FOUND $Id";exit 1}}
+    if(-not $Id){Get-ChildItem (Join-Path $State 'runs') -Filter '*.json'|Sort-Object LastWriteTime -Descending|Select-Object -First 10|ForEach-Object{Get-Content -Raw -Encoding UTF8 $_.FullName|ConvertFrom-Json|Select-Object id,status,finishedAt}}
+    else{$Result=Join-Path (Join-Path $State 'runs') "$Id.json";if(Test-Path $Result){Get-Content -Raw -Encoding UTF8 $Result}elseif(Test-Path (Join-Path (Join-Path $State 'claims') "$Id.json")){"RUNNING $Id"}elseif(Test-Path (Join-Path (Join-Path $State 'queue') "$Id.json")){"QUEUED $Id"}else{"NOT_FOUND $Id";exit 1}}
 } finally {Pop-Location}
