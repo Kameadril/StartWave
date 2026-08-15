@@ -946,7 +946,97 @@
       ],
       "recipes": [],
       "productions": []
+    },
+    {
+      "id": "SW-ITEM-123",
+      "name": "Картофель",
+      "category": "Природный ресурс",
+      "itemType": "Овощная культура",
+      "description": "Картофель",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-vegetable-kartofel"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-124",
+      "name": "Тыква",
+      "category": "Природный ресурс",
+      "itemType": "Овощная культура",
+      "description": "Тыква",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-vegetable-tykva"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-125",
+      "name": "Перец",
+      "category": "Природный ресурс",
+      "itemType": "Овощная культура",
+      "description": "Перец",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-vegetable-perets"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-126",
+      "name": "Батат",
+      "category": "Природный ресурс",
+      "itemType": "Овощная культура",
+      "description": "Батат",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-vegetable-batat"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-127",
+      "name": "Петсай",
+      "category": "Природный ресурс",
+      "itemType": "Овощная культура",
+      "description": "Петсай",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-vegetable-petsay"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-128",
+      "name": "Редька",
+      "category": "Природный ресурс",
+      "itemType": "Овощная культура",
+      "description": "Редька",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-vegetable-redka"
+      ],
+      "recipes": [],
+      "productions": []
     }
+
+
+
+
+
+
 
 
 

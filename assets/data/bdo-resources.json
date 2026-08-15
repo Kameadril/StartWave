@@ -1531,7 +1531,145 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "id": "bdo-resource-vegetable-kartofel",
+      "name": "Картофель",
+      "category": "Природный ресурс",
+      "resourceType": "Овощной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-123; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-balenos-ferma-bartelli","BDO-NODE-balenos-ferma-pinto","BDO-NODE-balenos-ferma-lodzhi","BDO-NODE-odillita-plantatsiya-dellimor"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-123"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-vegetable-tykva",
+      "name": "Тыква",
+      "category": "Природный ресурс",
+      "resourceType": "Овощной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-124; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-serendiya-ferma-alekhandro","BDO-NODE-serendiya-ferma-kosta"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-124"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-vegetable-perets",
+      "name": "Перец",
+      "category": "Природный ресурс",
+      "resourceType": "Овощной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-125; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-kalfeon-severnoe-pole-pshenitsy"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-125"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-vegetable-batat",
+      "name": "Батат",
+      "category": "Природный ресурс",
+      "resourceType": "Овощной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-126; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-mediya-ferma-suri"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-126"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-vegetable-petsay",
+      "name": "Петсай",
+      "category": "Природный ресурс",
+      "resourceType": "Овощной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-127; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-strana-utra-risovaya-derevnya"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-127"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-vegetable-redka",
+      "name": "Редька",
+      "category": "Природный ресурс",
+      "resourceType": "Овощной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-128; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-strana-utra-risovaya-derevnya"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-128"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
     }
+
+
+
+
+
+
 
 
 
