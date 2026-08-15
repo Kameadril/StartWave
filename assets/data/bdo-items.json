@@ -582,7 +582,37 @@
       ],
       "recipes": [],
       "productions": []
+    },
+    {
+      "id": "SW-ITEM-097",
+      "name": "Грубый опал",
+      "category": "Природный ресурс",
+      "itemType": "Минерал",
+      "description": "Грубый опал",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-gem-rough-opal"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-098",
+      "name": "Грубый алмаз",
+      "category": "Природный ресурс",
+      "itemType": "Минерал",
+      "description": "Грубый алмаз",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-gem-rough-diamond"
+      ],
+      "recipes": [],
+      "productions": []
     }
+
+
 
 
 

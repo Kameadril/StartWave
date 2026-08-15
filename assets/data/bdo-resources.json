@@ -926,7 +926,60 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "id": "bdo-resource-gem-rough-opal",
+      "name": "Грубый опал",
+      "category": "Природный ресурс",
+      "resourceType": "Минеральный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-097; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-mediya-poberezhe-medii",
+          "BDO-NODE-valensiya-ushchele-furkan",
+          "BDO-NODE-valensiya-illiriya",
+          "BDO-NODE-valensiya-pribrezhnye-skaly-gabi"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-097"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-gem-rough-diamond",
+      "name": "Грубый алмаз",
+      "category": "Природный ресурс",
+      "resourceType": "Минеральный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-098; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-valensiya-sernyy-rudnik"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-098"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
     }
+
+
 
 
 
