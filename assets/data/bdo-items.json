@@ -1058,7 +1058,52 @@
       ],
       "recipes": [],
       "productions": []
+    },
+    {
+      "id": "SW-ITEM-131",
+      "name": "Мускатный орех",
+      "category": "Природный ресурс",
+      "itemType": "Пряность",
+      "description": "Мускатный орех",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-spice-muskatnyy-orekh"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-132",
+      "name": "Бадьян",
+      "category": "Природный ресурс",
+      "itemType": "Пряность",
+      "description": "Бадьян",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-spice-badyan"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-133",
+      "name": "Корица",
+      "category": "Природный ресурс",
+      "itemType": "Пряность",
+      "description": "Корица",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-spice-koritsa"
+      ],
+      "recipes": [],
+      "productions": []
     }
+
+
+
 
 
 

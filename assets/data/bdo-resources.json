@@ -1707,7 +1707,76 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "id": "bdo-resource-spice-muskatnyy-orekh",
+      "name": "Мускатный орех",
+      "category": "Природный ресурс",
+      "resourceType": "Пряный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-131; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-valensiya-ushchele-ayris","BDO-NODE-valensiya-fermarskiy-bazar"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-131"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-spice-badyan",
+      "name": "Бадьян",
+      "category": "Природный ресурс",
+      "resourceType": "Пряный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-132; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-valensiya-kanon-marsha"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-132"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-spice-koritsa",
+      "name": "Корица",
+      "category": "Природный ресурс",
+      "resourceType": "Пряный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-133; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-mediya-ferma-kasuly"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-133"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
     }
+
+
+
 
 
 
