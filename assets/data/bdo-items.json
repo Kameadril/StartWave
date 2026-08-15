@@ -624,7 +624,82 @@
       ],
       "recipes": [],
       "productions": []
+    },
+    {
+      "id": "SW-ITEM-100",
+      "name": "Календула",
+      "category": "Природный ресурс",
+      "itemType": "Цветок",
+      "description": "Календула",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-flower-calendula"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-101",
+      "name": "Азалия",
+      "category": "Природный ресурс",
+      "itemType": "Цветок",
+      "description": "Азалия",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-flower-azaliya"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-102",
+      "name": "Красная Азалия",
+      "category": "Природный ресурс",
+      "itemType": "Цветок",
+      "description": "Красная Азалия",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-flower-red-azaliya"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-103",
+      "name": "Розовая Азалия",
+      "category": "Природный ресурс",
+      "itemType": "Цветок",
+      "description": "Розовая Азалия",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-flower-pink-azaliya"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-104",
+      "name": "Тигровый цветок",
+      "category": "Природный ресурс",
+      "itemType": "Цветок",
+      "description": "Тигровый цветок",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-flower-tigrovyy-tsvetok"
+      ],
+      "recipes": [],
+      "productions": []
     }
+
+
+
+
+
 
 
 

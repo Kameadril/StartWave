@@ -1002,7 +1002,137 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "id": "bdo-resource-flower-calendula",
+      "name": "Календула",
+      "category": "Природный ресурс",
+      "resourceType": "Цветочный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-100; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-balenos-les-balenosa",
+          "BDO-NODE-balenos-ruiny-zamka-kron",
+          "BDO-NODE-valensiya-pribrezhnye-skaly-gabi",
+          "BDO-NODE-drigan-gory-gervisha"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-100"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-flower-azaliya",
+      "name": "Азалия",
+      "category": "Природный ресурс",
+      "resourceType": "Цветочный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-101; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-serendiya-severnaya-ravnina-serendii",
+          "BDO-NODE-serendiya-ruiny-fermy-linchey-skrytyy"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-101"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-flower-red-azaliya",
+      "name": "Красная Азалия",
+      "category": "Природный ресурс",
+      "resourceType": "Цветочный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-102; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-strana-utra-risovaya-derevnya"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-102"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-flower-pink-azaliya",
+      "name": "Розовая Азалия",
+      "category": "Природный ресурс",
+      "resourceType": "Цветочный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-103; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-strana-utra-risovaya-derevnya"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-103"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-flower-tigrovyy-tsvetok",
+      "name": "Тигровый цветок",
+      "category": "Природный ресурс",
+      "resourceType": "Цветочный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-104; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-strana-utra-les-pari",
+          "BDO-NODE-strana-utra-tigrinoe-nagore"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-104"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
     }
+
+
+
+
+
 
 
 
