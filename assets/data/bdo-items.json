@@ -750,7 +750,157 @@
       ],
       "recipes": [],
       "productions": []
+    },
+    {
+      "id": "SW-ITEM-109",
+      "name": "Виноград",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Виноград",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-vinograd"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-110",
+      "name": "Олива",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Олива",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-oliva"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-111",
+      "name": "Инжир",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Инжир",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-inzhir"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-112",
+      "name": "Финики",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Финики",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-finiki"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-113",
+      "name": "Фисташки",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Фисташки",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-fistashki"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-114",
+      "name": "Кокос",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Кокос",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-kokos"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-115",
+      "name": "Клубника",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Клубника",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-klubnika"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-116",
+      "name": "Юдзу",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Юдзу",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-yudzu"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-117",
+      "name": "Малина",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Малина",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-malina"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-118",
+      "name": "Хурма",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Хурма",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-khurma"
+      ],
+      "recipes": [],
+      "productions": []
     }
+
+
+
+
+
+
+
+
+
+
 
 
 

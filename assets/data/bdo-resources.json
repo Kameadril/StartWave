@@ -1223,7 +1223,237 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "id": "bdo-resource-fruit-vinograd",
+      "name": "Виноград",
+      "category": "Природный ресурс",
+      "resourceType": "Плодовый ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-109; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-balenos-ferma-kasto","BDO-NODE-odillita-plantatsiya-dellimor"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-109"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-fruit-oliva",
+      "name": "Олива",
+      "category": "Природный ресурс",
+      "resourceType": "Плодовый ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-110; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-balenos-ferma-veyla"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-110"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-fruit-inzhir",
+      "name": "Инжир",
+      "category": "Природный ресурс",
+      "resourceType": "Плодовый ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-111; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-valensiya-anakreon","BDO-NODE-valensiya-polya-shakatu"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-111"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-fruit-finiki",
+      "name": "Финики",
+      "category": "Природный ресурс",
+      "resourceType": "Плодовый ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-112; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-valensiya-khram-polumesyatsa","BDO-NODE-valensiya-ferma-erdal","BDO-NODE-valensiya-platatsiya-valensii"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-112"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-fruit-fistashki",
+      "name": "Фисташки",
+      "category": "Природный ресурс",
+      "resourceType": "Плодовый ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-113; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-valensiya-dolina-tituma","BDO-NODE-valensiya-zmeinaya-pustosh","BDO-NODE-valensiya-ferma-erdal","BDO-NODE-valensiya-platatsiya-valensii"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-113"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-fruit-kokos",
+      "name": "Кокос",
+      "category": "Природный ресурс",
+      "resourceType": "Плодовый ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-114; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-valensiya-palmovyy-les-arekhaza","BDO-NODE-kamasilviya-grana"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-114"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-fruit-klubnika",
+      "name": "Клубника",
+      "category": "Природный ресурс",
+      "resourceType": "Плодовый ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-115; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-kamasilviya-gornaya-derevnya"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-115"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-fruit-yudzu",
+      "name": "Юдзу",
+      "category": "Природный ресурс",
+      "resourceType": "Плодовый ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-116; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-gory-vechnoy-zimy-sad-maslan-s-yudzu"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-116"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-fruit-malina",
+      "name": "Малина",
+      "category": "Природный ресурс",
+      "resourceType": "Плодовый ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-117; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-strana-utra-deravnya-mechnikov","BDO-NODE-strana-utra-lisiy-pereval"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-117"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-fruit-khurma",
+      "name": "Хурма",
+      "category": "Природный ресурс",
+      "resourceType": "Плодовый ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-118; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-strana-utra-deravnya-mechnikov"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-118"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
     }
+
+
+
+
+
+
+
+
+
+
 
 
 
