@@ -1773,7 +1773,53 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "id": "bdo-resource-industrial-crop-khlopok",
+      "name": "Хлопок",
+      "category": "Природный ресурс",
+      "resourceType": "Техническая культура",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-134; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-mediya-ferma-kasuly","BDO-NODE-mediya-ferma-ekhto"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-134"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-industrial-crop-trostnik",
+      "name": "Тростник",
+      "category": "Природный ресурс",
+      "resourceType": "Техническая культура",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-135; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-strana-utra-plato-koun"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-135"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
     }
+
+
 
 
 

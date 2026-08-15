@@ -1060,8 +1060,46 @@
       "id": "BDO-NODE-mediya-ferma-kasuly",
       "name": "Ферма Касулы",
       "region": "Медия",
+      "resources":["bdo-resource-spice-koritsa","bdo-resource-industrial-crop-khlopok"],
+      "workers": [],
+      "production": [],
+      "images": [],
+      "coordinates": null,
+      "source": "data-source/BlackDesert - Узлы Ресурсов.xlsx",
+      "checkedAt": "2026-08-15",
+      "status": "verified",
+      "relations": {
+        "city": null,
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "BDO-NODE-mediya-ferma-ekhto",
+      "name": "Ферма Эхто",
+      "region": "Медия",
       "resources": [
-        "bdo-resource-spice-koritsa"
+        "bdo-resource-industrial-crop-khlopok"
+      ],
+      "workers": [],
+      "production": [],
+      "images": [],
+      "coordinates": null,
+      "source": "data-source/BlackDesert - Узлы Ресурсов.xlsx",
+      "checkedAt": "2026-08-15",
+      "status": "verified",
+      "relations": {
+        "city": null,
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "BDO-NODE-strana-utra-plato-koun",
+      "name": "Плато Коун",
+      "region": "Страна Утра",
+      "resources": [
+        "bdo-resource-industrial-crop-trostnik"
       ],
       "workers": [],
       "production": [],
@@ -1076,6 +1114,8 @@
         "playerJourneySteps": []
       }
     }
+
+
 
 
 

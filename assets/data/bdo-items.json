@@ -1100,7 +1100,37 @@
       ],
       "recipes": [],
       "productions": []
+    },
+    {
+      "id": "SW-ITEM-134",
+      "name": "Хлопок",
+      "category": "Природный ресурс",
+      "itemType": "Техническая культура",
+      "description": "Хлопок",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-industrial-crop-khlopok"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-135",
+      "name": "Тростник",
+      "category": "Природный ресурс",
+      "itemType": "Техническая культура",
+      "description": "Тростник",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-industrial-crop-trostnik"
+      ],
+      "recipes": [],
+      "productions": []
     }
+
+
 
 
 
