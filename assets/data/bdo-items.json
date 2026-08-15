@@ -610,7 +610,22 @@
       ],
       "recipes": [],
       "productions": []
+    },
+    {
+      "id": "SW-ITEM-099",
+      "name": "Кварц",
+      "category": "Природный ресурс",
+      "itemType": "Минерал",
+      "description": "Кварц",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-gem-quartz"
+      ],
+      "recipes": [],
+      "productions": []
     }
+
 
 
 

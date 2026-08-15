@@ -977,7 +977,33 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "id": "bdo-resource-gem-quartz",
+      "name": "Кварц",
+      "category": "Природный ресурс",
+      "resourceType": "Минеральный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-099 + BlackDesert XLSX",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-gory-vechnoy-zimy-rudnik-sherekhana",
+          "BDO-NODE-gory-vechnoy-zimy-kholm-zvier"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-099"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
     }
+
 
 
 

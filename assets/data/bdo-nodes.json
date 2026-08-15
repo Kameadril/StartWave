@@ -404,7 +404,49 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "id": "BDO-NODE-gory-vechnoy-zimy-rudnik-sherekhana",
+      "name": "Рудник Шерехана",
+      "region": "Горы вечной зимы",
+      "resources": [
+        "bdo-resource-gem-quartz"
+      ],
+      "workers": [],
+      "production": [],
+      "images": [],
+      "coordinates": null,
+      "source": "data-source/BlackDesert - Узлы Ресурсов.xlsx",
+      "checkedAt": "2026-08-15",
+      "status": "verified",
+      "relations": {
+        "city": null,
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "BDO-NODE-gory-vechnoy-zimy-kholm-zvier",
+      "name": "Холм Звиер",
+      "region": "Горы вечной зимы",
+      "resources": [
+        "bdo-resource-gem-quartz"
+      ],
+      "workers": [],
+      "production": [],
+      "images": [],
+      "coordinates": null,
+      "source": "data-source/BlackDesert - Узлы Ресурсов.xlsx",
+      "checkedAt": "2026-08-15",
+      "status": "verified",
+      "relations": {
+        "city": null,
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
     }
+
+
 
 
 
