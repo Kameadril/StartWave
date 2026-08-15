@@ -1663,7 +1663,53 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "id": "bdo-resource-grain-special-tef",
+      "name": "Теф",
+      "category": "Природный ресурс",
+      "resourceType": "Зерновой ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-129; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-valensiya-dolina-tituma","BDO-NODE-valensiya-illiriya","BDO-NODE-valensiya-fermarskiy-bazar","BDO-NODE-valensiya-polya-tasmana","BDO-NODE-valensiya-ferma-fokhallama"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-129"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-grain-special-frike",
+      "name": "Фрике",
+      "category": "Природный ресурс",
+      "resourceType": "Зерновой ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-130; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-valensiya-ushchele-pembu","BDO-NODE-valensiya-platatsiya-valensii"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-130"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
     }
+
+
 
 
 

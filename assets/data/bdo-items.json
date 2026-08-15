@@ -1030,7 +1030,37 @@
       ],
       "recipes": [],
       "productions": []
+    },
+    {
+      "id": "SW-ITEM-129",
+      "name": "Теф",
+      "category": "Природный ресурс",
+      "itemType": "Зерновая культура",
+      "description": "Теф",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-grain-special-tef"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-130",
+      "name": "Фрике",
+      "category": "Природный ресурс",
+      "itemType": "Зерновая культура",
+      "description": "Фрике",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-grain-special-frike"
+      ],
+      "recipes": [],
+      "productions": []
     }
+
+
 
 
 
