@@ -302,7 +302,187 @@
       ],
       "recipes": [],
       "productions": []
+    },
+    {
+      "id": "SW-ITEM-077",
+      "name": "Волшебный листок",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Волшебный листок",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-volshebnyy-listok"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-078",
+      "name": "Подосиновик",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Подосиновик",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-podosinovik"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-079",
+      "name": "Боровик",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Боровик",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-borovik"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-080",
+      "name": "Подберёзовик",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Подберёзовик",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-podberyozovik"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-081",
+      "name": "Черноголовка",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Черноголовка",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-chernogolovka"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-082",
+      "name": "Опёнок",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Опёнок",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-opyonok"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-083",
+      "name": "Вешенка",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Вешенка",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-veshenka"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-084",
+      "name": "Большая вешенка",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Большая вешенка",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-bolshaya-veshenka"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-085",
+      "name": "Волнушка",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Волнушка",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-volnushka"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-086",
+      "name": "Большая волнушка",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Большая волнушка",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-bolshaya-volnushka"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-087",
+      "name": "Орляк",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Орляк",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-orlyak"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-088",
+      "name": "Клевер",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Клевер",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-klever"
+      ],
+      "recipes": [],
+      "productions": []
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -420,7 +420,325 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "id": "bdo-resource-herb-volshebnyy-listok",
+      "name": "Волшебный листок",
+      "category": "Природный ресурс",
+      "resourceType": "Травяной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-077; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-balenos-les-balenosa",
+          "BDO-NODE-balenos-peshchera-goblinov",
+          "BDO-NODE-kalfeon-khizhina-drovoseka",
+          "BDO-NODE-strana-utra-les-pari"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-077"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-herb-podosinovik",
+      "name": "Подосиновик",
+      "category": "Природный ресурс",
+      "resourceType": "Травяной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-078; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-balenos-kholm-ekhvaz",
+          "BDO-NODE-balenos-pribrezhnye-skaly"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-078"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-herb-borovik",
+      "name": "Боровик",
+      "category": "Природный ресурс",
+      "resourceType": "Травяной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-079; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-balenos-les-razboynikov",
+          "BDO-NODE-valensiya-utes-ivero"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-079"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-herb-podberyozovik",
+      "name": "Подберёзовик",
+      "category": "Природный ресурс",
+      "resourceType": "Травяной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-080; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-serendiya-bolota-glishi",
+          "BDO-NODE-serendiya-yuzhnoe-boloto"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-080"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-herb-chernogolovka",
+      "name": "Черноголовка",
+      "category": "Природный ресурс",
+      "resourceType": "Травяной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-081; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-kalfeon-lesnoy-storozhevoy-post",
+          "BDO-NODE-kalfeon-khrebet-karandy",
+          "BDO-NODE-mediya-pristanishche-bezumtsa",
+          "BDO-NODE-mediya-drevniy-razlom"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-081"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-herb-opyonok",
+      "name": "Опёнок",
+      "category": "Природный ресурс",
+      "resourceType": "Травяной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-082; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-kalfeon-zapadnyy-les-bri",
+          "BDO-NODE-mediya-khram-kamasilva"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-082"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-herb-veshenka",
+      "name": "Вешенка",
+      "category": "Природный ресурс",
+      "resourceType": "Травяной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-083; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-kalfeon-peshchera-glutonov",
+          "BDO-NODE-kalfeon-drevo-ruya-skrytyy"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-083"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-herb-bolshaya-veshenka",
+      "name": "Большая вешенка",
+      "category": "Природный ресурс",
+      "resourceType": "Травяной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-084; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-kalfeon-peshchera-glutonov"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-084"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-herb-volnushka",
+      "name": "Волнушка",
+      "category": "Природный ресурс",
+      "resourceType": "Травяной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-085; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-kalfeon-dolina-eferii",
+          "BDO-NODE-mediya-khram-ellik"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-085"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-herb-bolshaya-volnushka",
+      "name": "Большая волнушка",
+      "category": "Природный ресурс",
+      "resourceType": "Травяной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-086; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-kalfeon-dolina-eferii",
+          "BDO-NODE-mediya-khram-ellik"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-086"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-herb-orlyak",
+      "name": "Орляк",
+      "category": "Природный ресурс",
+      "resourceType": "Травяной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-087; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-drigan-gory-gervisha",
+          "BDO-NODE-drigan-ruiny-tshiry",
+          "BDO-NODE-gory-vechnoy-zimy-les-tori",
+          "BDO-NODE-strana-utra-sosnovyy-les",
+          "BDO-NODE-strana-utra-vesenniy-kray",
+          "BDO-NODE-strana-utra-zastava-krasnykh-razboynikov"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-087"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-herb-klever",
+      "name": "Клевер",
+      "category": "Природный ресурс",
+      "resourceType": "Травяной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-088; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-drigan-ruiny-tshiry"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-088"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
