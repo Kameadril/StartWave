@@ -521,7 +521,71 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "id": "BDO-NODE-kamasilviya-lesnaya-khizhina-reoni",
+      "name": "Лесная хижина Реони",
+      "region": "Камасильвия",
+      "resources": [
+        "bdo-resource-mushroom-white-mushroom",
+        "bdo-resource-mushroom-blooming-mushroom"
+      ],
+      "workers": [],
+      "production": [],
+      "images": [],
+      "coordinates": null,
+      "source": "data-source/BlackDesert - Узлы Ресурсов.xlsx",
+      "checkedAt": "2026-08-15",
+      "status": "verified",
+      "relations": {
+        "city": null,
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "BDO-NODE-kamasilviya-lesnaya-khizhina-vinni",
+      "name": "Лесная хижина Винни",
+      "region": "Камасильвия",
+      "resources": [
+        "bdo-resource-mushroom-volcanic-mushroom"
+      ],
+      "workers": [],
+      "production": [],
+      "images": [],
+      "coordinates": null,
+      "source": "data-source/BlackDesert - Узлы Ресурсов.xlsx",
+      "checkedAt": "2026-08-15",
+      "status": "verified",
+      "relations": {
+        "city": null,
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "BDO-NODE-gory-vechnoy-zimy-put-poslednego-palomnichestva",
+      "name": "Путь последнего паломничества",
+      "region": "Горы вечной зимы",
+      "resources": [
+        "bdo-resource-mushroom-bamboo-mushroom"
+      ],
+      "workers": [],
+      "production": [],
+      "images": [],
+      "coordinates": null,
+      "source": "data-source/BlackDesert - Узлы Ресурсов.xlsx",
+      "checkedAt": "2026-08-15",
+      "status": "verified",
+      "relations": {
+        "city": null,
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
     }
+
+
+
 
 
 

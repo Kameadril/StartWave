@@ -1127,7 +1127,107 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "id": "bdo-resource-mushroom-white-mushroom",
+      "name": "Белый гриб",
+      "category": "Природный ресурс",
+      "resourceType": "Грибной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-105; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-kamasilviya-lesnaya-khizhina-reoni"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-105"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-mushroom-blooming-mushroom",
+      "name": "Цветущий гриб",
+      "category": "Природный ресурс",
+      "resourceType": "Грибной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-106; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-kamasilviya-lesnaya-khizhina-reoni"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-106"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-mushroom-volcanic-mushroom",
+      "name": "Вулканический гриб",
+      "category": "Природный ресурс",
+      "resourceType": "Грибной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-107; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-kamasilviya-lesnaya-khizhina-vinni"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-107"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-mushroom-bamboo-mushroom",
+      "name": "Бамбуковый гриб",
+      "category": "Природный ресурс",
+      "resourceType": "Грибной ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-108; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-gory-vechnoy-zimy-put-poslednego-palomnichestva"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-108"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
     }
+
+
+
+
 
 
 

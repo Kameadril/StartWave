@@ -694,7 +694,67 @@
       ],
       "recipes": [],
       "productions": []
+    },
+    {
+      "id": "SW-ITEM-105",
+      "name": "Белый гриб",
+      "category": "Природный ресурс",
+      "itemType": "Гриб",
+      "description": "Белый гриб",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-mushroom-white-mushroom"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-106",
+      "name": "Цветущий гриб",
+      "category": "Природный ресурс",
+      "itemType": "Гриб",
+      "description": "Цветущий гриб",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-mushroom-blooming-mushroom"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-107",
+      "name": "Вулканический гриб",
+      "category": "Природный ресурс",
+      "itemType": "Гриб",
+      "description": "Вулканический гриб",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-mushroom-volcanic-mushroom"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-108",
+      "name": "Бамбуковый гриб",
+      "category": "Природный ресурс",
+      "itemType": "Гриб",
+      "description": "Бамбуковый гриб",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-mushroom-bamboo-mushroom"
+      ],
+      "recipes": [],
+      "productions": []
     }
+
+
+
+
 
 
 
