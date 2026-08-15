@@ -726,7 +726,215 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "id": "bdo-resource-rough-transparent-crystal",
+      "name": "Грубый прозрачный хрусталь",
+      "category": "Природный ресурс",
+      "resourceType": "Минеральный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-089; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-balenos-peshchera-goblinov",
+          "BDO-NODE-strana-utra-les-tokkebi"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-089"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-rough-black-crystal",
+      "name": "Грубый черный хрусталь",
+      "category": "Природный ресурс",
+      "resourceType": "Минеральный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-090; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-serendiya-yuzhnoe-boloto",
+          "BDO-NODE-mediya-zakrytaya-shakhta-zabroshennyy-zheleznyy-rudnik-skrytyy",
+          "BDO-NODE-valensiya-lager-klana-basim",
+          "BDO-NODE-valensiya-mogila-muchenikov",
+          "BDO-NODE-valensiya-kanon-marsha",
+          "BDO-NODE-valensiya-gora-polumesyatsa"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-090"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-rough-green-crystal",
+      "name": "Грубый зеленый хрусталь",
+      "category": "Природный ресурс",
+      "resourceType": "Минеральный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-091; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-kalfeon-lager-ratamov"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-091"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-rough-red-crystal",
+      "name": "Грубый красный хрусталь",
+      "category": "Природный ресурс",
+      "resourceType": "Минеральный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-092; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-mediya-drevniy-razlom"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-092"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-rough-purple-crystal",
+      "name": "Грубый фиолетовый хрусталь",
+      "category": "Природный ресурс",
+      "resourceType": "Минеральный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-093; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-valensiya-khram-polumesyatsa",
+          "BDO-NODE-valensiya-vulkan-gabi",
+          "BDO-NODE-valensiya-krater-gabi"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-093"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-rough-blue-crystal",
+      "name": "Грубый синий хрусталь",
+      "category": "Природный ресурс",
+      "resourceType": "Минеральный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-094; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-valensiya-vulkan-gabi"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-094"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-rough-lapis",
+      "name": "Грубый лазурит",
+      "category": "Природный ресурс",
+      "resourceType": "Минеральный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-095; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-drigan-skaly-akumusa"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-095"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-rough-jade",
+      "name": "Грубый нефрит",
+      "category": "Природный ресурс",
+      "resourceType": "Минеральный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-096; BlackDesert - Узлы Ресурсов.xlsx",
+        "checkedAt": "2026-08-15"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-gory-vechnoy-zimy-les-nefritovykh-zvezd"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-096"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
     }
+
+
+
+
+
+
+
+
 
 
 

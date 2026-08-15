@@ -470,7 +470,127 @@
       ],
       "recipes": [],
       "productions": []
+    },
+    {
+      "id": "SW-ITEM-089",
+      "name": "Грубый прозрачный хрусталь",
+      "category": "Природный ресурс",
+      "itemType": "Грубый минерал",
+      "description": "Грубый прозрачный хрусталь",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-rough-transparent-crystal"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-090",
+      "name": "Грубый черный хрусталь",
+      "category": "Природный ресурс",
+      "itemType": "Грубый минерал",
+      "description": "Грубый черный хрусталь",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-rough-black-crystal"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-091",
+      "name": "Грубый зеленый хрусталь",
+      "category": "Природный ресурс",
+      "itemType": "Грубый минерал",
+      "description": "Грубый зеленый хрусталь",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-rough-green-crystal"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-092",
+      "name": "Грубый красный хрусталь",
+      "category": "Природный ресурс",
+      "itemType": "Грубый минерал",
+      "description": "Грубый красный хрусталь",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-rough-red-crystal"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-093",
+      "name": "Грубый фиолетовый хрусталь",
+      "category": "Природный ресурс",
+      "itemType": "Грубый минерал",
+      "description": "Грубый фиолетовый хрусталь",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-rough-purple-crystal"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-094",
+      "name": "Грубый синий хрусталь",
+      "category": "Природный ресурс",
+      "itemType": "Грубый минерал",
+      "description": "Грубый синий хрусталь",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-rough-blue-crystal"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-095",
+      "name": "Грубый лазурит",
+      "category": "Природный ресурс",
+      "itemType": "Грубый минерал",
+      "description": "Грубый лазурит",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-rough-lapis"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-096",
+      "name": "Грубый нефрит",
+      "category": "Природный ресурс",
+      "itemType": "Грубый минерал",
+      "description": "Грубый нефрит",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-rough-jade"
+      ],
+      "recipes": [],
+      "productions": []
     }
+
+
+
+
+
+
+
+
 
 
 
