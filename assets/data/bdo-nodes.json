@@ -51,9 +51,7 @@
       "id": "BDO-NODE-kalfeon-tyomnyy-les",
       "name": "Тёмный лес",
       "region": "Кальфеон",
-      "resources": [
-        "bdo-resource-sap-kedra"
-      ],
+      "resources":["bdo-resource-sap-kedra","bdo-resource-wood-cedar"],
       "workers": [],
       "production": [],
       "images": [],
@@ -129,9 +127,7 @@
       "id": "BDO-NODE-kalfeon-khizhina-drovoseka",
       "name": "Хижина дровосека",
       "region": "Кальфеон",
-      "resources": [
-        "bdo-resource-herb-volshebnyy-listok"
-      ],
+      "resources":["bdo-resource-herb-volshebnyy-listok","bdo-resource-wood-cedar"],
       "workers": [],
       "production": [],
       "images": [],
@@ -149,7 +145,7 @@
       "id": "BDO-NODE-strana-utra-les-pari",
       "name": "Лес Пари",
       "region": "Страна Утра",
-      "resources":["bdo-resource-herb-volshebnyy-listok","bdo-resource-flower-tigrovyy-tsvetok"],
+      "resources":["bdo-resource-herb-volshebnyy-listok","bdo-resource-flower-tigrovyy-tsvetok","bdo-resource-wood-cedar"],
       "workers": [],
       "production": [],
       "images": [],
@@ -1105,7 +1101,28 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "id": "BDO-NODE-kalfeon-pereval-evi",
+      "name": "Перевал Эви",
+      "region": "Кальфеон",
+      "resources": [
+        "bdo-resource-wood-cedar"
+      ],
+      "workers": [],
+      "production": [],
+      "images": [],
+      "coordinates": null,
+      "source": "data-source/BlackDesert - Узлы Ресурсов.xlsx",
+      "checkedAt": "2026-08-16",
+      "status": "verified",
+      "relations": {
+        "city": null,
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
     }
+
 
 
 

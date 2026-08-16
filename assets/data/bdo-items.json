@@ -1142,7 +1142,22 @@
       ],
       "recipes": [],
       "productions": []
+    },
+    {
+      "id": "SW-ITEM-137",
+      "name": "Древесина кедра",
+      "category": "Природный ресурс",
+      "itemType": "Древесина",
+      "description": "Древесина кедра",
+      "checkedAt": "2026-08-16",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-wood-cedar"
+      ],
+      "recipes": [],
+      "productions": []
     }
+
 
 
 
