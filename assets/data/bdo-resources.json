@@ -1839,7 +1839,53 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "id": "bdo-resource-bark-old-tree",
+      "name": "Кора старого дерева",
+      "category": "Природный ресурс",
+      "resourceType": "Ресурс коры",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-138 + BlackDesert XLSX",
+        "checkedAt": "2026-08-16"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-mediya-severnoe-plato-medii","BDO-NODE-strana-utra-tigrinoe-nagore"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-138"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "bdo-resource-bark-cactus",
+      "name": "Кора кактуса",
+      "category": "Природный ресурс",
+      "resourceType": "Ресурс коры",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-139 + BlackDesert XLSX",
+        "checkedAt": "2026-08-16"
+      },
+      "relations": {
+        "nodes":["BDO-NODE-valensiya-mogila-muchenikov","BDO-NODE-valensiya-severnye-dyuny"],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-139"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
     }
+
+
 
 
 

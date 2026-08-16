@@ -1156,7 +1156,37 @@
       ],
       "recipes": [],
       "productions": []
+    },
+    {
+      "id": "SW-ITEM-138",
+      "name": "Кора старого дерева",
+      "category": "Природный ресурс",
+      "itemType": "Кора",
+      "description": "Кора старого дерева",
+      "checkedAt": "2026-08-16",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-bark-old-tree"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-139",
+      "name": "Кора кактуса",
+      "category": "Природный ресурс",
+      "itemType": "Кора",
+      "description": "Кора кактуса",
+      "checkedAt": "2026-08-16",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-bark-cactus"
+      ],
+      "recipes": [],
+      "productions": []
     }
+
+
 
 
 
