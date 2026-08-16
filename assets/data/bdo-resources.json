@@ -1883,7 +1883,32 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "id": "bdo-resource-wood-ploskovetochnika",
+      "name": "Древесина плосковеточника",
+      "category": "Природный ресурс",
+      "resourceType": "Древесный ресурс",
+      "verification": {
+        "status": "curated",
+        "source": "SW-ITEM-140 + BlackDesert XLSX",
+        "checkedAt": "2026-08-17"
+      },
+      "relations": {
+        "nodes": [
+          "BDO-NODE-drigan-lesopilka-dormana"
+        ],
+        "workers": [],
+        "recipes": [],
+        "items": [
+          "SW-ITEM-140"
+        ],
+        "productions": [],
+        "mapPoints": [],
+        "playerJourneySteps": []
+      }
     }
+
 
 
 

@@ -1184,7 +1184,22 @@
       ],
       "recipes": [],
       "productions": []
+    },
+    {
+      "id": "SW-ITEM-140",
+      "name": "Древесина плосковеточника",
+      "category": "Природный ресурс",
+      "itemType": "Древесина",
+      "description": "Древесина плосковеточника",
+      "checkedAt": "2026-08-17",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-wood-ploskovetochnika"
+      ],
+      "recipes": [],
+      "productions": []
     }
+
 
 
 
