@@ -1,15 +1,16 @@
 import fs from 'node:fs';
+import {canonicalLookup} from './reconciliation-normalization.mjs';
 
 const [rowsPath='.startwave-agent/resources-xlsx-rows.json', outPath='.startwave-agent/resources/xlsx-resource-inventory-v2.json'] = process.argv.slice(2);
-const rows=JSON.parse(fs.readFileSync(rowsPath,'utf8')).slice(1);
+const rows=JSON.parse(fs.readFileSync(rowsPath,'utf8')).slice(1).map(x=>({...x,resource:canonicalLookup(x.resource),name:typeof x.name==='string'?x.name.trim():x.name,region:typeof x.region==='string'?x.region.trim():x.region}));
 const resources=JSON.parse(fs.readFileSync('assets/data/bdo-resources.json')).resources;
 const items=JSON.parse(fs.readFileSync('assets/data/bdo-items.json')).items;
 const itemById=new Map(items.map(x=>[x.id,x])), resourceById=new Map(resources.map(x=>[x.id,x]));
 const groups={complete:[],existingResourceNeedsLinkReview:[],missingResource:[],missingItem:[],missingBoth:[],ambiguous:[],nonResource:[]};
 for(const name of [...new Set(rows.map(x=>x.resource))]){
-  const exactItems=items.filter(i=>i.name===name);
+  const exactItems=items.filter(i=>canonicalLookup(i.name)===name);
   const itemCandidates=exactItems.length ? exactItems : items.filter(i=>(i.relatedObjects||[]).includes(name));
-  const resourceCandidates=resources.filter(r=>r.name===name || r.relations?.items?.some(id=>itemCandidates.some(i=>i.id===id)));
+  const resourceCandidates=resources.filter(r=>canonicalLookup(r.name)===name || r.relations?.items?.some(id=>itemCandidates.some(i=>i.id===id)));
   const resourceIds=[...new Set(itemCandidates.flatMap(i=>i.resources||[]).filter(id=>resourceById.has(id)).concat(resourceCandidates.map(r=>r.id)))];
   const itemIds=itemCandidates.map(i=>i.id);
   const xlsxRows=rows.filter(x=>x.resource===name);
