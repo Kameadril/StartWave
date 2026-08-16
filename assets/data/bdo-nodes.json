@@ -33,9 +33,7 @@
       "id": "BDO-NODE-serendiya-ruiny-zamka",
       "name": "Руины замка",
       "region": "Серендия",
-      "resources": [
-        "bdo-resource-sap-maple"
-      ],
+      "resources":["bdo-resource-sap-maple","bdo-resource-wood-maple"],
       "workers": [],
       "production": [],
       "images": [],
@@ -73,9 +71,7 @@
       "id": "BDO-NODE-kalfeon-peshchera-mari",
       "name": "Пещера Мари",
       "region": "Кальфеон",
-      "resources": [
-        "bdo-resource-sap-sosny"
-      ],
+      "resources":["bdo-resource-sap-sosny","bdo-resource-wood-pine"],
       "workers": [],
       "production": [],
       "images": [],
@@ -465,9 +461,7 @@
       "id": "BDO-NODE-serendiya-severnaya-ravnina-serendii",
       "name": "Северная равнина Серендии",
       "region": "Серендия",
-      "resources": [
-        "bdo-resource-flower-azaliya"
-      ],
+      "resources":["bdo-resource-flower-azaliya","bdo-resource-wood-maple"],
       "workers": [],
       "production": [],
       "images": [],
