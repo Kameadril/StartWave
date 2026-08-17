@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет · StartWave</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=20260814">
+    <link rel="stylesheet" href="assets/css/profile.css?v=20260814">
+</head>
+<body class="profile-page">
+<header class="profile-header">
+    <a class="profile-brand" href="index.html" aria-label="StartWave — на главную">
+        <span aria-hidden="true">🌊</span>
+        <span>StartWave</span>
+    </a>
+    <a class="back-link" href="index.html"><span aria-hidden="true">←</span> На главную</a>
+</header>
+
+<main class="profile-main">
+    <section class="profile-intro" aria-labelledby="profile-title">
+        <p class="profile-kicker">Локальный профиль</p>
+        <h1 id="profile-title">Личный кабинет</h1>
+        <p>Настрой профиль для будущей персонализации «Волны дня». Данные сохраняются только в этом браузере.</p>
+    </section>
+
+    <form class="profile-form" id="profileForm" novalidate>
+        <div class="prototype-note" role="note">
+            <span aria-hidden="true">🔒</span>
+            <div><strong>LOCAL PROFILE PROTOTYPE</strong><span>Без регистрации, пароля и отправки данных на сервер.</span></div>
+        </div>
+
+        <div class="form-section">
+            <label class="field-label" for="profileName">Имя пользователя</label>
+            <input class="text-field" id="profileName" name="name" type="text" maxlength="50" autocomplete="name" placeholder="Как к тебе обращаться?">
+        </div>
+
+        <fieldset class="form-section">
+            <legend>Пол</legend>
+            <p class="field-hint">Только твой явный выбор — по имени ничего не определяется.</p>
+            <div class="choice-grid choice-grid--three">
+                <label class="choice-card"><input type="radio" name="gender" value="male"><span>М</span></label>
+                <label class="choice-card"><input type="radio" name="gender" value="female"><span>Ж</span></label>
+                <label class="choice-card"><input type="radio" name="gender" value="neutral" checked><span>Не указывать</span></label>
+            </div>
+        </fieldset>
+
+        <div class="form-section birth-grid">
+            <div>
+                <label class="field-label" for="birthDate">Дата рождения</label>
+                <input class="text-field" id="birthDate" name="birthDate" type="date" aria-describedby="birthDateError">
+                <p class="field-error" id="birthDateError" aria-live="polite"></p>
+            </div>
+            <div class="zodiac-card" aria-live="polite">
+                <span>Знак зодиака</span>
+                <strong id="zodiacResult">Не определён</strong>
+            </div>
+        </div>
+
+        <fieldset class="form-section">
+            <legend>Интересы</legend>
+            <p class="field-hint">Можно выбрать несколько.</p>
+            <div class="choice-grid interests-grid">
+                <label class="choice-card"><input type="checkbox" name="interests" value="games"><span>🎮 Игры</span></label>
+                <label class="choice-card"><input type="checkbox" name="interests" value="movies"><span>🎬 Кино и сериалы</span></label>
+                <label class="choice-card"><input type="checkbox" name="interests" value="music"><span>🎧 Музыка</span></label>
+                <label class="choice-card"><input type="checkbox" name="interests" value="books"><span>📚 Книги</span></label>
+                <label class="choice-card"><input type="checkbox" name="interests" value="sport"><span>🏃 Спорт</span></label>
+                <label class="choice-card"><input type="checkbox" name="interests" value="travel"><span>🧭 Путешествия</span></label>
+                <label class="choice-card"><input type="checkbox" name="interests" value="technology"><span>💻 Технологии</span></label>
+                <label class="choice-card"><input type="checkbox" name="interests" value="creativity"><span>🎨 Творчество</span></label>
+            </div>
+        </fieldset>
+
+        <fieldset class="form-section">
+            <legend>Стиль «Волны дня»</legend>
+            <div class="choice-grid choice-grid--three">
+                <label class="choice-card"><input type="radio" name="waveStyle" value="humor"><span>С юмором</span></label>
+                <label class="choice-card"><input type="radio" name="waveStyle" value="calm" checked><span>Спокойно</span></label>
+                <label class="choice-card"><input type="radio" name="waveStyle" value="motivating"><span>Мотивирующе</span></label>
+            </div>
+        </fieldset>
+
+        <div class="form-actions">
+            <button class="save-button" type="submit">Сохранить</button>
+            <p class="save-status" id="saveStatus" role="status" aria-live="polite"></p>
+        </div>
+    </form>
+</main>
+
+<footer><p>© 2026 Kameadril · StartWave</p></footer>
+<script src="assets/js/profile.js?v=20260814"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+/* BDO theme: override only game tokens, never shared component structure. */
+.sw-games--bdo {
+  --game-accent: #b68a3a;
+  --game-accent-strong: #6b4a16;
+  --game-accent-soft: rgba(182, 138, 58, 0.2);
+  --game-header-surface: rgba(255, 253, 247, 0.76);
+  --game-hero-image: linear-gradient(135deg, #8a6a35, #2f2518);
+  --game-hero-overlay: rgba(28, 20, 10, 0.42);
+  --game-hero-height: 410px;
+  --game-hero-text: #fffaf0;
+  --game-surface: rgba(255, 253, 247, 0.66);
+  --game-border: rgba(255, 246, 220, 0.86);
+  --game-card-accent: #b68a3a;
+  --game-card-accent-strong: #6b4a16;
+  --game-card-surface: rgba(255, 253, 247, 0.74);
+  --game-card-border: rgba(190, 151, 78, 0.28);
+  --game-card-status-surface: rgba(182, 138, 58, 0.16);
+  --game-card-status-border: rgba(182, 138, 58, 0.28);
+  --game-card-status-text: #6b4a16;
+  --game-card-detail-surface: rgba(182, 138, 58, 0.1);
+  --game-card-tag-surface: rgba(255, 248, 228, 0.82);
+  --game-status-ready-text: #315f3b;
+  --game-status-ready-surface: rgba(68, 132, 82, 0.12);
+  --game-status-ready-border: rgba(68, 132, 82, 0.24);
+  --game-status-skeleton-text: #6b4a16;
+  --game-status-skeleton-surface: rgba(182, 138, 58, 0.13);
+  --game-status-skeleton-border: rgba(182, 138, 58, 0.26);
+  --game-footer-surface: linear-gradient(145deg, #211b13, #0f0d0a);
+  --game-footer-border: rgba(190, 151, 78, 0.3);
+  --game-footer-accent: #b68a3a;
+  --game-footer-heading: #fff7e6;
+  --game-footer-text: rgba(255, 247, 230, 0.7);
+  --game-footer-link-hover: #e5bd72;
+  --game-footer-divider: rgba(190, 151, 78, 0.2);
+  --game-footer-status-surface: rgba(182, 138, 58, 0.12);
+  --game-footer-status-border: rgba(182, 138, 58, 0.26);
+  --game-footer-status-text: #e5bd72;
+}

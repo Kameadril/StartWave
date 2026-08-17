@@ -14,6 +14,14 @@ const prototypeHoroscopeElement = document.getElementById('prototypeHoroscope');
 const prototypeQuoteElement = document.getElementById('prototypeQuote');
 const bdoCouponsListElement = document.getElementById('bdoCouponsList');
 const searchForms = document.querySelectorAll('.search-box');
+const gameNavigationToggles = document.querySelectorAll('[data-game-nav-toggle]');
+const dayCard = document.getElementById('dayCard');
+const dayCardName = document.getElementById('dayCardName');
+const dayCardMessage = document.getElementById('dayCardMessage');
+const dayCardSymbol = document.getElementById('dayCardSymbol');
+const dayCards = window.STARTWAVE_DAILY_CARDS || [];
+const dailyContent = window.STARTWAVE_DAILY_CONTENT;
+const dailyWaveData = window.STARTWAVE_DAILY_WAVE_DATA;
 const searchEngineStorageKey = 'startwave-search-engine';
 const searchEngines = {
   yandex: {
@@ -896,6 +904,157 @@ function initializeBdoLandingNavigation() {
     }
   }
 }
+function hashDateKey(dateKey) {
+  let dateHash = 2166136261;
+
+  for (let index = 0; index < dateKey.length; index += 1) {
+    dateHash ^= dateKey.charCodeAt(index);
+    dateHash = Math.imul(dateHash, 16777619);
+  }
+
+  dateHash += dateHash << 13;
+  dateHash ^= dateHash >>> 7;
+  dateHash += dateHash << 3;
+  dateHash ^= dateHash >>> 17;
+  dateHash += dateHash << 5;
+
+  return dateHash >>> 0;
+}
+
+function getDayCardIndex(dailyKey, cardsCount) {
+  const [year, month, day] = dailyKey.split('-').map(Number);
+  const localDayNumber = Math.floor(Date.UTC(year, month - 1, day) / 86400000);
+  const blockNumber = Math.floor(localDayNumber / cardsCount);
+  const positionInBlock = ((localDayNumber % cardsCount) + cardsCount) % cardsCount;
+  const coprimeSteps = [31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 77, 79, 83, 89];
+  const blockHash = hashDateKey(String(blockNumber));
+  const step = coprimeSteps[blockHash % coprimeSteps.length];
+  const offset = (blockHash >>> 8) % cardsCount;
+  let cardIndex = (offset + step * positionInBlock) % cardsCount;
+
+  if (positionInBlock === 0) {
+    const previousBlockHash = hashDateKey(String(blockNumber - 1));
+    const previousStep = coprimeSteps[previousBlockHash % coprimeSteps.length];
+    const previousOffset = (previousBlockHash >>> 8) % cardsCount;
+    const previousIndex = (previousOffset + previousStep * (cardsCount - 1)) % cardsCount;
+
+    if (cardIndex === previousIndex) {
+      cardIndex = (cardIndex + 1) % cardsCount;
+    }
+  }
+
+  return cardIndex;
+}
+
+function initializeDayCard() {
+  if (!dayCard || !dayCardName || !dayCardMessage || !dayCardSymbol || !dailyContent || dayCards.length === 0) {
+    return;
+  }
+
+  const dailyKey = dailyContent.getDailyKey(new Date());
+  const card = dayCards[getDayCardIndex(dailyKey, dayCards.length)];
+
+  dayCardName.textContent = card.title;
+  dayCardMessage.textContent = card.message;
+  dayCardSymbol.textContent = card.symbol;
+
+  const revealDayCard = () => {
+    if (dayCard.getAttribute('aria-expanded') === 'true') {
+      return;
+    }
+
+    dayCard.setAttribute('aria-expanded', 'true');
+    dayCard.setAttribute('aria-label', `Карта дня: ${card.title}`);
+  };
+
+  dayCard.addEventListener('click', revealDayCard);
+  dayCard.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      revealDayCard();
+    }
+  });
+}
+
+function getSelectedDayCard(dailyKey) {
+  if (!dayCards.length) return null;
+  return dayCards[getDayCardIndex(dailyKey, dayCards.length)];
+}
+
+function initializeDailyWave() {
+  const wave = document.getElementById('dailyWave');
+  if (!wave || !dailyContent || !dailyWaveData) return;
+
+  const dailyKey = dailyContent.getDailyKey(new Date());
+  const dailyPackage = dailyContent.buildDailyPackage({
+    dailyKey,
+    data: dailyWaveData,
+    card: getSelectedDayCard(dailyKey)
+  });
+  if (!dailyPackage) return;
+
+  const setText = (id, text) => {
+    const element = document.getElementById(id);
+    if (element) element.textContent = text;
+  };
+
+  setText('dailyWaveTitle', dailyPackage.heading);
+  setText('dailyWaveGreeting', dailyPackage.greeting);
+  setText('dailyWaveThemeTitle', dailyPackage.theme.title);
+  setText('dailyWaveThemeText', dailyPackage.theme.text);
+  setText('dailyWaveBusiness', dailyPackage.business.text);
+  setText('dailyWaveMoney', dailyPackage.money.text);
+  setText('dailyWaveRelationships', dailyPackage.relationships.text);
+  setText('dailyWaveSelfCare', dailyPackage.selfCare.text);
+  setText('dailyWavePhrase', dailyPackage.phrase.text);
+
+  const greeting = document.getElementById('dailyWaveGreeting');
+  if (greeting) greeting.hidden = !dailyPackage.greeting;
+}
+
+function initializeGameNavigation() {
+  gameNavigationToggles.forEach((toggle) => {
+    const navigationId = toggle.getAttribute('aria-controls');
+    const navigation = document.getElementById(navigationId);
+
+    if (!navigation) {
+      return;
+    }
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      navigation.dataset.open = String(!isOpen);
+      toggle.setAttribute('aria-label', isOpen ? toggle.dataset.openLabel : toggle.dataset.closeLabel);
+    });
+
+    navigation.addEventListener('click', (event) => {
+      if (event.target.closest('a')) {
+        toggle.setAttribute('aria-expanded', 'false');
+        navigation.dataset.open = 'false';
+        toggle.setAttribute('aria-label', toggle.dataset.openLabel);
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        toggle.setAttribute('aria-expanded', 'false');
+        navigation.dataset.open = 'false';
+        toggle.setAttribute('aria-label', toggle.dataset.openLabel);
+        toggle.focus();
+      }
+    });
+
+    const mobileBreakpoint = window.matchMedia('(max-width: 700px)');
+    mobileBreakpoint.addEventListener('change', (event) => {
+      if (!event.matches) {
+        toggle.setAttribute('aria-expanded', 'false');
+        navigation.dataset.open = 'false';
+        toggle.setAttribute('aria-label', toggle.dataset.openLabel);
+      }
+    });
+  });
+}
 
 startMiniClock();
 initializeSearchEngineSwitch();
@@ -906,3 +1065,6 @@ initializeLearningNavigation();
 initializeBdoLandingHeader();
 initializeBdoLandingNavigation();
 updatePrototypeWeather();
+initializeGameNavigation();
+initializeDayCard();
+initializeDailyWave();

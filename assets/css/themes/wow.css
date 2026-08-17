@@ -1,0 +1,6 @@
+/* World of Warcraft theme placeholder. Add only token overrides when the module starts. */
+.sw-games--wow {
+  --game-accent: #c79b3b;
+  --game-accent-strong: #644b16;
+  --game-accent-soft: rgba(199, 155, 59, 0.18);
+}

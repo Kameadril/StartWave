@@ -1,0 +1,6 @@
+/* Diablo theme placeholder. Add only token overrides when the module starts. */
+.sw-games--diablo {
+  --game-accent: #a63c32;
+  --game-accent-strong: #63231e;
+  --game-accent-soft: rgba(166, 60, 50, 0.18);
+}

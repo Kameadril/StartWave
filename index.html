@@ -7,7 +7,8 @@
 
     <title>StartWave</title>
 
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=20260814">
+    <link rel="stylesheet" href="assets/css/home.css?v=20260817">
 </head>
 
 <body>
@@ -29,6 +30,12 @@
         <a href="services.html">Сервисы</a>
         <a href="ai.html">AI</a>
     </nav>
+
+
+    <a class="account-action" href="profile.html">
+        <span aria-hidden="true">👤</span>
+        <span>Личный кабинет</span>
+    </a>
 
 
     <div class="datetime" aria-label="Текущее время и дата">
@@ -180,6 +187,62 @@
 </section>
 
 
+<section class="daily-wave" id="dailyWave" aria-labelledby="dailyWaveTitle">
+    <div class="daily-wave-heading">
+        <div>
+            <p class="daily-wave-kicker">Твой локальный daily package · обновление в 00:01</p>
+            <h2 id="dailyWaveTitle">Волна дня</h2>
+            <p class="daily-wave-greeting" id="dailyWaveGreeting" hidden></p>
+        </div>
+        <a href="profile.html" class="daily-wave-profile-link">Настроить волну <span aria-hidden="true">→</span></a>
+    </div>
+
+    <article class="daily-wave-theme">
+        <span aria-hidden="true">🌊</span>
+        <div><p>Тема дня</p><h3 id="dailyWaveThemeTitle"></h3><p id="dailyWaveThemeText"></p></div>
+    </article>
+
+    <div class="daily-wave-grid">
+        <article><h3><span aria-hidden="true">💼</span> Дела и идеи</h3><p id="dailyWaveBusiness"></p></article>
+        <article><h3><span aria-hidden="true">💰</span> Деньги</h3><p id="dailyWaveMoney"></p></article>
+        <article><h3><span aria-hidden="true">❤️</span> Отношения</h3><p id="dailyWaveRelationships"></p></article>
+        <article><h3><span aria-hidden="true">🌿</span> Для себя</h3><p id="dailyWaveSelfCare"></p></article>
+    </div>
+
+    <blockquote class="daily-wave-phrase"><span aria-hidden="true">💬</span><div><p>Фраза дня</p><q id="dailyWavePhrase"></q></div></blockquote>
+    <a class="daily-wave-card-link" href="#day-card-title"><span aria-hidden="true">🃏</span><span><strong>Карта дня</strong> — отдельный интерактивный слой этой же волны</span><span aria-hidden="true">↓</span></a>
+</section>
+
+
+
+<section class="day-card-section" aria-labelledby="day-card-title">
+
+<div class="day-card-widget">
+    <h2 id="day-card-title">Карта дня</h2>
+
+    <button class="day-card" id="dayCard" type="button" aria-expanded="false" aria-describedby="dayCardHint" aria-label="Открыть карту дня">
+        <span class="day-card-inner">
+            <span class="day-card-face day-card-back">
+                <span class="day-card-ornament" aria-hidden="true"></span>
+                <span class="day-card-back-symbol" aria-hidden="true"><span>✦</span></span>
+                <span class="day-card-prompt" id="dayCardHint">Нажми, чтобы узнать карту дня</span>
+                <span class="day-card-action">Открыть</span>
+            </span>
+
+            <span class="day-card-face day-card-front" aria-live="polite">
+                <span class="day-card-ornament" aria-hidden="true"></span>
+                <span class="day-card-kicker">Твоё направление сегодня</span>
+                <span class="day-card-symbol" aria-hidden="true"><span id="dayCardSymbol">✦</span></span>
+                <strong class="day-card-name" id="dayCardName"></strong>
+                <span class="day-card-message" id="dayCardMessage"></span>
+            </span>
+        </span>
+    </button>
+</div>
+
+</section>
+
+
 
 
 <section class="directions" aria-labelledby="directions-title">
@@ -315,7 +378,10 @@ class="direction-card">
 
 
 
-<script src="assets/js/script.js"></script>
+<script src="assets/data/daily-cards.js?v=20260814"></script>
+<script src="assets/data/daily-wave-data.js?v=20260814"></script>
+<script src="assets/js/daily-content.js?v=20260814-2"></script>
+<script src="assets/js/script.js?v=20260814-3"></script>
 
 </body>
 </html>
