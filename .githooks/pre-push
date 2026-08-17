@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+repo_root=$(git rev-parse --show-toplevel)
+tmp_input=$(mktemp "${TMPDIR:-/tmp}/startwave-pre-push.XXXXXX")
+trap 'rm -f "$tmp_input"' EXIT HUP INT TERM
+cat > "$tmp_input"
+sh "$repo_root/scripts/publication-guard.sh" --outgoing < "$tmp_input"
