@@ -8,15 +8,14 @@ const prototypeDateElement = document.getElementById('prototypeDate');
 const prototypeCalendarNoteElement = document.getElementById('prototypeCalendarNote');
 const prototypeWeatherElement = document.getElementById('prototypeWeather');
 const prototypeWeatherNoteElement = document.getElementById('prototypeWeatherNote');
-const prototypeCardTitleElement = document.getElementById('prototypeCardTitle');
-const prototypeCardTextElement = document.getElementById('prototypeCardText');
 const prototypeHoroscopeElement = document.getElementById('prototypeHoroscope');
 const prototypeQuoteElement = document.getElementById('prototypeQuote');
 const bdoCouponsListElement = document.getElementById('bdoCouponsList');
 const searchForms = document.querySelectorAll('.search-box');
 const gameNavigationToggles = document.querySelectorAll('[data-game-nav-toggle]');
-const dayCard = document.getElementById('dayCard');
-const dayCardName = document.getElementById('dayCardName');
+const dayCardTrigger = document.getElementById('dayCardTrigger');
+const todayCardReveal = document.getElementById('todayCardReveal');
+const dayCardName = document.getElementById('todayCardRevealTitle');
 const dayCardMessage = document.getElementById('dayCardMessage');
 const dayCardSymbol = document.getElementById('dayCardSymbol');
 const dayCards = window.STARTWAVE_DAILY_CARDS || [];
@@ -547,18 +546,8 @@ async function updatePrototypeWeather() {
 }
 
 function initializeTodayPrototype() {
-  const dayCard = document.querySelector('.day-card-flip');
-
   if (prototypeCalendarNoteElement) {
     prototypeCalendarNoteElement.textContent = todayPrototypeData.calendar.note;
-  }
-
-  if (prototypeCardTitleElement) {
-    prototypeCardTitleElement.textContent = todayPrototypeData.dayCard.title;
-  }
-
-  if (prototypeCardTextElement) {
-    prototypeCardTextElement.textContent = todayPrototypeData.dayCard.text;
   }
 
   if (prototypeHoroscopeElement) {
@@ -569,12 +558,6 @@ function initializeTodayPrototype() {
     prototypeQuoteElement.textContent = todayPrototypeData.quote;
   }
 
-  if (dayCard) {
-    dayCard.addEventListener('click', () => {
-      const isFlipped = dayCard.classList.toggle('is-flipped');
-      dayCard.setAttribute('aria-pressed', String(isFlipped));
-    });
-  }
 }
 
 function initializeBdoInterfaceGuide() {
@@ -947,7 +930,7 @@ function getDayCardIndex(dailyKey, cardsCount) {
 }
 
 function initializeDayCard() {
-  if (!dayCard || !dayCardName || !dayCardMessage || !dayCardSymbol || !dailyContent || dayCards.length === 0) {
+  if (!dayCardTrigger || !todayCardReveal || !dayCardName || !dayCardMessage || !dayCardSymbol || !dailyContent || dayCards.length === 0) {
     return;
   }
 
@@ -958,22 +941,14 @@ function initializeDayCard() {
   dayCardMessage.textContent = card.message;
   dayCardSymbol.textContent = card.symbol;
 
-  const revealDayCard = () => {
-    if (dayCard.getAttribute('aria-expanded') === 'true') {
-      return;
-    }
-
-    dayCard.setAttribute('aria-expanded', 'true');
-    dayCard.setAttribute('aria-label', `Карта дня: ${card.title}`);
+  const toggleDayCard = () => {
+    const isExpanded = dayCardTrigger.getAttribute('aria-expanded') === 'true';
+    todayCardReveal.hidden = isExpanded;
+    dayCardTrigger.setAttribute('aria-expanded', String(!isExpanded));
+    dayCardTrigger.textContent = isExpanded ? 'Открыть карту' : 'Скрыть карту';
   };
 
-  dayCard.addEventListener('click', revealDayCard);
-  dayCard.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      revealDayCard();
-    }
-  });
+  dayCardTrigger.addEventListener('click', toggleDayCard);
 }
 
 function getSelectedDayCard(dailyKey) {
