@@ -109,7 +109,7 @@ function strictRefs(records, field, target, owner) {
     const values = Array.isArray(record[field]) ? record[field] : record[field] == null ? [] : [record[field]];
     values.forEach((id, j) => {
       if (typeof id !== 'string') return add('ERROR', 'REFERENCE_TYPE', owner, `$.${owner}[${i}].${field}[${j}]`, 'Reference must be a string.');
-      if (!indexes[target]?.has(id)) add('ERROR', 'REFERENCE_MISSING', owner, `$.${owner}[${i}].${field}[${j}]`, `${field} references missing ${target} ID ${id}.`);
+      if (indexes[target] && !indexes[target].has(id)) add('ERROR', 'REFERENCE_MISSING', owner, `$.${owner}[${i}].${field}[${j}]`, `${field} references missing ${target} ID ${id}.`);
     });
   });
 }

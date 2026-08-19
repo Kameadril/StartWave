@@ -1,0 +1,355 @@
+{
+  "schemaVersion": "0.1.0",
+  "collectionId": "bdo-node-production-atlas",
+  "title": "BDO Worker Node Production Provenance",
+  "updatedAt": "2026-08-18",
+  "nodeProductions": [
+    {
+      "id": "BDO-NODEPROD-valensiya-pilgrim-s-sanctum-obedience-excavation",
+      "nodeId": "BDO-NODE-valensiya-pilgrim-s-sanctum-obedience",
+      "type": "Excavation",
+      "name": "Pilgrim's Sanctum: Obedience — Excavation",
+      "outputResourceIds": [
+        "bdo-resource-gold-ore",
+        "bdo-resource-trace-of-nature"
+      ],
+      "source": {
+        "sourceType": "pearl-abyss",
+        "sourceRef": "Pearl Abyss patch 2026-06-04",
+        "sourceDate": "2026-06-04",
+        "verifiedAt": "2026-08-18",
+        "status": "verified",
+        "confidence": "medium"
+      },
+      "status": "curated"
+    },
+    {
+      "id": "BDO-NODEPROD-balenos-ancient-stone-chamber-excavation",
+      "nodeId": "BDO-NODE-balenos-ancient-stone-chamber",
+      "type": "Excavation",
+      "name": "Ancient Stone Chamber — Excavation",
+      "outputResourceIds": [
+        "bdo-resource-gold-ore",
+        "bdo-resource-trace-of-nature"
+      ],
+      "source": {
+        "sourceType": "bdo-codex",
+        "sourceRef": "BDO Codex; Incendar",
+        "sourceDate": "2026-08-18",
+        "verifiedAt": "2026-08-18",
+        "status": "curated",
+        "confidence": "medium"
+      },
+      "status": "curated"
+    },
+    {
+      "id": "BDO-NODEPROD-serendiya-ruiny-fermy-linchey-skrytyy-excavation",
+      "nodeId": "BDO-NODE-serendiya-ruiny-fermy-linchey-skrytyy",
+      "type": "Excavation",
+      "name": "Руины фермы Линчей (скрытый) — Excavation",
+      "outputResourceIds": [
+        "bdo-resource-gold-ore",
+        "bdo-resource-trace-of-nature"
+      ],
+      "source": {
+        "sourceType": "bdo-codex",
+        "sourceRef": "BDO Codex; Incendar",
+        "sourceDate": "2026-08-18",
+        "verifiedAt": "2026-08-18",
+        "status": "curated",
+        "confidence": "medium"
+      },
+      "status": "curated"
+    },
+    {
+      "id": "BDO-NODEPROD-kalfeon-les-mansh-skrytyy-excavation",
+      "nodeId": "BDO-NODE-kalfeon-les-mansh-skrytyy",
+      "type": "Excavation",
+      "name": "Лес Манш (скрытый) — Excavation",
+      "outputResourceIds": [
+        "bdo-resource-gold-ore",
+        "bdo-resource-trace-of-nature"
+      ],
+      "source": {
+        "sourceType": "bdo-codex",
+        "sourceRef": "BDO Codex; Incendar",
+        "sourceDate": "2026-08-18",
+        "verifiedAt": "2026-08-18",
+        "status": "curated",
+        "confidence": "medium"
+      },
+      "status": "curated"
+    },
+    {
+      "id": "BDO-NODEPROD-valensiya-pilgrim-s-sanctum-abstinence-excavation",
+      "nodeId": "BDO-NODE-valensiya-pilgrim-s-sanctum-abstinence",
+      "type": "Excavation",
+      "name": "Pilgrim's Sanctum: Abstinence — Excavation",
+      "outputResourceIds": [
+        "bdo-resource-gold-ore",
+        "bdo-resource-trace-of-nature"
+      ],
+      "source": {
+        "sourceType": "pearl-abyss",
+        "sourceRef": "Pearl Abyss patch 2026-06-04",
+        "sourceDate": "2026-06-04",
+        "verifiedAt": "2026-08-18",
+        "status": "curated",
+        "confidence": "high"
+      },
+      "status": "curated"
+    },
+    {
+      "id": "BDO-NODEPROD-valensiya-pilgrim-s-sanctum-sharing-excavation",
+      "nodeId": "BDO-NODE-valensiya-pilgrim-s-sanctum-sharing",
+      "type": "Excavation",
+      "name": "Pilgrim's Sanctum: Sharing — Excavation",
+      "outputResourceIds": [
+        "bdo-resource-gold-ore",
+        "bdo-resource-trace-of-nature"
+      ],
+      "source": {
+        "sourceType": "pearl-abyss",
+        "sourceRef": "Pearl Abyss patch 2026-06-04",
+        "sourceDate": "2026-06-04",
+        "verifiedAt": "2026-08-18",
+        "status": "curated",
+        "confidence": "high"
+      },
+      "status": "curated"
+    },
+    {
+      "id": "BDO-NODEPROD-valensiya-pilgrim-s-sanctum-sincerity-excavation",
+      "nodeId": "BDO-NODE-valensiya-pilgrim-s-sanctum-sincerity",
+      "type": "Excavation",
+      "name": "Pilgrim's Sanctum: Sincerity — Excavation",
+      "outputResourceIds": [
+        "bdo-resource-gold-ore",
+        "bdo-resource-trace-of-nature"
+      ],
+      "source": {
+        "sourceType": "pearl-abyss",
+        "sourceRef": "Pearl Abyss patch 2026-06-04",
+        "sourceDate": "2026-06-04",
+        "verifiedAt": "2026-08-18",
+        "status": "curated",
+        "confidence": "high"
+      },
+      "status": "curated"
+    },
+    {
+      "id": "BDO-NODEPROD-mediya-zakrytaya-shakhta-zabroshennyy-zheleznyy-rudnik-skrytyy-mining",
+      "nodeId": "BDO-NODE-mediya-zakrytaya-shakhta-zabroshennyy-zheleznyy-rudnik-skrytyy",
+      "type": "Mining",
+      "name": "Abandoned Iron Mine — Mining",
+      "outputResourceIds": [
+        "bdo-resource-zinc-ore",
+        "bdo-resource-powder-of-time",
+        "bdo-resource-platinum-ore"
+      ],
+      "source": {
+        "sourceType": "bdo-codex",
+        "sourceRef": "BDO Codex; Incendar",
+        "sourceDate": "2026-08-18",
+        "verifiedAt": "2026-08-18",
+        "status": "curated",
+        "confidence": "medium"
+      },
+      "status": "curated"
+    },
+    {
+      "id": "BDO-NODEPROD-mediya-lavovaya-peshchera-skrytyy-mining",
+      "nodeId": "BDO-NODE-mediya-lavovaya-peshchera-skrytyy",
+      "type": "Mining",
+      "name": "Omar Lava Cave — Mining",
+      "outputResourceIds": [
+        "bdo-resource-zinc-ore",
+        "bdo-resource-powder-of-time",
+        "bdo-resource-platinum-ore"
+      ],
+      "source": {
+        "sourceType": "bdo-codex",
+        "sourceRef": "BDO Codex; Incendar",
+        "sourceDate": "2026-08-18",
+        "verifiedAt": "2026-08-18",
+        "status": "curated",
+        "confidence": "medium"
+      },
+      "status": "curated"
+    },
+    {
+      "id": "BDO-NODEPROD-strana-utra-dungryong-cave-mining-01",
+      "nodeId": "BDO-NODE-strana-utra-dungryong-cave",
+      "type": "Mining",
+      "name": "Dungryong Cave — Mining",
+      "outputResourceIds": [
+        "bdo-resource-zinc-ore",
+        "bdo-resource-powder-of-time",
+        "bdo-resource-platinum-ore"
+      ],
+      "source": {
+        "sourceType": "bdo-codex",
+        "sourceRef": "BDO Codex; Incendar",
+        "sourceDate": "2026-08-18",
+        "verifiedAt": "2026-08-18",
+        "status": "curated",
+        "confidence": "medium"
+      },
+      "status": "curated"
+    },
+    {
+      "id": "BDO-NODEPROD-serendiya-glish-ruins-excavation",
+      "nodeId": "BDO-NODE-serendiya-glish-ruins",
+      "type": "Excavation",
+      "name": "Glish Ruins — Excavation",
+      "outputResourceIds": [
+        "bdo-resource-platinum-ore",
+        "bdo-resource-trace-of-nature"
+      ],
+      "source": {
+        "sourceType": "bdo-codex",
+        "sourceRef": "BDO Codex; Incendar",
+        "sourceDate": "2026-08-18",
+        "verifiedAt": "2026-08-18",
+        "status": "curated",
+        "confidence": "medium"
+      },
+      "status": "curated"
+    },
+    {
+      "id": "BDO-NODEPROD-kalfeon-bernianto-farm-excavation",
+      "nodeId": "BDO-NODE-kalfeon-bernianto-farm",
+      "type": "Excavation",
+      "name": "Bernianto Farm — Excavation",
+      "outputResourceIds": [
+        "bdo-resource-platinum-ore",
+        "bdo-resource-trace-of-nature"
+      ],
+      "source": {
+        "sourceType": "bdo-codex",
+        "sourceRef": "BDO Codex; Incendar",
+        "sourceDate": "2026-08-18",
+        "verifiedAt": "2026-08-18",
+        "status": "curated",
+        "confidence": "medium"
+      },
+      "status": "curated"
+    },
+    {
+      "id": "BDO-NODEPROD-strana-utra-dang-forest-mining",
+      "nodeId": "BDO-NODE-strana-utra-dang-forest",
+      "type": "Mining",
+      "name": "Dang Forest — Mining",
+      "outputResourceIds": [
+        "bdo-resource-zinc-ore",
+        "bdo-resource-platinum-ore",
+        "bdo-resource-powder-of-time"
+      ],
+      "source": {
+        "sourceType": "verified-external",
+        "sourceRef": "Incendar Worker Nodes",
+        "verifiedAt": "2026-08-18",
+        "status": "curated",
+        "confidence": "high"
+      },
+      "status": "curated"
+    },
+    {
+      "id": "BDO-NODEPROD-valensiya-gavinya-coastal-cliff-mining",
+      "nodeId": "BDO-NODE-valensiya-gavinya-coastal-cliff",
+      "name": "Gavinya Coastal Cliff — Mining",
+      "type": "Mining",
+      "outputResourceIds": [
+        "bdo-resource-vanadium-ore",
+        "bdo-resource-gem-rough-opal",
+        "bdo-resource-powder-of-darkness"
+      ],
+      "source": {
+        "sourceType": "bdo-codex",
+        "sourceRef": "BDO Codex; Incendar",
+        "verifiedAt": "2026-08-19",
+        "status": "curated",
+        "confidence": "medium"
+      },
+      "status": "curated"
+    },
+    {
+      "id": "BDO-NODEPROD-valensiya-gavinya-volcano-mining",
+      "nodeId": "BDO-NODE-valensiya-gavinya-volcano",
+      "name": "Gavinya Volcano — Mining",
+      "type": "Mining",
+      "outputResourceIds": [
+        "bdo-resource-vanadium-ore",
+        "bdo-resource-rough-blue-crystal",
+        "bdo-resource-powder-of-rifts"
+      ],
+      "source": {
+        "sourceType": "bdo-codex",
+        "sourceRef": "BDO Codex; Incendar",
+        "verifiedAt": "2026-08-19",
+        "status": "curated",
+        "confidence": "medium"
+      },
+      "status": "curated"
+    },
+    {
+      "id": "BDO-NODEPROD-valensiya-kmach-canyon-mining",
+      "nodeId": "BDO-NODE-valensiya-kmach-canyon",
+      "name": "Kmach Canyon — Mining",
+      "type": "Mining",
+      "outputResourceIds": [
+        "bdo-resource-vanadium-ore",
+        "bdo-resource-rough-blue-crystal",
+        "bdo-resource-powder-of-rifts"
+      ],
+      "source": {
+        "sourceType": "bdo-codex",
+        "sourceRef": "BDO Codex; Incendar",
+        "verifiedAt": "2026-08-19",
+        "status": "curated",
+        "confidence": "medium"
+      },
+      "status": "curated"
+    },
+    {
+      "id": "BDO-NODEPROD-valensiya-bambu-valley-mining",
+      "nodeId": "BDO-NODE-valensiya-bambu-valley",
+      "name": "Bambu Valley — Mining",
+      "type": "Mining",
+      "outputResourceIds": [
+        "bdo-resource-vanadium-ore",
+        "bdo-resource-powder-of-rifts",
+        "bdo-resource-rough-blue-crystal"
+      ],
+      "source": {
+        "sourceType": "pearl-abyss",
+        "sourceRef": "Pearl Abyss patch 2026-06-04",
+        "sourceDate": "2026-06-04",
+        "verifiedAt": "2026-08-19",
+        "status": "curated",
+        "confidence": "high"
+      },
+      "status": "curated"
+    },
+    {
+      "id": "BDO-NODEPROD-mediya-kisleev-crag-mining",
+      "nodeId": "BDO-NODE-mediya-kisleev-crag",
+      "name": "Kisleev Crag — Mining",
+      "type": "Mining",
+      "outputResourceIds": [
+        "bdo-resource-vanadium-ore",
+        "bdo-resource-powder-of-rifts",
+        "bdo-resource-rough-blue-crystal"
+      ],
+      "source": {
+        "sourceType": "pearl-abyss",
+        "sourceRef": "Pearl Abyss patch 2026-06-04",
+        "sourceDate": "2026-06-04",
+        "verifiedAt": "2026-08-19",
+        "status": "curated",
+        "confidence": "high"
+      },
+      "status": "curated"
+    }
+  ]
+}
