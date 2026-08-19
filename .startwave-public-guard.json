@@ -34,6 +34,16 @@
     "scripts/install-publication-guard.ps1"
   ],
   "allowedPrefixes": [
+    "apps/web/",
+    "GAMES/site/",
+    "GAMES/bdo/site/",
+    "GAMES/bdo/atlas/data/",
+    "GAMES/bdo/atlas/docs/",
+    "GAMES/bdo/tools/",
+    "ai/",
+    "services/",
+    "shared/",
+    "infra/",
     "assets/css/",
     "assets/images/",
     "assets/js/",
