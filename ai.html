@@ -6,7 +6,7 @@
   <title>StartWave — AI</title>
   <meta
     name="description"
-    content="StartWave — страница AI-помощников проекта: ChatGPT и Алиса, а также быстрый доступ к ним.">
+    content="StartWave AI — будущий интеллектуальный помощник для поиска информации, работы с материалами и развития идей.">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -47,79 +47,108 @@
       <button type="submit">Найти</button>
     </form>
 
-    <main class="content-main">
-      <section class="page-intro">
-        <h2 class="page-title">💡 Инструменты для твоих идей</h2>
-        <p class="page-subtitle">AI-инструменты для работы, обучения, творчества и развития идей.</p>
+    <main class="content-main ai-hub-main">
+      <section class="ai-hub-hero" aria-labelledby="ai-hub-title">
+        <p class="ai-hub-eyebrow">🤖 StartWave AI</p>
+        <h2 id="ai-hub-title">Интеллектуальный центр StartWave</h2>
+        <p class="ai-hub-lead">
+          Помощник для поиска информации, работы с материалами и развития идей —
+          в одном понятном интерфейсе.
+        </p>
       </section>
 
-      <section class="category-section" aria-labelledby="chatgpt-title">
-        <h2 class="category-title" id="chatgpt-title">💬 ChatGPT</h2>
-        <div class="card-grid">
-          <div class="ai-role-card">
-            <span class="role-icon">🔍</span>
-            <span class="role-label">Проверка кода</span>
-            <small class="role-description">Находит ошибки и предлагает понятные исправления.</small>
+      <section class="ai-hub-assistant" aria-labelledby="ai-hub-assistant-title">
+        <div class="ai-hub-assistant-heading">
+          <div>
+            <p class="ai-hub-kicker">StartWave AI Assistant</p>
+            <h2 id="ai-hub-assistant-title">🦒 Жираф</h2>
           </div>
-          <div class="ai-role-card">
-            <span class="role-icon">🏗️</span>
-            <span class="role-label">Архитектура проекта</span>
-            <small class="role-description">Помогает организовать структуру и связи проекта.</small>
-          </div>
-          <div class="ai-role-card">
-            <span class="role-icon">💡</span>
-            <span class="role-label">Генерация идей</span>
-            <small class="role-description">Предлагает варианты и развивает исходную мысль.</small>
-          </div>
+          <span class="ai-hub-badge">Скоро</span>
+        </div>
+        <p class="ai-hub-assistant-copy">
+          Привет! Я Жираф — будущий AI-помощник StartWave.<br>
+          Сейчас мой интерфейс уже готов, но AI ещё не подключён.
+        </p>
+        <form class="ai-hub-assistant-form" action="#" method="post" aria-describedby="ai-hub-form-status">
+          <label class="visually-hidden" for="ai-hub-prompt">Сообщение для Жирафа</label>
+          <input
+            id="ai-hub-prompt"
+            name="prompt"
+            type="text"
+            placeholder="Спросить Жирафа..."
+            autocomplete="off"
+            disabled>
+          <button type="submit" disabled>Отправить</button>
+        </form>
+        <p class="ai-hub-form-status" id="ai-hub-form-status">AI ещё не подключён</p>
+      </section>
+
+      <section class="ai-hub-section" aria-labelledby="ai-hub-capabilities-title">
+        <div class="ai-hub-section-heading">
+          <p class="ai-hub-kicker">Будущие возможности</p>
+          <h2 id="ai-hub-capabilities-title">Что сможет Жираф</h2>
+        </div>
+        <div class="ai-hub-capabilities">
+          <article class="ai-hub-capability">
+            <span aria-hidden="true">🌐</span>
+            <h3>Поиск информации</h3>
+            <p>Поможет находить нужную информацию.</p>
+          </article>
+          <article class="ai-hub-capability">
+            <span aria-hidden="true">📚</span>
+            <h3>Материалы StartWave</h3>
+            <p>Сможет работать с базой знаний и материалами проекта.</p>
+          </article>
+          <article class="ai-hub-capability">
+            <span aria-hidden="true">💡</span>
+            <h3>Помощь с проектами</h3>
+            <p>Поможет разбирать идеи, задачи и материалы.</p>
+          </article>
+          <article class="ai-hub-capability">
+            <span aria-hidden="true">💬</span>
+            <h3>Единый интерфейс</h3>
+            <p>Разные возможности StartWave AI будут доступны через одного помощника.</p>
+          </article>
         </div>
       </section>
 
-      <section class="category-section" aria-labelledby="alice-title">
-        <h2 class="category-title" id="alice-title">🗣️ Алиса</h2>
-        <div class="card-grid">
-          <div class="ai-role-card">
-            <span class="role-icon">👀</span>
-            <span class="role-label">Проверка страниц</span>
-            <small class="role-description">Оценивает содержание, удобство и оформление страницы.</small>
-          </div>
-          <div class="ai-role-card">
-            <span class="role-icon">📝</span>
-            <span class="role-label">Чек-листы</span>
-            <small class="role-description">Собирает пошаговый список для проверки задачи.</small>
-          </div>
-          <div class="ai-role-card">
-            <span class="role-icon">🧪</span>
-            <span class="role-label">Тестирование</span>
-            <small class="role-description">Помогает проверить сценарии и заметить проблемы.</small>
-          </div>
+      <section class="ai-hub-section ai-hub-system" aria-labelledby="ai-hub-system-title">
+        <div class="ai-hub-section-heading">
+          <p class="ai-hub-kicker">Сейчас</p>
+          <h2 id="ai-hub-system-title">Разработка StartWave AI</h2>
         </div>
+        <ul class="ai-hub-status-list">
+          <li><span>🦒 Жираф</span><strong class="ai-hub-status-development">в разработке</strong></li>
+          <li><span>📚 База знаний</span><strong class="ai-hub-status-building">наполняется</strong></li>
+          <li><span>🌐 Интернет-поиск</span><strong class="ai-hub-status-testing">тестируется</strong></li>
+        </ul>
       </section>
 
-      <section class="category-section" aria-labelledby="ai-links-title">
-        <h2 class="category-title" id="ai-links-title">⚡ Быстрый доступ</h2>
-        <div class="card-grid">
-      <a href="https://chatgpt.com/" class="link-card service-card" target="_blank" rel="noopener noreferrer">
-  <img src="assets/images/gpt.jpg" alt="ChatGPT" class="card-image" loading="lazy">
-  <span class="card-label">ChatGPT</span>
-    </a>
-
-          <a href="https://alice.yandex.ru/" class="link-card service-card" target="_blank" rel="noopener noreferrer">
-            <img src="assets/images/alice.jpg" alt="Алиса" class="card-image" loading="lazy">
-            <span class="card-label">Алиса</span>
+      <section class="ai-hub-section ai-hub-external" aria-labelledby="ai-hub-external-title">
+        <div class="ai-hub-section-heading">
+          <p class="ai-hub-kicker">Быстрый переход</p>
+          <h2 id="ai-hub-external-title">Внешние AI-сервисы</h2>
+        </div>
+        <div class="ai-hub-external-links">
+          <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">
+            <span class="ai-hub-external-image">
+              <img src="assets/images/gpt.jpg" alt="" loading="lazy">
+            </span>
+            <strong>ChatGPT</strong>
+          </a>
+          <a href="https://alice.yandex.ru/" target="_blank" rel="noopener noreferrer">
+            <span class="ai-hub-external-image">
+              <img src="assets/images/alice.jpg" alt="" loading="lazy">
+            </span>
+            <strong>Алиса</strong>
           </a>
         </div>
-      </section>
-
-      <section class="project-meta">
-        <p>
-          AI помогает находить ответы, развивать мысли и быстрее переходить
-          от идеи к действию.
-        </p>
       </section>
     </main>
 
     <footer class="site-footer">
       <p>&copy; 2026 Kameadril · StartWave</p>
+      <p class="ai-hub-footer-note">Создано с идеями, спорами и ❤️ вместе с AI</p>
     </footer>
   </div>
 
