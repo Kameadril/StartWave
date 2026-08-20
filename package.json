@@ -1,0 +1,7 @@
+{
+  "name": "startwave",
+  "private": true,
+  "scripts": {
+    "build": "node infra/build-public.mjs"
+  }
+}

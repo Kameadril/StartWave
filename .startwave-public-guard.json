@@ -11,6 +11,8 @@
     "COMMIT_GUIDE.md",
     "TESTING.md",
     "VERSION.md",
+    "package.json",
+    "wrangler.jsonc",
     "index.html",
     "index_old.html",
     "ai.html",
