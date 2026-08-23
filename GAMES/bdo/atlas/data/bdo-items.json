@@ -1198,6 +1198,30 @@
       ],
       "recipes": [],
       "productions": []
+    },
+    {
+      "category": "Природный ресурс",
+      "checkedAt": "2026-08-23",
+      "description": "Титановая руда",
+      "id": "SW-ITEM-142",
+      "itemType": "Руда",
+      "name": "Титановая руда",
+      "resources": [
+        "bdo-resource-titanium-ore"
+      ],
+      "status": "curated"
+    },
+    {
+      "category": "Природный ресурс",
+      "checkedAt": "2026-08-23",
+      "description": "Серебряная руда",
+      "id": "SW-ITEM-143",
+      "itemType": "Руда",
+      "name": "Серебряная руда",
+      "resources": [
+        "bdo-resource-silver-ore"
+      ],
+      "status": "curated"
     }
 
 

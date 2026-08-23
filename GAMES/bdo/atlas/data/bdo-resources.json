@@ -1907,6 +1907,50 @@
         "mapPoints": [],
         "playerJourneySteps": []
       }
+    },
+    {
+      "category": "Природный ресурс",
+      "id": "bdo-resource-titanium-ore",
+      "name": "Титановая руда",
+      "relations": {
+        "items": [
+          "SW-ITEM-142"
+        ],
+        "mapPoints": [],
+        "nodes": [],
+        "playerJourneySteps": [],
+        "productions": [],
+        "recipes": [],
+        "workers": []
+      },
+      "resourceType": "Рудный ресурс",
+      "verification": {
+        "checkedAt": "2026-08-23",
+        "source": "owner",
+        "status": "curated"
+      }
+    },
+    {
+      "category": "Природный ресурс",
+      "id": "bdo-resource-silver-ore",
+      "name": "Серебряная руда",
+      "relations": {
+        "items": [
+          "SW-ITEM-143"
+        ],
+        "mapPoints": [],
+        "nodes": [],
+        "playerJourneySteps": [],
+        "productions": [],
+        "recipes": [],
+        "workers": []
+      },
+      "resourceType": "Рудный ресурс",
+      "verification": {
+        "checkedAt": "2026-08-23",
+        "source": "owner",
+        "status": "curated"
+      }
     }
 
 
