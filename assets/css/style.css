@@ -1331,6 +1331,10 @@ footer p {
   object-fit: cover;
 }
 
+.card-image--tutu {
+  object-position: center 40%;
+}
+
 .card-label {
   padding: 14px;
   font-weight: 750;
