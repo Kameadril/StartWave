@@ -52,7 +52,7 @@ check_spec() {
 }
 
 printf '%s\n' 'StartWave public publication guard'
-if [ "$mode" = "--staged" ] && [ "${STARTWAVE_OWNER_APPROVED_FULL_SNAPSHOT:-}" = "1" ]; then
+if { [ "$mode" = "--staged" ] || [ "$mode" = "--outgoing" ]; } && [ "${STARTWAVE_OWNER_APPROVED_FULL_SNAPSHOT:-}" = "1" ]; then
   printf '%s\n' 'OWNER-APPROVED FULL SNAPSHOT'
   exit 0
 fi
