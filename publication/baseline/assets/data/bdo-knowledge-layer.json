@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "0.6.0",
+  "collectionId": "bdo-knowledge-layer",
+  "title": "Слой знаний BDO",
+  "updatedAt": "2026-08-02",
+  "stage": "BDO DATA EXPANSION v0.6",
+  "statusDefinitions": { "verified": "Подтверждено", "researching": "Исследуется", "awaiting-data": "Ожидает данных" },
+  "categories": [
+    { "id": "people", "label": "Люди", "icon": "👥", "status": "awaiting-data", "entries": [], "route": null },
+    { "id": "monsters", "label": "Монстры", "icon": "🐺", "status": "awaiting-data", "entries": [], "route": null },
+    { "id": "world-regions", "label": "Мир / регионы", "icon": "🏰", "status": "researching", "entries": [
+      { "id": "knowledge-context-calpheon", "title": "Кальфеон", "status": "verified", "entityRef": { "type": "city", "id": "bdo-city-calpheon" }, "route": "bdo-region-calpheon.html", "scope": "Подтверждённая городская запись используется как контекст исследования региона." }
+    ] },
+    { "id": "resources", "label": "Ресурсы", "icon": "🌲", "status": "researching", "entries": [
+      { "id": "knowledge-resource-ash", "title": "Ясень", "status": "verified", "entityRef": { "type": "resource", "id": "bdo-resource-wood-ash" }, "route": "bdo-resources.html#bdo-resource-wood-ash", "scope": "Подтверждённая запись ресурса без приписанной региональной или производственной связи." }
+    ] },
+    { "id": "production", "label": "Производство", "icon": "⚒", "status": "awaiting-data", "entries": [], "route": "bdo-crafting.html" }
+  ],
+  "contextLinks": [
+    { "from": { "type": "city", "id": "bdo-city-calpheon" }, "to": { "type": "resource", "id": "bdo-resource-wood-ash" }, "kind": "research-context-only", "status": "researching", "isWorldRelation": false, "note": "Объекты совместно показаны в архиве для исследования. Игровая связь не подтверждена." }
+  ],
+  "worldRelations": [],
+  "playerKnowledgeFoundation": { "enabled": false, "futureStateSource": "player-owned-progress", "separateFromWorldFacts": true, "supportedCategoryIds": ["people", "monsters", "world-regions", "resources", "production"] },
+  "aiRecommendationFoundation": { "enabled": false, "inputs": ["verified knowledge entries", "player-owned progress", "verified world relations"], "rules": ["never infer game facts", "never convert context links into world relations", "recommend only from verified data"] },
+  "policy": { "verifiedRelationsOnly": true, "emptyCategoriesAreValid": true, "contextIsNotWorldRelation": true }
+}

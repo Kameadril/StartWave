@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "0.1.0",
+  "collectionId": "bdo-worker-atlas",
+  "title": "Атлас рабочих",
+  "updatedAt": "2026-08-01",
+  "stage": "SW-GAMES BDO-DATA-009",
+  "entitySchema": {
+    "id": "string",
+    "name": "string",
+    "workerType": "string",
+    "hireCity": "string|null",
+    "region": "string",
+    "nodes": "string[]",
+    "tasks": "string[]",
+    "resources": "string[]",
+    "production": "string[]",
+    "images": "string[]",
+    "source": "string[]",
+    "checkedAt": "YYYY-MM-DD",
+    "status": "unresearched|researching|verified"
+  },
+  "relationModel": ["city", "node", "resource", "worker", "production"],
+  "verificationPolicy": {
+    "status": "structure-only",
+    "source": "SW-GAMES BDO-DATA-009",
+    "scope": "Создана только структура Worker Layer. Рабочие, характеристики, задачи и игровые связи добавляются после отдельной проверки источника."
+  },
+  "workers": []
+}

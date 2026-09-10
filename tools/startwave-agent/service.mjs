@@ -1,10 +1,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { fileURLToPath } from 'node:url';
 import { searchBdoWeb } from './bdo-web-search.mjs';
+import { resolveProjectRoot } from './project-root.mjs';
+import { routeCityAuthoring } from './city-authoring.mjs';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+const root = resolveProjectRoot(import.meta.url);
 const config = JSON.parse(fs.readFileSync(path.join(root, 'tools/startwave-agent/config.json'), 'utf8'));
 const state = path.join(root, '.startwave-agent');
 const dirs = Object.fromEntries(['queue', 'claims', 'runs', 'logs', 'failed'].map((name) => [name, path.join(state, name)]));
@@ -20,10 +21,11 @@ function validateJob(job) {
   if (!job || typeof job !== 'object' || Array.isArray(job)) throw new Error('Job must be a JSON object.');
   if (!/^[a-zA-Z0-9][a-zA-Z0-9_-]{5,63}$/.test(job.id ?? '')) throw new Error('Invalid job id.');
   if (!Number.isFinite(Date.parse(job.createdAt))) throw new Error('Invalid createdAt.');
-  if (!['llm-only', 'atlas-analysis', 'bdo-web-search'].includes(job.type)) throw new Error('Invalid job type.');
+  if (!['llm-only', 'atlas-analysis', 'bdo-web-search', 'city-authoring'].includes(job.type)) throw new Error('Invalid job type.');
   if (typeof job.prompt !== 'string' || !job.prompt.trim() || job.prompt.length > config.maxPromptChars) throw new Error('Invalid prompt.');
   if (job.files !== undefined && (!Array.isArray(job.files) || job.files.length > config.maxFiles)) throw new Error('Invalid files list.');
   if (job.validation !== undefined && typeof job.validation !== 'boolean') throw new Error('validation must be boolean.');
+  if (job.type === 'city-authoring' && job.preview !== undefined && (!job.preview || typeof job.preview !== 'object' || Array.isArray(job.preview))) throw new Error('preview must be an object.');
   const files = (job.files ?? []).map((relative) => {
     if (typeof relative !== 'string' || path.isAbsolute(relative)) throw new Error(`File path must be relative: ${relative}`);
     const absolute = insideRoot(relative);
@@ -65,6 +67,14 @@ async function processClaim(claimPath) {
   try {
     job = JSON.parse(fs.readFileSync(claimPath, 'utf8'));
     const files = validateJob(job);
+    if (job.type === 'city-authoring') {
+      const cityAuthoring = routeCityAuthoring({ root, message: job.prompt, preview: job.preview, intakeDate: job.intakeDate });
+      const result = { id: job.id, status: cityAuthoring.status, createdAt: job.createdAt, startedAt, finishedAt: new Date().toISOString(), type: job.type, model: null, modelCalls: 0, cityAuthoring };
+      writeJsonNew(path.join(dirs.runs, `${job.id}.json`), result);
+      fs.unlinkSync(claimPath);
+      console.log(`${result.status} ${job.id}`);
+      return result;
+    }
     const web = job.type === 'bdo-web-search' ? await searchBdoWeb(job.prompt, config) : null;
     const ollama = await callOllama(job, files, web);
     const atlas = job.type === 'atlas-analysis' && job.validation !== false ? runAtlas() : null;

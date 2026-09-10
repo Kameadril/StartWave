@@ -1,6 +1,11 @@
+# Local StartWave agent runtime state
 .startwave-agent/
+.wrangler/
 
-data-source/
-
+# Generated distribution output
 dist/
-.aider*
+
+# Aider-generated history and caches
+.aider.chat.history.md
+.aider.input.history
+.aider.tags.cache*/

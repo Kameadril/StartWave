@@ -23,7 +23,13 @@
       "playerJourneySteps": "string[]"
     }
   },
-  "relationModel": ["city", "node", "resource", "worker", "production"],
+  "relationModel": [
+    "city",
+    "node",
+    "resource",
+    "worker",
+    "production"
+  ],
   "verificationPolicy": {
     "status": "basic-record-verified",
     "source": "SW-GAMES BDO-DATA-007",
@@ -51,6 +57,22 @@
       "relations": {
         "mapPoints": [],
         "playerJourneySteps": []
+      }
+    },
+    {
+      "id": "BDO-CITY-kalfeon-oliviya",
+      "entityType": "city",
+      "name": "Оливия",
+      "names": {
+        "ru": "Оливия",
+        "en": "Calpheon"
+      },
+      "regionId": "BDO-REGION-kalfeon",
+      "provenance": {
+        "sourceRef": "owner:human-city-intake-v1"
+      },
+      "relations": {
+        "futureScopes": []
       }
     }
   ]

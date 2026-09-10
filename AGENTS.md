@@ -15,3 +15,14 @@ These rules apply to this repository and all descendants.
 `APPROVED_NODE_ID_RULE = BDO-NODE-<region-slug>-<node-slug>`. Node IDs are immutable after creation; literal Russian `name` and `region` are stored separately and may change independently. The fixed offline transliteration mapping is implemented in `tools/atlas-agent/node-id.mjs`. Existing-ID collisions return `ID_COLLISION` and require manual resolution; random suffixes and timestamps are forbidden. XLSX-to-Node creation must use this helper.
 
 `APPROVED_REGION_ID_RULE = BDO-REGION-<semantic-slug>`. Region entity IDs are immutable stable identifiers, separate from versioned Region View IDs such as `bdo-region-view-calpheon-v0-5`. Region IDs use the same fixed offline transliteration policy via `tools/atlas-agent/region-id.mjs`; collisions require manual resolution. Regions contain Nodes, while global Resources, Items, Recipes, and Productions are never duplicated per region.
+
+## Analysis discipline
+
+When analyzing the project:
+
+1. Do not scan the whole repository unless explicitly requested.
+2. First identify the entry file or relevant folder.
+3. Read only the minimum required files.
+4. Follow references from the discovered files.
+5. Avoid excessive tool calls.
+6. For large tasks, split analysis into smaller steps.

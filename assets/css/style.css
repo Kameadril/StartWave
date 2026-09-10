@@ -2021,10 +2021,6 @@ a.bdo-topic-card:focus-visible img {
   min-height: 378px;
 }
 
-.bdo-landing-body :is(#bdo-world-connection, #bdo-knowledge-layer, #bdo-calpheon-region) {
-  height: auto;
-}
-
 .bdo-landing-body .bdo-topic-card img {
   width: calc(100% + 34px);
   height: 112px;

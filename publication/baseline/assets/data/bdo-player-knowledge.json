@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "0.1.0",
+  "collectionId": "bdo-player-knowledge-progress",
+  "stage": "SW-GAMES BDO-DATA-014",
+  "updatedAt": "2026-08-01",
+  "playerJourney": {
+    "id": "bdo-player-journey-default",
+    "title": "Личный путь исследователя",
+    "knowledgeProgress": [
+      {
+        "id": "bdo-player-progress-chain-wood-ash-v0-1",
+        "chainId": "bdo-chain-wood-ash-v0-1",
+        "rootEntity": { "type": "resource", "id": "bdo-resource-wood-ash" },
+        "status": "researching",
+        "stages": [
+          { "type": "resource", "status": "studied", "entityIds": ["bdo-resource-wood-ash"] },
+          { "type": "node", "status": "researching", "entityIds": [] },
+          { "type": "worker", "status": "unknown", "entityIds": [] },
+          { "type": "production", "status": "unknown", "entityIds": [] },
+          { "type": "item", "status": "unknown", "entityIds": [] }
+        ],
+        "journal": [
+          {
+            "id": "bdo-journal-ash-resource-studied",
+            "createdAt": "2026-08-01",
+            "title": "Ресурс изучен",
+            "note": "Запись «Ясень» открыта в архиве и подтверждена на уровне ресурса.",
+            "sourceType": "archive",
+            "entityRef": { "type": "resource", "id": "bdo-resource-wood-ash" }
+          },
+          {
+            "id": "bdo-journal-ash-nodes-researching",
+            "createdAt": "2026-08-01",
+            "title": "Следующий шаг: исследовать узлы",
+            "note": "Связанные узлы пока не подтверждены. Игровые объекты и связи не добавлены.",
+            "sourceType": "player-goal",
+            "entityRef": null
+          }
+        ]
+      }
+    ]
+  },
+  "statusDefinitions": {
+    "unknown": "Неизвестно",
+    "researching": "Исследуется",
+    "studied": "Изучено"
+  },
+  "aiReadiness": {
+    "enabled": false,
+    "recommendationInput": ["playerJourney.knowledgeProgress", "knowledgeGraph.knowledgeChains"],
+    "rules": ["verified-relations-only", "never-infer-game-links", "separate-player-goals-from-world-facts"]
+  },
+  "policy": {
+    "progressIsNotWorldEvidence": true,
+    "verifiedRelationsOnly": true,
+    "emptyEntityIdsAreValid": true
+  }
+}

@@ -1,0 +1,1282 @@
+{
+  "schemaVersion": "0.7.0",
+  "collectionId": "bdo-item-atlas",
+  "title": "Calpheon Item Archive",
+  "updatedAt": "2026-08-08",
+  "stage": "SW-GAMES BDO-DATA-012",
+  "entitySchema": {
+    "id": "string",
+    "gameId": "number|null",
+    "name": "string",
+    "category": "string",
+    "itemType": "string",
+    "grade": "string",
+    "weightLT": "number|null",
+    "description": "string",
+    "archive": "object|null",
+    "acquisition": "string[]",
+    "production": "string[]",
+    "usage": "string[]",
+    "relatedObjects": "string[]",
+    "relatedItemIds": "string[]",
+    "resources": "string[]",
+    "productions": "string[]",
+    "recipes": "string[]",
+    "cities": "string[]",
+    "images": "string[]",
+    "source": "string[]",
+    "checkedAt": "YYYY-MM-DD",
+    "status": "unresearched|researching|verified|curated"
+  },
+  "relationModel": ["city", "node", "resource", "worker", "production", "item"],
+  "verificationPolicy": {
+    "status": "curated-starter-collection",
+    "source": "SW-GAMES BDO-DATA-012",
+    "scope": "Стартовая редакционная коллекция без цен и расчётов прибыли. Стабильные ID и массивы связей подготовлены для последующей сверки и расширения графа знаний."
+  },
+  "items": [{"id":"SW-ITEM-001","name":"Древесина ясеня","category":"Материалы","itemType":"Древесина","grade":"Обычный","description":"Базовый природный материал для обработки и ремесленных цепочек.","archive":{"title":"Модуль древесины ясеня","description":"Ограниченный Item Atlas View использует существующие поля SW-ITEM-001 и literal-связь SW-ITEM-002. Дополнительные рецепты, производства и узлы не добавлены.","status":"curated","source":"SW-GAMES BDO-DATA-012","checkedAt":"2026-08-04"},"atlas":{"view":"Item Atlas View","title":"Древесина ясеня","summary":"Базовый древесный материал с существующей связью на SW-ITEM-002.","source":"Существующая Item-запись SW-ITEM-001.","acquisitionType":"Рубка ясеня; добыча рабочими на связанных узлах по существующим Item-полям.","processing":"Связь с SW-ITEM-002 сохранена буквально; отдельный recipe ID не добавлен.","usage":"Обработка древесины и ремесленные материалы по существующим Item-полям.","productionSequence":"SW-ITEM-001 → SW-ITEM-002; количества и дополнительные этапы не найдены в текущем Atlas."},"acquisition":["Рубка ясеня","Добыча рабочими на связанных узлах"],"usage":["Обработка древесины","Ремесленные материалы"],"relatedObjects":["Ясень","Лесные узлы","Рабочие"],"relatedItemIds":["SW-ITEM-002"],"resources":["bdo-resource-wood-ash"],"productions":["wood-processing"],"recipes":[],"cities":["calpheon"],"images":[],"source":["SW-GAMES BDO-DATA-012"],"checkedAt":"2026-08-04","status":"curated"},
+    {"id":"SW-ITEM-002","name":"Фанера из ясеня","category":"Материалы","itemType":"Обработанная древесина","grade":"Необычный","description":"Результат последовательной обработки древесины ясеня для более сложного производства.","archive":{"title":"Модуль фанеры из ясеня","description":"Ограниченный Item Atlas View использует существующие поля SW-ITEM-002 и literal-связь SW-ITEM-001. Дополнительные связи и игровые сведения не добавлены.","status":"curated","source":"SW-GAMES BDO-DATA-012","checkedAt":"2026-08-04"},"atlas":{"view":"Item Atlas View","title":"Фанера из ясеня","summary":"Обработанный древесный материал с существующей связью на SW-ITEM-001.","source":"Существующая Item-запись SW-ITEM-002.","acquisitionType":"Обработка заготовок из ясеня по существующему Item-полю.","processing":"Связь с SW-ITEM-001 и literal ash-plywood сохранены; canonical recipe/production-сущности не добавлены.","usage":"Создание ремесленных компонентов и производственные задания по существующим Item-полям.","productionSequence":"SW-ITEM-001 → SW-ITEM-002; количества и дополнительные этапы не найдены в текущем Atlas."},"acquisition":["Обработка заготовок из ясеня"],"usage":["Создание ремесленных компонентов","Производственные задания"],"relatedObjects":["Древесина ясеня","Обработка","Мастерские"],"relatedItemIds":["SW-ITEM-001"],"resources":["bdo-resource-wood-ash"],"productions":["wood-processing"],"recipes":["ash-plywood"],"cities":["calpheon"],"images":[],"source":["SW-GAMES BDO-DATA-012"],"checkedAt":"2026-08-04","status":"curated"},
+    {"id":"SW-ITEM-003","name":"Железная руда","category":"Материалы","itemType":"Руда","grade":"Обычный","description":"Основное металлическое сырьё для плавки и последующего производства.","archive":{"title":"Модуль железной руды","description":"Ограниченный Item Atlas View использует только подтверждённые поля SW-ITEM-003 и существующую literal-связь SW-ITEM-004. Resource, recipe, production и node-сущности не добавлены.","status":"curated","source":"SW-GAMES BDO-DATA-012","checkedAt":"2026-08-04"},"atlas":{"view":"Item Atlas View","title":"Железная руда","summary":"Подтверждённый Item-объект железной руды с существующей связью на SW-ITEM-004.","source":"Существующая Item-запись SW-ITEM-003; способы добычи в текущем Item Atlas не расширяются.","acquisitionType":"Данные получения в текущем Atlas не расширяются.","processing":"Связь с SW-ITEM-004 сохранена буквально; отдельная recipe/production-сущность не найдена в текущем Atlas.","usage":"Плавка металла и изготовление металлических компонентов по существующим полям Item.","productionSequence":"SW-ITEM-003 → SW-ITEM-004; дополнительные количества и этапы не найдены в текущем Atlas."},"acquisition":["Добыча киркой","Добыча рабочими на рудных узлах"],"usage":["Плавка металла","Изготовление металлических компонентов"],"relatedObjects":["Рудные жилы","Горные узлы","Плавка"],"relatedItemIds":["SW-ITEM-004"],"resources":["bdo-resource-iron-ore"],"productions":["metal-heating"],"recipes":[],"cities":["calpheon"],"images":[],"source":["SW-GAMES BDO-DATA-012"],"checkedAt":"2026-08-04","status":"curated"},
+    {"id":"SW-ITEM-004","name":"Слиток железа","category":"Материалы","itemType":"Металл","grade":"Необычный","description":"Обработанный металл для инструментов, деталей и мастерских.","archive":{"title":"Модуль слитка железа","description":"Ограниченный Item Atlas View использует только подтверждённые поля SW-ITEM-004 и существующие literal-связи SW-ITEM-003 и SW-ITEM-009. Resource, recipe, production и node-сущности не добавлены.","status":"curated","source":"SW-GAMES BDO-DATA-012","checkedAt":"2026-08-04"},"atlas":{"view":"Item Atlas View","title":"Слиток железа","summary":"Подтверждённый Item-объект обработанного металла с существующими literal-связями на SW-ITEM-003 и SW-ITEM-009.","source":"Существующая Item-запись SW-ITEM-004; отдельный источник обработки не добавляется.","acquisitionType":"Нагревание металлических заготовок по существующему Item-полю.","processing":"Связи SW-ITEM-003, iron-ore, metal-heating и iron-ingot сохранены буквально; canonical recipe/production-сущности не найдены в текущем Atlas.","usage":"Изготовление инструментов и создание металлических деталей по существующим полям Item.","productionSequence":"SW-ITEM-003 → SW-ITEM-004; количества и отдельная production-цепочка не найдены в текущем Atlas."},"acquisition":["Нагревание металлических заготовок"],"usage":["Изготовление инструментов","Создание металлических деталей"],"relatedObjects":["Железная руда","Нагревание","Оружейные мастерские"],"relatedItemIds":["SW-ITEM-003","SW-ITEM-009"],"resources":["iron-ore"],"productions":["metal-heating"],"recipes":["iron-ingot"],"cities":["calpheon"],"images":[],"source":["SW-GAMES BDO-DATA-012"],"checkedAt":"2026-08-04","status":"curated"},
+    {"id":"SW-ITEM-005","name":"Грубый камень","category":"Материалы","itemType":"Минерал","grade":"Обычный","description":"Каменный материал, используемый в обработке и производстве строительных компонентов.","acquisition":["Добыча киркой из каменных объектов"],"usage":["Изготовление обработанного камня","Строительные цепочки"],"relatedObjects":["Каменные залежи","Сбор","Обработка"],"relatedItemIds":[],"resources":["rough-stone"],"productions":["stone-processing"],"recipes":[],"cities":[],"images":[],"source":["SW-GAMES BDO-DATA-012"],"checkedAt":"2026-08-04","status":"curated"},
+    {"id":"SW-ITEM-006","name":"Лён","category":"Материалы","itemType":"Растительное волокно","grade":"Обычный","description":"Растительный материал для текстильной производственной цепочки.","acquisition":["Сбор растений","Добыча рабочими на связанных узлах"],"usage":["Обработка волокна","Создание ткани"],"relatedObjects":["Поля льна","Рабочие","Текстильная мастерская"],"relatedItemIds":["SW-ITEM-007"],"resources":["bdo-resource-flax"],"productions":["textile-processing"],"recipes":[],"cities":["calpheon"],"images":[],"source":["SW-GAMES BDO-DATA-012"],"checkedAt":"2026-08-04","status":"curated"},
+    {"id":"SW-ITEM-007","name":"Льняная ткань","category":"Материалы","itemType":"Ткань","grade":"Необычный","description":"Обработанный текстильный материал для ремесла и производственных заказов.","acquisition":["Последовательная обработка льна"],"usage":["Пошив и ремесло","Компонент производственных рецептов"],"relatedObjects":["Лён","Обработка","Текстильная мастерская"],"relatedItemIds":["SW-ITEM-006"],"resources":["flax"],"productions":["textile-processing"],"recipes":["flax-fabric"],"cities":["calpheon"],"images":[],"source":["SW-GAMES BDO-DATA-012"],"checkedAt":"2026-08-04","status":"curated"},
+    {"id":"SW-ITEM-008","name":"Чистая вода","category":"Алхимия","itemType":"Реагент","grade":"Обычный","description":"Подготовленная вода для базовых алхимических и ремесленных процессов.","acquisition":["Обработка воды"],"usage":["Алхимические смеси","Ремесленные задания"],"relatedObjects":["Водные источники","Фильтрация","Алхимический стол"],"relatedItemIds":["SW-ITEM-011"],"resources":["water"],"productions":["water-processing"],"recipes":["purified-water"],"cities":[],"images":[],"source":["SW-GAMES BDO-DATA-012"],"checkedAt":"2026-08-04","status":"curated"},
+    {"id":"SW-ITEM-009","name":"Кирка","category":"Инструменты","itemType":"Инструмент сбора","grade":"Обычный","description":"Инструмент для добычи руды и каменных материалов вручную.","acquisition":["Изготовление в мастерской","Покупка у торговцев инструментами"],"usage":["Добыча руды","Добыча камня"],"relatedObjects":["Железная руда","Грубый камень","Инструментальная мастерская"],"relatedItemIds":["SW-ITEM-003","SW-ITEM-004","SW-ITEM-005"],"resources":[],"productions":["tool-workshop"],"recipes":["basic-pickaxe"],"cities":["calpheon"],"images":[],"source":["SW-GAMES BDO-DATA-012"],"checkedAt":"2026-08-04","status":"curated"},
+    {"id":"SW-ITEM-010","name":"Чай с молоком","category":"Кулинария","itemType":"Блюдо","grade":"Необычный","description":"Кулинарный предмет из производственной цепочки еды и напитков.","acquisition":["Приготовление на кухонной утвари"],"usage":["Личное потребление","Кулинарные поставки"],"relatedObjects":["Кулинария","Кухонная утварь","Ингредиенты"],"relatedItemIds":[],"resources":[],"productions":["cooking"],"recipes":["milk-tea"],"cities":[],"images":[],"source":["SW-GAMES BDO-DATA-012"],"checkedAt":"2026-08-04","status":"curated"},
+    {"id":"SW-ITEM-011","name":"Зелье здоровья","category":"Алхимия","itemType":"Расходуемый предмет","grade":"Обычный","description":"Расходуемый предмет восстановления, связанный с алхимией и снабжением приключений.","acquisition":["Алхимическое производство","Покупка у профильных торговцев"],"usage":["Восстановление здоровья","Подготовка к путешествиям и сражениям"],"relatedObjects":["Чистая вода","Алхимический стол","Торговец зельями"],"relatedItemIds":["SW-ITEM-008"],"resources":[],"productions":["alchemy"],"recipes":["health-potion"],"cities":["calpheon"],"images":[],"source":["SW-GAMES BDO-DATA-012"],"checkedAt":"2026-08-04","status":"curated"},
+    {"id":"SW-ITEM-012","name":"Торговый ящик Кальфеона","category":"Торговля","itemType":"Торговый груз","grade":"Специальный","description":"Архивный пример груза, связывающего производство, склад и торговый маршрут.","archive":{"title":"Архивная карточка торгового ящика Кальфеона","description":"Ограниченный Archive View использует только подтверждённые поля существующей записи SW-ITEM-012. Состав, рецепт и производственная цепочка не добавлены, поскольку они не подтверждены архивами проекта.","status":"curated","source":"SW-GAMES BDO-DATA-012","checkedAt":"2026-08-04"},"atlas":{"view":"Item Atlas View","title":"Торговый ящик Кальфеона","summary":"Архивный торговый груз с подтверждёнными связями на SW-ITEM-002, SW-ITEM-004 и SW-ITEM-007.","source":"Существующая Item-запись SW-ITEM-012 и её Archive View.","acquisitionType":"Изготовление в мастерской упаковки по существующему Item-полю.","processing":"Состав, recipe и production-цепочка не подтверждены; literal calpheon-trade-crate и packing-workshop сохранены без нормализации.","usage":"Перевозка по торговому маршруту и продажа как торгового груза по существующим Item-полям.","productionSequence":"SW-ITEM-002 + SW-ITEM-004 + SW-ITEM-007 → SW-ITEM-012; количества не найдены в текущем Atlas."},"archiveView":{"view":"Archive View","title":"Торговый ящик Кальфеона","summary":"Архивная запись торгового груза, связанного с Кальфеоном, складом, рабочим и торговым маршрутом.","category":"Торговля · Торговый груз","status":"curated","source":"SW-GAMES BDO-DATA-012","checkedAt":"2026-08-04","confirmedRelations":["Кальфеон","Склад","Рабочий","Торговый маршрут","Связанные предметы: SW-ITEM-002, SW-ITEM-004, SW-ITEM-007"],"recipeStatus":"Рецепт не подтверждён: запись calpheon-trade-crate отсутствует в Recipe Archive.","productionStatus":"Производственная цепочка не подтверждена: самостоятельная запись packing-workshop отсутствует в Production Archive."},"acquisition":["Изготовление в мастерской упаковки"],"usage":["Перевозка по торговому маршруту","Продажа как торгового груза"],"relatedObjects":["Кальфеон","Склад","Рабочий","Торговый маршрут"],"relatedItemIds":["SW-ITEM-002","SW-ITEM-004","SW-ITEM-007"],"resources":[],"productions":["packing-workshop"],"recipes":["calpheon-trade-crate"],"cities":["calpheon"],"images":[],"source":["SW-GAMES BDO-DATA-012"],"checkedAt":"2026-08-04","status":"curated"},
+    {"id":"SW-ITEM-013","name":"Бревно","category":"Материалы","itemType":"Необработанная древесина","grade":"Обычный","description":"Базовый древесный материал, с которого начинается универсальная цепочка обработки древесины.","archive":{"title":"Базовый модуль бревна","description":"Первая предметная запись древесной цепочки Calpheon Item Archive. Модуль использует только уже подтверждённые данные SW-ITEM-013 и не добавляет новых игровых связей.","status":"curated","source":"StartWave Calpheon Archive starter chain","checkedAt":"2026-08-04"},"atlas":{"view":"Item Atlas View","title":"Бревно","summary":"Базовый необработанный древесный материал с существующей связью на SW-ITEM-014.","source":"Существующая Item-запись SW-ITEM-013.","acquisitionType":"Ручная рубка деревьев топором; сбор древесины в открытом мире по существующим Item-полям.","processing":"Следующий существующий Item-этап — SW-ITEM-014; отдельный recipe ID не добавлен.","usage":"Обработка в доски; ремесленные и производственные цепочки.","productionSequence":"SW-ITEM-013 → SW-ITEM-014; количества и дополнительные этапы не найдены в текущем Atlas."},"acquisition":["Ручная рубка деревьев топором","Сбор древесины в открытом мире"],"production":["Исходный материал: обработка не требуется","Дальнейший этап — изготовление досок"],"usage":["Обработка в доски","Ремесленные и производственные цепочки"],"relatedObjects":["Деревья","Топор","Обработка древесины","Доска"],"relatedItemIds":["SW-ITEM-014"],"resources":["trees"],"productions":["wood-processing"],"recipes":[],"cities":[],"images":[],"source":["StartWave Calpheon Archive starter chain"],"checkedAt":"2026-08-04","status":"curated"},
+    {"id":"SW-ITEM-014","name":"Доска","category":"Материалы","itemType":"Обработанная древесина","grade":"Обычный","description":"Первый обработанный компонент древесной цепочки и заготовка для дальнейшего уплотнения материала.","archive":{"title":"Модуль доски","description":"Второй предметный модуль древесной цепочки Calpheon Item Archive продолжает путь после SW-ITEM-013. Модуль использует только существующие подтверждённые данные SW-ITEM-014 и не добавляет новых игровых связей.","status":"curated","source":"StartWave Calpheon Archive starter chain","checkedAt":"2026-08-04"},"atlas":{"title":"Доска","summary":"Первый обработанный компонент древесной цепочки и заготовка для дальнейшего уплотнения материала по существующей карточке SW-ITEM-014.","source":"Обработка брёвен рубкой по существующему рецепту SW-RECIPE-001.","acquisitionType":"Рубка в меню обработки.","processing":"Бревно переходит в доску; следующий подтверждённый этап — обработка досок в фанеру по SW-RECIPE-002.","usage":"Изготовление фанеры; производство деревянных компонентов.","productionSequence":"Материал: Бревно → Обработка: рубка в доску → Использование: изготовление фанеры и деревянных компонентов."},"acquisition":["Обработка брёвен рубкой"],"production":["Бревно → рубка → доска","Следующий этап — изготовление фанеры"],"usage":["Изготовление фанеры","Производство деревянных компонентов"],"relatedObjects":["Бревно","Рубка","Фанера","Обработка древесины"],"relatedItemIds":["SW-ITEM-013","SW-ITEM-015"],"resources":["trees"],"productions":["wood-processing"],"recipes":["wood-plank"],"cities":[],"images":[],"source":["StartWave Calpheon Archive starter chain"],"checkedAt":"2026-08-04","status":"curated"},
+    {"id":"SW-ITEM-015","name":"Фанера","category":"Материалы","itemType":"Обработанная древесина","grade":"Необычный","description":"Уплотнённый древесный материал для сложных ремесленных и упаковочных производств.","archive":{"title":"Модуль фанеры","description":"Третий предметный модуль древесной цепочки Calpheon Item Archive продолжает путь после SW-ITEM-014. Модуль использует только существующие подтверждённые данные SW-ITEM-015 и не добавляет новых игровых связей.","status":"curated","source":"StartWave Calpheon Archive starter chain","checkedAt":"2026-08-04"},"atlas":{"title":"Фанера","summary":"Уплотнённый древесный материал для сложных ремесленных и упаковочных производств по существующей карточке SW-ITEM-015.","source":"Обработка досок рубкой по существующему рецепту SW-RECIPE-002.","acquisitionType":"Рубка в меню обработки.","processing":"Доска переходит в фанеру; подтверждённый следующий этап — производство имперского ящика кальфеонской древесины по SW-RECIPE-005.","usage":"Создание комплектов древесины; мастерские и сложные производственные цепочки; производство SW-ITEM-017 вместе с SW-ITEM-016.","productionSequence":"Материал: Доска → Обработка: рубка в фанеру → Использование: комплекты древесины, мастерские и производство имперского ящика кальфеонской древесины."},"acquisition":["Обработка досок рубкой"],"production":["Доска → рубка → фанера","Используется в производстве комплектов древесины"],"usage":["Создание комплектов древесины","Мастерские и сложные производственные цепочки"],"relatedObjects":["Доска","Рубка","Комплект древесины","Мастерские"],"relatedItemIds":["SW-ITEM-014","SW-ITEM-017"],"resources":["trees"],"productions":["wood-processing"],"recipes":["plywood"],"cities":["calpheon"],"images":[],"source":["StartWave Calpheon Archive starter chain"],"checkedAt":"2026-08-04","status":"curated"},
+    {"id":"SW-ITEM-016","name":"Сосновая древесина","category":"Материалы","itemType":"Древесный ресурс","grade":"Обычный","description":"Региональный древесный ресурс, связанный с лесными узлами, рабочими и производственными ветками Кальфеона.","archive":{"title":"Модуль сосновой древесины","description":"Пятый предметный модуль древесной цепочки Calpheon Item Archive открывает существующий связанный источник SW-ITEM-016 для SW-ITEM-017. Модуль использует только подтверждённые данные текущей архитектуры и не добавляет новых игровых связей.","status":"curated","source":"StartWave Calpheon Archive starter chain","checkedAt":"2026-08-04"},"atlas":{"view":"Item Atlas View","title":"Сосновая древесина","summary":"Региональный древесный ресурс с существующими связями на SW-ITEM-014, SW-ITEM-015 и SW-ITEM-017.","source":"Существующая Item-запись SW-ITEM-016.","acquisitionType":"Ручная рубка сосен; добыча рабочими на связанных лесных узлах по существующим Item-полям.","processing":"Существующие Item-связи ведут к SW-ITEM-014 и SW-ITEM-015; отдельные canonical recipe/production ID не добавляются.","usage":"Обработка древесины, производство изделий и торговых грузов по существующим Item-полям.","productionSequence":"SW-ITEM-016 → SW-ITEM-014 → SW-ITEM-015 → SW-ITEM-017; количества не найдены в текущем Atlas."},"acquisition":["Ручная рубка сосен","Добыча рабочими на связанных лесных узлах"],"production":["Сосновая древесина → доски из сосны → фанера из сосны","Материал входит в кальфеонскую древесную ветку"],"usage":["Обработка древесины","Производство изделий и торговых грузов"],"relatedObjects":["Сосна","Лесные узлы","Рабочие","Кальфеон"],"relatedItemIds":["SW-ITEM-014","SW-ITEM-015","SW-ITEM-017"],"resources":["bdo-resource-wood-pine"],"productions":["wood-processing","calpheon-timber-processing"],"recipes":["pine-plank","pine-plywood"],"cities":["calpheon"],"images":[],"source":["StartWave Calpheon Archive starter chain"],"checkedAt":"2026-08-04","status":"curated"},
+    {"id":"SW-ITEM-017","name":"Имперский ящик кальфеонской древесины","category":"Торговля","itemType":"Производство / торговый груз","grade":"Специальный","description":"Финальный объект стартовой древесной ветки, объединяющий сырьё, обработку, упаковку и торговую сдачу.","archive":{"title":"Модуль имперского ящика кальфеонской древесины","description":"Четвёртый предметный модуль древесной цепочки Calpheon Item Archive продолжает путь после SW-ITEM-015. Модуль использует только существующие подтверждённые данные SW-ITEM-017 и не добавляет новых игровых связей.","status":"curated","source":"StartWave Calpheon Archive starter chain","checkedAt":"2026-08-04"},"atlas":{"view":"Trade Atlas View","title":"Имперский ящик кальфеонской древесины","summary":"Финальный торговый объект стартовой древесной ветки, объединяющий подтверждённые материалы, производство в мастерской упаковки и имперскую торговую сдачу по существующей карточке SW-ITEM-017.","source":"Изготовление рабочим в мастерской упаковки Кальфеона по существующему рецепту SW-RECIPE-005 и производственной цепочке SW-PROD-001.","acquisitionType":"Производство рабочим в мастерской упаковки.","processing":"Фанера SW-ITEM-015 и сосновая древесина SW-ITEM-016 переходят в SW-ITEM-017 по подтверждённому рецепту SW-RECIPE-005.","usage":"Имперская торговая сдача; связь производственной цепочки со складом и торговлей.","productionSequence":"Материалы: SW-ITEM-015 + SW-ITEM-016 → Производство: SW-RECIPE-005 в мастерской упаковки Кальфеона (SW-PROD-001) → Торговый объект: SW-ITEM-017."},"acquisition":["Изготовление рабочим в мастерской упаковки из подготовленных древесных материалов"],"production":["Древесина → доски → фанера → комплект древесины → ящик","Финальный этап — имперская торговая сдача"],"usage":["Имперская торговая сдача","Связь производственной цепочки со складом и торговлей"],"relatedObjects":["Кальфеон","Рабочие","Мастерская упаковки","Склад","Имперская торговля"],"relatedItemIds":["SW-ITEM-015","SW-ITEM-016"],"resources":["bdo-resource-wood-pine"],"productions":["calpheon-timber-processing","packing-workshop"],"recipes":["calpheon-timber-crate"],"cities":["calpheon"],"images":[],"source":["StartWave Calpheon Archive starter chain"],"checkedAt":"2026-08-04","status":"curated"},
+    {"id":"SW-ITEM-018","gameId":4901,"name":"Порошок черного камня","category":"Материалы","itemType":"Материал","grade":"Не указано","weightLT":0.10,"description":"Материал весом 0.10 LT, используемый в производстве различных предметов.","archive":{"title":"Модуль порошка черного камня","description":"Самостоятельный подтверждённый Atlas-объект с игровым ID 4901. Запись не связана с SW-ITEM-017, SW-PROD-001 или SW-RECIPE-005.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-09"},"atlas":{"title":"Порошок черного камня","summary":"Подтверждённый материал с игровым ID 4901 и весом 0.10 LT, используемый в производстве различных предметов.","source":"Изготовление (L) → Измельчение некоторых кристаллов или Черного камня; также получение через перерабатывающий цех.","acquisitionType":"Изготовление (L) → Измельчение; перерабатывающий цех.","processing":"Подтверждённый вариант: Черный камень ×1 → Порошок черного камня.","usage":"Используется в производстве различных предметов.","productionSequence":"Черный камень ×1 → Изготовление (L): Измельчение → Порошок черного камня; альтернативное получение — перерабатывающий цех."},"acquisition":["Изготовление (L) → Измельчение некоторых кристаллов или Черного камня","Перерабатывающий цех"],"production":["Черный камень ×1 → Измельчение → Порошок черного камня"],"usage":["Производство различных предметов"],"relatedObjects":["Черный камень","Изготовление (L)","Измельчение","Перерабатывающий цех"],"relatedItemIds":[],"resources":[],"productions":[],"recipes":[],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-09","status":"curated"},
+    {"id":"SW-ITEM-019","name":"Фанера из ольхи","category":"Материалы","itemType":"Материал","grade":"Не указано","description":"Самостоятельный материал, подтверждённый предоставленными пользователем игровыми данными.","archive":{"title":"Модуль фанеры из ольхи","description":"Самостоятельный подтверждённый Atlas-объект. Количество, игровой ID, получение, обработка, использование и связи не добавлены без подтверждённых данных.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-09"},"atlas":{"title":"Фанера из ольхи","summary":"Подтверждённый самостоятельный материал без добавления неподтверждённых игровых свойств и связей.","source":"Не подтверждён предоставленными данными.","acquisitionType":"Не подтверждён предоставленными данными.","processing":"Не подтверждено предоставленными данными.","usage":"Не подтверждено предоставленными данными.","productionSequence":"Не подтверждена предоставленными данными."},"acquisition":[],"production":[],"usage":[],"relatedObjects":[],"relatedItemIds":[],"resources":[],"productions":[],"recipes":[],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-09","status":"curated"},
+    {"id":"SW-ITEM-020","name":"Фанера из кипариса","category":"Материалы","itemType":"Материал","grade":"Не указано","description":"Самостоятельный материал, подтверждённый предоставленными пользователем игровыми данными.","archive":{"title":"Модуль фанеры из кипариса","description":"Самостоятельный подтверждённый Atlas-объект. Количество, игровой ID, получение, обработка, использование и связи не добавлены без подтверждённых данных.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-09"},"atlas":{"title":"Фанера из кипариса","summary":"Подтверждённый самостоятельный материал без добавления неподтверждённых игровых свойств и связей.","source":"Не подтверждён предоставленными данными.","acquisitionType":"Не подтверждён предоставленными данными.","processing":"Не подтверждено предоставленными данными.","usage":"Не подтверждено предоставленными данными.","productionSequence":"Не подтверждена предоставленными данными."},"acquisition":[],"production":[],"usage":[],"relatedObjects":[],"relatedItemIds":[],"resources":[],"productions":[],"recipes":[],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-09","status":"curated"},
+    {"id":"SW-ITEM-021","name":"Фанера из кедра","category":"Материалы","itemType":"Материал","grade":"Не указано","description":"Самостоятельный материал, подтверждённый предоставленными пользователем игровыми данными.","archive":{"title":"Модуль фанеры из кедра","description":"Самостоятельный подтверждённый Atlas-объект. Количество, игровой ID, получение, обработка, использование и связи не добавлены без подтверждённых данных.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-09"},"atlas":{"title":"Фанера из кедра","summary":"Подтверждённый самостоятельный материал без добавления неподтверждённых игровых свойств и связей.","source":"Не подтверждён предоставленными данными.","acquisitionType":"Не подтверждён предоставленными данными.","processing":"Не подтверждено предоставленными данными.","usage":"Не подтверждено предоставленными данными.","productionSequence":"Не подтверждена предоставленными данными."},"acquisition":[],"production":[],"usage":[],"relatedObjects":[],"relatedItemIds":[],"resources":[],"productions":[],"recipes":[],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-09","status":"curated"},
+    {"id":"SW-ITEM-022","name":"Фанера из клёна","category":"Материалы","itemType":"Материал","grade":"Не указано","description":"Самостоятельный материал, подтверждённый предоставленными пользователем данными о составе рецептов ящика с древесиной из Баленоса.","archive":{"title":"Модуль фанеры из клёна","description":"Самостоятельный подтверждённый Atlas-объект. Игровой ID, вес, свойства, получение, обработка, дополнительные связи и количества не добавлены без подтверждённых данных.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-09"},"atlas":{"title":"Фанера из клёна","summary":"Подтверждённый самостоятельный материал без добавления неподтверждённых игровых свойств и связей.","source":"Не подтверждён предоставленными данными.","acquisitionType":"Не подтверждён предоставленными данными.","processing":"Не подтверждено предоставленными данными.","usage":"Входит в рецепты ящика с древесиной из Баленоса; количества не зафиксированы в свойствах материала.","productionSequence":"Не подтверждена предоставленными данными."},"acquisition":[],"production":[],"usage":["Компонент рецептов ящика с древесиной из Баленоса"],"relatedObjects":[],"relatedItemIds":[],"resources":[],"productions":[],"recipes":[],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-09","status":"curated"},
+    {"id":"SW-ITEM-023","name":"Ящик с древесиной из Баленоса","category":"Торговля","itemType":"Торговый груз","grade":"Не указано","description":"Один торговый груз с двумя подтверждёнными вариантами производства по уровням мастерской.","archive":{"title":"Модуль ящика с древесиной из Баленоса","description":"Подтверждённый Atlas/Item-объект результата для двух отдельных вариантов производства. Игровой ID, время производства, цена, вес и дополнительные свойства или связи не добавлены.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-09"},"atlas":{"view":"Trade Atlas View","title":"Ящик с древесиной из Баленоса","summary":"Один результат двух параллельных вариантов производства по уровням мастерской 1 и 2.","source":"Производство по подтверждённым рецептам SW-RECIPE-006 и SW-RECIPE-007 в цепочке SW-PROD-002.","acquisitionType":"Производство в мастерской уровня 1 или уровня 2.","processing":"SW-ITEM-002, SW-ITEM-022 и SW-ITEM-018 параллельно сходятся в один результат; количества определяются выбранным уровнем мастерской.","usage":"Торговый груз.","productionSequence":"Вариант уровня 1: SW-ITEM-002 ×5 + SW-ITEM-022 ×5 + SW-ITEM-018 ×1 → SW-ITEM-023; вариант уровня 2: SW-ITEM-002 ×25 + SW-ITEM-022 ×25 + SW-ITEM-018 ×10 → SW-ITEM-023."},"acquisition":["Изготовление по одному из двух вариантов производства"],"production":["Мастерская уровня 1: SW-RECIPE-006","Мастерская уровня 2: SW-RECIPE-007"],"usage":["Торговый груз"],"relatedObjects":[],"relatedItemIds":["SW-ITEM-002","SW-ITEM-022","SW-ITEM-018"],"resources":[],"productions":["SW-PROD-002"],"recipes":["SW-RECIPE-006","SW-RECIPE-007"],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-09","status":"curated"},
+    {"id":"SW-ITEM-024","name":"Ящик с древесиной ясеня","category":"Торговля","itemType":"Торговый груз","grade":"Не указано","description":"Торговый груз из подтверждённого состава: древесина ясеня ×10 и порошок черного камня ×1.","archive":{"title":"Модуль ящика с древесиной ясеня","description":"Подтверждённый Atlas/Item-объект результата SW-RECIPE-008. Игровой ID, цена, вес, время производства, уровень мастерской и дополнительные свойства или связи не добавлены.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-09"},"atlas":{"view":"Trade Atlas View","title":"Ящик с древесиной ясеня","summary":"Один торговый груз из двух параллельных входных материалов.","source":"Производство по подтверждённому рецепту SW-RECIPE-008 в цепочке SW-PROD-003.","acquisitionType":"Производство.","processing":"SW-ITEM-001 и SW-ITEM-018 параллельно сходятся в один результат SW-ITEM-024.","usage":"Торговый груз.","productionSequence":"SW-ITEM-001 ×10 + SW-ITEM-018 ×1 → SW-ITEM-024 ×1."},"acquisition":["Изготовление по SW-RECIPE-008"],"production":["SW-RECIPE-008"],"usage":["Торговый груз"],"relatedObjects":[],"relatedItemIds":["SW-ITEM-001","SW-ITEM-018"],"resources":[],"productions":["SW-PROD-003"],"recipes":["SW-RECIPE-008"],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-09","status":"curated"},
+    {"id":"SW-ITEM-025","name":"Древесина клёна","category":"Материалы","itemType":"Материал","grade":"Не указано","description":"Самостоятельный материал, подтверждённый предоставленными пользователем данными о составе рецепта ящика с древесиной клёна.","archive":{"title":"Модуль древесины клёна","description":"Самостоятельный подтверждённый Atlas-объект, связанный с существующим ресурсом bdo-resource-wood-maple. Игровой ID, вес, получение, обработка, количество как свойство предмета и дополнительные связи не добавлены без подтверждённых данных.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-09"},"atlas":{"title":"Древесина клёна","summary":"Подтверждённый самостоятельный материал без добавления неподтверждённых игровых свойств и связей.","source":"Клён (bdo-resource-wood-maple).","acquisitionType":"Не подтверждён предоставленными данными.","processing":"Не подтверждено предоставленными данными.","usage":"Входит в подтверждённый состав рецепта ящика с древесиной клёна; количество не зафиксировано в свойствах материала.","productionSequence":"Не подтверждена предоставленными данными."},"acquisition":[],"production":[],"usage":["Компонент рецепта ящика с древесиной клёна"],"relatedObjects":["Клён"],"relatedItemIds":[],"resources":["bdo-resource-wood-maple"],"productions":[],"recipes":[],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-09","status":"curated"},
+    {"id":"SW-ITEM-026","name":"Ящик с древесиной клёна","category":"Торговля","itemType":"Торговый груз","grade":"Не указано","description":"Торговый груз из подтверждённого состава: древесина клёна ×10 и порошок черного камня ×1.","archive":{"title":"Модуль ящика с древесиной клёна","description":"Подтверждённый Atlas/Item-объект результата SW-RECIPE-009. Игровой ID, цена, вес, время производства, уровень мастерской и дополнительные свойства или связи не добавлены.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-09"},"atlas":{"view":"Trade Atlas View","title":"Ящик с древесиной клёна","summary":"Один торговый груз из двух параллельных входных материалов.","source":"Производство по подтверждённому рецепту SW-RECIPE-009 в цепочке SW-PROD-004.","acquisitionType":"Производство.","processing":"SW-ITEM-025 и SW-ITEM-018 параллельно сходятся в один результат SW-ITEM-026.","usage":"Торговый груз.","productionSequence":"SW-ITEM-025 ×10 + SW-ITEM-018 ×1 → SW-ITEM-026 ×1."},"acquisition":["Изготовление по SW-RECIPE-009"],"production":["SW-RECIPE-009"],"usage":["Торговый груз"],"relatedObjects":[],"relatedItemIds":["SW-ITEM-025","SW-ITEM-018"],"resources":[],"productions":["SW-PROD-004"],"recipes":["SW-RECIPE-009"],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-09","status":"curated"},
+    {"id":"SW-ITEM-027","name":"Древесина сосны","category":"Материалы","itemType":"Материал","grade":"Не указано","description":"Самостоятельный материал, подтверждённый предоставленными пользователем данными о составе рецепта ящика с древесиной сосны.","archive":{"title":"Модуль древесины сосны","description":"Самостоятельный подтверждённый Atlas-объект, связанный только с существующим ресурсом bdo-resource-wood-pine. Игровой ID, вес, получение, обработка, количество как свойство предмета и дополнительные свойства или связи не добавлены без подтверждённых данных.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-09"},"atlas":{"title":"Древесина сосны","summary":"Подтверждённый самостоятельный материал без добавления неподтверждённых игровых свойств и связей.","source":"Сосна (bdo-resource-wood-pine).","acquisitionType":"Не подтверждён предоставленными данными.","processing":"Не подтверждено предоставленными данными.","usage":"Входит в подтверждённый состав рецепта ящика с древесиной сосны; количество не зафиксировано в свойствах материала.","productionSequence":"Не подтверждена предоставленными данными."},"acquisition":[],"production":[],"usage":["Компонент рецепта ящика с древесиной сосны"],"relatedObjects":["Сосна"],"relatedItemIds":[],"resources":["bdo-resource-wood-pine"],"productions":[],"recipes":[],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-09","status":"curated"},
+    {"id":"SW-ITEM-028","name":"Ящик с древесиной сосны","category":"Торговля","itemType":"Торговый груз","grade":"Не указано","description":"Торговый груз из подтверждённого состава: древесина сосны ×10 и порошок черного камня ×1.","archive":{"title":"Модуль ящика с древесиной сосны","description":"Подтверждённый Atlas/Item-объект результата SW-RECIPE-010. Игровой ID, цена, вес, время производства, уровень мастерской и дополнительные свойства или связи не добавлены.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-09"},"atlas":{"view":"Trade Atlas View","title":"Ящик с древесиной сосны","summary":"Один торговый груз из двух параллельных входных материалов.","source":"Производство по подтверждённому рецепту SW-RECIPE-010 в цепочке SW-PROD-005.","acquisitionType":"Производство.","processing":"SW-ITEM-027 и SW-ITEM-018 параллельно сходятся в один результат SW-ITEM-028.","usage":"Торговый груз.","productionSequence":"SW-ITEM-027 ×10 + SW-ITEM-018 ×1 → SW-ITEM-028 ×1."},"acquisition":["Изготовление по SW-RECIPE-010"],"production":["SW-RECIPE-010"],"usage":["Торговый груз"],"relatedObjects":[],"relatedItemIds":["SW-ITEM-027","SW-ITEM-018"],"resources":[],"productions":["SW-PROD-005"],"recipes":["SW-RECIPE-010"],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-09","status":"curated"},
+    {"id":"SW-ITEM-029","name":"Древесина ольхи","category":"Материалы","itemType":"Материал","grade":"Не указано","description":"Самостоятельный материал, подтверждённый предоставленными пользователем данными о составе рецепта ящика с древесиной ольхи.","archive":{"title":"Модуль древесины ольхи","description":"Самостоятельный подтверждённый Atlas-объект, связанный только с существующим ресурсом bdo-resource-wood-alder. Игровой ID, вес, получение, обработка и дополнительные свойства или связи не добавлены без подтверждённых данных.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-10"},"atlas":{"title":"Древесина ольхи","summary":"Подтверждённый самостоятельный материал без добавления неподтверждённых игровых свойств и связей.","source":"Ольха (bdo-resource-wood-alder).","acquisitionType":"Не подтверждён предоставленными данными.","processing":"Не подтверждено предоставленными данными.","usage":"Не подтверждено предоставленными данными.","productionSequence":"Не подтверждена предоставленными данными."},"acquisition":[],"production":[],"usage":[],"relatedObjects":["Ольха"],"relatedItemIds":[],"resources":["bdo-resource-wood-alder"],"productions":[],"recipes":[],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-10","status":"curated"},
+    {"id":"SW-ITEM-030","name":"Ящик с древесиной ольхи","category":"Торговля","itemType":"Торговый груз","grade":"Не указано","description":"Торговый груз из подтверждённого состава: древесина ольхи ×10 и порошок черного камня ×1.","archive":{"title":"Модуль ящика с древесиной ольхи","description":"Подтверждённый Atlas/Item-объект результата SW-RECIPE-011. Игровой ID, цена, вес, время производства, уровень мастерской и дополнительные свойства или связи не добавлены.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-10"},"atlas":{"view":"Trade Atlas View","title":"Ящик с древесиной ольхи","summary":"Один торговый груз из двух параллельных входных материалов.","source":"Производство по подтверждённому рецепту SW-RECIPE-011 в цепочке SW-PROD-006.","acquisitionType":"Производство.","processing":"SW-ITEM-029 и SW-ITEM-018 параллельно сходятся в один результат SW-ITEM-030.","usage":"Торговый груз.","productionSequence":"SW-ITEM-029 ×10 + SW-ITEM-018 ×1 → SW-ITEM-030 ×1."},"acquisition":["Изготовление по SW-RECIPE-011"],"production":["SW-RECIPE-011"],"usage":["Торговый груз"],"relatedObjects":[],"relatedItemIds":["SW-ITEM-029","SW-ITEM-018"],"resources":[],"productions":["SW-PROD-006"],"recipes":["SW-RECIPE-011"],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-10","status":"curated"},
+    {"id":"SW-ITEM-031","name":"Древесина пихты","category":"Материалы","itemType":"Материал","grade":"Не указано","description":"Самостоятельный материал, подтверждённый предоставленными пользователем данными о составе рецепта ящика с древесиной пихты.","archive":{"title":"Модуль древесины пихты","description":"Самостоятельный подтверждённый Atlas-объект, связанный только с существующим ресурсом bdo-resource-wood-fir. Игровой ID, вес, получение, обработка и дополнительные свойства или связи не добавлены без подтверждённых данных.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-10"},"atlas":{"title":"Древесина пихты","summary":"Подтверждённый самостоятельный материал без добавления неподтверждённых игровых свойств и связей.","source":"Пихта (bdo-resource-wood-fir).","acquisitionType":"Не подтверждён предоставленными данными.","processing":"Не подтверждено предоставленными данными.","usage":"Не подтверждено предоставленными данными.","productionSequence":"Не подтверждена предоставленными данными."},"acquisition":[],"production":[],"usage":[],"relatedObjects":["Пихта"],"relatedItemIds":[],"resources":["bdo-resource-wood-fir"],"productions":[],"recipes":[],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-10","status":"curated"},
+    {"id":"SW-ITEM-032","name":"Ящик с древесиной пихты","category":"Торговля","itemType":"Торговый груз","grade":"Не указано","description":"Торговый груз из подтверждённого состава: древесина пихты ×10 и порошок черного камня ×1.","archive":{"title":"Модуль ящика с древесиной пихты","description":"Подтверждённый Atlas/Item-объект результата SW-RECIPE-012. Игровой ID, цена, вес, время производства, уровень мастерской и дополнительные свойства или связи не добавлены.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-10"},"atlas":{"view":"Trade Atlas View","title":"Ящик с древесиной пихты","summary":"Один торговый груз из двух параллельных входных материалов.","source":"Производство по подтверждённому рецепту SW-RECIPE-012 в цепочке SW-PROD-007.","acquisitionType":"Производство.","processing":"SW-ITEM-031 и SW-ITEM-018 параллельно сходятся в один результат SW-ITEM-032.","usage":"Торговый груз.","productionSequence":"SW-ITEM-031 ×10 + SW-ITEM-018 ×1 → SW-ITEM-032 ×1."},"acquisition":["Изготовление по SW-RECIPE-012"],"production":["SW-RECIPE-012"],"usage":["Торговый груз"],"relatedObjects":[],"relatedItemIds":["SW-ITEM-031","SW-ITEM-018"],"resources":[],"productions":["SW-PROD-007"],"recipes":["SW-RECIPE-012"],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-10","status":"curated"},
+    {"id":"SW-ITEM-033","name":"Древесина акации","category":"Материалы","itemType":"Материал","grade":"Не указано","description":"Самостоятельный материал, подтверждённый предоставленными пользователем данными о составе рецепта ящика с древесиной акации.","archive":{"title":"Модуль древесины акации","description":"Самостоятельный подтверждённый Atlas-объект, связанный только с существующим ресурсом bdo-resource-wood-acacia. Игровой ID, вес, получение, обработка и дополнительные свойства или связи не добавлены без подтверждённых данных.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-10"},"atlas":{"title":"Древесина акации","summary":"Подтверждённый самостоятельный материал без добавления неподтверждённых игровых свойств и связей.","source":"Акация (bdo-resource-wood-acacia).","acquisitionType":"Не подтверждён предоставленными данными.","processing":"Не подтверждено предоставленными данными.","usage":"Не подтверждено предоставленными данными.","productionSequence":"Не подтверждена предоставленными данными."},"acquisition":[],"production":[],"usage":[],"relatedObjects":["Акация"],"relatedItemIds":[],"resources":["bdo-resource-wood-acacia"],"productions":[],"recipes":[],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-10","status":"curated"},
+    {"id":"SW-ITEM-034","name":"Ящик с древесиной акации","category":"Торговля","itemType":"Торговый груз","grade":"Не указано","description":"Торговый груз из подтверждённого состава: древесина акации ×10 и порошок черного камня ×1.","archive":{"title":"Модуль ящика с древесиной акации","description":"Подтверждённый Atlas/Item-объект результата SW-RECIPE-013. Игровой ID, цена, вес, время производства, уровень мастерской и дополнительные свойства или связи не добавлены.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-10"},"atlas":{"view":"Trade Atlas View","title":"Ящик с древесиной акации","summary":"Один торговый груз из двух параллельных входных материалов.","source":"Производство по подтверждённому рецепту SW-RECIPE-013 в цепочке SW-PROD-008.","acquisitionType":"Производство.","processing":"SW-ITEM-033 и SW-ITEM-018 параллельно сходятся в один результат SW-ITEM-034.","usage":"Торговый груз.","productionSequence":"SW-ITEM-033 ×10 + SW-ITEM-018 ×1 → SW-ITEM-034 ×1."},"acquisition":["Изготовление по SW-RECIPE-013"],"production":["SW-RECIPE-013"],"usage":["Торговый груз"],"relatedObjects":[],"relatedItemIds":["SW-ITEM-033","SW-ITEM-018"],"resources":[],"productions":["SW-PROD-008"],"recipes":["SW-RECIPE-013"],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-10","status":"curated"},
+    {"id":"SW-ITEM-035","name":"Древесина кипариса","category":"Материалы","itemType":"Материал","grade":"Не указано","description":"Самостоятельный материал, подтверждённый предоставленными пользователем данными о составе рецепта ящика с древесиной кипариса.","archive":{"title":"Модуль древесины кипариса","description":"Самостоятельный подтверждённый Atlas-объект, связанный только с существующим ресурсом bdo-resource-wood-cypress. Игровой ID, вес, получение, обработка и дополнительные свойства или связи не добавлены без подтверждённых данных.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-10"},"atlas":{"title":"Древесина кипариса","summary":"Подтверждённый самостоятельный материал без добавления неподтверждённых игровых свойств и связей.","source":"Кипарис (bdo-resource-wood-cypress).","acquisitionType":"Не подтверждён предоставленными данными.","processing":"Не подтверждено предоставленными данными.","usage":"Не подтверждено предоставленными данными.","productionSequence":"Не подтверждена предоставленными данными."},"acquisition":[],"production":[],"usage":[],"relatedObjects":["Кипарис"],"relatedItemIds":[],"resources":["bdo-resource-wood-cypress"],"productions":[],"recipes":[],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-10","status":"curated"},
+    {"id":"SW-ITEM-036","name":"Ящик с древесиной кипариса","category":"Торговля","itemType":"Торговый груз","grade":"Не указано","description":"Торговый груз из подтверждённого состава: древесина кипариса ×10 и порошок черного камня ×1.","archive":{"title":"Модуль ящика с древесиной кипариса","description":"Подтверждённый Atlas/Item-объект результата SW-RECIPE-014. Игровой ID, цена, вес, время производства, уровень мастерской и дополнительные свойства или связи не добавлены.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-10"},"atlas":{"view":"Trade Atlas View","title":"Ящик с древесиной кипариса","summary":"Один торговый груз из двух параллельных входных материалов.","source":"Производство по подтверждённому рецепту SW-RECIPE-014 в цепочке SW-PROD-009.","acquisitionType":"Производство.","processing":"SW-ITEM-035 и SW-ITEM-018 параллельно сходятся в один результат SW-ITEM-036.","usage":"Торговый груз.","productionSequence":"SW-ITEM-035 ×10 + SW-ITEM-018 ×1 → SW-ITEM-036 ×1."},"acquisition":["Изготовление по SW-RECIPE-014"],"production":["SW-RECIPE-014"],"usage":["Торговый груз"],"relatedObjects":[],"relatedItemIds":["SW-ITEM-035","SW-ITEM-018"],"resources":[],"productions":["SW-PROD-009"],"recipes":["SW-RECIPE-014"],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-10","status":"curated"},
+    {"id":"SW-ITEM-037","name":"Древесина пальмы","category":"Материалы","itemType":"Материал","grade":"Не указано","description":"Самостоятельный материал, подтверждённый предоставленными пользователем данными о составе рецепта ящика с древесиной пальмы.","archive":{"title":"Модуль древесины пальмы","description":"Самостоятельный подтверждённый Atlas-объект, связанный только с существующим ресурсом bdo-resource-wood-palm. Игровой ID, вес, получение, обработка и дополнительные свойства или связи не добавлены без подтверждённых данных.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-11"},"atlas":{"title":"Древесина пальмы","summary":"Подтверждённый самостоятельный материал без добавления неподтверждённых игровых свойств и связей.","source":"Пальма (bdo-resource-wood-palm).","acquisitionType":"Не подтверждён предоставленными данными.","processing":"Не подтверждено предоставленными данными.","usage":"Не подтверждено предоставленными данными.","productionSequence":"Не подтверждена предоставленными данными."},"acquisition":[],"production":[],"usage":[],"relatedObjects":["Пальма"],"relatedItemIds":[],"resources":["bdo-resource-wood-palm"],"productions":[],"recipes":[],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-11","status":"curated"},
+    {"id":"SW-ITEM-038","name":"Ящик с древесиной пальмы","category":"Торговля","itemType":"Торговый груз","grade":"Не указано","description":"Торговый груз из подтверждённого состава: древесина пальмы ×10 и порошок черного камня ×1.","archive":{"title":"Модуль ящика с древесиной пальмы","description":"Подтверждённый Atlas/Item-объект результата SW-RECIPE-015. Игровой ID, цена, вес, время производства, уровень мастерской и дополнительные свойства или связи не добавлены.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-11"},"atlas":{"view":"Trade Atlas View","title":"Ящик с древесиной пальмы","summary":"Один торговый груз из двух параллельных входных материалов.","source":"Производство по подтверждённому рецепту SW-RECIPE-015 в цепочке SW-PROD-010.","acquisitionType":"Производство.","processing":"SW-ITEM-037 и SW-ITEM-018 параллельно сходятся в один результат SW-ITEM-038.","usage":"Торговый груз.","productionSequence":"SW-ITEM-037 ×10 + SW-ITEM-018 ×1 → SW-ITEM-038 ×1."},"acquisition":["Изготовление по SW-RECIPE-015"],"production":["SW-RECIPE-015"],"usage":["Торговый груз"],"relatedObjects":[],"relatedItemIds":["SW-ITEM-037","SW-ITEM-018"],"resources":[],"productions":["SW-PROD-010"],"recipes":["SW-RECIPE-015"],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-11","status":"curated"},
+    {"id":"SW-ITEM-039","name":"Древесина бузины","category":"Материалы","itemType":"Материал","grade":"Не указано","description":"Самостоятельный материал, подтверждённый предоставленными пользователем данными о составе рецепта ящика с древесиной бузины.","archive":{"title":"Модуль древесины бузины","description":"Самостоятельный подтверждённый Atlas-объект, связанный только с существующим ресурсом bdo-resource-wood-elder. Игровой ID, вес, получение, обработка и дополнительные свойства или связи не добавлены без подтверждённых данных.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-11"},"atlas":{"title":"Древесина бузины","summary":"Подтверждённый самостоятельный материал без добавления неподтверждённых игровых свойств и связей.","source":"Бузина (bdo-resource-wood-elder).","acquisitionType":"Не подтверждён предоставленными данными.","processing":"Не подтверждено предоставленными данными.","usage":"Не подтверждено предоставленными данными.","productionSequence":"Не подтверждена предоставленными данными."},"acquisition":[],"production":[],"usage":[],"relatedObjects":["Бузина"],"relatedItemIds":[],"resources":["bdo-resource-wood-elder"],"productions":[],"recipes":[],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-11","status":"curated"},
+    {"id":"SW-ITEM-040","name":"Ящик с древесиной бузины","category":"Торговля","itemType":"Торговый груз","grade":"Не указано","description":"Торговый груз из подтверждённого состава: древесина бузины ×10 и порошок черного камня ×1.","archive":{"title":"Модуль ящика с древесиной бузины","description":"Подтверждённый Atlas/Item-объект результата SW-RECIPE-016. Игровой ID, цена, вес, время производства, уровень мастерской и дополнительные свойства или связи не добавлены.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-11"},"atlas":{"view":"Trade Atlas View","title":"Ящик с древесиной бузины","summary":"Один торговый груз из двух параллельных входных материалов.","source":"Производство по подтверждённому рецепту SW-RECIPE-016 в цепочке SW-PROD-011.","acquisitionType":"Производство.","processing":"SW-ITEM-039 и SW-ITEM-018 параллельно сходятся в один результат SW-ITEM-040.","usage":"Торговый груз.","productionSequence":"SW-ITEM-039 ×10 + SW-ITEM-018 ×1 → SW-ITEM-040 ×1."},"acquisition":["Изготовление по SW-RECIPE-016"],"production":["SW-RECIPE-016"],"usage":["Торговый груз"],"relatedObjects":[],"relatedItemIds":["SW-ITEM-039","SW-ITEM-018"],"resources":[],"productions":["SW-PROD-011"],"recipes":["SW-RECIPE-016"],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-11","status":"curated"},
+    {"id":"SW-ITEM-041","name":"Фанера из пихты","category":"Материалы","itemType":"Материал","grade":"Не указано","description":"Самостоятельный материал, подтверждённый предоставленными пользователем данными о составе рецепта ящика с древесиной из Медии.","archive":{"title":"Модуль фанеры из пихты","description":"Самостоятельный подтверждённый Atlas-объект. Игровой ID, количество переработки, вес, свойства и дополнительные связи не добавлены без подтверждённых данных.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-11"},"atlas":{"title":"Фанера из пихты","summary":"Подтверждённый самостоятельный материал без добавления неподтверждённых игровых свойств и связей.","source":"Данные, предоставленные пользователем.","acquisitionType":"Не подтверждён предоставленными данными.","processing":"Не подтверждено предоставленными данными.","usage":"Подтверждена как материал рецепта ящика с древесиной из Медии; связь с рецептом будет добавлена после появления всех входных Item-объектов.","productionSequence":"Не подтверждена предоставленными данными."},"acquisition":[],"production":[],"usage":["Материал рецепта ящика с древесиной из Медии"],"relatedObjects":[],"relatedItemIds":[],"resources":[],"productions":[],"recipes":[],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-11","status":"curated"},
+    {"id":"SW-ITEM-042","name":"Фанера из акации","category":"Материалы","itemType":"Материал","grade":"Не указано","description":"Самостоятельный материал, подтверждённый предоставленными пользователем данными о составе рецепта ящика с древесиной из Медии.","archive":{"title":"Модуль фанеры из акации","description":"Самостоятельный подтверждённый Atlas-объект. Игровой ID, количество переработки, вес, свойства и дополнительные связи не добавлены без подтверждённых данных.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-11"},"atlas":{"title":"Фанера из акации","summary":"Подтверждённый самостоятельный материал без добавления неподтверждённых игровых свойств и связей.","source":"Данные, предоставленные пользователем.","acquisitionType":"Не подтверждён предоставленными данными.","processing":"Не подтверждено предоставленными данными.","usage":"Подтверждена как материал рецепта ящика с древесиной из Медии; связь с рецептом будет добавлена после появления всех входных Item-объектов.","productionSequence":"Не подтверждена предоставленными данными."},"acquisition":[],"production":[],"usage":["Материал рецепта ящика с древесиной из Медии"],"relatedObjects":[],"relatedItemIds":[],"resources":[],"productions":[],"recipes":[],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-11","status":"curated"},
+    {"id":"SW-ITEM-043","name":"Ящик с древесиной из Медии","category":"Торговля","itemType":"Торговый груз","grade":"Не указано","description":"Торговый груз из подтверждённого состава: фанера из пихты ×5, фанера из акации ×5 и порошок черного камня ×1.","archive":{"title":"Модуль ящика с древесиной из Медии","description":"Подтверждённый Atlas/Item-объект результата SW-RECIPE-017. Игровой ID, цена, вес, время производства, уровень мастерской и дополнительные свойства или связи не добавлены.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-11"},"atlas":{"view":"Trade Atlas View","title":"Ящик с древесиной из Медии","summary":"Один торговый груз из трёх параллельных входных материалов.","source":"Производство по подтверждённому рецепту SW-RECIPE-017 в цепочке SW-PROD-012.","acquisitionType":"Производство.","processing":"SW-ITEM-041, SW-ITEM-042 и SW-ITEM-018 параллельно сходятся в один результат SW-ITEM-043.","usage":"Торговый груз.","productionSequence":"SW-ITEM-041 ×5 + SW-ITEM-042 ×5 + SW-ITEM-018 ×1 → SW-ITEM-043 ×1."},"acquisition":["Изготовление по SW-RECIPE-017"],"production":["SW-RECIPE-017"],"usage":["Торговый груз"],"relatedObjects":[],"relatedItemIds":["SW-ITEM-041","SW-ITEM-042","SW-ITEM-018"],"resources":[],"productions":["SW-PROD-012"],"recipes":["SW-RECIPE-017"],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-11","status":"curated"},
+    {"id":"SW-ITEM-044","name":"Фанера из сосны","category":"Материалы","itemType":"Материал","grade":"Не указано","description":"Самостоятельный материал, подтверждённый предоставленными пользователем данными о составе рецепта ящика с древесиной из Серендии.","archive":{"title":"Модуль фанеры из сосны","description":"Самостоятельный подтверждённый Atlas-объект. Игровой ID, количество переработки, вес, свойства и дополнительные связи не добавлены без подтверждённых данных.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-11"},"atlas":{"title":"Фанера из сосны","summary":"Подтверждённый самостоятельный материал без добавления неподтверждённых игровых свойств и связей.","source":"Данные, предоставленные пользователем.","acquisitionType":"Не подтверждён предоставленными данными.","processing":"Не подтверждено предоставленными данными.","usage":"Подтверждена как материал рецепта ящика с древесиной из Серендии; связь с рецептом будет добавлена после появления всех входных Item-объектов.","productionSequence":"Не подтверждена предоставленными данными."},"acquisition":[],"production":[],"usage":["Материал рецепта ящика с древесиной из Серендии"],"relatedObjects":[],"relatedItemIds":[],"resources":[],"productions":[],"recipes":[],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-11","status":"curated"},
+    {"id":"SW-ITEM-045","name":"Ящик с древесиной из Серендии","category":"Торговля","itemType":"Торговый груз","grade":"Не указано","description":"Торговый груз из подтверждённого состава: фанера из клёна ×5, фанера из сосны ×5 и порошок черного камня ×1.","archive":{"title":"Модуль ящика с древесиной из Серендии","description":"Подтверждённый Atlas/Item-объект результата SW-RECIPE-018. Игровой ID, цена, вес, время производства, уровень мастерской и дополнительные свойства или связи не добавлены.","status":"curated","source":"Данные, предоставленные пользователем","checkedAt":"2026-08-11"},"atlas":{"view":"Trade Atlas View","title":"Ящик с древесиной из Серендии","summary":"Один торговый груз из трёх параллельных входных материалов.","source":"Производство по подтверждённому рецепту SW-RECIPE-018 в цепочке SW-PROD-013.","acquisitionType":"Производство.","processing":"SW-ITEM-022, SW-ITEM-044 и SW-ITEM-018 параллельно сходятся в один результат SW-ITEM-045.","usage":"Торговый груз.","productionSequence":"SW-ITEM-022 ×5 + SW-ITEM-044 ×5 + SW-ITEM-018 ×1 → SW-ITEM-045 ×1."},"acquisition":["Изготовление по SW-RECIPE-018"],"production":["SW-RECIPE-018"],"usage":["Торговый груз"],"relatedObjects":[],"relatedItemIds":["SW-ITEM-022","SW-ITEM-044","SW-ITEM-018"],"resources":[],"productions":["SW-PROD-013"],"recipes":["SW-RECIPE-018"],"cities":[],"images":[],"source":["Данные, предоставленные пользователем"],"checkedAt":"2026-08-11","status":"curated"},{"id":"SW-ITEM-046","name":"Медная руда","category":"Природный ресурс","itemType":"Руда","description":"Медная руда","checkedAt":"2026-08-14","status":"curated","resources":["bdo-resource-copper-ore"],"recipes":[],"productions":[]},{"id":"SW-ITEM-047","name":"Цинковая руда","category":"Природный ресурс","itemType":"Руда","description":"Цинковая руда","checkedAt":"2026-08-15","status":"curated","resources":["bdo-resource-zinc-ore"],"recipes":[],"productions":[]},{"id":"SW-ITEM-048","name":"Зеленая руда","category":"Природный ресурс","itemType":"Руда","description":"Зеленая руда","checkedAt":"2026-08-15","status":"curated","resources":["bdo-resource-green-ore"],"recipes":[],"productions":[]},{"id":"SW-ITEM-049","name":"Свинцовая руда","category":"Природный ресурс","itemType":"Руда","description":"Свинцовая руда","checkedAt":"2026-08-15","status":"curated","resources":["bdo-resource-lead-ore"],"recipes":[],"productions":[]},{"id":"SW-ITEM-050","name":"Оловянная руда","category":"Природный ресурс","itemType":"Руда","description":"Оловянная руда","checkedAt":"2026-08-15","status":"curated","resources":["bdo-resource-tin-ore"],"recipes":[],"productions":[]},{"id":"SW-ITEM-051","name":"Платиновая руда","category":"Природный ресурс","itemType":"Руда","description":"Платиновая руда","checkedAt":"2026-08-15","status":"curated","resources":["bdo-resource-platinum-ore"],"recipes":[],"productions":[]},{"id":"SW-ITEM-052","name":"Никелевая руда","category":"Природный ресурс","itemType":"Руда","description":"Никелевая руда","checkedAt":"2026-08-15","status":"curated","resources":["bdo-resource-nickel-ore"],"recipes":[],"productions":[]},{"id":"SW-ITEM-053","name":"Пыль тьмы","category":"Природный ресурс","itemType":"Пыль","description":"Пыль тьмы","checkedAt":"2026-08-15","status":"curated","resources":["bdo-resource-dust-darkness"],"recipes":[],"productions":[]},{"id":"SW-ITEM-054","name":"Пыль огня","category":"Природный ресурс","itemType":"Пыль","description":"Пыль огня","checkedAt":"2026-08-15","status":"curated","resources":["bdo-resource-dust-fire"],"recipes":[],"productions":[]},{"id":"SW-ITEM-055","name":"Пыль разрушения","category":"Природный ресурс","itemType":"Пыль","description":"Пыль разрушения","checkedAt":"2026-08-15","status":"curated","resources":["bdo-resource-dust-destruction"],"recipes":[],"productions":[]},{"id":"SW-ITEM-056","name":"Пыль веков","category":"Природный ресурс","itemType":"Пыль","description":"Пыль веков","checkedAt":"2026-08-15","status":"curated","resources":["bdo-resource-dust-ages"],"recipes":[],"productions":[]},{"id":"SW-ITEM-057","name":"Пыль притяжения","category":"Природный ресурс","itemType":"Пыль","description":"Пыль притяжения","checkedAt":"2026-08-15","status":"curated","resources":["bdo-resource-dust-attraction"],"recipes":[],"productions":[]},{"id":"SW-ITEM-058","name":"Мшистая древесина","category":"Природный ресурс","itemType":"Древесина","description":"Мшистая древесина","checkedAt":"2026-08-15","status":"curated","resources":["bdo-resource-wood-mossy"],"recipes":[],"productions":[]},{"id":"SW-ITEM-059","name":"Терновая древесина","category":"Природный ресурс","itemType":"Древесина","description":"Терновая древесина","checkedAt":"2026-08-15","status":"curated","resources":["bdo-resource-wood-thornwood"],"recipes":[],"productions":[]},{"id":"SW-ITEM-060","name":"Древесина снежного кедра","category":"Природный ресурс","itemType":"Древесина","description":"Древесина снежного кедра","checkedAt":"2026-08-15","status":"curated","resources":["bdo-resource-wood-snowfield-cedar"],"recipes":[],"productions":[]},
+    {
+      "id": "SW-ITEM-061",
+      "name": "Сок ясеня",
+      "category": "Природный ресурс",
+      "itemType": "Сок",
+      "description": "Сок ясеня",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-sap-yasenya"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-062",
+      "name": "Сок клёна",
+      "category": "Природный ресурс",
+      "itemType": "Сок",
+      "description": "Сок клёна",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-sap-maple"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-063",
+      "name": "Сок кипариса",
+      "category": "Природный ресурс",
+      "itemType": "Сок",
+      "description": "Сок кипариса",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-sap-kiparisa"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-064",
+      "name": "Сок ольхи",
+      "category": "Природный ресурс",
+      "itemType": "Сок",
+      "description": "Сок ольхи",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-sap-olkhi"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-065",
+      "name": "Сок кедра",
+      "category": "Природный ресурс",
+      "itemType": "Сок",
+      "description": "Сок кедра",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-sap-kedra"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-066",
+      "name": "Сок сосны",
+      "category": "Природный ресурс",
+      "itemType": "Сок",
+      "description": "Сок сосны",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-sap-sosny"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-067",
+      "name": "Сок пихты",
+      "category": "Природный ресурс",
+      "itemType": "Сок",
+      "description": "Сок пихты",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-sap-pikhty"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-068",
+      "name": "Сок акации",
+      "category": "Природный ресурс",
+      "itemType": "Сок",
+      "description": "Сок акации",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-sap-akatsii"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-069",
+      "name": "Сок пальмы",
+      "category": "Природный ресурс",
+      "itemType": "Сок",
+      "description": "Сок пальмы",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-sap-palmy"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-070",
+      "name": "Сок бузины",
+      "category": "Природный ресурс",
+      "itemType": "Сок",
+      "description": "Сок бузины",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-sap-buziny"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-071",
+      "name": "Сок кактуса",
+      "category": "Природный ресурс",
+      "itemType": "Сок",
+      "description": "Сок кактуса",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-sap-kaktusa"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-072",
+      "name": "Сок кольцевидного дерева",
+      "category": "Природный ресурс",
+      "itemType": "Сок",
+      "description": "Сок кольцевидного дерева",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-sap-koltsevidnogo-dereva"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-073",
+      "name": "Сок мшистого дерева",
+      "category": "Природный ресурс",
+      "itemType": "Сок",
+      "description": "Сок мшистого дерева",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-sap-mshistogo-dereva"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-074",
+      "name": "Сок плосковеточника",
+      "category": "Природный ресурс",
+      "itemType": "Сок",
+      "description": "Сок плосковеточника",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-sap-ploskovetochnika"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-075",
+      "name": "Терновый сок",
+      "category": "Природный ресурс",
+      "itemType": "Сок",
+      "description": "Терновый сок",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-sap-ternovyy"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-076",
+      "name": "Сок снежного кедра",
+      "category": "Природный ресурс",
+      "itemType": "Сок",
+      "description": "Сок снежного кедра",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-sap-snezhnogo-kedra"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-077",
+      "name": "Волшебный листок",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Волшебный листок",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-volshebnyy-listok"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-078",
+      "name": "Подосиновик",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Подосиновик",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-podosinovik"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-079",
+      "name": "Боровик",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Боровик",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-borovik"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-080",
+      "name": "Подберёзовик",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Подберёзовик",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-podberyozovik"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-081",
+      "name": "Черноголовка",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Черноголовка",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-chernogolovka"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-082",
+      "name": "Опёнок",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Опёнок",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-opyonok"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-083",
+      "name": "Вешенка",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Вешенка",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-veshenka"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-084",
+      "name": "Большая вешенка",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Большая вешенка",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-bolshaya-veshenka"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-085",
+      "name": "Волнушка",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Волнушка",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-volnushka"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-086",
+      "name": "Большая волнушка",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Большая волнушка",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-bolshaya-volnushka"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-087",
+      "name": "Орляк",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Орляк",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-orlyak"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-088",
+      "name": "Клевер",
+      "category": "Природный ресурс",
+      "itemType": "Трава",
+      "description": "Клевер",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-herb-klever"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-089",
+      "name": "Грубый прозрачный хрусталь",
+      "category": "Природный ресурс",
+      "itemType": "Грубый минерал",
+      "description": "Грубый прозрачный хрусталь",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-rough-transparent-crystal"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-090",
+      "name": "Грубый черный хрусталь",
+      "category": "Природный ресурс",
+      "itemType": "Грубый минерал",
+      "description": "Грубый черный хрусталь",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-rough-black-crystal"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-091",
+      "name": "Грубый зеленый хрусталь",
+      "category": "Природный ресурс",
+      "itemType": "Грубый минерал",
+      "description": "Грубый зеленый хрусталь",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-rough-green-crystal"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-092",
+      "name": "Грубый красный хрусталь",
+      "category": "Природный ресурс",
+      "itemType": "Грубый минерал",
+      "description": "Грубый красный хрусталь",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-rough-red-crystal"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-093",
+      "name": "Грубый фиолетовый хрусталь",
+      "category": "Природный ресурс",
+      "itemType": "Грубый минерал",
+      "description": "Грубый фиолетовый хрусталь",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-rough-purple-crystal"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-094",
+      "name": "Грубый синий хрусталь",
+      "category": "Природный ресурс",
+      "itemType": "Грубый минерал",
+      "description": "Грубый синий хрусталь",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-rough-blue-crystal"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-095",
+      "name": "Грубый лазурит",
+      "category": "Природный ресурс",
+      "itemType": "Грубый минерал",
+      "description": "Грубый лазурит",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-rough-lapis"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-096",
+      "name": "Грубый нефрит",
+      "category": "Природный ресурс",
+      "itemType": "Грубый минерал",
+      "description": "Грубый нефрит",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-rough-jade"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-097",
+      "name": "Грубый опал",
+      "category": "Природный ресурс",
+      "itemType": "Минерал",
+      "description": "Грубый опал",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-gem-rough-opal"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-098",
+      "name": "Грубый алмаз",
+      "category": "Природный ресурс",
+      "itemType": "Минерал",
+      "description": "Грубый алмаз",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-gem-rough-diamond"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-099",
+      "name": "Кварц",
+      "category": "Природный ресурс",
+      "itemType": "Минерал",
+      "description": "Кварц",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-gem-quartz"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-100",
+      "name": "Календула",
+      "category": "Природный ресурс",
+      "itemType": "Цветок",
+      "description": "Календула",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-flower-calendula"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-101",
+      "name": "Азалия",
+      "category": "Природный ресурс",
+      "itemType": "Цветок",
+      "description": "Азалия",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-flower-azaliya"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-102",
+      "name": "Красная Азалия",
+      "category": "Природный ресурс",
+      "itemType": "Цветок",
+      "description": "Красная Азалия",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-flower-red-azaliya"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-103",
+      "name": "Розовая Азалия",
+      "category": "Природный ресурс",
+      "itemType": "Цветок",
+      "description": "Розовая Азалия",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-flower-pink-azaliya"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-104",
+      "name": "Тигровый цветок",
+      "category": "Природный ресурс",
+      "itemType": "Цветок",
+      "description": "Тигровый цветок",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-flower-tigrovyy-tsvetok"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-105",
+      "name": "Белый гриб",
+      "category": "Природный ресурс",
+      "itemType": "Гриб",
+      "description": "Белый гриб",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-mushroom-white-mushroom"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-106",
+      "name": "Цветущий гриб",
+      "category": "Природный ресурс",
+      "itemType": "Гриб",
+      "description": "Цветущий гриб",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-mushroom-blooming-mushroom"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-107",
+      "name": "Вулканический гриб",
+      "category": "Природный ресурс",
+      "itemType": "Гриб",
+      "description": "Вулканический гриб",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-mushroom-volcanic-mushroom"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-108",
+      "name": "Бамбуковый гриб",
+      "category": "Природный ресурс",
+      "itemType": "Гриб",
+      "description": "Бамбуковый гриб",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-mushroom-bamboo-mushroom"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-109",
+      "name": "Виноград",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Виноград",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-vinograd"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-110",
+      "name": "Олива",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Олива",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-oliva"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-111",
+      "name": "Инжир",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Инжир",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-inzhir"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-112",
+      "name": "Финики",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Финики",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-finiki"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-113",
+      "name": "Фисташки",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Фисташки",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-fistashki"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-114",
+      "name": "Кокос",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Кокос",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-kokos"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-115",
+      "name": "Клубника",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Клубника",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-klubnika"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-116",
+      "name": "Юдзу",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Юдзу",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-yudzu"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-117",
+      "name": "Малина",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Малина",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-malina"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-118",
+      "name": "Хурма",
+      "category": "Природный ресурс",
+      "itemType": "Плод",
+      "description": "Хурма",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-fruit-khurma"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-119",
+      "name": "Пшеница",
+      "category": "Природный ресурс",
+      "itemType": "Зерновая культура",
+      "description": "Пшеница",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-grain-pshenitsa"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-120",
+      "name": "Ячмень",
+      "category": "Природный ресурс",
+      "itemType": "Зерновая культура",
+      "description": "Ячмень",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-grain-yachmen"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-121",
+      "name": "Кукуруза",
+      "category": "Природный ресурс",
+      "itemType": "Зерновая культура",
+      "description": "Кукуруза",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-grain-kukuruza"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-122",
+      "name": "Рис",
+      "category": "Природный ресурс",
+      "itemType": "Зерновая культура",
+      "description": "Рис",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-grain-ris"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-123",
+      "name": "Картофель",
+      "category": "Природный ресурс",
+      "itemType": "Овощная культура",
+      "description": "Картофель",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-vegetable-kartofel"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-124",
+      "name": "Тыква",
+      "category": "Природный ресурс",
+      "itemType": "Овощная культура",
+      "description": "Тыква",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-vegetable-tykva"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-125",
+      "name": "Перец",
+      "category": "Природный ресурс",
+      "itemType": "Овощная культура",
+      "description": "Перец",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-vegetable-perets"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-126",
+      "name": "Батат",
+      "category": "Природный ресурс",
+      "itemType": "Овощная культура",
+      "description": "Батат",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-vegetable-batat"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-127",
+      "name": "Петсай",
+      "category": "Природный ресурс",
+      "itemType": "Овощная культура",
+      "description": "Петсай",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-vegetable-petsay"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-128",
+      "name": "Редька",
+      "category": "Природный ресурс",
+      "itemType": "Овощная культура",
+      "description": "Редька",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-vegetable-redka"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-129",
+      "name": "Теф",
+      "category": "Природный ресурс",
+      "itemType": "Зерновая культура",
+      "description": "Теф",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-grain-special-tef"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-130",
+      "name": "Фрике",
+      "category": "Природный ресурс",
+      "itemType": "Зерновая культура",
+      "description": "Фрике",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-grain-special-frike"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-131",
+      "name": "Мускатный орех",
+      "category": "Природный ресурс",
+      "itemType": "Пряность",
+      "description": "Мускатный орех",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-spice-muskatnyy-orekh"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-132",
+      "name": "Бадьян",
+      "category": "Природный ресурс",
+      "itemType": "Пряность",
+      "description": "Бадьян",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-spice-badyan"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-133",
+      "name": "Корица",
+      "category": "Природный ресурс",
+      "itemType": "Пряность",
+      "description": "Корица",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-spice-koritsa"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-134",
+      "name": "Хлопок",
+      "category": "Природный ресурс",
+      "itemType": "Техническая культура",
+      "description": "Хлопок",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-industrial-crop-khlopok"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-135",
+      "name": "Тростник",
+      "category": "Природный ресурс",
+      "itemType": "Техническая культура",
+      "description": "Тростник",
+      "checkedAt": "2026-08-15",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-industrial-crop-trostnik"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-136",
+      "name": "Алоэ",
+      "category": "Природный ресурс",
+      "itemType": "Растение",
+      "description": "Алоэ",
+      "checkedAt": "2026-08-16",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-aloe"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-137",
+      "name": "Древесина кедра",
+      "category": "Природный ресурс",
+      "itemType": "Древесина",
+      "description": "Древесина кедра",
+      "checkedAt": "2026-08-16",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-wood-cedar"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-138",
+      "name": "Кора старого дерева",
+      "category": "Природный ресурс",
+      "itemType": "Кора",
+      "description": "Кора старого дерева",
+      "checkedAt": "2026-08-16",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-bark-old-tree"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-139",
+      "name": "Кора кактуса",
+      "category": "Природный ресурс",
+      "itemType": "Кора",
+      "description": "Кора кактуса",
+      "checkedAt": "2026-08-16",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-bark-cactus"
+      ],
+      "recipes": [],
+      "productions": []
+    },
+    {
+      "id": "SW-ITEM-140",
+      "name": "Древесина плосковеточника",
+      "category": "Природный ресурс",
+      "itemType": "Древесина",
+      "description": "Древесина плосковеточника",
+      "checkedAt": "2026-08-17",
+      "status": "curated",
+      "resources": [
+        "bdo-resource-wood-ploskovetochnika"
+      ],
+      "recipes": [],
+      "productions": []
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ]
+}

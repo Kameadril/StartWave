@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "0.4.0",
+  "collectionId": "bdo-knowledge-graph",
+  "title": "Связи мира",
+  "updatedAt": "2026-08-02",
+  "stage": "SW-GAMES BDO-DATA-013",
+  "entityTypes": {
+    "city": { "label": "Города", "icon": "🏰", "route": "bdo-cities.html" },
+    "node": { "label": "Узлы", "icon": "🗺", "route": "bdo-nodes.html" },
+    "resource": { "label": "Ресурсы", "icon": "🌲", "route": "bdo-resources.html" },
+    "worker": { "label": "Рабочие", "icon": "👷", "route": "bdo-workers.html" },
+    "production": { "label": "Производство", "icon": "⚒", "route": "bdo-crafting.html" },
+    "recipe": { "label": "Рецепты", "icon": "📜", "route": null },
+    "item": { "label": "Предметы", "icon": "📦", "route": "bdo-items.html" }
+  },
+  "relationChain": ["city", "node", "resource", "worker", "production", "item"],
+  "relationAliases": {
+    "city": { "nodes": "node", "resources": "resource", "production": "production" },
+    "node": { "city": "city", "resources": "resource", "workers": "worker", "production": "production" },
+    "resource": { "nodes": "node", "workers": "worker", "recipes": "production", "items": "item" },
+    "worker": { "hireCity": "city", "nodes": "node", "resources": "resource", "production": "production" },
+    "production": { "inputResources": "resource", "outputItems": "item", "cities": "city", "workers": "worker", "recipes": "recipe" },
+    "item": { "resources": "resource", "productions": "production", "recipes": "recipe", "cities": "city" }
+  },
+  "chainArchitecture": {
+    "version": "0.3",
+    "stageOrder": ["resource", "node", "worker", "production", "item"],
+    "stageContract": {
+      "type": "entityTypes key",
+      "position": "integer",
+      "role": "string",
+      "entityIds": "verified entity id[]",
+      "status": "verified|researching|awaiting-data",
+      "verificationRequirement": "string"
+    },
+    "allowedStatuses": ["verified", "researching", "awaiting-data"],
+    "rules": [
+      "entityIds contain only separately verified records",
+      "edges contain only separately verified relations",
+      "an empty entityIds array is a valid awaiting state",
+      "player progress is not evidence for a world relation"
+    ]
+  },
+  "entities": {
+    "city": [{ "id": "bdo-city-calpheon", "name": "Кальфеон" }],
+    "node": [],
+    "resource": [
+      { "id": "bdo-resource-wood-ash", "name": "Ясень" },
+      { "id": "bdo-resource-wood-maple", "name": "Клён" },
+      { "id": "bdo-resource-wood-pine", "name": "Сосна" },
+      { "id": "bdo-resource-wood-alder", "name": "Ольха" },
+      { "id": "bdo-resource-wood-log", "name": "Бревно" },
+      { "id": "bdo-resource-wood-cypress", "name": "Кипарис" },
+      { "id": "bdo-resource-wood-cedar", "name": "Кедр" },
+      { "id": "bdo-resource-wood-fir", "name": "Пихта" },
+      { "id": "bdo-resource-wood-acacia", "name": "Акация" },
+      { "id": "bdo-resource-wood-palm", "name": "Пальма" },
+      { "id": "bdo-resource-wood-elder", "name": "Бузина" },
+      { "id": "bdo-resource-wood-mossy", "name": "Мшистая древесина" },
+      { "id": "bdo-resource-wood-thornwood", "name": "Терновая древесина" },
+      { "id": "bdo-resource-wood-snowfield-cedar", "name": "Древесина снежного кедра" }
+    ],
+    "worker": [],
+    "production": [],
+    "recipe": [],
+    "item": []
+  },
+  "edges": [],
+  "livingObjectPreviews": [
+    {
+      "id": "bdo-living-object-ash-v0-4",
+      "version": "0.4",
+      "objectRef": { "type": "resource", "id": "bdo-resource-wood-ash", "status": "verified" },
+      "contextRef": { "type": "city", "id": "bdo-city-calpheon", "status": "context-only" },
+      "contextNote": "Кальфеон — контекст исследования. Игровая связь с ресурсом не подтверждена.",
+      "chainId": "bdo-chain-wood-ash-v0-1",
+      "status": "living-preview"
+    }
+  ],
+  "regionPreparations": [
+    {
+      "id": "bdo-region-preparation-calpheon-v0-2",
+      "title": "Кальфеонский регион",
+      "version": "0.2",
+      "status": "researching",
+      "cityRef": { "type": "city", "id": "bdo-city-calpheon", "status": "verified" },
+      "chainId": "bdo-chain-calpheon-preparation-v0-2",
+      "scope": "Первый живой прототип региона. Кальфеон подтверждён как город; ступени ресурс → узел → рабочий → производство → предмет остаются тестовым каркасом до проверки игровых связей.",
+      "constraints": {
+        "verifiedRelationsOnly": true,
+        "coordinates": null,
+        "economyIncluded": false,
+        "recipesIncluded": false
+      }
+    }
+  ],
+  "knowledgeChains": [
+    {
+      "id": "bdo-chain-calpheon-preparation-v0-2",
+      "title": "Кальфеон: каркас первой живой цепочки",
+      "version": "0.2",
+      "rootEntity": { "type": "city", "id": "bdo-city-calpheon" },
+      "status": "test-awaiting-verified-relations",
+      "stages": [
+        { "type": "resource", "entityIds": [], "status": "awaiting-data" },
+        { "type": "node", "entityIds": [], "status": "awaiting-data" },
+        { "type": "worker", "entityIds": [], "status": "awaiting-data" },
+        { "type": "production", "entityIds": [], "status": "awaiting-data" },
+        { "type": "item", "entityIds": [], "status": "awaiting-data" }
+      ]
+    },
+    {
+      "id": "bdo-chain-wood-ash-v0-1",
+      "title": "Первая подтверждённая цепочка: Ясень",
+      "version": "0.4",
+      "rootEntity": { "type": "resource", "id": "bdo-resource-wood-ash" },
+      "status": "architecture-ready-awaiting-verified-relations",
+      "stages": [
+        { "position": 1, "type": "resource", "role": "chain-root", "entityIds": ["bdo-resource-wood-ash"], "status": "verified", "verificationRequirement": "verified resource record" },
+        { "position": 2, "type": "node", "role": "resource-source", "entityIds": [], "status": "awaiting-data", "verificationRequirement": "verified node record and verified node-to-resource relation" },
+        { "position": 3, "type": "worker", "role": "node-worker", "entityIds": [], "status": "awaiting-data", "verificationRequirement": "verified worker record and verified worker-to-node relation" },
+        { "position": 4, "type": "production", "role": "resource-processing", "entityIds": [], "status": "awaiting-data", "verificationRequirement": "verified production record and verified input relation" },
+        { "position": 5, "type": "item", "role": "production-output", "entityIds": [], "status": "awaiting-data", "verificationRequirement": "verified item record and verified production output relation" }
+      ]
+    }
+  ],
+  "policy": {
+    "verifiedRelationsOnly": true,
+    "emptyRelationsAreValid": true,
+    "futureUse": ["knowledge-graph", "ai-recommendations"]
+  }
+}

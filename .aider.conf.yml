@@ -1,0 +1,8 @@
+model: ollama_chat/qwen2.5-coder:3b
+set-env:
+  - OLLAMA_API_BASE=http://127.0.0.1:11434
+auto-commits: false
+dirty-commits: false
+read:
+  - .aider.rules.md
+chat-language: ru
