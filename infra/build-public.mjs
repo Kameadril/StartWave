@@ -3,6 +3,7 @@ import path from "node:path";
 import process from "node:process";
 
 const repositoryRoot = path.resolve(import.meta.dirname, "..");
+const defaultOutputRoot = path.join(repositoryRoot, "dist");
 const outputArgumentIndex = process.argv.indexOf("--output");
 const outputRelative = outputArgumentIndex === -1 ? "dist" : process.argv[outputArgumentIndex + 1];
 
@@ -21,7 +22,6 @@ const fileMappings = [
 ];
 
 const directoryMappings = [
-  ["publication/baseline", ""],
   ["assets", "assets"],
   ["GAMES/bdo/site/pages", "pages"],
   ["GAMES/bdo/site/assets", "assets"]
@@ -31,6 +31,7 @@ const outputRoot = resolveInside(repositoryRoot, outputRelative);
 const temporaryRoot = resolveInside(repositoryRoot, `${outputRelative}.tmp`);
 const protectedPaths = [
   path.join(repositoryRoot, ".git"),
+  defaultOutputRoot,
   ...fileMappings.map(([source]) => resolveInside(repositoryRoot, source)),
   ...directoryMappings.map(([source]) => resolveInside(repositoryRoot, source))
 ];
@@ -124,6 +125,32 @@ async function copyMappedDirectory(sourceRelative, targetRelative) {
   }
 }
 
+async function copyExistingOutput(sourceDirectory, targetDirectory) {
+  let entries;
+  try {
+    entries = await readdir(sourceDirectory, { withFileTypes: true });
+  } catch (error) {
+    if (error.code === "ENOENT") return;
+    throw error;
+  }
+
+  entries.sort((left, right) => left.name.localeCompare(right.name, "en"));
+  for (const entry of entries) {
+    const source = path.join(sourceDirectory, entry.name);
+    const target = path.join(targetDirectory, entry.name);
+    if (entry.isSymbolicLink()) throw new Error(`Symbol links are not preservable: ${source}`);
+    if (entry.isDirectory()) {
+      await mkdir(target, { recursive: true });
+      await copyExistingOutput(source, target);
+    } else if (entry.isFile()) {
+      await mkdir(path.dirname(target), { recursive: true });
+      await copyFile(source, target);
+    } else {
+      throw new Error(`Unsupported existing dist entry: ${source}`);
+    }
+  }
+}
+
 async function validateLocalReferences() {
   const referencePatterns = [
     /\b(?:href|src)=["']([^"']+)["']/gi,
@@ -157,9 +184,15 @@ async function validateLocalReferences() {
           const info = await stat(resolveInside(temporaryRoot, resolvedReference));
           if (!info.isFile() && !info.isDirectory()) throw new Error("unsupported target");
         } catch {
-          console.warn(
-            `WARNING: preserving unresolved local reference: ${targetRelative} -> ${rawReference}`
-          );
+          try {
+            await stat(resolveInside(defaultOutputRoot, resolvedReference));
+            throw new Error(`Broken local reference: ${targetRelative} -> ${rawReference}`);
+          } catch (baselineError) {
+            if (baselineError.message?.startsWith("Broken local reference:")) throw baselineError;
+            console.warn(
+              `WARNING: preserving pre-existing unresolved reference: ${targetRelative} -> ${rawReference}`
+            );
+          }
         }
       }
     }
@@ -171,11 +204,15 @@ async function build() {
   await mkdir(temporaryRoot, { recursive: true });
 
   try {
-    for (const [source, target] of directoryMappings) {
-      await copyMappedDirectory(source, target);
-    }
+    // Preserve classified and still-unclassified publication-only files. In
+    // particular, published BDO data is deliberately not regenerated from
+    // canonical Atlas data by this builder.
+    await copyExistingOutput(defaultOutputRoot, temporaryRoot);
     for (const [source, target] of fileMappings) {
       await copyMappedFile(source, target);
+    }
+    for (const [source, target] of directoryMappings) {
+      await copyMappedDirectory(source, target);
     }
     for (const requiredOutput of requiredOutputs) {
       const info = await stat(resolveInside(temporaryRoot, requiredOutput));
