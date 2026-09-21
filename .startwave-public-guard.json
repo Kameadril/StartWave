@@ -13,6 +13,7 @@
     "VERSION.md",
     "package.json",
     "wrangler.jsonc",
+    "wrangler.bdo.jsonc",
     "index.html",
     "index_old.html",
     "ai.html",

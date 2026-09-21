@@ -4,6 +4,9 @@
 
 # Generated distribution output
 dist/
+dist-bdo/
+dist-bdo.tmp/
+dist-bdo.previous/
 
 # Aider-generated history and caches
 .aider.chat.history.md

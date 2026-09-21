@@ -2,6 +2,7 @@
   "name": "startwave",
   "private": true,
   "scripts": {
-    "build": "node infra/build-public.mjs"
+    "build": "node infra/build-public.mjs",
+    "build:bdo": "node infra/build-bdo-public.mjs"
   }
 }
