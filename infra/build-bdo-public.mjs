@@ -18,16 +18,27 @@ const existingPublicOutput = path.join(repositoryRoot, "dist");
 const outputRoot = path.join(repositoryRoot, "dist-bdo");
 const temporaryRoot = path.join(repositoryRoot, "dist-bdo.tmp");
 const previousRoot = path.join(repositoryRoot, "dist-bdo.previous");
+const bdoOrigin = "https://bdo.startwave.space";
+
+const pageMappings = [
+  "alchemy", "barter", "cities", "crafting", "farming", "fishing",
+  "items", "knowledge-chain", "knowledge-layer", "nodes", "notes",
+  "player-knowledge", "production", "recipes", "region-calpheon",
+  "resources", "workers", "world-connection"
+].map((route) => ({
+  source: `GAMES/bdo/site/pages/bdo-${route}.html`,
+  target: `${route}.html`,
+  transform: "html"
+})).concat({
+  source: "publication/baseline/pages/bdo-cooking.html",
+  target: "cooking.html",
+  transform: "html"
+});
 
 const fileMappings = [
   {
     source: "GAMES/bdo/site/bdo.html",
     target: "index.html",
-    transform: "html"
-  },
-  {
-    source: "GAMES/bdo/site/pages/bdo-items.html",
-    target: "items.html",
     transform: "html"
   },
   {
@@ -39,30 +50,25 @@ const fileMappings = [
     source: "assets/js/script.js",
     target: "assets/js/script.js"
   },
-  {
-    source: "GAMES/bdo/site/assets/data/bdo-coupons.js",
-    target: "assets/data/bdo-coupons.js"
-  },
-  {
-    source: "GAMES/bdo/site/assets/js/bdo-live-data.js",
-    target: "assets/js/bdo-live-data.js"
-  },
-  {
-    source: "GAMES/bdo/site/assets/js/bdo-items.js",
-    target: "assets/js/bdo-items.js"
-  }
+  ...pageMappings
 ];
 
 const directoryMappings = [
   {
-    source: "GAMES/bdo/site/assets/images",
-    target: "assets/images"
+    source: "publication/baseline/assets",
+    target: "assets"
+  },
+  {
+    source: "GAMES/bdo/site/assets",
+    target: "assets"
   }
 ];
 
 const requiredOutputs = [
   "index.html",
-  "items.html",
+  ...pageMappings.map(({ target }) => target),
+  "robots.txt",
+  "sitemap.xml",
   "assets/css/style.css",
   "assets/js/script.js",
   "assets/js/bdo-live-data.js",
@@ -177,13 +183,13 @@ function rewriteBdoReference(reference) {
     return "assets/images/bdo/bdo-card-pve.webp";
   }
 
-  if (
-    reference === "index.html" ||
-    reference === "../index.html" ||
-    reference === "bdo.html" ||
-    reference === "../bdo.html"
-  ) {
-    return "/";
+  const bdoHomeMatch = reference.match(/^(?:\.\.\/)?bdo\.html([?#].*)?$/i);
+  if (bdoHomeMatch) {
+    return `/${bdoHomeMatch[1] || ""}`;
+  }
+
+  if (reference === "index.html" || reference === "../index.html") {
+    return "https://startwave.space/";
   }
 
   if (
@@ -206,10 +212,7 @@ function rewriteBdoReference(reference) {
   );
 
   if (nestedLegacyPageMatch) {
-    return (
-      `https://startwave.space/pages/${nestedLegacyPageMatch[1]}` +
-      (nestedLegacyPageMatch[2] || "")
-    );
+    return `/${nestedLegacyPageMatch[1].replace(/^bdo-/i, "")}${nestedLegacyPageMatch[2] || ""}`;
   }
 
   const siblingLegacyPageMatch = reference.match(
@@ -221,26 +224,32 @@ function rewriteBdoReference(reference) {
       return `/items${siblingLegacyPageMatch[2] || ""}`;
     }
 
-    return (
-      `https://startwave.space/pages/${siblingLegacyPageMatch[1]}` +
-      (siblingLegacyPageMatch[2] || "")
-    );
+    return `/${siblingLegacyPageMatch[1].replace(/^bdo-/i, "")}${siblingLegacyPageMatch[2] || ""}`;
   }
 
   return reference;
 }
 
-function transformHtml(contents) {
+function transformHtml(contents, targetRelative) {
   const withoutLegacyRelations = contents.replace(
     /\s*<script\s+src=(["'])\.\.\/assets\/js\/bdo-world-relations\.js\1><\/script>/gi,
     ""
   );
 
-  return withoutLegacyRelations.replace(
+  const rewritten = withoutLegacyRelations.replace(
     /\b(href|src)=(["'])([^"']+)\2/gi,
     (match, attribute, quote, reference) =>
       `${attribute}=${quote}${rewriteBdoReference(reference)}${quote}`
   );
+  const route = targetRelative === "index.html"
+    ? "/"
+    : `/${targetRelative.replace(/\.html$/i, "")}`;
+  const canonicalUrl = `${bdoOrigin}${route}`;
+  const metadata = `  <link rel="canonical" href="${canonicalUrl}">\n  <meta property="og:url" content="${canonicalUrl}">\n`;
+
+  return rewritten.includes('rel="canonical"')
+    ? rewritten
+    : rewritten.replace(/(<title\b[^>]*>)/i, `${metadata}$1`);
 }
 
 function transformCss(contents) {
@@ -268,7 +277,7 @@ async function copyMappedFile(mapping) {
 
   if (mapping.transform === "html") {
     const contents = await readFile(source, "utf8");
-    await writeFile(target, transformHtml(contents), "utf8");
+    await writeFile(target, transformHtml(contents, mapping.target), "utf8");
     return;
   }
 
@@ -550,6 +559,14 @@ async function build() {
     for (const mapping of directoryMappings) {
       await copyMappedDirectory(mapping.source, mapping.target);
     }
+
+    const publicRoutes = ["/", ...pageMappings.map(({ target }) => `/${target.replace(/\.html$/i, "")}`)];
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${publicRoutes.map((route) => `  <url><loc>${bdoOrigin}${route}</loc></url>`).join("\n")}\n</urlset>\n`;
+    const robots = `User-agent: *\nAllow: /\nSitemap: ${bdoOrigin}/sitemap.xml\n`;
+    claimTarget("sitemap.xml", "generated canonical sitemap");
+    claimTarget("robots.txt", "generated robots policy");
+    await writeFile(resolveInside(temporaryRoot, "sitemap.xml"), sitemap, "utf8");
+    await writeFile(resolveInside(temporaryRoot, "robots.txt"), robots, "utf8");
 
     await validateRequiredOutputs();
     await validateLocalReferences();

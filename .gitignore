@@ -1,6 +1,10 @@
 # Local StartWave agent runtime state
 .startwave-agent/
 .wrangler/
+supabase/.temp/
+
+# Finder metadata
+.DS_Store
 
 # Generated distribution output
 dist/

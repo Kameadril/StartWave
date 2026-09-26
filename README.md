@@ -38,7 +38,7 @@ StartWave — современная цифровая стартовая стр�
 - `index.html` — главная страница;
 - `assets/css/style.css` — общие стили;
 - `assets/js/script.js` — часы, дата и клиентская логика;
-- `pages/` — вложенные страницы BDO;
+- `GAMES/bdo/site/` — исходники отдельного сайта `https://bdo.startwave.space`;
 - `assets/images/` — изображения проекта.
 
 ## Документация

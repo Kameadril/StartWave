@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run tests
+        run: >-
+          node --test
+          tools/startwave-agent/city-authoring.test.mjs
+          tools/startwave-agent/bdo-web-search.test.mjs
+          GAMES/bdo/tools/publication-data-exporter.test.mjs
+          GAMES/bdo/tools/atlas-agent/reconciliation-normalization.test.mjs
+
+      - name: Run Publication Guard
+        env:
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          printf '%s %s %s %s\n' \
+            "refs/heads/ci" "$HEAD_SHA" \
+            "refs/heads/base" "$BASE_SHA" \
+            | sh scripts/publication-guard.sh --outgoing
+
+      - name: Build main site
+        run: npm run build
+
+      - name: Build BDO site
+        run: npm run build:bdo

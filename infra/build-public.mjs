@@ -1,4 +1,4 @@
-import { copyFile, mkdir, readFile, readdir, rename, rm, stat } from "node:fs/promises";
+import { copyFile, mkdir, readFile, readdir, rename, rm, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 
@@ -16,25 +16,25 @@ const fileMappings = [
   ["apps/web/profile.html", "profile.html"],
   ["apps/web/entertainment.html", "entertainment.html"],
   ["GAMES/site/games.html", "games.html"],
-  ["GAMES/bdo/site/bdo.html", "bdo.html"],
   ["ai.html", "ai.html"],
   ["services.html", "services.html"]
 ];
 
 const directoryMappings = [
   ["assets", "assets"],
-  ["GAMES/bdo/site/pages", "pages"],
-  ["GAMES/bdo/site/assets", "assets"]
+  ["publication/baseline/assets/images", "assets/images"],
+  ["GAMES/bdo/site/assets/images", "assets/images"]
 ];
 
 const outputRoot = resolveInside(repositoryRoot, outputRelative);
 const temporaryRoot = resolveInside(repositoryRoot, `${outputRelative}.tmp`);
 const protectedPaths = [
   path.join(repositoryRoot, ".git"),
-  defaultOutputRoot,
   ...fileMappings.map(([source]) => resolveInside(repositoryRoot, source)),
   ...directoryMappings.map(([source]) => resolveInside(repositoryRoot, source))
 ];
+
+if (outputRoot !== defaultOutputRoot) protectedPaths.push(defaultOutputRoot);
 
 if (outputRoot === repositoryRoot) {
   throw new Error("--output overlaps protected repository data: .");
@@ -60,12 +60,11 @@ const requiredOutputs = [
   "profile.html",
   "entertainment.html",
   "games.html",
-  "bdo.html",
   "ai.html",
   "services.html",
   "assets/css/style.css",
   "assets/js/script.js",
-  "pages/bdo-nodes.html"
+  "_redirects"
 ];
 
 const claimedTargets = new Map();
@@ -204,16 +203,21 @@ async function build() {
   await mkdir(temporaryRoot, { recursive: true });
 
   try {
-    // Preserve classified and still-unclassified publication-only files. In
-    // particular, published BDO data is deliberately not regenerated from
-    // canonical Atlas data by this builder.
-    await copyExistingOutput(defaultOutputRoot, temporaryRoot);
     for (const [source, target] of fileMappings) {
       await copyMappedFile(source, target);
     }
     for (const [source, target] of directoryMappings) {
       await copyMappedDirectory(source, target);
     }
+    const redirects = [
+      "/bdo https://bdo.startwave.space/ 301",
+      "/bdo/ https://bdo.startwave.space/ 301",
+      "/bdo/* https://bdo.startwave.space/:splat 301",
+      "/bdo.html https://bdo.startwave.space/ 301",
+      "/pages/bdo-*.html https://bdo.startwave.space/:splat 301"
+    ].join("\n") + "\n";
+    claimedTargets.set("_redirects", "generated BDO migration redirects");
+    await writeFile(resolveInside(temporaryRoot, "_redirects"), redirects, "utf8");
     for (const requiredOutput of requiredOutputs) {
       const info = await stat(resolveInside(temporaryRoot, requiredOutput));
       if (!info.isFile()) {
