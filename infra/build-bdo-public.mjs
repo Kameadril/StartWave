@@ -160,6 +160,14 @@ function isExternalReference(reference) {
 }
 
 function rewriteBdoReference(reference) {
+  const publicLocalRoute = reference?.match(
+    /^https:\/\/startwave\.space\/pages\/bdo-(items|cities|nodes)([?#].*)?$/i
+  );
+
+  if (publicLocalRoute) {
+    return `/${publicLocalRoute[1].toLowerCase()}${publicLocalRoute[2] || ""}`;
+  }
+
   if (!reference || isExternalReference(reference)) {
     return reference;
   }

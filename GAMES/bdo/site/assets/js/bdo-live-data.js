@@ -41,5 +41,38 @@
     }));
   };
 
-  window.StartWaveBdoData = Object.freeze({ loadItems });
+  const loadCities = async () => {
+    const rows = await request('cities', {
+      select: 'id,name,name_en,city_type,status,region_id',
+      order: 'id.asc',
+      limit: '1000'
+    });
+    return rows.map((row) => ({
+      id: row.id,
+      name: row.name,
+      nameEn: row.name_en,
+      cityType: row.city_type,
+      status: row.status,
+      regionId: row.region_id
+    }));
+  };
+
+  const loadNodes = async () => {
+    const rows = await request('nodes', {
+      select: 'id,name,name_en,node_type,status,node_regions!inner(region_id,regions(name))',
+      order: 'id.asc',
+      limit: '1000'
+    });
+    return rows.map((row) => ({
+      id: row.id,
+      name: row.name,
+      nameEn: row.name_en,
+      nodeType: row.node_type,
+      status: row.status,
+      regionId: row.node_regions?.[0]?.region_id ?? null,
+      region: row.node_regions?.[0]?.regions?.name ?? null
+    }));
+  };
+
+  window.StartWaveBdoData = Object.freeze({ loadItems, loadCities, loadNodes });
 })();
