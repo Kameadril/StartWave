@@ -18,7 +18,7 @@
 
   const itemLink = (item) => {
     const link = document.createElement('a');
-    link.href = `bdo-items.html#${item.id}`;
+    link.href = `/items#${item.id}`;
     link.textContent = item.name;
     link.title = `Открыть предмет: ${item.name}`;
     return link;

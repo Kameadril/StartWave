@@ -50,6 +50,10 @@ const fileMappings = [
     source: "assets/js/script.js",
     target: "assets/js/script.js"
   },
+  {
+    source: "GAMES/bdo/atlas/data/bdo-region-views.json",
+    target: "assets/data/bdo-region-views.json"
+  },
   ...pageMappings
 ];
 
@@ -72,7 +76,8 @@ const requiredOutputs = [
   "assets/css/style.css",
   "assets/js/script.js",
   "assets/js/bdo-live-data.js",
-  "assets/js/bdo-items.js"
+  "assets/js/bdo-items.js",
+  "assets/data/bdo-region-views.json"
 ];
 
 const forbiddenClientCredentialMarkers = [

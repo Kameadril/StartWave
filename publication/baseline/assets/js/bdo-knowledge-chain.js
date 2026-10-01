@@ -21,6 +21,8 @@
     'awaiting-data': { label: 'Неизвестно', className: 'is-unknown' },
     unknown: { label: 'Неизвестно', className: 'is-unknown' }
   };
+  const cleanRoute = (route) => route.replace(/^bdo-([a-z0-9-]+)\.html(?=([?#]|$))/, '/$1');
+  const navigationEntityId = (type, id) => type === 'city' && id === 'bdo-city-calpheon' ? 'BDO-CITY-calpheon' : id;
 
   const findEntities = (graph, stage) => {
     const index = new Map((graph.entities?.[stage.type] || []).map((entity) => [entity.id, entity]));
@@ -41,10 +43,10 @@
       const entityNames = entities.length
         ? entities.map((entity) => entity.name).join(', ')
         : 'Подтверждённых данных пока нет';
-      const anchor = entities.length === 1 ? `#${encodeURIComponent(entities[0].id)}` : '';
+      const anchor = entities.length === 1 ? `#${encodeURIComponent(navigationEntityId(stage.type, entities[0].id))}` : '';
 
       const routeControl = meta.route
-        ? `<a href="${meta.route}${anchor}">${entities.length ? 'Открыть запись' : 'Перейти в слой'} <span aria-hidden="true">→</span></a>`
+        ? `<a href="${cleanRoute(meta.route)}${anchor}">${entities.length ? 'Открыть запись' : 'Перейти в слой'} <span aria-hidden="true">→</span></a>`
         : '<span class="bdo-chain-explorer__reserved">Маршрут слоя зарезервирован</span>';
 
       stageItem.innerHTML = `<article>
@@ -75,7 +77,7 @@
     regionTitle.textContent = preparation.title;
     regionScope.textContent = preparation.scope;
     regionCity.textContent = city?.name || 'Город ожидает проверки';
-    regionCityLink.href = city ? `bdo-cities.html#${encodeURIComponent(city.id)}` : 'bdo-cities.html';
+    regionCityLink.href = city ? `/cities#${encodeURIComponent(navigationEntityId('city', city.id))}` : '/cities';
     regionPanel.hidden = false;
   };
 

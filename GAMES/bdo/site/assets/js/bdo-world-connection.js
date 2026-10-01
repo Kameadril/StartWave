@@ -9,6 +9,7 @@
     if (!response.ok) throw new Error(`${label} request failed: ${response.status}`);
     return response.json();
   });
+  const cleanRoute = (route) => route.replace(/^bdo-([a-z0-9-]+)\.html(?=([?#]|$))/, '/$1');
 
   Promise.all([
     getJson('../assets/data/bdo-region-views.json', 'Region view'),
@@ -24,10 +25,10 @@
     const confirmedRelations = graph.edges || [];
     const awaiting = region?.awaitingLayers || [];
     const cards = [
-      { className: 'is-city', icon: '🏰', eyebrow: 'Регион / город · контекст', title: city?.name || 'Ожидает данных', text: region?.cityContext?.note || 'Городской контекст ожидает проверки.', href: 'bdo-region-calpheon.html', link: 'Открыть регион' },
-      { className: 'is-knowledge', icon: '📖', eyebrow: 'Knowledge Layer', title: 'Библиотека знаний', text: `${knowledgeEntries.length} подтверждённые записи распределены по существующим категориям.`, href: 'bdo-knowledge-layer.html', link: 'Открыть знания' },
-      { className: 'is-resource', icon: '🌲', eyebrow: 'Живой объект · ресурс', title: resource?.name || 'Ожидает данных', text: livingObject?.note || 'Ресурсный объект ожидает проверки.', href: `bdo-resources.html#${encodeURIComponent(resource?.id || '')}`, link: 'Открыть объект' },
-      { className: 'is-future', icon: '🔗', eyebrow: 'Будущие связи', title: confirmedRelations.length ? `${confirmedRelations.length} подтверждено` : 'Ожидают данных', text: confirmedRelations.length ? 'Граф содержит проверенные игровые связи.' : 'Knowledge Graph пока не содержит подтверждённых игровых связей.', href: 'bdo-knowledge-chain.html', link: 'Открыть Explorer' }
+      { className: 'is-city', icon: '🏰', eyebrow: 'Регион / город · контекст', title: city?.name || 'Ожидает данных', text: region?.cityContext?.note || 'Городской контекст ожидает проверки.', href: '/region-calpheon', link: 'Открыть регион' },
+      { className: 'is-knowledge', icon: '📖', eyebrow: 'Knowledge Layer', title: 'Библиотека знаний', text: `${knowledgeEntries.length} подтверждённые записи распределены по существующим категориям.`, href: '/knowledge-layer', link: 'Открыть знания' },
+      { className: 'is-resource', icon: '🌲', eyebrow: 'Живой объект · ресурс', title: resource?.name || 'Ожидает данных', text: livingObject?.note || 'Ресурсный объект ожидает проверки.', href: `/resources#${encodeURIComponent(resource?.id || '')}`, link: 'Открыть объект' },
+      { className: 'is-future', icon: '🔗', eyebrow: 'Будущие связи', title: confirmedRelations.length ? `${confirmedRelations.length} подтверждено` : 'Ожидают данных', text: confirmedRelations.length ? 'Граф содержит проверенные игровые связи.' : 'Knowledge Graph пока не содержит подтверждённых игровых связей.', href: '/knowledge-chain', link: 'Открыть Explorer' }
     ];
     stage.replaceChildren(...cards.map((card) => {
       const article = document.createElement('article');
@@ -37,7 +38,7 @@
     }));
     futureLayers.replaceChildren(...awaiting.map((layer) => {
       const article = document.createElement('article');
-      article.innerHTML = `<span aria-hidden="true">⏳</span><div><h3>${layer.label}</h3><p>Ожидает подтверждённых данных и связей</p></div><a href="${layer.route}">Открыть слой →</a>`;
+      article.innerHTML = `<span aria-hidden="true">⏳</span><div><h3>${layer.label}</h3><p>Ожидает подтверждённых данных и связей</p></div><a href="${cleanRoute(layer.route)}">Открыть слой →</a>`;
       return article;
     }));
     document.getElementById('worldVerifiedCount').textContent = String([city, resource, ...knowledgeEntries].filter(Boolean).length);

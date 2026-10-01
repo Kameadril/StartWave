@@ -11,8 +11,10 @@
 
   if (!root || !title || !cityName || !objectList || !relationList || !awaitingList || !mapState) return;
 
-  const entityRoutes = { resource: 'bdo-resources.html' };
+  const entityRoutes = { resource: '/resources' };
   const entityIcons = { resource: '🌲' };
+  const cleanRoute = (route) => route.replace(/^bdo-([a-z0-9-]+)\.html(?=([?#]|$))/, '/$1');
+  const liveCityId = (id) => id === 'bdo-city-calpheon' ? 'BDO-CITY-calpheon' : id;
 
   Promise.all([
     fetch('../assets/data/bdo-region-views.json').then((response) => {
@@ -31,7 +33,7 @@
     title.textContent = region.name;
     cityName.textContent = city?.name || 'Город ожидает проверки';
     cityNote.textContent = region.cityContext.note;
-    cityLink.href = city ? `bdo-cities.html#${encodeURIComponent(city.id)}` : 'bdo-cities.html';
+    cityLink.href = city ? `/cities#${encodeURIComponent(liveCityId(city.id))}` : '/cities';
 
     const objects = region.livingObjects.map((object) => {
       const entity = (graph.entities?.[object.type] || []).find((entry) => entry.id === object.entityId);
@@ -52,7 +54,7 @@
 
     awaitingList.replaceChildren(...region.awaitingLayers.map((layer) => {
       const item = document.createElement('li');
-      item.innerHTML = `<span aria-hidden="true">⏳</span><div><strong>${layer.label}</strong><small>Ожидает подтверждённых данных</small></div><a href="${layer.route}">Открыть слой →</a>`;
+      item.innerHTML = `<span aria-hidden="true">⏳</span><div><strong>${layer.label}</strong><small>Ожидает подтверждённых данных</small></div><a href="${cleanRoute(layer.route)}">Открыть слой →</a>`;
       return item;
     }));
 

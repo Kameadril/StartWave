@@ -18,7 +18,7 @@
 
   const linkedItem = (item, fallbackId) => {
     const link = document.createElement('a');
-    link.href = `bdo-items.html#${fallbackId}`;
+    link.href = `/items#${fallbackId}`;
     link.textContent = item?.name || fallbackId;
     return link;
   };
@@ -75,7 +75,7 @@
       }
       else if (label === 'Производство') {
         const production = productionsById.get(id);
-        const link = document.createElement('a'); link.href = `bdo-production.html#${id}`; link.textContent = `⚒ ${production?.name || id}`; step.append(link);
+        const link = document.createElement('a'); link.href = `/production#${id}`; link.textContent = `⚒ ${production?.name || id}`; step.append(link);
       } else step.append(linkedItem(itemsById.get(id), id));
       flow.append(step);
     });

@@ -26,7 +26,7 @@
     const entities = (type) => new Map((graph.entities?.[type] || []).map((entity) => [entity.id, entity]));
     const root = entities(progress.rootEntity.type).get(progress.rootEntity.id);
     document.getElementById('playerChainTitle').textContent = root?.name || chain.title;
-    document.getElementById('openExplorerLink').href = `bdo-knowledge-chain.html?chain=${encodeURIComponent(chain.id)}`;
+    document.getElementById('openExplorerLink').href = `/knowledge-chain?chain=${encodeURIComponent(chain.id)}`;
 
     stageList.replaceChildren(...progress.stages.map((stage, index) => {
       const meta = graph.entityTypes[stage.type];

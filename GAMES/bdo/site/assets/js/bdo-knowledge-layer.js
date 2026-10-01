@@ -3,6 +3,7 @@
   const grid = document.getElementById('knowledgeCategoryGrid');
   if (!root || !grid) return;
   const statusClass = { verified: 'is-verified', researching: 'is-researching', 'awaiting-data': 'is-awaiting' };
+  const cleanRoute = (route) => route.replace(/^bdo-([a-z0-9-]+)\.html(?=([?#]|$))/, '/$1');
   fetch('../assets/data/bdo-knowledge-layer.json').then((response) => {
     if (!response.ok) throw new Error(`Knowledge layer request failed: ${response.status}`);
     return response.json();
@@ -15,7 +16,7 @@
       article.className = `bdo-knowledge-category ${statusClass[category.status] || 'is-awaiting'}`;
       const categoryEntries = category.entries || [];
       const content = categoryEntries.length
-        ? `<ul>${categoryEntries.map((entry) => `<li><a href="${entry.route}">${entry.title}</a><span>${entry.scope}</span></li>`).join('')}</ul>`
+        ? `<ul>${categoryEntries.map((entry) => `<li><a href="${cleanRoute(entry.route)}">${entry.title}</a><span>${entry.scope}</span></li>`).join('')}</ul>`
         : '<p class="bdo-knowledge-category__empty">Проверенные записи пока не добавлены.</p>';
       article.innerHTML = `<header><span aria-hidden="true">${category.icon}</span><div><p>Категория знаний</p><h2>${category.label}</h2></div></header><div class="bdo-knowledge-category__status"><i aria-hidden="true"></i>${definitions[category.status] || 'Ожидает данных'}</div>${content}`;
       return article;
