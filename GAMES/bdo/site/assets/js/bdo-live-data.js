@@ -74,5 +74,46 @@
     }));
   };
 
-  window.StartWaveBdoData = Object.freeze({ loadItems, loadCities, loadNodes });
+  const loadResources = async () => {
+    const rows = await request('resources', {
+      select: 'id,name,name_en,category,resource_type,status,created_at,updated_at,resource_nodes(node_id,nodes(id,name,name_en,node_type,status)),item_resources(item_id,items(id,name,name_en,category,item_type,status))',
+      order: 'id.asc',
+      limit: '1000'
+    });
+    return rows.map((row) => ({
+      id: row.id,
+      name: row.name,
+      nameEn: row.name_en,
+      category: row.category,
+      resourceType: row.resource_type,
+      status: row.status,
+      createdAt: row.created_at,
+      updatedAt: row.updated_at,
+      nodes: (row.resource_nodes || [])
+        .map((relation) => relation.nodes)
+        .filter(Boolean)
+        .map((node) => ({
+          id: node.id,
+          name: node.name,
+          nameEn: node.name_en,
+          nodeType: node.node_type,
+          status: node.status
+        }))
+        .sort((left, right) => left.id.localeCompare(right.id)),
+      items: (row.item_resources || [])
+        .map((relation) => relation.items)
+        .filter(Boolean)
+        .map((item) => ({
+          id: item.id,
+          name: item.name,
+          nameEn: item.name_en,
+          category: item.category,
+          itemType: item.item_type,
+          status: item.status
+        }))
+        .sort((left, right) => left.id.localeCompare(right.id))
+    }));
+  };
+
+  window.StartWaveBdoData = Object.freeze({ loadItems, loadCities, loadNodes, loadResources });
 })();

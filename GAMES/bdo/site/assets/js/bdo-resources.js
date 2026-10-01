@@ -2,105 +2,89 @@
   const grid = document.getElementById('bdoResourceGrid');
   const search = document.getElementById('archiveSearch');
   const count = document.getElementById('archiveResultCount');
+  const total = document.getElementById('resourceArchiveTotal');
+  const liveState = document.getElementById('resourceLiveState');
   const empty = document.getElementById('archiveEmptyState');
-  let totalCount = 0;
 
-  if (!grid || !search || !count || !empty) return;
+  if (!grid || !search || !count || !total || !liveState || !empty || !window.StartWaveBdoData?.loadResources) return;
 
-  const normalize = (value) => value.toLocaleLowerCase('ru-RU').trim();
+  const normalize = (value) => String(value ?? '').toLocaleLowerCase('ru-RU').trim();
+  const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+  const statusLabels = { curated: 'Архивная запись', 'seed-list-verified': 'Подтверждено' };
+  let allResources = [];
+
+  const createRelationSection = (title, entries, route, emptyText) => `
+    <section>
+      <h4>${escapeHtml(title)} · ${entries.length}</h4>
+      ${entries.length
+        ? `<ul>${entries.map((entry) => `<li><a href="${route}#${encodeURIComponent(entry.id)}">${escapeHtml(entry.name || entry.id)}</a></li>`).join('')}</ul>`
+        : `<p class="bdo-item-detail-empty">${escapeHtml(emptyText)}</p>`}
+    </section>`;
 
   const createCard = (resource) => {
     const article = document.createElement('article');
     article.className = 'bdo-resource-record';
     article.id = resource.id;
     article.dataset.resourceId = resource.id;
-    const isLivingPreview = Boolean(resource.archive);
-    if (isLivingPreview) article.classList.add('bdo-resource-record--living');
-
-    const relationFields = Object.entries(resource.relations)
-      .map(([key, values]) => `<span>${key}: <strong>${values.length}</strong></span>`)
-      .join('');
-
-    const resourceArchive = resource.archive ? `
-      <div class="bdo-resource-record__archive">
-        <p class="bdo-resource-record__eyebrow">Calpheon Resource Archive</p>
-        <h4>${resource.archive.title}</h4>
-        <p>${resource.archive.description}</p>
-        <div class="bdo-resource-record__archive-links">
-          <a href="bdo-items.html">Предметы: ${resource.relations.items.length}</a>
-          <a href="bdo-recipes.html">Рецепты: ${resource.relations.recipes.length}</a>
-          <a href="bdo-production.html">Производство: ${resource.relations.productions.length}</a>
-        </div>
-      </div>` : '';
-
-    const productionSequence = resource.atlas?.productionSequence ? `<section><h4>Производственная последовательность</h4><p class="bdo-item-detail-empty">${resource.atlas.productionSequence}</p></section>` : '';
-
-    const atlasView = resource.atlas ? `
-      <section class="bdo-item-record__details" aria-label="Atlas-путь ресурса ${resource.atlas.title}">
-        <div class="bdo-node-relation-flow" aria-label="Ресурс, получение, обработка и использование">
-          <span>🌲 Ресурс</span><i aria-hidden="true">→</i><span>🪓 Получение</span><i aria-hidden="true">→</i><span>⚒ Обработка</span><i aria-hidden="true">→</i><span>📦 Использование</span>
-        </div>
-        <section><p class="bdo-resource-record__eyebrow">Atlas resource view · test</p><h4>${resource.atlas.title}</h4><p class="bdo-item-detail-empty">${resource.atlas.summary}</p></section>
-        <section><h4>Источник получения</h4><p class="bdo-item-detail-empty">${resource.atlas.source}</p></section>
-        <section><h4>Тип получения</h4><p class="bdo-item-detail-empty">${resource.atlas.acquisitionType}</p></section>
-        <section><h4>Обработка</h4><p class="bdo-item-detail-empty">${resource.atlas.processing}</p></section>
-        <section><h4>Возможное использование</h4><p class="bdo-item-detail-empty">${resource.atlas.usage}</p></section>
-        ${productionSequence}
-      </section>` : '';
+    article.dataset.nodeCount = String(resource.nodes.length);
+    article.dataset.itemCount = String(resource.items.length);
 
     article.innerHTML = `
       <header class="bdo-resource-record__header">
-        <span class="bdo-resource-record__glyph" aria-hidden="true">${resource.name === 'Бревно' ? '🪵' : '🌲'}</span>
+        <span class="bdo-resource-record__glyph" aria-hidden="true">🌲</span>
         <div>
-          <p class="bdo-resource-record__eyebrow">${isLivingPreview ? 'Living Object · v0.7' : 'Resource record'}</p>
-          <h3>${resource.name}</h3>
+          <p class="bdo-resource-record__eyebrow">Resource record</p>
+          <h3>${escapeHtml(resource.name)}</h3>
         </div>
-        <span class="bdo-resource-record__status"><i aria-hidden="true"></i> Проверено</span>
+        <span class="bdo-resource-record__status"><i aria-hidden="true"></i>${escapeHtml(statusLabels[resource.status] || resource.status || '—')}</span>
       </header>
       <dl class="bdo-resource-record__facts">
-        <div><dt>ID</dt><dd><code>${resource.id}</code></dd></div>
-        <div><dt>Категория</dt><dd>${resource.category}</dd></div>
-        <div><dt>Тип</dt><dd>${resource.resourceType}</dd></div>
-        <div><dt>Источник</dt><dd>${resource.verification.source}</dd></div>
-        <div><dt>Дата проверки</dt><dd><time datetime="${resource.verification.checkedAt}">${resource.verification.checkedAt}</time></dd></div>
+        <div><dt>ID</dt><dd><code>${escapeHtml(resource.id)}</code></dd></div>
+        <div><dt>Категория</dt><dd>${escapeHtml(resource.category || '—')}</dd></div>
+        <div><dt>Тип</dt><dd>${escapeHtml(resource.resourceType || '—')}</dd></div>
+        ${resource.nameEn ? `<div><dt>English</dt><dd>${escapeHtml(resource.nameEn)}</dd></div>` : ''}
       </dl>
-      <div class="bdo-resource-record__relations" aria-label="Технические поля будущих связей">
-        <span class="bdo-resource-record__relations-title">${resource.archive ? 'Связи Calpheon Archive' : 'Будущие связи'}</span>
-        ${relationFields}
-      </div>
-      ${resourceArchive}
-      ${atlasView}`;
-
-    window.BdoWorldRelations?.attach(article, 'resource', resource);
+      <div class="bdo-item-record__details" aria-label="Подтверждённые связи ресурса">
+        ${createRelationSection('Узлы', resource.nodes, '/nodes', 'Связанные узлы не найдены.')}
+        ${createRelationSection('Предметы', resource.items, '/items', 'Связанные предметы не найдены.')}
+      </div>`;
 
     return article;
   };
 
-  const render = (resources) => {
+  const render = () => {
+    const query = normalize(search.value);
+    const resources = allResources.filter((resource) => normalize([
+      resource.id,
+      resource.name,
+      resource.nameEn,
+      resource.category,
+      resource.resourceType,
+      resource.status,
+      ...resource.nodes.flatMap((node) => [node.id, node.name, node.nameEn, node.nodeType]),
+      ...resource.items.flatMap((item) => [item.id, item.name, item.nameEn, item.category, item.itemType])
+    ].join(' ')).includes(query));
     grid.replaceChildren(...resources.map(createCard));
-    count.textContent = `${resources.length} из ${totalCount} записей`;
+    grid.setAttribute('aria-busy', 'false');
+    count.textContent = `${resources.length} из ${allResources.length} ресурсов`;
     empty.hidden = resources.length !== 0;
   };
 
-  fetch('../assets/data/bdo-resources.json')
-    .then((response) => {
-      if (!response.ok) throw new Error(`Resource data request failed: ${response.status}`);
-      return response.json();
-    })
-    .then((data) => {
-      const resources = data.resources || [];
-      totalCount = resources.length;
-      render(resources);
-      search.addEventListener('input', () => {
-        const query = normalize(search.value);
-        const filtered = resources.filter((resource) =>
-          normalize(`${resource.name} ${resource.category} ${resource.resourceType} ${resource.id}`).includes(query));
-        render(filtered);
-      });
+  grid.setAttribute('aria-busy', 'true');
+  window.StartWaveBdoData.loadResources()
+    .then((resources) => {
+      allResources = resources;
+      total.textContent = String(allResources.length);
+      liveState.textContent = 'Список ресурсов загружен из LIVE Supabase.';
+      render();
+      search.addEventListener('input', render);
     })
     .catch(() => {
-      count.textContent = 'Данные временно недоступны';
+      grid.setAttribute('aria-busy', 'false');
+      count.textContent = 'Данные недоступны';
+      total.textContent = '—';
+      liveState.textContent = 'Не удалось загрузить LIVE-данные ресурсов.';
       empty.hidden = false;
-      empty.textContent = 'Не удалось открыть World Data Layer.';
+      empty.textContent = 'Не удалось загрузить каталог ресурсов.';
     });
 })();
