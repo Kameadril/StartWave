@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StartWave — Каталог регионов BDO</title>
+  <meta name="description" content="STARTWAVE BDO ARCHIVE: каталог регионов Black Desert Online из LIVE Supabase.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bdo-archive-body bdo-resource-atlas-body bdo-region-atlas-body">
+  <header class="header bdo-site-header">
+    <a class="logo" href="../index.html" aria-label="StartWave — на главную"><h1>StartWave</h1></a>
+    <nav class="navigation" aria-label="Основная навигация">
+      <a href="../index.html">Главная</a>
+      <a href="../bdo.html" aria-current="page">BDO</a>
+      <a href="bdo-regions.html" aria-current="page">Регионы</a>
+      <a href="bdo-cities.html">Города</a>
+      <a href="bdo-nodes.html">Узлы</a>
+      <a href="bdo-resources.html">Ресурсы</a>
+    </nav>
+  </header>
+
+  <div class="page-container bdo-resource-atlas">
+    <main class="content-main">
+      <nav class="bdo-archive-breadcrumbs" aria-label="Хлебные крошки">
+        <a href="../bdo.html">BDO Archive</a><span aria-hidden="true">/</span><span>Каталог регионов</span>
+      </nav>
+
+      <section class="bdo-resource-hero" aria-labelledby="region-atlas-title">
+        <p class="bdo-resource-kicker">World Data Layer · Region Catalog</p>
+        <h2 id="region-atlas-title">Каталог регионов</h2>
+        <p>LIVE-регионы мира BDO и их подтверждённые связи с городами и узлами.</p>
+        <div class="bdo-resource-summary" aria-label="Сводка коллекции">
+          <span><strong id="regionArchiveTotal">—</strong> регионов</span>
+          <span><strong id="regionCityTotal">—</strong> городов</span>
+          <span><strong id="regionNodeTotal">—</strong> узлов</span>
+        </div>
+        <p class="bdo-item-detail-empty" id="regionLiveState" aria-live="polite">Загрузка LIVE-данных…</p>
+      </section>
+
+      <section class="bdo-resource-toolbar" aria-label="Поиск по регионам">
+        <label for="regionArchiveSearch">Поиск по регионам</label>
+        <input id="regionArchiveSearch" type="search" placeholder="Название, тип, город, узел или ID…" autocomplete="off">
+        <output id="regionArchiveResultCount" for="regionArchiveSearch" aria-live="polite">Загрузка…</output>
+      </section>
+
+      <section aria-labelledby="region-collection-title">
+        <div class="bdo-resource-section-heading">
+          <div><p>Коллекция · LIVE Supabase</p><h2 id="region-collection-title">Регионы</h2></div>
+          <span class="bdo-resource-verified-badge">Источник: LIVE Supabase</span>
+        </div>
+        <div class="bdo-resource-grid" id="bdoRegionGrid" aria-live="polite" aria-busy="false"></div>
+        <p class="bdo-resource-empty" id="regionArchiveEmptyState" hidden>Регионы не найдены</p>
+      </section>
+
+      <section class="bdo-resource-data-note" aria-labelledby="region-policy-title">
+        <h2 id="region-policy-title">Политика данных Region Layer</h2>
+        <p>Каталог использует только LIVE Region IDs и подтверждённые связи регионов с городами и узлами. Static Region IDs и Region Views в эту модель не смешиваются.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer"><p>&copy; 2026 Kameadril · StartWave</p></footer>
+  </div>
+
+  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/bdo-live-data.js"></script>
+  <script src="../assets/js/bdo-regions.js"></script>
+</body>
+</html>

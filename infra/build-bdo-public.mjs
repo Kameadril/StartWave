@@ -24,7 +24,7 @@ const pageMappings = [
   "alchemy", "barter", "cities", "crafting", "farming", "fishing",
   "items", "knowledge-chain", "knowledge-layer", "nodes", "notes",
   "player-knowledge", "production", "recipes", "region-calpheon",
-  "resources", "workers", "world-connection"
+  "regions", "resources", "workers", "world-connection"
 ].map((route) => ({
   source: `GAMES/bdo/site/pages/bdo-${route}.html`,
   target: `${route}.html`,

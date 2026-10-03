@@ -115,5 +115,40 @@
     }));
   };
 
-  window.StartWaveBdoData = Object.freeze({ loadItems, loadCities, loadNodes, loadResources });
+  const loadRegions = async () => {
+    const rows = await request('regions', {
+      select: 'id,name,name_en,region_type,status,cities(id,name,name_en,city_type,status),node_regions(node_id,nodes(id,name,name_en,node_type,status))',
+      order: 'id.asc',
+      limit: '1000'
+    });
+    return rows.map((row) => ({
+      id: row.id,
+      name: row.name,
+      nameEn: row.name_en,
+      regionType: row.region_type,
+      status: row.status,
+      cities: (row.cities || [])
+        .map((city) => ({
+          id: city.id,
+          name: city.name,
+          nameEn: city.name_en,
+          cityType: city.city_type,
+          status: city.status
+        }))
+        .sort((left, right) => left.id.localeCompare(right.id)),
+      nodes: (row.node_regions || [])
+        .map((relation) => relation.nodes)
+        .filter(Boolean)
+        .map((node) => ({
+          id: node.id,
+          name: node.name,
+          nameEn: node.name_en,
+          nodeType: node.node_type,
+          status: node.status
+        }))
+        .sort((left, right) => left.id.localeCompare(right.id))
+    }));
+  };
+
+  window.StartWaveBdoData = Object.freeze({ loadItems, loadCities, loadNodes, loadResources, loadRegions });
 })();
