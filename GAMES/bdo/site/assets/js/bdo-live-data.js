@@ -1,6 +1,16 @@
 (() => {
   const SUPABASE_URL = 'https://ebnbzgxwfrtttynbmizz.supabase.co';
   const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_jTjNpqT0tGskaTUu35JpTg_gyugKhOC';
+  const ARSHA_URL = 'https://api.arsha.io';
+  const BDO_MARKET_REGIONS = new Set(['ru', 'eu', 'na']);
+  const BDO_MARKET_TIMEOUT_MS = 10000;
+
+  const createMarketError = (code, message, httpStatus) => {
+    const error = new Error(message);
+    error.code = code;
+    if (httpStatus) error.httpStatus = httpStatus;
+    return error;
+  };
 
   const request = async (table, searchParams) => {
     const url = new URL(`/rest/v1/${table}`, SUPABASE_URL);
@@ -39,6 +49,90 @@
       itemType: row.item_type,
       status: row.status
     }));
+  };
+
+  const loadBdoExternalIdentities = async () => {
+    const rows = await request('item_external_identities', {
+      select: 'item_id,provider,external_item_id',
+      provider: 'eq.bdo'
+    });
+    return rows.map((row) => ({
+      itemId: row.item_id,
+      provider: row.provider,
+      externalItemId: row.external_item_id
+    }));
+  };
+
+  const loadBdoCurrentMarket = async (externalItemId, region) => {
+    const requestedId = String(externalItemId ?? '').trim();
+    const requestedRegion = String(region ?? '').trim().toLowerCase();
+    if (!requestedId) throw createMarketError('MARKET_INVALID_REQUEST', 'External item ID is required');
+    if (!BDO_MARKET_REGIONS.has(requestedRegion)) {
+      throw createMarketError('MARKET_UNSUPPORTED_REGION', 'Unsupported market region');
+    }
+
+    const url = new URL(`/v2/${requestedRegion}/search`, ARSHA_URL);
+    url.searchParams.set('ids', requestedId);
+    url.searchParams.set('lang', 'en');
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), BDO_MARKET_TIMEOUT_MS);
+
+    try {
+      let response;
+      try {
+        response = await fetch(url, {
+          method: 'GET',
+          headers: { Accept: 'application/json' },
+          signal: controller.signal
+        });
+      } catch (error) {
+        if (error?.name === 'AbortError') {
+          throw createMarketError('MARKET_TIMEOUT', 'Market request timed out');
+        }
+        throw createMarketError('MARKET_NETWORK_ERROR', 'Market request failed');
+      }
+
+      if (!response.ok) {
+        throw createMarketError('MARKET_HTTP_ERROR', `Market request failed: HTTP ${response.status}`, response.status);
+      }
+
+      let payload;
+      try {
+        payload = await response.json();
+      } catch {
+        throw createMarketError('MARKET_INVALID_RESPONSE', 'Market response is not valid JSON');
+      }
+
+      if (payload == null || (Array.isArray(payload) && payload.length === 0)) {
+        throw createMarketError('MARKET_EMPTY', 'Market item was not found');
+      }
+
+      const entries = Array.isArray(payload) ? payload : [payload];
+      const marketItem = entries.find((entry) => entry && String(entry.id) === requestedId);
+      if (!marketItem) {
+        throw createMarketError('MARKET_ID_MISMATCH', 'Market response item ID does not match');
+      }
+
+      const numericValues = [marketItem.basePrice, marketItem.currentStock, marketItem.totalTrades];
+      if (numericValues.some((value) => value == null || String(value).trim() === '')) {
+        throw createMarketError('MARKET_INVALID_RESPONSE', 'Market response is missing numeric values');
+      }
+      const [basePrice, currentStock, totalTrades] = numericValues.map(Number);
+      if (![basePrice, currentStock, totalTrades].every((value) => Number.isFinite(value) && value >= 0)) {
+        throw createMarketError('MARKET_INVALID_RESPONSE', 'Market response contains invalid numeric values');
+      }
+
+      return {
+        id: marketItem.id,
+        name: typeof marketItem.name === 'string' ? marketItem.name : null,
+        basePrice,
+        currentStock,
+        totalTrades,
+        fetchedAt: new Date().toISOString()
+      };
+    } finally {
+      window.clearTimeout(timeoutId);
+    }
   };
 
   const loadCities = async () => {
@@ -150,5 +244,13 @@
     }));
   };
 
-  window.StartWaveBdoData = Object.freeze({ loadItems, loadCities, loadNodes, loadResources, loadRegions });
+  window.StartWaveBdoData = Object.freeze({
+    loadItems,
+    loadBdoExternalIdentities,
+    loadBdoCurrentMarket,
+    loadCities,
+    loadNodes,
+    loadResources,
+    loadRegions
+  });
 })();

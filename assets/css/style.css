@@ -4818,6 +4818,30 @@ a.bdo-topic-card:focus-visible img {
 .bdo-item-record__details h4 { margin: 0 0 0.55rem; color: #d4bb8e; font: 500 0.95rem Georgia, 'Times New Roman', serif; }
 .bdo-item-record__details ul { display: grid; gap: 0.3rem; margin: 0; padding-left: 1.05rem; color: #a8a094; font-size: 0.78rem; line-height: 1.5; }
 .bdo-item-detail-empty { margin: 0; color: #777168; font-size: 0.78rem; }
+.bdo-item-market { margin-top: 1rem; padding: 1rem; border: 1px solid rgba(203, 174, 121, 0.24); background: rgba(8, 10, 10, 0.48); }
+.bdo-item-market__header { display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+.bdo-item-market__header p { margin: 0 0 0.2rem; color: #927e5a; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.bdo-item-market__header h4 { margin: 0; color: #d4bb8e; font: 500 1rem Georgia, 'Times New Roman', serif; }
+.bdo-item-market__regions { display: inline-flex; gap: 0.3rem; }
+.bdo-item-market__regions button,
+.bdo-item-market__refresh { border: 1px solid rgba(203, 174, 121, 0.28); background: rgba(203, 174, 121, 0.05); color: #cdbb9b; cursor: pointer; font: inherit; }
+.bdo-item-market__regions button { min-width: 2.5rem; padding: 0.38rem 0.48rem; font-size: 0.7rem; }
+.bdo-item-market__regions button:hover,
+.bdo-item-market__regions button[aria-pressed="true"],
+.bdo-item-market__refresh:hover { border-color: #b99a62; background: rgba(185, 154, 98, 0.16); color: #f0dfbd; }
+.bdo-item-market__regions button:focus-visible,
+.bdo-item-market__refresh:focus-visible { outline: 2px solid #c8a86d; outline-offset: 2px; }
+.bdo-item-market__content { min-height: 4.2rem; margin-top: 0.85rem; }
+.bdo-item-market__content.is-loading,
+.bdo-item-market__content.is-unavailable { display: grid; place-items: center; padding: 1rem; border: 1px dashed #3d392f; color: #8f877b; font-size: 0.78rem; text-align: center; }
+.bdo-item-market__values { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.55rem; margin: 0; }
+.bdo-item-market__values div { padding: 0.7rem; border: 1px solid #353127; background: rgba(11, 12, 12, 0.45); }
+.bdo-item-market__values dt { color: #827a6e; font-size: 0.7rem; }
+.bdo-item-market__values dd { margin: 0.25rem 0 0; color: #e5c88e; font: 500 1rem Georgia, 'Times New Roman', serif; overflow-wrap: anywhere; }
+.bdo-item-market__footer { display: flex; justify-content: space-between; gap: 0.8rem; align-items: center; margin-top: 0.8rem; }
+.bdo-item-market__freshness { color: #777168; font-size: 0.68rem; line-height: 1.4; }
+.bdo-item-market__refresh { flex: 0 0 auto; padding: 0.42rem 0.65rem; font-size: 0.7rem; }
+.bdo-item-market__refresh:disabled { cursor: wait; opacity: 0.55; }
 .bdo-city-record__description { margin: 1rem 0 0; color: #aaa294; line-height: 1.65; }
 .bdo-city-record .bdo-resource-record__facts a { color: #caae7a; }
 .bdo-resource-empty { padding: 2rem; border: 1px dashed #3d392f; color: #9b9285; text-align: center; }
@@ -4846,6 +4870,9 @@ a.bdo-topic-card:focus-visible img {
   .bdo-resource-record__header { grid-template-columns: auto 1fr; }
   .bdo-resource-record__status { grid-column: 2; }
   .bdo-resource-record__facts div { grid-template-columns: 1fr; gap: 0.15rem; }
+  .bdo-item-market__header,
+  .bdo-item-market__footer { align-items: flex-start; flex-direction: column; }
+  .bdo-item-market__values { grid-template-columns: 1fr; }
   .bdo-living-object > header { align-items: flex-start; flex-direction: column; }
   .bdo-living-object__context, .bdo-living-object__path { grid-template-columns: 1fr; }
   .bdo-living-object__context a, .bdo-living-object__path a { white-space: normal; }
