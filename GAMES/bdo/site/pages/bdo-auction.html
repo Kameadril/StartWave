@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Аукцион BDO — текущий рынок | StartWave</title>
+  <meta name="description" content="Текущие данные Центрального аукциона BDO по подтверждённым предметам StartWave для регионов RU, EU и NA.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bdo-archive-body bdo-resource-atlas-body bdo-auction-body">
+  <div class="page-container">
+    <header class="site-header"><div class="header-container"><div class="hero"><h1 class="site-title">StartWave</h1><p class="site-subtitle">Понемногу, но регулярно.</p></div><div class="mini-clock" aria-label="Текущее время и дата"><div class="mini-time" id="miniTime">15:06</div><div class="mini-date" id="miniDate">четверг, 4 июня</div></div><nav class="main-nav" aria-label="Основная навигация"><a href="../index.html" class="nav-button">Главная</a><a href="../entertainment.html" class="nav-button">Развлечения</a><a href="../services.html" class="nav-button">Сервисы</a><a href="../bdo.html" class="nav-button active" aria-current="page">BDO</a><a href="../ai.html" class="nav-button">AI</a></nav></div></header>
+    <form class="search-form" action="https://ya.ru/search/" method="get" target="_blank"><label for="search-input" class="visually-hidden">Поиск в Яндексе</label><input id="search-input" type="search" class="search-input" name="text" placeholder="Поиск в Яндексе..."><button type="submit" class="search-button">Найти</button></form>
+    <main class="content-main bdo-knowledge-page" data-learning-page data-learning-title="Аукцион">
+      <nav class="learning-breadcrumbs" aria-label="Хлебные крошки"><a href="../index.html">StartWave</a><span aria-hidden="true">→</span><a href="../bdo.html">Chronicles of Black Desert</a><span aria-hidden="true">→</span><span aria-current="page">Аукцион</span></nav>
+
+      <section class="bdo-resource-hero bdo-auction-hero" id="page-start" aria-labelledby="auction-title" data-route-item data-route-title="Старт">
+        <p class="bdo-resource-kicker">STARTWAVE BDO · CENTRAL MARKET</p>
+        <h2 id="auction-title">⚖ Аукцион</h2>
+        <p>Текущие наблюдения Центрального рынка для предметов с подтверждённой связью StartWave → BDO. Выберите регион и найдите канонический предмет StartWave.</p>
+        <div class="bdo-resource-summary" aria-label="Сводка аукциона"><span><strong id="auctionMappedCount">0 предметов</strong> с подтверждённой BDO-связью</span><span><strong>RU · EU · NA</strong> регионы рынка</span></div>
+      </section>
+
+      <section class="bdo-auction-catalog" aria-labelledby="auction-catalog-title">
+        <div class="bdo-auction-toolbar">
+          <fieldset class="bdo-auction-regions"><legend>Регион рынка</legend><div role="group" aria-label="Регион рынка"><button type="button" data-auction-region="ru" aria-pressed="true">RU</button><button type="button" data-auction-region="eu" aria-pressed="false">EU</button><button type="button" data-auction-region="na" aria-pressed="false">NA</button></div></fieldset>
+          <label class="bdo-auction-search" for="auctionSearch"><span>Поиск по названию или ID</span><input id="auctionSearch" type="search" placeholder="Например: руда или SW-ITEM-…" autocomplete="off"></label>
+          <button class="bdo-auction-refresh" id="auctionRefresh" type="button">Обновить</button>
+        </div>
+        <div class="bdo-resource-section-heading"><div><p class="bdo-resource-kicker">Confirmed BDO identities</p><h2 id="auction-catalog-title">Предметы рынка</h2></div><span class="bdo-resource-verified-badge" id="auctionResultCount">Загрузка записей…</span></div>
+        <p class="bdo-auction-state" id="auctionState" role="status" aria-live="polite">Загрузка подтверждённых предметов…</p>
+        <div class="bdo-auction-results" id="auctionResults" aria-live="polite" aria-busy="true"></div>
+        <nav class="bdo-auction-pagination" id="auctionPagination" aria-label="Страницы аукциона" hidden></nav>
+      </section>
+    </main>
+    <footer class="site-footer"><p>&copy; 2026 Kameadril · StartWave</p></footer>
+  </div>
+  <script src="../assets/js/script.js"></script><script src="../assets/js/bdo-live-data.js"></script><script src="../assets/js/bdo-auction.js"></script>
+</body>
+</html>

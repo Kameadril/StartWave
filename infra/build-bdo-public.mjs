@@ -21,7 +21,7 @@ const previousRoot = path.join(repositoryRoot, "dist-bdo.previous");
 const bdoOrigin = "https://bdo.startwave.space";
 
 const pageMappings = [
-  "alchemy", "barter", "cities", "crafting", "farming", "fishing",
+  "alchemy", "auction", "barter", "cities", "crafting", "farming", "fishing",
   "items", "knowledge-chain", "knowledge-layer", "nodes", "notes",
   "player-knowledge", "production", "recipes", "region-calpheon",
   "regions", "resources", "workers", "world-connection"
@@ -76,6 +76,7 @@ const requiredOutputs = [
   "assets/css/style.css",
   "assets/js/script.js",
   "assets/js/bdo-live-data.js",
+  "assets/js/bdo-auction.js",
   "assets/js/bdo-items.js",
   "assets/data/bdo-region-views.json"
 ];
@@ -520,6 +521,38 @@ async function validateLiveItemsContract() {
   }
 }
 
+async function validateAuctionContract() {
+  const auctionHtml = await readFile(
+    resolveInside(temporaryRoot, "auction.html"),
+    "utf8"
+  );
+  const auctionController = await readFile(
+    resolveInside(temporaryRoot, "assets/js/bdo-auction.js"),
+    "utf8"
+  );
+  const liveScriptIndex = auctionHtml.indexOf(
+    'src="assets/js/bdo-live-data.js"'
+  );
+  const controllerScriptIndex = auctionHtml.indexOf(
+    'src="assets/js/bdo-auction.js"'
+  );
+
+  if (liveScriptIndex === -1 || controllerScriptIndex === -1) {
+    throw new Error("auction.html is missing the LIVE Auction scripts");
+  }
+  if (liveScriptIndex >= controllerScriptIndex) {
+    throw new Error("bdo-live-data.js must load before bdo-auction.js");
+  }
+  for (const loader of ["loadItems", "loadBdoExternalIdentities", "loadBdoCurrentMarket"]) {
+    if (!auctionController.includes(`StartWaveBdoData.${loader}`)) {
+      throw new Error(`Auction controller does not use shared ${loader}`);
+    }
+  }
+  if (/SW-ITEM-\d|externalItemId\s*:\s*["'`]?[0-9]/.test(auctionController)) {
+    throw new Error("Auction controller contains a static Item identity");
+  }
+}
+
 async function installArtifact() {
   await rm(previousRoot, { recursive: true, force: true });
 
@@ -584,6 +617,7 @@ async function build() {
     await validateRequiredOutputs();
     await validateLocalReferences();
     await validateLiveItemsContract();
+    await validateAuctionContract();
     await installArtifact();
 
     console.log(
