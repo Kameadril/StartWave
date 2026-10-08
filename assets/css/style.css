@@ -4842,42 +4842,71 @@ a.bdo-topic-card:focus-visible img {
 .bdo-item-market__freshness { color: #777168; font-size: 0.68rem; line-height: 1.4; }
 .bdo-item-market__refresh { flex: 0 0 auto; padding: 0.42rem 0.65rem; font-size: 0.7rem; }
 .bdo-item-market__refresh:disabled { cursor: wait; opacity: 0.55; }
-.bdo-auction-catalog { margin-top: 1.5rem; }
-.bdo-auction-toolbar { display: grid; grid-template-columns: auto minmax(240px, 1fr) auto; gap: 1rem; align-items: end; margin-bottom: 2.5rem; padding: 1rem 1.15rem; border: 1px solid rgba(203, 174, 121, 0.18); background: rgba(13, 16, 17, 0.9); }
-.bdo-auction-regions { padding: 0; margin: 0; border: 0; }
-.bdo-auction-regions legend,
-.bdo-auction-search span { display: block; margin-bottom: 0.45rem; color: #cbae79; font-size: 0.78rem; font-weight: 700; }
-.bdo-auction-regions div { display: inline-flex; gap: 0.35rem; }
-.bdo-auction-regions button,
-.bdo-auction-refresh,
-.bdo-auction-pagination button { padding: 0.72rem 0.85rem; border: 1px solid rgba(203, 174, 121, 0.28); background: rgba(203, 174, 121, 0.05); color: #cdbb9b; cursor: pointer; font: inherit; }
-.bdo-auction-regions button[aria-pressed="true"],
-.bdo-auction-regions button:hover,
-.bdo-auction-refresh:hover,
-.bdo-auction-pagination button:hover:not(:disabled) { border-color: #b99a62; background: rgba(185, 154, 98, 0.16); color: #f0dfbd; }
-.bdo-auction-regions button:focus-visible,
-.bdo-auction-refresh:focus-visible,
-.bdo-auction-pagination button:focus-visible,
-.bdo-auction-search input:focus-visible { outline: 2px solid #c8a86d; outline-offset: 2px; }
-.bdo-auction-search input { width: 100%; padding: 0.78rem 1rem; border: 1px solid #3d392f; background: #090b0c; color: #f0e8da; font: inherit; }
-.bdo-auction-refresh:disabled,
-.bdo-auction-pagination button:disabled { cursor: wait; opacity: 0.5; }
-.bdo-auction-state { padding: 2rem; border: 1px dashed #3d392f; color: #9b9285; text-align: center; }
-.bdo-auction-results { display: grid; gap: 0.85rem; }
-.bdo-auction-card { display: grid; grid-template-columns: minmax(180px, 0.8fr) minmax(360px, 1.7fr) minmax(190px, 0.8fr); gap: 1rem; align-items: center; padding: 1.15rem; border: 1px solid rgba(203, 174, 121, 0.2); border-top-color: rgba(203, 174, 121, 0.48); background: linear-gradient(145deg, rgba(23, 26, 26, 0.98), rgba(13, 15, 16, 0.98)); }
-.bdo-auction-card__identity h3 { margin: 0; color: #e0d6c7; font: 500 1.25rem Georgia, 'Times New Roman', serif; }
-.bdo-auction-card__identity code { display: inline-block; margin-top: 0.65rem; color: #caae7a; font-size: 0.74rem; }
-.bdo-auction-card__name-en { margin: 0.3rem 0 0; color: #81796d; font-size: 0.78rem; }
-.bdo-auction-card__market.is-loading,
-.bdo-auction-card__market.is-unavailable { display: grid; min-height: 4.2rem; place-items: center; padding: 1rem; border: 1px dashed #3d392f; color: #8f877b; font-size: 0.78rem; text-align: center; }
-.bdo-auction-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.55rem; margin: 0; }
-.bdo-auction-metrics div { padding: 0.7rem; border: 1px solid #353127; background: rgba(11, 12, 12, 0.45); }
-.bdo-auction-metrics dt { color: #827a6e; font-size: 0.7rem; }
-.bdo-auction-metrics dd { margin: 0.25rem 0 0; color: #e5c88e; font: 500 1rem Georgia, 'Times New Roman', serif; overflow-wrap: anywhere; }
-.bdo-auction-card__meta { display: grid; gap: 0.75rem; justify-items: start; }
-.bdo-auction-card__freshness { color: #777168; font-size: 0.68rem; line-height: 1.45; }
-.bdo-auction-card__meta a { padding: 0.48rem 0.65rem; border: 1px solid #5a4b31; color: #dfbd78; font-size: 0.76rem; }
-.bdo-auction-pagination { display: flex; justify-content: center; gap: 1rem; align-items: center; margin-top: 1.25rem; color: #9b9285; font-size: 0.8rem; }
+.bdo-auction-body .bdo-auction-hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; align-items: end; padding: clamp(2rem, 5vw, 4rem); border: 1px solid rgba(190, 146, 76, 0.32); background: radial-gradient(circle at 82% 18%, rgba(161, 112, 46, 0.2), transparent 34%), linear-gradient(135deg, #101827, #070b12 72%); box-shadow: 0 1.4rem 3rem rgba(0, 0, 0, 0.24); }
+.bdo-auction-body .bdo-auction-hero__identity h2 { margin: 0; color: #f0dfbd; font: 500 clamp(2rem, 5vw, 3.8rem)/1.05 Georgia, 'Times New Roman', serif; letter-spacing: -0.035em; }
+.bdo-auction-body .bdo-auction-hero__identity > p:last-child { max-width: 48rem; margin: 1rem 0 0; color: #a9afba; line-height: 1.7; }
+.bdo-auction-body .bdo-auction-hero__summary { display: grid; min-width: 12rem; gap: 0.7rem; padding-left: 1.5rem; border-left: 1px solid rgba(203, 174, 121, 0.28); color: #828b9a; font-size: 0.74rem; }
+.bdo-auction-body .bdo-auction-hero__summary span { display: grid; gap: 0.2rem; }
+.bdo-auction-body .bdo-auction-hero__summary strong { color: #dfc38c; font: 500 1rem Georgia, 'Times New Roman', serif; }
+.bdo-auction-body .bdo-auction-marketplace { margin-top: 1.25rem; border: 1px solid rgba(203, 174, 121, 0.2); background: #090f19; box-shadow: 0 1.4rem 3.5rem rgba(0, 0, 0, 0.22); }
+.bdo-auction-body .bdo-auction-toolbar { display: grid; grid-template-columns: minmax(260px, 1fr) auto auto; gap: 1rem; align-items: end; padding: 1.15rem; border-bottom: 1px solid rgba(203, 174, 121, 0.2); background: linear-gradient(180deg, rgba(21, 31, 48, 0.98), rgba(12, 19, 31, 0.98)); }
+.bdo-auction-body .bdo-auction-regions { padding: 0; margin: 0; border: 0; }
+.bdo-auction-body .bdo-auction-regions legend,
+.bdo-auction-body .bdo-auction-search span { display: block; margin-bottom: 0.45rem; color: #cbae79; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.bdo-auction-body .bdo-auction-regions div { display: inline-flex; gap: 0.35rem; }
+.bdo-auction-body .bdo-auction-regions button,
+.bdo-auction-body .bdo-auction-refresh,
+.bdo-auction-body .bdo-auction-pagination button { min-height: 2.75rem; padding: 0.72rem 0.9rem; border: 1px solid rgba(203, 174, 121, 0.28); background: rgba(203, 174, 121, 0.05); color: #cdbb9b; cursor: pointer; font: inherit; }
+.bdo-auction-body .bdo-auction-regions button[aria-pressed="true"],
+.bdo-auction-body .bdo-auction-regions button:hover,
+.bdo-auction-body .bdo-auction-refresh:hover,
+.bdo-auction-body .bdo-auction-pagination button:hover:not(:disabled) { border-color: #b99a62; background: rgba(185, 154, 98, 0.16); color: #f0dfbd; }
+.bdo-auction-body .bdo-auction-regions button:focus-visible,
+.bdo-auction-body .bdo-auction-refresh:focus-visible,
+.bdo-auction-body .bdo-auction-pagination button:focus-visible,
+.bdo-auction-body .bdo-auction-search input:focus-visible,
+.bdo-auction-body .bdo-auction-category:focus-visible,
+.bdo-auction-body .bdo-auction-subcategories button:focus-visible { outline: 2px solid #d6b36d; outline-offset: 2px; }
+.bdo-auction-body .bdo-auction-search input { width: 100%; min-height: 3rem; padding: 0.8rem 1rem; border: 1px solid #3a4351; background: #070b12; color: #f0e8da; font: inherit; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25); }
+.bdo-auction-body .bdo-auction-search input::placeholder { color: #697382; }
+.bdo-auction-body .bdo-auction-refresh:disabled,
+.bdo-auction-body .bdo-auction-pagination button:disabled { cursor: wait; opacity: 0.5; }
+.bdo-auction-body .bdo-auction-layout { display: grid; grid-template-columns: minmax(210px, 0.32fr) minmax(0, 1fr); min-height: 34rem; }
+.bdo-auction-body .bdo-auction-categories { padding: 1.15rem; border-right: 1px solid rgba(203, 174, 121, 0.18); background: linear-gradient(180deg, #0c1421, #080d16); }
+.bdo-auction-body .bdo-auction-categories__eyebrow { margin: 0 0 0.8rem; color: #7e8795; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.bdo-auction-body .bdo-auction-category,
+.bdo-auction-body .bdo-auction-subcategories button { display: flex; width: 100%; min-height: 2.75rem; align-items: center; justify-content: space-between; gap: 0.7rem; padding: 0.68rem 0.75rem; border: 1px solid transparent; background: transparent; color: #9ea6b1; cursor: pointer; font: inherit; text-align: left; }
+.bdo-auction-body .bdo-auction-category strong { min-width: 1.7rem; padding: 0.15rem 0.38rem; border: 1px solid rgba(203, 174, 121, 0.18); color: #bda578; font-size: 0.65rem; text-align: center; }
+.bdo-auction-body .bdo-auction-category:hover { background: rgba(203, 174, 121, 0.06); color: #e3d6bf; }
+.bdo-auction-body .bdo-auction-category.is-selected { border-color: rgba(203, 174, 121, 0.4); background: linear-gradient(90deg, rgba(171, 125, 55, 0.2), rgba(171, 125, 55, 0.04)); color: #f0dfbd; box-shadow: inset 2px 0 #c7a466; }
+.bdo-auction-body .bdo-auction-category--group { margin-top: 0.7rem; border-top-color: rgba(203, 174, 121, 0.14); color: #c8b58f; font-weight: 700; }
+.bdo-auction-body .bdo-auction-category--group[aria-expanded="false"] span:last-child { transform: rotate(-90deg); }
+.bdo-auction-body .bdo-auction-subcategories { display: grid; gap: 0.12rem; padding-left: 0.5rem; }
+.bdo-auction-body .bdo-auction-subcategories[hidden] { display: none; }
+.bdo-auction-body .bdo-auction-category--child { font-size: 0.82rem; }
+.bdo-auction-body .bdo-auction-subcategories button:disabled { min-height: 2.2rem; padding-block: 0.42rem; color: #505968; cursor: not-allowed; font-size: 0.76rem; }
+.bdo-auction-body .bdo-auction-subcategories button:disabled::after { content: 'позже'; color: #4a5360; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.bdo-auction-body .bdo-auction-catalog { min-width: 0; padding: clamp(1rem, 3vw, 1.7rem); background: radial-gradient(circle at 100% 0, rgba(79, 103, 132, 0.08), transparent 32%), #080e17; }
+.bdo-auction-body .bdo-auction-catalog__heading { display: flex; justify-content: space-between; gap: 1rem; align-items: end; margin-bottom: 1rem; }
+.bdo-auction-body .bdo-auction-catalog__heading h2 { margin: 0; color: #e5d7bd; font: 500 1.6rem Georgia, 'Times New Roman', serif; }
+.bdo-auction-body .bdo-auction-catalog__heading > span { padding: 0.38rem 0.55rem; border: 1px solid rgba(203, 174, 121, 0.2); color: #a99a81; font-size: 0.7rem; }
+.bdo-auction-body .bdo-auction-state { padding: 2rem; border: 1px dashed #3b4553; color: #8e98a7; text-align: center; }
+.bdo-auction-body .bdo-auction-results { display: grid; gap: 0.65rem; }
+.bdo-auction-body .bdo-auction-card { display: grid; grid-template-columns: minmax(170px, 0.85fr) minmax(330px, 1.5fr) minmax(170px, 0.7fr); gap: 1rem; align-items: center; padding: 1rem; border: 1px solid rgba(142, 154, 171, 0.18); border-left-color: rgba(203, 174, 121, 0.5); background: linear-gradient(100deg, rgba(20, 29, 43, 0.98), rgba(11, 17, 27, 0.98)); transition: border-color 160ms ease, transform 160ms ease; }
+.bdo-auction-body .bdo-auction-card:hover { border-color: rgba(203, 174, 121, 0.42); transform: translateY(-1px); }
+.bdo-auction-body .bdo-auction-card__identity h3 { margin: 0; color: #e6dccb; font: 500 1.12rem Georgia, 'Times New Roman', serif; }
+.bdo-auction-body .bdo-auction-card__identity code { display: inline-block; margin-top: 0.55rem; color: #bfa36f; font-size: 0.7rem; }
+.bdo-auction-body .bdo-auction-card__name-en { margin: 0.28rem 0 0; color: #737d8b; font-size: 0.74rem; }
+.bdo-auction-body .bdo-auction-card__market.is-loading,
+.bdo-auction-body .bdo-auction-card__market.is-unavailable { display: grid; min-height: 4.2rem; place-items: center; padding: 1rem; border: 1px dashed #384251; color: #8993a2; font-size: 0.76rem; text-align: center; }
+.bdo-auction-body .bdo-auction-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.45rem; margin: 0; }
+.bdo-auction-body .bdo-auction-metrics div { padding: 0.65rem; border: 1px solid #2c3745; background: rgba(5, 10, 17, 0.48); }
+.bdo-auction-body .bdo-auction-metrics dt { color: #778292; font-size: 0.66rem; }
+.bdo-auction-body .bdo-auction-metrics dd { margin: 0.22rem 0 0; color: #e2c486; font: 500 0.96rem Georgia, 'Times New Roman', serif; overflow-wrap: anywhere; }
+.bdo-auction-body .bdo-auction-card__meta { display: grid; gap: 0.65rem; justify-items: start; }
+.bdo-auction-body .bdo-auction-card__freshness { color: #687383; font-size: 0.65rem; line-height: 1.45; }
+.bdo-auction-body .bdo-auction-card__meta a { padding: 0.5rem 0.65rem; border: 1px solid #5a4b31; color: #dfbd78; font-size: 0.73rem; }
+.bdo-auction-body .bdo-auction-pagination { display: flex; justify-content: center; gap: 1rem; align-items: center; margin-top: 1.25rem; color: #929cab; font-size: 0.76rem; }
 .bdo-city-record__description { margin: 1rem 0 0; color: #aaa294; line-height: 1.65; }
 .bdo-city-record .bdo-resource-record__facts a { color: #caae7a; }
 .bdo-resource-empty { padding: 2rem; border: 1px dashed #3d392f; color: #9b9285; text-align: center; }
@@ -4897,9 +4926,14 @@ a.bdo-topic-card:focus-visible img {
   .bdo-resource-toolbar { grid-template-columns: 1fr; }
   .bdo-item-category-list { grid-column: auto; }
   .bdo-resource-section-heading { align-items: start; flex-direction: column; }
-  .bdo-auction-toolbar { grid-template-columns: 1fr; align-items: stretch; }
-  .bdo-auction-card { grid-template-columns: 1fr; }
-  .bdo-auction-card__meta { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+  .bdo-auction-body .bdo-auction-hero { grid-template-columns: 1fr; align-items: start; }
+  .bdo-auction-body .bdo-auction-hero__summary { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 1rem 0 0; border-top: 1px solid rgba(203, 174, 121, 0.28); border-left: 0; }
+  .bdo-auction-body .bdo-auction-toolbar { grid-template-columns: 1fr; align-items: stretch; }
+  .bdo-auction-body .bdo-auction-layout { grid-template-columns: 1fr; }
+  .bdo-auction-body .bdo-auction-categories { border-right: 0; border-bottom: 1px solid rgba(203, 174, 121, 0.18); }
+  .bdo-auction-body .bdo-auction-subcategories { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bdo-auction-body .bdo-auction-card { grid-template-columns: 1fr; }
+  .bdo-auction-body .bdo-auction-card__meta { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
 }
 
 @media (max-width: 460px) {
@@ -4912,9 +4946,13 @@ a.bdo-topic-card:focus-visible img {
   .bdo-item-market__header,
   .bdo-item-market__footer { align-items: flex-start; flex-direction: column; }
   .bdo-item-market__values { grid-template-columns: 1fr; }
-  .bdo-auction-metrics { grid-template-columns: 1fr; }
-  .bdo-auction-card__meta { grid-template-columns: 1fr; }
-  .bdo-auction-card__meta a { white-space: normal; }
+  .bdo-auction-body .bdo-auction-hero { padding: 1.4rem 1rem; }
+  .bdo-auction-body .bdo-auction-hero__summary { grid-template-columns: 1fr; }
+  .bdo-auction-body .bdo-auction-subcategories { grid-template-columns: 1fr; }
+  .bdo-auction-body .bdo-auction-catalog__heading { align-items: flex-start; flex-direction: column; }
+  .bdo-auction-body .bdo-auction-metrics { grid-template-columns: 1fr; }
+  .bdo-auction-body .bdo-auction-card__meta { grid-template-columns: 1fr; }
+  .bdo-auction-body .bdo-auction-card__meta a { white-space: normal; }
   .bdo-living-object > header { align-items: flex-start; flex-direction: column; }
   .bdo-living-object__context, .bdo-living-object__path { grid-template-columns: 1fr; }
   .bdo-living-object__context a, .bdo-living-object__path a { white-space: normal; }

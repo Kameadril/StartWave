@@ -14,23 +14,43 @@
     <main class="content-main bdo-knowledge-page" data-learning-page data-learning-title="Аукцион">
       <nav class="learning-breadcrumbs" aria-label="Хлебные крошки"><a href="../index.html">StartWave</a><span aria-hidden="true">→</span><a href="../bdo.html">Chronicles of Black Desert</a><span aria-hidden="true">→</span><span aria-current="page">Аукцион</span></nav>
 
-      <section class="bdo-resource-hero bdo-auction-hero" id="page-start" aria-labelledby="auction-title" data-route-item data-route-title="Старт">
-        <p class="bdo-resource-kicker">STARTWAVE BDO · CENTRAL MARKET</p>
-        <h2 id="auction-title">⚖ Аукцион</h2>
-        <p>Текущие наблюдения Центрального рынка для предметов с подтверждённой связью StartWave → BDO. Выберите регион и найдите канонический предмет StartWave.</p>
-        <div class="bdo-resource-summary" aria-label="Сводка аукциона"><span><strong id="auctionMappedCount">0 предметов</strong> с подтверждённой BDO-связью</span><span><strong>RU · EU · NA</strong> регионы рынка</span></div>
+      <section class="bdo-auction-hero" id="page-start" aria-labelledby="auction-title" data-route-item data-route-title="Старт">
+        <div class="bdo-auction-hero__identity">
+          <p class="bdo-resource-kicker">STARTWAVE BDO · CENTRAL MARKET</p>
+          <h2 id="auction-title"><span aria-hidden="true">⚖</span> StartWave Auction</h2>
+          <p>Только подтверждённые связи StartWave → BDO и текущие наблюдения рынка — без выдуманных графиков и прогнозов.</p>
+        </div>
+        <div class="bdo-auction-hero__summary" aria-label="Сводка аукциона">
+          <span><strong id="auctionMappedCount">0 предметов</strong> подтверждено</span>
+          <span><strong>RU · EU · NA</strong> регионы рынка</span>
+        </div>
       </section>
 
-      <section class="bdo-auction-catalog" aria-labelledby="auction-catalog-title">
-        <div class="bdo-auction-toolbar">
+      <section class="bdo-auction-marketplace" aria-labelledby="auction-catalog-title">
+        <header class="bdo-auction-toolbar">
+          <label class="bdo-auction-search" for="auctionSearch"><span>Поиск по аукциону</span><input id="auctionSearch" type="search" placeholder="Название или SW-ITEM-…" autocomplete="off"></label>
           <fieldset class="bdo-auction-regions"><legend>Регион рынка</legend><div role="group" aria-label="Регион рынка"><button type="button" data-auction-region="ru" aria-pressed="true">RU</button><button type="button" data-auction-region="eu" aria-pressed="false">EU</button><button type="button" data-auction-region="na" aria-pressed="false">NA</button></div></fieldset>
-          <label class="bdo-auction-search" for="auctionSearch"><span>Поиск по названию или ID</span><input id="auctionSearch" type="search" placeholder="Например: руда или SW-ITEM-…" autocomplete="off"></label>
-          <button class="bdo-auction-refresh" id="auctionRefresh" type="button">Обновить</button>
+          <button class="bdo-auction-refresh" id="auctionRefresh" type="button">Обновить рынок</button>
+        </header>
+
+        <div class="bdo-auction-layout">
+          <aside class="bdo-auction-categories" aria-label="Категории аукциона">
+            <p class="bdo-auction-categories__eyebrow">Категории</p>
+            <button class="bdo-auction-category is-selected" type="button" data-auction-category="all" aria-pressed="true"><span>Все подтверждённые</span><strong data-auction-category-count="all">0</strong></button>
+            <button class="bdo-auction-category bdo-auction-category--group" id="auctionMaterialsToggle" type="button" aria-expanded="true" aria-controls="auctionMaterialsCategories"><span>Материалы</span><span aria-hidden="true">⌄</span></button>
+            <div class="bdo-auction-subcategories" id="auctionMaterialsCategories">
+              <button class="bdo-auction-category bdo-auction-category--child" type="button" data-auction-category="materials-ore" aria-pressed="false"><span>Руда/драг. камни</span><strong data-auction-category-count="materials-ore">0</strong></button>
+              <button type="button" disabled>Растения</button><button type="button" disabled>Семя</button><button type="button" disabled>Плоды/фрукты</button><button type="button" disabled>Овощи</button><button type="button" disabled>Зерновые</button><button type="button" disabled>Морепродукты</button><button type="button" disabled>Мясо</button><button type="button" disabled>Кожа</button><button type="button" disabled>Кровь</button><button type="button" disabled>Другие</button>
+            </div>
+          </aside>
+
+          <div class="bdo-auction-catalog">
+            <div class="bdo-auction-catalog__heading"><div><p class="bdo-resource-kicker" id="auctionCategoryLabel">Все подтверждённые</p><h2 id="auction-catalog-title">Предметы рынка</h2></div><span id="auctionResultCount">Загрузка записей…</span></div>
+            <p class="bdo-auction-state" id="auctionState" role="status" aria-live="polite">Загрузка подтверждённых предметов…</p>
+            <div class="bdo-auction-results" id="auctionResults" aria-live="polite" aria-busy="true"></div>
+            <nav class="bdo-auction-pagination" id="auctionPagination" aria-label="Страницы аукциона" hidden></nav>
+          </div>
         </div>
-        <div class="bdo-resource-section-heading"><div><p class="bdo-resource-kicker">Confirmed BDO identities</p><h2 id="auction-catalog-title">Предметы рынка</h2></div><span class="bdo-resource-verified-badge" id="auctionResultCount">Загрузка записей…</span></div>
-        <p class="bdo-auction-state" id="auctionState" role="status" aria-live="polite">Загрузка подтверждённых предметов…</p>
-        <div class="bdo-auction-results" id="auctionResults" aria-live="polite" aria-busy="true"></div>
-        <nav class="bdo-auction-pagination" id="auctionPagination" aria-label="Страницы аукциона" hidden></nav>
       </section>
     </main>
     <footer class="site-footer"><p>&copy; 2026 Kameadril · StartWave</p></footer>

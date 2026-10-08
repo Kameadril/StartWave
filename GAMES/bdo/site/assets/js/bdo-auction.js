@@ -7,7 +7,11 @@
   const pagination = document.getElementById('auctionPagination');
   const refreshButton = document.getElementById('auctionRefresh');
   const regionButtons = [...document.querySelectorAll('[data-auction-region]')];
-  if (!results || !state || !search || !resultCount || !mappedCount || !pagination || !refreshButton || regionButtons.length !== 3) return;
+  const categoryButtons = [...document.querySelectorAll('[data-auction-category]')];
+  const categoryLabel = document.getElementById('auctionCategoryLabel');
+  const materialsToggle = document.getElementById('auctionMaterialsToggle');
+  const materialsCategories = document.getElementById('auctionMaterialsCategories');
+  if (!results || !state || !search || !resultCount || !mappedCount || !pagination || !refreshButton || !categoryLabel || !materialsToggle || !materialsCategories || regionButtons.length !== 3 || categoryButtons.length !== 2) return;
 
   const PAGE_SIZE = 10;
   const CONCURRENCY_LIMIT = 3;
@@ -16,9 +20,15 @@
   const marketCache = new Map();
   const marketRequests = new Map();
   const queue = [];
+  const oreItemTypes = new Set(['Руда', 'Минерал', 'Грубый минерал']);
+  const categoryDefinitions = {
+    all: { label: 'Все подтверждённые', includes: () => true },
+    'materials-ore': { label: 'Материалы · Руда/драг. камни', includes: ({ item }) => oreItemTypes.has(item.itemType) }
+  };
   let activeRequests = 0;
   let mappedItems = [];
   let selectedRegion = 'ru';
+  let selectedCategory = 'all';
   let currentPage = 1;
   let renderVersion = 0;
 
@@ -61,7 +71,9 @@
 
   const visibleItems = () => {
     const query = normalize(search.value);
-    const filtered = mappedItems.filter(({ item }) => normalize(`${item.name} ${item.nameEn ?? ''} ${item.id}`).includes(query));
+    const category = categoryDefinitions[selectedCategory] || categoryDefinitions.all;
+    const inCategory = mappedItems.filter(category.includes);
+    const filtered = inCategory.filter(({ item }) => normalize(`${item.name} ${item.nameEn ?? ''} ${item.id}`).includes(query));
     const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
     currentPage = Math.min(currentPage, pageCount);
     const offset = (currentPage - 1) * PAGE_SIZE;
@@ -164,6 +176,24 @@
     currentPage = 1;
     render();
   });
+  categoryButtons.forEach((button) => button.addEventListener('click', () => {
+    const category = button.dataset.auctionCategory;
+    if (!categoryDefinitions[category] || category === selectedCategory) return;
+    selectedCategory = category;
+    currentPage = 1;
+    categoryButtons.forEach((candidate) => {
+      const selected = candidate === button;
+      candidate.classList.toggle('is-selected', selected);
+      candidate.setAttribute('aria-pressed', String(selected));
+    });
+    categoryLabel.textContent = categoryDefinitions[category].label;
+    render();
+  }));
+  materialsToggle.addEventListener('click', () => {
+    const expanded = materialsToggle.getAttribute('aria-expanded') === 'true';
+    materialsToggle.setAttribute('aria-expanded', String(!expanded));
+    materialsCategories.hidden = expanded;
+  });
   regionButtons.forEach((button) => button.addEventListener('click', () => {
     const region = button.dataset.auctionRegion;
     if (!supportedRegions.has(region) || region === selectedRegion) return;
@@ -183,6 +213,8 @@
       .map((identity) => ({ item: itemsById.get(identity.itemId), identity }))
       .sort((left, right) => left.item.name.localeCompare(right.item.name, 'ru-RU'));
     mappedCount.textContent = `${mappedItems.length} ${pluralize(mappedItems.length)}`;
+    document.querySelector('[data-auction-category-count="all"]').textContent = mappedItems.length;
+    document.querySelector('[data-auction-category-count="materials-ore"]').textContent = mappedItems.filter(categoryDefinitions['materials-ore'].includes).length;
     render();
   }).catch(() => {
     results.setAttribute('aria-busy', 'false');
