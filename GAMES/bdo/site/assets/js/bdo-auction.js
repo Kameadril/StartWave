@@ -11,7 +11,7 @@
   const categoryLabel = document.getElementById('auctionCategoryLabel');
   const materialsToggle = document.getElementById('auctionMaterialsToggle');
   const materialsCategories = document.getElementById('auctionMaterialsCategories');
-  if (!results || !state || !search || !resultCount || !mappedCount || !pagination || !refreshButton || !categoryLabel || !materialsToggle || !materialsCategories || regionButtons.length !== 3 || categoryButtons.length !== 3) return;
+  if (!results || !state || !search || !resultCount || !mappedCount || !pagination || !refreshButton || !categoryLabel || !materialsToggle || !materialsCategories || regionButtons.length !== 3 || categoryButtons.length !== 4) return;
 
   const PAGE_SIZE = 10;
   const CONCURRENCY_LIMIT = 3;
@@ -24,10 +24,12 @@
   const categoryItemIds = (category) => new Set((categoryButtons.find((button) => button.dataset.auctionCategory === category)?.dataset.auctionItemIds || '').split(',').filter(Boolean));
   const oreItemIds = categoryItemIds('materials-ore');
   const plantItemIds = categoryItemIds('materials-plants');
+  const otherItemIds = categoryItemIds('materials-other');
   const categoryDefinitions = {
     all: { label: 'Все подтверждённые', includes: () => true },
     'materials-ore': { label: 'Материалы · Руда/драг. камни', includes: ({ item }) => oreItemTypes.has(item.itemType) || oreItemIds.has(item.id) },
-    'materials-plants': { label: 'Материалы · Растения', includes: ({ item }) => plantItemIds.has(item.id) }
+    'materials-plants': { label: 'Материалы · Растения', includes: ({ item }) => plantItemIds.has(item.id) },
+    'materials-other': { label: 'Материалы · Другие', includes: ({ item }) => otherItemIds.has(item.id) }
   };
   let activeRequests = 0;
   let mappedItems = [];
@@ -220,6 +222,7 @@
     document.querySelector('[data-auction-category-count="all"]').textContent = mappedItems.length;
     document.querySelector('[data-auction-category-count="materials-ore"]').textContent = mappedItems.filter(categoryDefinitions['materials-ore'].includes).length;
     document.querySelector('[data-auction-category-count="materials-plants"]').textContent = mappedItems.filter(categoryDefinitions['materials-plants'].includes).length;
+    document.querySelector('[data-auction-category-count="materials-other"]').textContent = mappedItems.filter(categoryDefinitions['materials-other'].includes).length;
     render();
   }).catch(() => {
     results.setAttribute('aria-busy', 'false');
