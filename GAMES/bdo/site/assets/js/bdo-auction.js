@@ -11,7 +11,7 @@
   const categoryLabel = document.getElementById('auctionCategoryLabel');
   const materialsToggle = document.getElementById('auctionMaterialsToggle');
   const materialsCategories = document.getElementById('auctionMaterialsCategories');
-  if (!results || !state || !search || !resultCount || !mappedCount || !pagination || !refreshButton || !categoryLabel || !materialsToggle || !materialsCategories || regionButtons.length !== 3 || categoryButtons.length !== 6) return;
+  if (!results || !state || !search || !resultCount || !mappedCount || !pagination || !refreshButton || !categoryLabel || !materialsToggle || !materialsCategories || regionButtons.length !== 3 || categoryButtons.length !== 7) return;
 
   const PAGE_SIZE = 10;
   const CONCURRENCY_LIMIT = 3;
@@ -26,6 +26,7 @@
   const plantItemIds = categoryItemIds('materials-plants');
   const fruitItemIds = categoryItemIds('materials-fruit');
   const vegetableItemIds = categoryItemIds('materials-vegetables');
+  const grainItemIds = categoryItemIds('materials-grains');
   const otherItemIds = categoryItemIds('materials-other');
   const categoryDefinitions = {
     all: { label: 'Все подтверждённые', includes: () => true },
@@ -33,6 +34,7 @@
     'materials-plants': { label: 'Материалы · Растения', includes: ({ item }) => plantItemIds.has(item.id) },
     'materials-fruit': { label: 'Материалы · Плоды/фрукты', includes: ({ item }) => fruitItemIds.has(item.id) },
     'materials-vegetables': { label: 'Материалы · Овощи', includes: ({ item }) => vegetableItemIds.has(item.id) },
+    'materials-grains': { label: 'Материалы · Зерновые', includes: ({ item }) => grainItemIds.has(item.id) },
     'materials-other': { label: 'Материалы · Другие', includes: ({ item }) => otherItemIds.has(item.id) }
   };
   let activeRequests = 0;
@@ -228,6 +230,7 @@
     document.querySelector('[data-auction-category-count="materials-plants"]').textContent = mappedItems.filter(categoryDefinitions['materials-plants'].includes).length;
     document.querySelector('[data-auction-category-count="materials-fruit"]').textContent = mappedItems.filter(categoryDefinitions['materials-fruit'].includes).length;
     document.querySelector('[data-auction-category-count="materials-vegetables"]').textContent = mappedItems.filter(categoryDefinitions['materials-vegetables'].includes).length;
+    document.querySelector('[data-auction-category-count="materials-grains"]').textContent = mappedItems.filter(categoryDefinitions['materials-grains'].includes).length;
     document.querySelector('[data-auction-category-count="materials-other"]').textContent = mappedItems.filter(categoryDefinitions['materials-other'].includes).length;
     render();
   }).catch(() => {
