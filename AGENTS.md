@@ -6,9 +6,18 @@ These rules apply to this repository and all descendants.
 - Keep local automation deterministic and offline. Do not add network calls, telemetry, external APIs, or package dependencies.
 - Never read or write outside the resolved repository root.
 - Do not execute arbitrary commands from configuration or Atlas data.
-- Do not auto-fix, delete, commit, or push. Report findings and let a human decide.
+- For audits and previews, work read-only: do not auto-fix, delete, commit, or push. Report findings and wait for owner approval.
 - Store generated Atlas Worker reports only under `.startwave-agent/logs/`; reports must not contain secrets or full source-file contents.
 - Classify validator findings as `ERROR`, `WARNING`, or `INFO`. Validation errors must produce a non-zero exit code.
+
+## Approved APPLY workflow
+
+- An explicit owner-approved APPLY permits only the changes named in that task. Keep the scope exact and run all required validation and tests.
+- If validation and tests pass, the agent may commit only the approved APPLY files and push only to the current owner-approved working branch. Report the commit SHA and push result.
+- If validation or tests fail, unexpected files change, scope expands, repository state is unsafe or ambiguous, or conflicts occur, do not commit or push. Stop and report to the owner.
+- APPLY permission does not authorize unrelated deletion, destructive cleanup, history rewriting, force-push, branch deletion, reset, or other destructive Git operations. Those require separate explicit owner authorization where applicable.
+- Commit and push permission does not authorize production deployment. Production deployment requires separate explicit owner approval.
+- Git permission does not imply database or Supabase mutation permission. Database APPLY must be separately authorized when required by the task.
 
 ## Approved Node ID rule
 
