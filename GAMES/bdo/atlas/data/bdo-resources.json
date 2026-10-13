@@ -104,9 +104,9 @@
         "summary": "Региональный древесный материал кальфеонской ветки, представленный существующей карточкой SW-ITEM-016.",
         "source": "Сосна",
         "acquisitionType": "Ручная рубка сосен; добыча рабочими на уже связанных лесных узлах.",
-        "processing": "Сосновая древесина перерабатывается в доски и фанеру по существующим рецептам SW-RECIPE-003 и SW-RECIPE-004.",
+        "processing": "Сосновая древесина перерабатывается в фанеру из сосны по SW-RECIPE-004 и используется в SW-RECIPE-010.",
         "usage": "Обработка древесины, производство изделий и существующего торгового груза SW-ITEM-017.",
-        "productionSequence": "SW-ITEM-016 → SW-ITEM-014 → SW-ITEM-015; SW-ITEM-015 + SW-ITEM-016 → SW-ITEM-017."
+        "productionSequence": "SW-ITEM-016 → SW-RECIPE-004 → SW-ITEM-044; SW-ITEM-016 + SW-ITEM-018 → SW-RECIPE-010 → SW-ITEM-028."
       },
       "verification": {
         "status": "curated",
@@ -123,19 +123,16 @@
         ],
         "workers": [],
         "recipes": [
-          "SW-RECIPE-003",
           "SW-RECIPE-004",
-          "SW-RECIPE-005"
+          "SW-RECIPE-010"
         ],
         "items": [
           "SW-ITEM-016",
-          "SW-ITEM-014",
-          "SW-ITEM-015",
-          "SW-ITEM-017",
-          "SW-ITEM-027"
+          "SW-ITEM-044",
+          "SW-ITEM-028"
         ],
         "productions": [
-          "SW-PROD-001"
+          "SW-PROD-005"
         ],
         "mapPoints": [],
         "playerJourneySteps": []
