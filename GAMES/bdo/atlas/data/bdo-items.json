@@ -2300,7 +2300,12 @@
       "resources": [
         "bdo-resource-zinc-ore"
       ],
-      "recipes": [],
+      "relatedItemIds": [
+        "SW-ITEM-147"
+      ],
+      "recipes": [
+        "SW-RECIPE-019"
+      ],
       "productions": []
     },
     {
@@ -3643,6 +3648,72 @@
       "resources": [
         "bdo-resource-vanadium"
       ],
+      "status": "curated"
+    },
+    {
+      "id": "SW-ITEM-147",
+      "gameId": 4063,
+      "name": "Кусок цинка",
+      "category": "Материалы",
+      "itemType": "Кусок",
+      "grade": "Обычный",
+      "description": "Обработанный материал, получаемый нагреванием цинковой руды.",
+      "acquisition": [
+        "Нагревание цинковой руды"
+      ],
+      "production": [
+        "SW-ITEM-047 ×5 → SW-ITEM-147 ×1–4"
+      ],
+      "usage": [
+        "Нагревание для получения слитка цинка"
+      ],
+      "relatedItemIds": [
+        "SW-ITEM-047",
+        "SW-ITEM-148"
+      ],
+      "resources": [],
+      "productions": [],
+      "recipes": [
+        "SW-RECIPE-019",
+        "SW-RECIPE-020"
+      ],
+      "source": [
+        "BDO Codex item 4063",
+        "BDO Codex processing recipe 9",
+        "Arsha RU market API"
+      ],
+      "checkedAt": "2026-10-13",
+      "status": "curated"
+    },
+    {
+      "id": "SW-ITEM-148",
+      "gameId": 4064,
+      "name": "Слиток цинка",
+      "category": "Материалы",
+      "itemType": "Слиток",
+      "grade": "Обычный",
+      "description": "Обработанный материал, получаемый нагреванием кусков цинка.",
+      "acquisition": [
+        "Нагревание кусков цинка"
+      ],
+      "production": [
+        "SW-ITEM-147 ×10 → SW-ITEM-148 ×1–4"
+      ],
+      "usage": [],
+      "relatedItemIds": [
+        "SW-ITEM-147"
+      ],
+      "resources": [],
+      "productions": [],
+      "recipes": [
+        "SW-RECIPE-020"
+      ],
+      "source": [
+        "BDO Codex item 4064",
+        "BDO Codex processing recipe 10",
+        "Arsha RU market API"
+      ],
+      "checkedAt": "2026-10-13",
       "status": "curated"
     },
     {

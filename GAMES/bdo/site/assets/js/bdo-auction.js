@@ -28,6 +28,7 @@
   const vegetableItemIds = categoryItemIds('materials-vegetables');
   const grainItemIds = categoryItemIds('materials-grains');
   const otherItemIds = categoryItemIds('materials-other');
+  const databaseItemIds = new Set((document.body.dataset.databaseItemIds || '').split(',').filter(Boolean));
   const categoryDefinitions = {
     all: { label: 'Все подтверждённые', includes: () => true },
     'materials-ore': { label: 'Материалы · Руда/драг. камни', includes: ({ item }) => oreItemTypes.has(item.itemType) || oreItemIds.has(item.id) },
@@ -102,10 +103,11 @@
     const article = document.createElement('article');
     article.className = 'bdo-auction-card';
     article.dataset.itemId = item.id;
+    const databaseAction = databaseItemIds.has(item.id) ? `<a href="/database#${encodeURIComponent(item.id)}">Открыть в базе →</a>` : '';
     article.innerHTML = `
       <div class="bdo-auction-card__identity"><p class="bdo-resource-record__eyebrow">Канонический предмет StartWave</p><h3>${escapeHtml(item.name)}</h3>${item.nameEn ? `<p class="bdo-auction-card__name-en">${escapeHtml(item.nameEn)}</p>` : ''}<code>${escapeHtml(item.id)}</code></div>
       <div class="bdo-auction-card__market is-loading" aria-live="polite">Загрузка данных рынка…</div>
-      <div class="bdo-auction-card__meta"><span class="bdo-auction-card__freshness"></span><a href="/items#${encodeURIComponent(item.id)}">Открыть предмет →</a></div>`;
+      <div class="bdo-auction-card__meta"><span class="bdo-auction-card__freshness"></span><span class="bdo-auction-card__actions">${databaseAction}<a href="/items#${encodeURIComponent(item.id)}">Открыть предмет →</a></span></div>`;
     return { article, identity, market: article.querySelector('.bdo-auction-card__market'), freshness: article.querySelector('.bdo-auction-card__freshness') };
   };
 
@@ -224,6 +226,8 @@
       .filter((identity) => identity.provider === 'bdo' && identity.itemId && identity.externalItemId && itemsById.has(identity.itemId))
       .map((identity) => ({ item: itemsById.get(identity.itemId), identity }))
       .sort((left, right) => left.item.name.localeCompare(right.item.name, 'ru-RU'));
+    const routeItemId = decodeURIComponent(window.location.hash.slice(1));
+    if (routeItemId && itemsById.has(routeItemId)) search.value = routeItemId;
     mappedCount.textContent = `${mappedItems.length} ${pluralize(mappedItems.length)}`;
     document.querySelector('[data-auction-category-count="all"]').textContent = mappedItems.length;
     document.querySelector('[data-auction-category-count="materials-ore"]').textContent = mappedItems.filter(categoryDefinitions['materials-ore'].includes).length;

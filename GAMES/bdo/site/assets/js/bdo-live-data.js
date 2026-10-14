@@ -63,6 +63,28 @@
     }));
   };
 
+  const loadRecipes = async () => {
+    const rows = await request('recipes', {
+      select: 'id,name,method,workplace,result_item_id,result_quantity,status,recipe_inputs(item_id,quantity)',
+      status: 'in.(curated,active)',
+      order: 'id.asc',
+      limit: '1000'
+    });
+    return rows.map((row) => ({
+      id: row.id,
+      name: row.name,
+      method: row.method,
+      workplace: row.workplace,
+      resultItemId: row.result_item_id,
+      resultQuantity: row.result_quantity == null ? null : Number(row.result_quantity),
+      status: row.status,
+      inputs: (row.recipe_inputs || []).map((input) => ({
+        itemId: input.item_id,
+        quantity: input.quantity == null ? null : Number(input.quantity)
+      }))
+    }));
+  };
+
   const loadBdoCurrentMarket = async (externalItemId, region) => {
     const requestedId = String(externalItemId ?? '').trim();
     const requestedRegion = String(region ?? '').trim().toLowerCase();
@@ -247,6 +269,7 @@
   window.StartWaveBdoData = Object.freeze({
     loadItems,
     loadBdoExternalIdentities,
+    loadRecipes,
     loadBdoCurrentMarket,
     loadCities,
     loadNodes,

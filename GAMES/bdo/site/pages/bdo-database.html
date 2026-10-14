@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>База BDO — цинковая семья | StartWave</title>
+  <meta name="description" content="Первая справочная ветка StartWave BDO: классификация и подтверждённая обработка цинковой руды, куска и слитка цинка.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bdo-archive-body bdo-resource-atlas-body bdo-database-body">
+  <div class="page-container">
+    <header class="site-header"><div class="header-container"><div class="hero"><h1 class="site-title">StartWave</h1><p class="site-subtitle">Понемногу, но регулярно.</p></div><div class="mini-clock" aria-label="Текущее время и дата"><div class="mini-time" id="miniTime">15:06</div><div class="mini-date" id="miniDate">четверг, 4 июня</div></div><nav class="main-nav" aria-label="Основная навигация"><a href="../index.html" class="nav-button">Главная</a><a href="../entertainment.html" class="nav-button">Развлечения</a><a href="../services.html" class="nav-button">Сервисы</a><a href="../bdo.html" class="nav-button active" aria-current="page">BDO</a><a href="../ai.html" class="nav-button">AI</a></nav></div></header>
+    <form class="search-form" action="https://ya.ru/search/" method="get" target="_blank"><label for="search-input" class="visually-hidden">Поиск в Яндексе</label><input id="search-input" type="search" class="search-input" name="text" placeholder="Поиск в Яндексе..."><button type="submit" class="search-button">Найти</button></form>
+    <main class="content-main bdo-knowledge-page" data-learning-page data-learning-title="База BDO">
+      <nav class="learning-breadcrumbs" aria-label="Хлебные крошки"><a href="../index.html">StartWave</a><span aria-hidden="true">→</span><a href="../bdo.html">Chronicles of Black Desert</a><span aria-hidden="true">→</span><span aria-current="page">База</span></nav>
+
+      <section class="bdo-database-hero" aria-labelledby="database-title">
+        <div><p class="bdo-resource-kicker">STARTWAVE BDO · KNOWLEDGE PROJECTION</p><h2 id="database-title">База предметов</h2><p>Канонические предметы StartWave, их определения и подтверждённые связи обработки. Первый эталонный срез — семья цинка.</p></div>
+        <a href="/auction">Открыть аукцион →</a>
+      </section>
+
+      <section class="bdo-database-workspace" aria-label="Справочная ветка цинка">
+        <aside class="bdo-database-tree" aria-label="Классификация материалов">
+          <p class="bdo-resource-kicker">Материалы</p>
+          <button class="bdo-database-accordion" id="databaseOreToggle" type="button" aria-expanded="true" aria-controls="databaseOreBranch"><span>Руда/драг. камни</span><span aria-hidden="true">⌄</span></button>
+          <div class="bdo-database-branch" id="databaseOreBranch">
+            <section><h3>Руда</h3><button type="button" data-database-item="SW-ITEM-047" data-semantic-type="Руда" aria-pressed="false">Цинковая руда</button></section>
+            <section><h3>Кусок</h3><button type="button" data-database-item="SW-ITEM-147" data-semantic-type="Кусок" aria-pressed="false">Кусок цинка</button></section>
+            <section><h3>Слиток</h3><button type="button" data-database-item="SW-ITEM-148" data-semantic-type="Слиток" aria-pressed="false">Слиток цинка</button></section>
+          </div>
+        </aside>
+
+        <article class="bdo-database-detail" id="databaseDetail" aria-live="polite" aria-busy="true">
+          <p class="bdo-database-state" id="databaseState">Загрузка канонических данных…</p>
+          <div id="databaseRecord" hidden>
+            <header><div><p class="bdo-resource-kicker" id="databaseSemanticType"></p><h2 id="databaseItemName"></h2><p id="databaseItemNameEn"></p></div><code id="databaseItemId"></code></header>
+            <dl class="bdo-database-facts"><div><dt>BDO ID</dt><dd id="databaseBdoId"></dd></div><div><dt>Категория аукциона</dt><dd>Материалы → Руда/драг. камни</dd></div><div><dt>Определение StartWave</dt><dd id="databaseDefinition"></dd></div></dl>
+
+            <section class="bdo-database-processing"><p class="bdo-resource-kicker">Подтверждённая обработка</p><h3>Связи цинковой семьи</h3><div id="databaseRelationships"></div></section>
+
+            <section class="bdo-database-market"><header><div><p class="bdo-resource-kicker">RU · текущий рынок</p><h3>Рыночная сводка</h3></div><button type="button" id="databaseMarketRefresh">Обновить</button></header><div id="databaseMarket" class="is-loading">Загрузка данных рынка…</div></section>
+
+            <div class="bdo-database-actions"><a id="databaseAuctionLink" href="/auction">Открыть на аукционе →</a><a id="databaseItemLink" href="/items">Каноническая запись →</a></div>
+          </div>
+        </article>
+      </section>
+    </main>
+    <footer class="site-footer"><p>&copy; 2026 Kameadril · StartWave</p></footer>
+  </div>
+  <script src="../assets/js/script.js"></script><script src="../assets/js/bdo-live-data.js"></script><script src="../assets/js/bdo-database.js"></script>
+</body>
+</html>

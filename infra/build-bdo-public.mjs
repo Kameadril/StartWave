@@ -21,7 +21,7 @@ const previousRoot = path.join(repositoryRoot, "dist-bdo.previous");
 const bdoOrigin = "https://bdo.startwave.space";
 
 const pageMappings = [
-  "alchemy", "auction", "barter", "cities", "crafting", "farming", "fishing",
+  "alchemy", "auction", "barter", "cities", "crafting", "database", "farming", "fishing",
   "items", "knowledge-chain", "knowledge-layer", "nodes", "notes",
   "player-knowledge", "production", "recipes", "region-calpheon",
   "regions", "resources", "workers", "world-connection"
@@ -77,6 +77,7 @@ const requiredOutputs = [
   "assets/js/script.js",
   "assets/js/bdo-live-data.js",
   "assets/js/bdo-auction.js",
+  "assets/js/bdo-database.js",
   "assets/js/bdo-items.js",
   "assets/data/bdo-region-views.json"
 ];
@@ -553,6 +554,35 @@ async function validateAuctionContract() {
   }
 }
 
+async function validateDatabaseContract() {
+  const databaseHtml = await readFile(
+    resolveInside(temporaryRoot, "database.html"),
+    "utf8"
+  );
+  const databaseController = await readFile(
+    resolveInside(temporaryRoot, "assets/js/bdo-database.js"),
+    "utf8"
+  );
+  const liveScriptIndex = databaseHtml.indexOf(
+    'src="assets/js/bdo-live-data.js"'
+  );
+  const controllerScriptIndex = databaseHtml.indexOf(
+    'src="assets/js/bdo-database.js"'
+  );
+
+  if (liveScriptIndex === -1 || controllerScriptIndex === -1) {
+    throw new Error("database.html is missing the LIVE Database scripts");
+  }
+  if (liveScriptIndex >= controllerScriptIndex) {
+    throw new Error("bdo-live-data.js must load before bdo-database.js");
+  }
+  for (const loader of ["loadItems", "loadBdoExternalIdentities", "loadRecipes", "loadBdoCurrentMarket"]) {
+    if (!databaseController.includes(`StartWaveBdoData.${loader}`)) {
+      throw new Error(`Database controller does not use shared ${loader}`);
+    }
+  }
+}
+
 async function installArtifact() {
   await rm(previousRoot, { recursive: true, force: true });
 
@@ -618,6 +648,7 @@ async function build() {
     await validateLocalReferences();
     await validateLiveItemsContract();
     await validateAuctionContract();
+    await validateDatabaseContract();
     await installArtifact();
 
     console.log(
