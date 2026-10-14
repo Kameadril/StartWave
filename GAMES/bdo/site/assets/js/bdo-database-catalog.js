@@ -50,6 +50,7 @@
   let recipes = [];
   let selectedItemId = null;
   let renderVersion = 0;
+  const expandedTypes = new Set();
 
   const normalize = (value) => String(value ?? '').trim().toLocaleLowerCase('ru-RU');
   const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
@@ -112,6 +113,24 @@
     button.classList.toggle('is-selected', selected);
     button.setAttribute('aria-pressed', String(selected));
   });
+  const typeKey = (group, semanticTypeName) => `${group}::${semanticTypeName}`;
+  const selectedEntry = () => catalog.find(({ item }) => item.id === selectedItemId);
+  const expandSelectedType = () => {
+    const entry = selectedEntry();
+    if (!entry) return;
+    const key = typeKey(entry.group, entry.semanticType);
+    expandedTypes.add(key);
+    const button = [...tree.querySelectorAll('[data-database-type]')].find((candidate) => candidate.dataset.databaseType === key);
+    if (!button) return;
+    const groupBranch = button.closest('.bdo-database-branch');
+    const groupButton = groupBranch?.previousElementSibling;
+    if (groupBranch && groupButton) {
+      groupButton.setAttribute('aria-expanded', 'true');
+      groupBranch.hidden = false;
+    }
+    button.setAttribute('aria-expanded', 'true');
+    button.nextElementSibling.hidden = false;
+  };
   const renderDetail = () => {
     const entry = catalog.find(({ item }) => item.id === selectedItemId);
     if (!entry) return;
@@ -139,6 +158,7 @@
     if (!catalog.some(({ item }) => item.id === nextItemId)) return;
     selectedItemId = nextItemId;
     if (updateHash && window.location.hash.slice(1) !== nextItemId) window.history.replaceState(null, '', `#${encodeURIComponent(nextItemId)}`);
+    expandSelectedType();
     renderDetail();
   };
   const renderTree = () => {
@@ -147,7 +167,13 @@
     const groups = groupOrder.map((group) => ({ group, entries: matches.filter((entry) => entry.group === group) })).filter(({ entries }) => entries.length);
     tree.innerHTML = groups.map(({ group, entries }) => {
       const types = [...new Set(entries.map((entry) => entry.semanticType))].sort((left, right) => left.localeCompare(right, 'ru-RU'));
-      return `<section class="bdo-database-group"><button class="bdo-database-accordion" type="button" aria-expanded="true"><span>${escapeHtml(group)}</span><strong>${entries.length}</strong></button><div class="bdo-database-branch">${types.map((type) => `<section><h3>${escapeHtml(type)}</h3>${entries.filter((entry) => entry.semanticType === type).map(({ item }) => `<button type="button" data-database-item="${escapeHtml(item.id)}" aria-pressed="false"><span>${escapeHtml(item.name)}</span><code>${escapeHtml(item.id)}</code></button>`).join('')}</section>`).join('')}</div></section>`;
+      return `<section class="bdo-database-group"><button class="bdo-database-accordion" type="button" aria-expanded="true"><span>${escapeHtml(group)}</span><strong>${entries.length}</strong></button><div class="bdo-database-branch">${types.map((type) => {
+        const key = typeKey(group, type);
+        const typeEntries = entries.filter((entry) => entry.semanticType === type);
+        const totalTypeCount = catalog.filter((entry) => entry.group === group && entry.semanticType === type).length;
+        const expanded = Boolean(query) || expandedTypes.has(key);
+        return `<section><button class="bdo-database-type-accordion" type="button" data-database-type="${escapeHtml(key)}" aria-expanded="${expanded}"><span class="bdo-database-type-accordion__indicator" aria-hidden="true">⌄</span><span>${escapeHtml(type)}</span><strong>${totalTypeCount}</strong></button><div class="bdo-database-type-items"${expanded ? '' : ' hidden'}>${typeEntries.map(({ item }) => `<button type="button" data-database-item="${escapeHtml(item.id)}" aria-pressed="false"><span>${escapeHtml(item.name)}</span><code>${escapeHtml(item.id)}</code></button>`).join('')}</div></section>`;
+      }).join('')}</div></section>`;
     }).join('') || '<p class="bdo-database-empty">По запросу ничего не найдено.</p>';
     tree.querySelectorAll('.bdo-database-accordion').forEach((button) => button.addEventListener('click', () => {
       const branch = button.nextElementSibling;
@@ -155,7 +181,23 @@
       button.setAttribute('aria-expanded', String(!expanded));
       branch.hidden = expanded;
     }));
+    tree.querySelectorAll('[data-database-type]').forEach((button) => button.addEventListener('click', () => {
+      const key = button.dataset.databaseType;
+      const entry = selectedEntry();
+      const selectedKey = entry ? typeKey(entry.group, entry.semanticType) : null;
+      if (query || key === selectedKey) {
+        button.setAttribute('aria-expanded', 'true');
+        button.nextElementSibling.hidden = false;
+        return;
+      }
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!expanded));
+      button.nextElementSibling.hidden = expanded;
+      if (expanded) expandedTypes.delete(key);
+      else expandedTypes.add(key);
+    }));
     tree.querySelectorAll('[data-database-item]').forEach((button) => button.addEventListener('click', () => selectItem(button.dataset.databaseItem)));
+    expandSelectedType();
     setSelectedButton();
     visibleCount.textContent = `${matches.length} из ${catalog.length}`;
   };
