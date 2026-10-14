@@ -77,7 +77,7 @@ const requiredOutputs = [
   "assets/js/script.js",
   "assets/js/bdo-live-data.js",
   "assets/js/bdo-auction.js",
-  "assets/js/bdo-database.js",
+  "assets/js/bdo-database-catalog.js",
   "assets/js/bdo-items.js",
   "assets/data/bdo-region-views.json"
 ];
@@ -560,21 +560,21 @@ async function validateDatabaseContract() {
     "utf8"
   );
   const databaseController = await readFile(
-    resolveInside(temporaryRoot, "assets/js/bdo-database.js"),
+    resolveInside(temporaryRoot, "assets/js/bdo-database-catalog.js"),
     "utf8"
   );
   const liveScriptIndex = databaseHtml.indexOf(
     'src="assets/js/bdo-live-data.js"'
   );
   const controllerScriptIndex = databaseHtml.indexOf(
-    'src="assets/js/bdo-database.js"'
+    'src="assets/js/bdo-database-catalog.js"'
   );
 
   if (liveScriptIndex === -1 || controllerScriptIndex === -1) {
-    throw new Error("database.html is missing the LIVE Database scripts");
+    throw new Error("database.html is missing the LIVE Database catalog scripts");
   }
   if (liveScriptIndex >= controllerScriptIndex) {
-    throw new Error("bdo-live-data.js must load before bdo-database.js");
+    throw new Error("bdo-live-data.js must load before bdo-database-catalog.js");
   }
   for (const loader of ["loadItems", "loadBdoExternalIdentities", "loadRecipes", "loadBdoCurrentMarket"]) {
     if (!databaseController.includes(`StartWaveBdoData.${loader}`)) {

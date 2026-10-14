@@ -29,6 +29,7 @@
   const grainItemIds = categoryItemIds('materials-grains');
   const otherItemIds = categoryItemIds('materials-other');
   const databaseItemIds = new Set((document.body.dataset.databaseItemIds || '').split(',').filter(Boolean));
+  const databaseCategories = new Set(['Материалы', 'Природный ресурс']);
   const categoryDefinitions = {
     all: { label: 'Все подтверждённые', includes: () => true },
     'materials-ore': { label: 'Материалы · Руда/драг. камни', includes: ({ item }) => oreItemTypes.has(item.itemType) || oreItemIds.has(item.id) },
@@ -103,7 +104,7 @@
     const article = document.createElement('article');
     article.className = 'bdo-auction-card';
     article.dataset.itemId = item.id;
-    const databaseAction = databaseItemIds.has(item.id) ? `<a href="/database#${encodeURIComponent(item.id)}">Открыть в базе →</a>` : '';
+    const databaseAction = databaseCategories.has(item.category) || databaseItemIds.has(item.id) ? `<a href="/database#${encodeURIComponent(item.id)}">Открыть в базе →</a>` : '';
     article.innerHTML = `
       <div class="bdo-auction-card__identity"><p class="bdo-resource-record__eyebrow">Канонический предмет StartWave</p><h3>${escapeHtml(item.name)}</h3>${item.nameEn ? `<p class="bdo-auction-card__name-en">${escapeHtml(item.nameEn)}</p>` : ''}<code>${escapeHtml(item.id)}</code></div>
       <div class="bdo-auction-card__market is-loading" aria-live="polite">Загрузка данных рынка…</div>

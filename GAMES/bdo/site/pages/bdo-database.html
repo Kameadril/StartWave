@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>База BDO — цинковая семья | StartWave</title>
-  <meta name="description" content="Первая справочная ветка StartWave BDO: классификация и подтверждённая обработка цинковой руды, куска и слитка цинка.">
+  <title>База ресурсов BDO | StartWave</title>
+  <meta name="description" content="Каноническая база ресурсов StartWave BDO: семантическая классификация, подтверждённые связи обработки и рыночные данные там, где они доступны.">
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body class="bdo-archive-body bdo-resource-atlas-body bdo-database-body">
@@ -15,28 +15,26 @@
       <nav class="learning-breadcrumbs" aria-label="Хлебные крошки"><a href="../index.html">StartWave</a><span aria-hidden="true">→</span><a href="../bdo.html">Chronicles of Black Desert</a><span aria-hidden="true">→</span><span aria-current="page">База</span></nav>
 
       <section class="bdo-database-hero" aria-labelledby="database-title">
-        <div><p class="bdo-resource-kicker">STARTWAVE BDO · KNOWLEDGE PROJECTION</p><h2 id="database-title">База предметов</h2><p>Канонические предметы StartWave, их определения и подтверждённые связи обработки. Первый эталонный срез — семья цинка.</p></div>
+        <div><p class="bdo-resource-kicker">STARTWAVE BDO · CANONICAL RESOURCE DATABASE</p><h2 id="database-title">База ресурсов</h2><p>Собственная семантическая система StartWave: канонические ресурсы, их определения и только подтверждённые связи. Классификация аукциона показывается отдельно и не определяет структуру Базы.</p></div>
         <a href="/auction">Открыть аукцион →</a>
       </section>
 
-      <section class="bdo-database-workspace" aria-label="Справочная ветка цинка">
-        <aside class="bdo-database-tree" aria-label="Классификация материалов">
-          <p class="bdo-resource-kicker">Материалы</p>
-          <button class="bdo-database-accordion" id="databaseOreToggle" type="button" aria-expanded="true" aria-controls="databaseOreBranch"><span>Руда/драг. камни</span><span aria-hidden="true">⌄</span></button>
-          <div class="bdo-database-branch" id="databaseOreBranch">
-            <section><h3>Руда</h3><button type="button" data-database-item="SW-ITEM-047" data-semantic-type="Руда" aria-pressed="false">Цинковая руда</button></section>
-            <section><h3>Кусок</h3><button type="button" data-database-item="SW-ITEM-147" data-semantic-type="Кусок" aria-pressed="false">Кусок цинка</button></section>
-            <section><h3>Слиток</h3><button type="button" data-database-item="SW-ITEM-148" data-semantic-type="Слиток" aria-pressed="false">Слиток цинка</button></section>
-          </div>
-        </aside>
+      <section class="bdo-database-toolbar" aria-label="Поиск по Базе">
+        <label for="databaseSearch"><span>Поиск по Базе</span><input id="databaseSearch" type="search" placeholder="Название, тип или SW-ITEM-…" autocomplete="off"></label>
+        <div><strong id="databaseVisibleCount">—</strong><span>предметов показано</span></div>
+        <div><strong id="databaseTypeCount">—</strong><span>семантических типов</span></div>
+      </section>
+
+      <section class="bdo-database-workspace" aria-label="Каноническая база ресурсов">
+        <aside class="bdo-database-tree" aria-label="Семантическая классификация"><p class="bdo-resource-kicker">Материалы и ресурсы</p><div id="databaseTree"></div></aside>
 
         <article class="bdo-database-detail" id="databaseDetail" aria-live="polite" aria-busy="true">
           <p class="bdo-database-state" id="databaseState">Загрузка канонических данных…</p>
           <div id="databaseRecord" hidden>
             <header><div><p class="bdo-resource-kicker" id="databaseSemanticType"></p><h2 id="databaseItemName"></h2><p id="databaseItemNameEn"></p></div><code id="databaseItemId"></code></header>
-            <dl class="bdo-database-facts"><div><dt>BDO ID</dt><dd id="databaseBdoId"></dd></div><div><dt>Категория аукциона</dt><dd>Материалы → Руда/драг. камни</dd></div><div><dt>Определение StartWave</dt><dd id="databaseDefinition"></dd></div></dl>
+            <dl class="bdo-database-facts"><div><dt>BDO ID</dt><dd id="databaseBdoId"></dd></div><div><dt>Категория аукциона</dt><dd id="databaseAuctionCategory"></dd></div><div><dt>Определение StartWave</dt><dd id="databaseDefinition"></dd></div></dl>
 
-            <section class="bdo-database-processing"><p class="bdo-resource-kicker">Подтверждённая обработка</p><h3>Связи цинковой семьи</h3><div id="databaseRelationships"></div></section>
+            <section class="bdo-database-processing"><p class="bdo-resource-kicker">Подтверждённая обработка</p><h3>Связи предмета</h3><div id="databaseRelationships"></div></section>
 
             <section class="bdo-database-market"><header><div><p class="bdo-resource-kicker">RU · текущий рынок</p><h3>Рыночная сводка</h3></div><button type="button" id="databaseMarketRefresh">Обновить</button></header><div id="databaseMarket" class="is-loading">Загрузка данных рынка…</div></section>
 
@@ -47,6 +45,6 @@
     </main>
     <footer class="site-footer"><p>&copy; 2026 Kameadril · StartWave</p></footer>
   </div>
-  <script src="../assets/js/script.js"></script><script src="../assets/js/bdo-live-data.js"></script><script src="../assets/js/bdo-database.js"></script>
+  <script src="../assets/js/script.js"></script><script src="../assets/js/bdo-live-data.js"></script><script src="../assets/js/bdo-database-catalog.js"></script>
 </body>
 </html>
