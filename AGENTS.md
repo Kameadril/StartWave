@@ -2,11 +2,22 @@
 
 These rules apply to this repository and all descendants.
 
+## Workspace routing
+
+This repository is the canonical StartWave Site and Atlas repository. A current local checkout may be at `/Users/kameadrilicloud.com/Desktop/Project/StartWave`, but repository identity must be verified from Git metadata and remotes, not from an absolute path; correctly identified clones and worktrees are supported.
+
+- Factory belongs to the separate StartWave-Factory repository; a current local checkout may be at `/Users/kameadrilicloud.com/Desktop/Project/StartWave-Factory`.
+- Giraffe AI, `/chat`, and Supabase lookup belong to the separate StartWave-AI-Private repository; a current local checkout may be at `/Users/kameadrilicloud.com/Desktop/Project/StartWave-AI-Private`.
+- These rules govern only this Site and Atlas repository and its descendants; they do not govern either neighboring repository.
+- The old non-canonical copy may be at `/Users/kameadrilicloud.com/Library/Mobile Documents/com~apple~CloudDocs/Project`. Do not use a checkout identified as that copy as the working source. Do not accept or reject a checkout merely by its path; verify its Git identity because clones, worktrees, and path aliases may be valid.
+
+At the start of work, verify `pwd`, `git rev-parse --show-toplevel`, and repository identity; the Git root must be the intended checkout of this repository. Do not scan sibling repositories without the owner's explicit consent. If a task concerns another StartWave component, stop and route it to that component's repository, where that repository's own instructions apply. Preserve existing uncommitted changes. Do not move files between repositories or run `git reset`, `git clean`, `git checkout`, `git commit`, `git push`, or deploy unless explicitly authorized by the owner. Do not write to LIVE Supabase or access Cloudflare unless explicitly required and authorized by the owner.
+
 - Treat `assets/data/bdo-*.json` as curated Atlas data. Validate it, but never alter it unless the user explicitly requests a data change.
 - Keep local automation deterministic and offline. Do not add network calls, telemetry, external APIs, or package dependencies.
 - Never read or write outside the resolved repository root.
 - Do not execute arbitrary commands from configuration or Atlas data.
-- For audits and previews, work read-only: do not auto-fix, delete, commit, or push. Report findings and wait for owner approval.
+- Do not auto-fix, delete, commit, or push without explicit owner authorization. Report findings and let the owner decide.
 - Store generated Atlas Worker reports only under `.startwave-agent/logs/`; reports must not contain secrets or full source-file contents.
 - Classify validator findings as `ERROR`, `WARNING`, or `INFO`. Validation errors must produce a non-zero exit code.
 
