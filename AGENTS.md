@@ -2,11 +2,23 @@
 
 These rules apply to this repository and all descendants.
 
+This file is public repository documentation. Keep it free of personal filesystem paths, credentials, access-bearing URLs, private checkout details, and private operational instructions.
+
+## Workspace routing
+
+This repository owns the public StartWave site and Atlas sources. Identify it from Git metadata and remotes, never from a machine-specific path. Clones and worktrees are supported.
+
+- Verify the repository root and identity before work begins.
+- Do not inspect sibling repositories unless the owner explicitly authorizes that scope.
+- Route work for another component to its owning repository and follow that repository's instructions.
+- Preserve existing uncommitted changes and keep repository boundaries intact.
+- Do not reset, clean, commit, push, publish, deploy, or access external production services without explicit owner authorization.
+
 - Treat `assets/data/bdo-*.json` as curated Atlas data. Validate it, but never alter it unless the user explicitly requests a data change.
 - Keep local automation deterministic and offline. Do not add network calls, telemetry, external APIs, or package dependencies.
 - Never read or write outside the resolved repository root.
 - Do not execute arbitrary commands from configuration or Atlas data.
-- For audits and previews, work read-only: do not auto-fix, delete, commit, or push. Report findings and wait for owner approval.
+- Do not auto-fix, delete, commit, or push. Report findings and let a human decide.
 - Store generated Atlas Worker reports only under `.startwave-agent/logs/`; reports must not contain secrets or full source-file contents.
 - Classify validator findings as `ERROR`, `WARNING`, or `INFO`. Validation errors must produce a non-zero exit code.
 
@@ -17,7 +29,7 @@ These rules apply to this repository and all descendants.
 - If validation or tests fail, unexpected files change, scope expands, repository state is unsafe or ambiguous, or conflicts occur, do not commit or push. Stop and report to the owner.
 - APPLY permission does not authorize unrelated deletion, destructive cleanup, history rewriting, force-push, branch deletion, reset, or other destructive Git operations. Those require separate explicit owner authorization where applicable.
 - Commit and push permission does not authorize production deployment. Production deployment requires separate explicit owner approval.
-- Git permission does not imply database or Supabase mutation permission. Database APPLY must be separately authorized when required by the task.
+- Git permission does not imply database or external-service mutation permission. Those changes must be separately authorized when required by the task.
 
 ## Approved Node ID rule
 
