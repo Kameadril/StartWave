@@ -79,7 +79,9 @@ const requiredOutputs = [
   "assets/js/bdo-auction.js",
   "assets/js/bdo-database-catalog.js",
   "assets/js/bdo-items.js",
-  "assets/data/bdo-region-views.json"
+  "assets/data/bdo-region-views.json",
+  "assets/js/bdo-cities.js",
+  "assets/js/bdo-nodes.js"
 ];
 
 const forbiddenClientCredentialMarkers = [
@@ -458,60 +460,35 @@ async function validateRequiredOutputs() {
   }
 }
 
-async function validateLiveItemsContract() {
-  const itemsHtml = await readFile(
-    resolveInside(temporaryRoot, "items.html"),
-    "utf8"
-  );
+async function validateLiveDataContract() {
   const liveData = await readFile(
     resolveInside(temporaryRoot, "assets/js/bdo-live-data.js"),
     "utf8"
   );
-  const itemRenderer = await readFile(
-    resolveInside(temporaryRoot, "assets/js/bdo-items.js"),
-    "utf8"
-  );
-
-  const liveScriptIndex = itemsHtml.indexOf(
-    'src="assets/js/bdo-live-data.js"'
-  );
-  const rendererScriptIndex = itemsHtml.indexOf(
-    'src="assets/js/bdo-items.js"'
-  );
-
-  if (liveScriptIndex === -1 || rendererScriptIndex === -1) {
-    throw new Error("items.html is missing the LIVE Items scripts");
-  }
-
-  if (liveScriptIndex >= rendererScriptIndex) {
-    throw new Error(
-      "bdo-live-data.js must load before bdo-items.js"
-    );
-  }
 
   if (!liveData.includes("/rest/v1/")) {
-    throw new Error("LIVE Items adapter does not use the Supabase Data API");
+    throw new Error("LIVE data adapter does not use the Supabase Data API");
   }
 
-  if (!liveData.includes("loadItems")) {
-    throw new Error("LIVE Items adapter does not expose loadItems");
-  }
+  let publicClientContents = liveData;
+  for (const route of ["items", "cities", "nodes"]) {
+    const html = await readFile(resolveInside(temporaryRoot, `${route}.html`), "utf8");
+    const renderer = await readFile(resolveInside(temporaryRoot, `assets/js/bdo-${route}.js`), "utf8");
+    const loader = `load${route[0].toUpperCase()}${route.slice(1)}`;
+    const liveScriptIndex = html.indexOf('src="assets/js/bdo-live-data.js"');
+    const rendererScriptIndex = html.indexOf(`src="assets/js/bdo-${route}.js"`);
 
-  if (!itemRenderer.includes("StartWaveBdoData.loadItems")) {
-    throw new Error("Items renderer does not use the LIVE data adapter");
+    if (liveScriptIndex === -1 || rendererScriptIndex === -1 || liveScriptIndex >= rendererScriptIndex) {
+      throw new Error(`${route}.html must load the LIVE adapter before its renderer`);
+    }
+    if (!liveData.includes(loader) || !renderer.includes(`StartWaveBdoData.${loader}`)) {
+      throw new Error(`${route} route does not use ${loader} from the LIVE data adapter`);
+    }
+    if (html.includes(`bdo-${route}.json`) || liveData.includes(`bdo-${route}.json`) || renderer.includes(`bdo-${route}.json`)) {
+      throw new Error(`Static bdo-${route}.json must not be used by the ${route} route`);
+    }
+    publicClientContents += `\n${html}\n${renderer}`;
   }
-
-  if (
-    itemsHtml.includes("bdo-items.json") ||
-    liveData.includes("bdo-items.json") ||
-    itemRenderer.includes("bdo-items.json")
-  ) {
-    throw new Error(
-      "Static bdo-items.json must not be used by the Items route"
-    );
-  }
-
-  const publicClientContents = `${itemsHtml}\n${liveData}\n${itemRenderer}`;
 
   for (const marker of forbiddenClientCredentialMarkers) {
     if (publicClientContents.includes(marker)) {
@@ -646,7 +623,7 @@ async function build() {
 
     await validateRequiredOutputs();
     await validateLocalReferences();
-    await validateLiveItemsContract();
+    await validateLiveDataContract();
     await validateAuctionContract();
     await validateDatabaseContract();
     await installArtifact();

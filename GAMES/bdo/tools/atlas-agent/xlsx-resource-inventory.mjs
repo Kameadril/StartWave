@@ -23,6 +23,6 @@ for(const name of [...new Set(rows.map(x=>x.resource))]){
   else groups.missingBoth.push(obj);
 }
 const priority=Object.values(groups).flat().sort((a,b)=>b.xlsxRows-a.xlsxRows).slice(0,20);
-const out={xlsxRows:rows.length,uniqueNodeNames:new Set(rows.map(x=>x.name)).size,uniqueResourceNames:new Set(rows.map(x=>x.resource)).size,uniqueRegions:new Set(rows.map(x=>x.region)).size,baselineNodeCoverage:{rows:686,safe:0,blocked:686},groups,priority,regression:{expectedNoMissingResource:['SW-ITEM-027','SW-ITEM-035','SW-ITEM-029','SW-ITEM-031','SW-ITEM-033','SW-ITEM-037','SW-ITEM-039']}};
+const out={xlsxRows:rows.length,uniqueNodeNames:new Set(rows.map(x=>x.name)).size,uniqueResourceNames:new Set(rows.map(x=>x.resource)).size,uniqueRegions:new Set(rows.map(x=>x.region)).size,baselineNodeCoverage:{rows:686,safe:0,blocked:686},groups,priority,regression:{expectedNoMissingResource:['SW-ITEM-016','SW-ITEM-035','SW-ITEM-029','SW-ITEM-031','SW-ITEM-033','SW-ITEM-037','SW-ITEM-039']}};
 fs.mkdirSync('.startwave-agent/resources',{recursive:true});fs.writeFileSync(outPath,JSON.stringify(out,null,2));
 console.log(JSON.stringify({rows:out.xlsxRows,uniqueResources:out.uniqueResourceNames,groups:Object.fromEntries(Object.entries(groups).map(([k,v])=>[k,v.length])),priority},null,2));

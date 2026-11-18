@@ -95,7 +95,14 @@
     return panel;
   };
 
-  const createCard = (item) => {
+  const recipeLink = (recipe) => {
+    const link = document.createElement('a');
+    link.href = `recipes.html#${encodeURIComponent(recipe.id)}`;
+    link.textContent = `${recipe.id} · ${recipe.name}`;
+    return link;
+  };
+
+  const createCard = (item, recipes) => {
     const article = document.createElement('article');
     article.className = 'bdo-resource-record bdo-item-record';
     article.id = item.id;
@@ -108,11 +115,29 @@
       article.append(createMarketPanel(item, identity));
     }
     window.BdoWorldRelations?.attach(article, 'item', item);
+    const producedBy = recipes.filter((recipe) => recipe.resultItemId === item.id);
+    const usedIn = recipes.filter((recipe) => recipe.materialItemIds.includes(item.id));
+    if (producedBy.length || usedIn.length) {
+      const relations = document.createElement('div');
+      relations.className = 'bdo-resource-record__relations';
+      if (producedBy.length) {
+        const title = document.createElement('strong'); title.textContent = 'Производится по';
+        const links = document.createElement('div'); links.className = 'bdo-resource-record__links';
+        links.append(...producedBy.map(recipeLink)); relations.append(title, links);
+      }
+      if (usedIn.length) {
+        const title = document.createElement('strong'); title.textContent = 'Используется в';
+        const links = document.createElement('div'); links.className = 'bdo-resource-record__links';
+        links.append(...usedIn.map(recipeLink)); relations.append(title, links);
+      }
+      article.append(relations);
+    }
     return article;
   };
 
   let activeCategory = 'Все';
   let allItems = [];
+  let allRecipes = [];
   const pluralize = (value) => value % 10 === 1 && value % 100 !== 11 ? 'предмет' : value % 10 >= 2 && value % 10 <= 4 && (value % 100 < 12 || value % 100 > 14) ? 'предмета' : 'предметов';
 
   const render = () => {
@@ -122,7 +147,7 @@
       const haystack = `${item.name} ${item.nameEn ?? ''} ${item.category} ${item.itemType} ${item.id}`;
       return categoryMatches && normalize(haystack).includes(query);
     });
-    grid.replaceChildren(...items.map(createCard));
+    grid.replaceChildren(...items.map((item) => createCard(item, allRecipes)));
     grid.setAttribute('aria-busy', 'false');
     count.textContent = `Показано ${items.length} из ${allItems.length}`;
     empty.hidden = items.length !== 0;
@@ -141,10 +166,16 @@
     }));
   };
 
-  relationCount.hidden = true;
+  relationCount.hidden = false;
   moduleCount.hidden = true;
-  window.StartWaveBdoData.loadItems().then((items) => {
+  Promise.allSettled([window.StartWaveBdoData.loadItems(), window.StartWaveBdoData.loadRecipes()]).then(([itemResult, recipeResult]) => {
+    if (itemResult.status !== 'fulfilled') throw itemResult.reason;
+    const items = itemResult.value;
     allItems = items;
+    allRecipes = recipeResult.status === 'fulfilled' ? recipeResult.value : [];
+    relationCount.textContent = recipeResult.status === 'fulfilled'
+      ? `${allRecipes.reduce((sum, recipe) => sum + recipe.materialItemIds.length + 1, 0)} LIVE-связей`
+      : 'LIVE-связи рецептов временно недоступны';
     total.textContent = `${allItems.length} ${pluralize(allItems.length)}`;
     renderCategories();
     render();

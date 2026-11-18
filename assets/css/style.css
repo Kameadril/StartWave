@@ -5538,3 +5538,6 @@ a.bdo-topic-card:focus-visible img {
     height: 220px;
   }
 }
+
+.bdo-landing-body { isolation: isolate; }
+.bdo-archive-body { isolation: isolate; }

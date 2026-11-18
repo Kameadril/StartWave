@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StartWave BDO browser regression harness</title>
+  <style>
+    body { font: 16px/1.5 system-ui, sans-serif; margin: 2rem; color: #172033; }
+    .pass { color: #087443; }
+    .fail { color: #b42318; }
+    iframe { position: absolute; width: 1280px; height: 900px; left: -10000px; }
+  </style>
+</head>
+<body>
+  <h1>StartWave BDO browser regression harness</h1>
+  <p id="summary" aria-live="polite">RUNNING</p>
+  <ol id="results"></ol>
+  <script type="module" src="./bdo-live-ui.browser.mjs"></script>
+</body>
+</html>

@@ -6,6 +6,15 @@
     "build:bdo": "node infra/build-bdo-public.mjs",
     "test:publication-guard": "node --test scripts/publication-guard.test.mjs",
     "validate:public": "node scripts/publication-guard.mjs --artifact dist",
-    "validate:public:bdo": "node scripts/publication-guard.mjs --artifact dist-bdo"
+    "validate:public:bdo": "node scripts/publication-guard.mjs --artifact dist-bdo",
+    "test:bdo-ui": "node --test GAMES/bdo/site/assets/js/bdo-live-ui.test.mjs",
+    "test:bdo-ui:browser": "node GAMES/bdo/site/tests/bdo-browser-launcher.mjs",
+    "test:bdo-ui:runner": "node --test GAMES/bdo/site/tests/bdo-browser-provenance.test.mjs GAMES/bdo/site/tests/bdo-browser-runner.test.mjs",
+    "test:bdo-ui:publication-workflow": "node --test GAMES/bdo/site/tests/bdo-publication-workflow.test.mjs",
+    "build:bdo-ui:materializer": "make -C GAMES/bdo/site/tools all",
+    "test:bdo-ui:materializer": "node --test GAMES/bdo/site/tests/bdo-owner-materializer.test.mjs",
+    "prepare:bdo-ui:publication": "node GAMES/bdo/site/tests/bdo-prepare-publication.mjs",
+    "record:bdo-ui:anchor": "node GAMES/bdo/site/tests/bdo-record-trust-anchor.mjs",
+    "verify:bdo-ui:anchor": "node GAMES/bdo/site/tests/bdo-verify-trust-anchor.mjs"
   }
 }

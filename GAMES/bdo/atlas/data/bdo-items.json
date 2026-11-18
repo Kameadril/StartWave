@@ -2,7 +2,7 @@
   "schemaVersion": "0.7.0",
   "collectionId": "bdo-item-atlas",
   "title": "Calpheon Item Archive",
-  "updatedAt": "2026-08-08",
+  "updatedAt": "2026-10-24",
   "stage": "SW-GAMES BDO-DATA-012",
   "entitySchema": {
     "id": "string",
@@ -159,6 +159,7 @@
     },
     {
       "id": "SW-ITEM-003",
+      "gameId": 4001,
       "name": "Железная руда",
       "category": "Материалы",
       "itemType": "Руда",
@@ -166,7 +167,7 @@
       "description": "Основное металлическое сырьё для плавки и последующего производства.",
       "archive": {
         "title": "Модуль железной руды",
-        "description": "Ограниченный Item Atlas View использует только подтверждённые поля SW-ITEM-003 и существующую literal-связь SW-ITEM-004. Resource, recipe, production и node-сущности не добавлены.",
+        "description": "Подтверждённая железная цепочка связывает SW-ITEM-003 с промежуточным SW-ITEM-149 через SW-RECIPE-021. Связи добычи и узлов не изменены.",
         "status": "curated",
         "source": "SW-GAMES BDO-DATA-012",
         "checkedAt": "2026-08-04"
@@ -174,12 +175,12 @@
       "atlas": {
         "view": "Item Atlas View",
         "title": "Железная руда",
-        "summary": "Подтверждённый Item-объект железной руды с существующей связью на SW-ITEM-004.",
+        "summary": "Подтверждённый Item-объект железной руды с обработкой в SW-ITEM-149.",
         "source": "Существующая Item-запись SW-ITEM-003; способы добычи в текущем Item Atlas не расширяются.",
         "acquisitionType": "Данные получения в текущем Atlas не расширяются.",
-        "processing": "Связь с SW-ITEM-004 сохранена буквально; отдельная recipe/production-сущность не найдена в текущем Atlas.",
+        "processing": "SW-ITEM-003 ×5 нагревается по SW-RECIPE-021 и даёт переменное количество SW-ITEM-149.",
         "usage": "Плавка металла и изготовление металлических компонентов по существующим полям Item.",
-        "productionSequence": "SW-ITEM-003 → SW-ITEM-004; дополнительные количества и этапы не найдены в текущем Atlas."
+        "productionSequence": "SW-ITEM-003 ×5 → SW-RECIPE-021 → SW-ITEM-149; выход переменный."
       },
       "acquisition": [
         "Добыча киркой",
@@ -195,7 +196,7 @@
         "Плавка"
       ],
       "relatedItemIds": [
-        "SW-ITEM-004"
+        "SW-ITEM-149"
       ],
       "resources": [
         "bdo-resource-iron-ore"
@@ -203,7 +204,9 @@
       "productions": [
         "metal-heating"
       ],
-      "recipes": [],
+      "recipes": [
+        "SW-RECIPE-021"
+      ],
       "cities": [
         "calpheon"
       ],
@@ -211,11 +214,12 @@
       "source": [
         "SW-GAMES BDO-DATA-012"
       ],
-      "checkedAt": "2026-08-04",
+      "checkedAt": "2026-10-22",
       "status": "curated"
     },
     {
       "id": "SW-ITEM-004",
+      "gameId": 4052,
       "name": "Слиток железа",
       "category": "Материалы",
       "itemType": "Металл",
@@ -223,7 +227,7 @@
       "description": "Обработанный металл для инструментов, деталей и мастерских.",
       "archive": {
         "title": "Модуль слитка железа",
-        "description": "Ограниченный Item Atlas View использует только подтверждённые поля SW-ITEM-004 и существующие literal-связи SW-ITEM-003 и SW-ITEM-009. Resource, recipe, production и node-сущности не добавлены.",
+        "description": "Подтверждённая железная цепочка связывает SW-ITEM-149 со SW-ITEM-004 через SW-RECIPE-022. Связи добычи и узлов не изменены.",
         "status": "curated",
         "source": "SW-GAMES BDO-DATA-012",
         "checkedAt": "2026-08-04"
@@ -231,12 +235,12 @@
       "atlas": {
         "view": "Item Atlas View",
         "title": "Слиток железа",
-        "summary": "Подтверждённый Item-объект обработанного металла с существующими literal-связями на SW-ITEM-003 и SW-ITEM-009.",
+        "summary": "Подтверждённый Item-объект обработанного металла, получаемый из SW-ITEM-149.",
         "source": "Существующая Item-запись SW-ITEM-004; отдельный источник обработки не добавляется.",
         "acquisitionType": "Нагревание металлических заготовок по существующему Item-полю.",
-        "processing": "Связи SW-ITEM-003, iron-ore, metal-heating и iron-ingot сохранены буквально; canonical recipe/production-сущности не найдены в текущем Atlas.",
+        "processing": "SW-ITEM-149 ×10 нагревается по SW-RECIPE-022 и даёт переменное количество SW-ITEM-004.",
         "usage": "Изготовление инструментов и создание металлических деталей по существующим полям Item.",
-        "productionSequence": "SW-ITEM-003 → SW-ITEM-004; количества и отдельная production-цепочка не найдены в текущем Atlas."
+        "productionSequence": "SW-ITEM-149 ×10 → SW-RECIPE-022 → SW-ITEM-004; выход переменный."
       },
       "acquisition": [
         "Нагревание металлических заготовок"
@@ -251,7 +255,7 @@
         "Оружейные мастерские"
       ],
       "relatedItemIds": [
-        "SW-ITEM-003",
+        "SW-ITEM-149",
         "SW-ITEM-009"
       ],
       "resources": [
@@ -261,7 +265,7 @@
         "metal-heating"
       ],
       "recipes": [
-        "iron-ingot"
+        "SW-RECIPE-022"
       ],
       "cities": [
         "calpheon"
@@ -270,7 +274,7 @@
       "source": [
         "SW-GAMES BDO-DATA-012"
       ],
-      "checkedAt": "2026-08-04",
+      "checkedAt": "2026-10-22",
       "status": "curated"
     },
     {
@@ -292,14 +296,18 @@
         "Сбор",
         "Обработка"
       ],
-      "relatedItemIds": [],
+      "relatedItemIds": [
+        "SW-ITEM-015"
+      ],
       "resources": [
         "rough-stone"
       ],
       "productions": [
         "stone-processing"
       ],
-      "recipes": [],
+      "recipes": [
+        "SW-RECIPE-003"
+      ],
       "cities": [],
       "images": [],
       "source": [
@@ -639,12 +647,12 @@
       "atlas": {
         "view": "Item Atlas View",
         "title": "Бревно",
-        "summary": "Базовый необработанный древесный материал с подтверждённой связью на SW-ITEM-027.",
+        "summary": "Базовый необработанный древесный материал универсальной цепочки обработки.",
         "source": "Существующая Item-запись SW-ITEM-013.",
         "acquisitionType": "Ручная рубка деревьев топором; сбор древесины в открытом мире по существующим Item-полям.",
-        "processing": "SW-ITEM-013 ×10 перерабатывается рубкой в SW-ITEM-027 по SW-RECIPE-001.",
+        "processing": "SW-ITEM-013 ×10 обрабатывается рубкой по SW-RECIPE-001 в SW-ITEM-027; количество результата не фиксируется.",
         "usage": "Обработка в доски; ремесленные и производственные цепочки.",
-        "productionSequence": "SW-ITEM-013 ×10 → SW-RECIPE-001 → SW-ITEM-027."
+        "productionSequence": "SW-ITEM-013 ×10 → SW-RECIPE-001 → SW-ITEM-027; выход переменный."
       },
       "acquisition": [
         "Ручная рубка деревьев топором",
@@ -652,10 +660,10 @@
       ],
       "production": [
         "Исходный материал: обработка не требуется",
-        "Дальнейший этап — изготовление досок"
+        "Дальнейший этап — изготовление необработанного пиломатериала"
       ],
       "usage": [
-        "Обработка в доски",
+        "Обработка в необработанный пиломатериал",
         "Ремесленные и производственные цепочки"
       ],
       "relatedObjects": [
@@ -673,14 +681,17 @@
       "productions": [
         "wood-processing"
       ],
-      "recipes": [],
+      "recipes": [
+        "SW-RECIPE-001"
+      ],
       "cities": [],
       "images": [],
       "source": [
         "StartWave Calpheon Archive starter chain"
       ],
       "checkedAt": "2026-08-04",
-      "status": "curated"
+      "status": "curated",
+      "gameId": 4605
     },
     {
       "id": "SW-ITEM-014",
@@ -688,28 +699,28 @@
       "category": "Материалы",
       "itemType": "Обработанная древесина",
       "grade": "Не указано",
-      "description": "Стандартизированный брус, получаемый рубкой необработанного пиломатериала.",
+      "description": "Обработанный материал универсальной древесной цепочки, получаемый из необработанного пиломатериала.",
       "archive": {
         "title": "Модуль древесины",
-        "description": "Подтверждённый обработанный древесный материал BDO 4685, получаемый рубкой SW-ITEM-027.",
+        "description": "Финальный предметный модуль универсальной древесной цепочки Calpheon Item Archive продолжает путь после SW-ITEM-027.",
         "status": "curated",
         "source": "BDOLYTICS processing recipe 1623495335; RU market API; BDO Codex",
         "checkedAt": "2026-10-13"
       },
       "atlas": {
         "title": "Древесина",
-        "summary": "Стандартизированный обработанный древесный материал BDO 4685.",
-        "source": "BDOLYTICS processing recipe 1623495335; RU market API; BDO Codex.",
+        "summary": "Обработанный материал универсальной древесной цепочки по карточке SW-ITEM-014.",
+        "source": "Обработка необработанного пиломатериала рубкой по SW-RECIPE-002.",
         "acquisitionType": "Рубка в меню обработки.",
-        "processing": "SW-ITEM-027 ×10 перерабатывается рубкой в SW-ITEM-014.",
-        "usage": "Обработанный древесный материал для последующих производственных цепочек.",
-        "productionSequence": "SW-ITEM-027 ×10 → SW-RECIPE-002 → SW-ITEM-014."
+        "processing": "SW-ITEM-027 ×10 обрабатывается рубкой по SW-RECIPE-002 в SW-ITEM-014; количество результата не фиксируется.",
+        "usage": "Производство деревянных компонентов.",
+        "productionSequence": "SW-ITEM-027 ×10 → SW-RECIPE-002 → SW-ITEM-014; выход переменный."
       },
       "acquisition": [
-        "Рубка необработанного пиломатериала"
+        "Обработка необработанного пиломатериала рубкой"
       ],
       "production": [
-        "Необработанный пиломатериал ×10 → рубка → древесина"
+        "Необработанный пиломатериал → рубка → древесина"
       ],
       "usage": [
         "Производство деревянных компонентов"
@@ -729,7 +740,7 @@
         "wood-processing"
       ],
       "recipes": [
-        "plywood"
+        "SW-RECIPE-002"
       ],
       "cities": [],
       "images": [],
@@ -739,7 +750,8 @@
         "BDO Codex"
       ],
       "checkedAt": "2026-10-13",
-      "status": "curated"
+      "status": "curated",
+      "gameId": 4685
     },
     {
       "id": "SW-ITEM-015",
@@ -747,28 +759,28 @@
       "category": "Материалы",
       "itemType": "Обработанный камень",
       "grade": "Не указано",
-      "description": "Каменный материал, получаемый шлифовкой грубого камня.",
+      "description": "Обработанный каменный материал Polished Stone, получаемый шлифовкой грубого камня.",
       "archive": {
         "title": "Модуль обработанного камня",
-        "description": "Подтверждённый обработанный каменный материал BDO 4068, получаемый шлифовкой SW-ITEM-005.",
+        "description": "SW-ITEM-005 ×10 обрабатывается шлифовкой по SW-RECIPE-003 в SW-ITEM-015; количество результата не фиксируется.",
         "status": "curated",
-        "source": "BDOLYTICS processing recipe 331738956; RU market API; BDO Codex",
-        "checkedAt": "2026-10-13"
+        "source": "LIVE Supabase identity; BDO Codex item 4068 and processing recipe 13",
+        "checkedAt": "2026-10-24"
       },
       "atlas": {
-        "title": "Обработанный камень",
+        "title": "Обработанный камень / Polished Stone",
         "summary": "Обработанный каменный материал BDO 4068.",
-        "source": "BDOLYTICS processing recipe 331738956; RU market API; BDO Codex.",
+        "source": "LIVE Supabase identity; BDO Codex item 4068 and processing recipe 13.",
         "acquisitionType": "Шлифовка в меню обработки.",
-        "processing": "SW-ITEM-005 ×10 перерабатывается шлифовкой в SW-ITEM-015.",
+        "processing": "SW-ITEM-005 ×10 перерабатывается шлифовкой по SW-RECIPE-003 в SW-ITEM-015; выход переменный.",
         "usage": "Материал для ремесленных и производственных цепочек.",
-        "productionSequence": "SW-ITEM-005 ×10 → SW-RECIPE-003 → SW-ITEM-015."
+        "productionSequence": "SW-ITEM-005 ×10 → SW-RECIPE-003 → SW-ITEM-015; выход переменный."
       },
       "acquisition": [
-        "Шлифовка грубого камня"
+        "Шлифовка SW-ITEM-005 в меню обработки"
       ],
       "production": [
-        "Грубый камень ×10 → шлифовка → обработанный камень"
+        "SW-ITEM-005 ×10 → SW-RECIPE-003 → SW-ITEM-015; выход переменный"
       ],
       "usage": [
         "Ремесленные и производственные цепочки"
@@ -780,25 +792,22 @@
       "relatedItemIds": [
         "SW-ITEM-005"
       ],
-      "resources": [
-        "stone"
-      ],
-      "productions": [
-        "mineral-processing"
-      ],
+      "resources": [],
+      "productions": [],
       "recipes": [
-        "pine-plank"
+        "SW-RECIPE-003"
       ],
-      "cities": [
-      ],
+      "cities": [],
       "images": [],
       "source": [
-        "BDOLYTICS processing recipe 331738956",
-        "RU market API",
-        "BDO Codex"
+        "LIVE Supabase identity SW-ITEM-015 / SW-RECIPE-003",
+        "BDO Codex item 4068",
+        "BDO Codex processing recipe 13",
+        "BDOLytics processing 4068"
       ],
-      "checkedAt": "2026-10-13",
-      "status": "curated"
+      "checkedAt": "2026-10-24",
+      "status": "curated",
+      "gameId": 4068
     },
     {
       "id": "SW-ITEM-016",
@@ -817,12 +826,12 @@
       "atlas": {
         "view": "Item Atlas View",
         "title": "Сосновая древесина",
-        "summary": "Региональный древесный ресурс с подтверждёнными связями на SW-ITEM-044 и SW-ITEM-028.",
+        "summary": "Региональный древесный ресурс с сосновой цепочкой через SW-ITEM-150 и SW-ITEM-044.",
         "source": "Существующая Item-запись SW-ITEM-016.",
         "acquisitionType": "Ручная рубка сосен; добыча рабочими на связанных лесных узлах по существующим Item-полям.",
-        "processing": "SW-ITEM-016 перерабатывается в SW-ITEM-044 по SW-RECIPE-004 и используется в SW-RECIPE-010.",
+        "processing": "SW-ITEM-016 ×5 обрабатывается по SW-RECIPE-023 в SW-ITEM-150, затем по SW-RECIPE-004 в SW-ITEM-044; выход переменный.",
         "usage": "Обработка древесины, производство изделий и торговых грузов по существующим Item-полям.",
-        "productionSequence": "SW-ITEM-016 ×10 → SW-RECIPE-004 → SW-ITEM-044; SW-ITEM-016 ×10 + SW-ITEM-018 ×1 → SW-RECIPE-010 → SW-ITEM-028."
+        "productionSequence": "SW-ITEM-016 ×5 → SW-ITEM-150 ×10 → SW-ITEM-044; выход переменный."
       },
       "acquisition": [
         "Ручная рубка сосен",
@@ -843,8 +852,9 @@
         "Кальфеон"
       ],
       "relatedItemIds": [
+        "SW-ITEM-150",
         "SW-ITEM-044",
-        "SW-ITEM-028"
+        "SW-ITEM-017"
       ],
       "resources": [
         "bdo-resource-wood-pine"
@@ -854,8 +864,9 @@
         "calpheon-timber-processing"
       ],
       "recipes": [
-        "pine-plank",
-        "pine-plywood"
+        "SW-RECIPE-023",
+        "SW-RECIPE-004",
+        "SW-RECIPE-010"
       ],
       "cities": [
         "calpheon"
@@ -876,7 +887,7 @@
       "description": "Финальный объект стартовой древесной ветки, объединяющий сырьё, обработку, упаковку и торговую сдачу.",
       "archive": {
         "title": "Модуль имперского ящика кальфеонской древесины",
-        "description": "Подтверждённый торговый груз с составом из трёх видов фанеры и порошка черного камня.",
+        "description": "Модуль торгового груза Calpheon Item Archive использует подтверждённый состав SW-RECIPE-005 и существующую карточку SW-ITEM-017.",
         "status": "curated",
         "source": "StartWave Calpheon Archive starter chain",
         "checkedAt": "2026-08-04"
@@ -887,9 +898,9 @@
         "summary": "Финальный торговый объект стартовой древесной ветки, объединяющий подтверждённые материалы, производство в мастерской упаковки и имперскую торговую сдачу по существующей карточке SW-ITEM-017.",
         "source": "Изготовление рабочим в мастерской упаковки Кальфеона по существующему рецепту SW-RECIPE-005 и производственной цепочке SW-PROD-001.",
         "acquisitionType": "Производство рабочим в мастерской упаковки.",
-        "processing": "SW-ITEM-019, SW-ITEM-020, SW-ITEM-021 и SW-ITEM-018 переходят в SW-ITEM-017 по SW-RECIPE-005.",
+        "processing": "SW-ITEM-019 ×5, SW-ITEM-020 ×5, SW-ITEM-021 ×5 и SW-ITEM-018 ×1 переходят в SW-ITEM-017 по подтверждённому рецепту SW-RECIPE-005.",
         "usage": "Имперская торговая сдача; связь производственной цепочки со складом и торговлей.",
-        "productionSequence": "SW-ITEM-019 ×5 + SW-ITEM-020 ×5 + SW-ITEM-021 ×5 + SW-ITEM-018 ×1 → SW-RECIPE-005 → SW-ITEM-017."
+        "productionSequence": "Материалы: SW-ITEM-019 ×5 + SW-ITEM-020 ×5 + SW-ITEM-021 ×5 + SW-ITEM-018 ×1 → Производство: SW-RECIPE-005 в мастерской упаковки Кальфеона (SW-PROD-001) → Торговый объект: SW-ITEM-017."
       },
       "acquisition": [
         "Изготовление рабочим в мастерской упаковки из подготовленных древесных материалов"
@@ -915,9 +926,7 @@
         "SW-ITEM-021",
         "SW-ITEM-018"
       ],
-      "resources": [
-        "bdo-resource-wood-pine"
-      ],
+      "resources": [],
       "productions": [
         "calpheon-timber-processing",
         "packing-workshop"
@@ -1359,32 +1368,31 @@
       "category": "Материалы",
       "itemType": "Пиломатериал",
       "grade": "Не указано",
-      "description": "Промежуточный пиломатериал BDO 4669, получаемый рубкой брёвен и используемый для производства древесины.",
+      "description": "Промежуточный материал универсальной цепочки обработки древесины.",
       "archive": {
         "title": "Модуль необработанного пиломатериала",
-        "description": "Подтверждённый промежуточный древесный материал BDO 4669.",
+        "description": "Промежуточный Atlas-объект универсальной цепочки между SW-ITEM-013 и SW-ITEM-014.",
         "status": "curated",
         "source": "BDOLYTICS item 4669; RU market API; BDO Codex",
         "checkedAt": "2026-10-13"
       },
       "atlas": {
         "title": "Необработанный пиломатериал",
-        "summary": "Промежуточный древесный материал BDO 4669.",
-        "source": "BDOLYTICS item 4669; RU market API; BDO Codex.",
-        "acquisitionType": "Рубка брёвен в меню обработки.",
-        "processing": "SW-ITEM-013 ×10 перерабатывается в SW-ITEM-027; SW-ITEM-027 ×10 перерабатывается в SW-ITEM-014.",
-        "usage": "Промежуточный компонент обработки древесины.",
-        "productionSequence": "SW-ITEM-013 ×10 → SW-RECIPE-001 → SW-ITEM-027 ×10 → SW-RECIPE-002 → SW-ITEM-014."
+        "summary": "Промежуточный материал универсальной древесной цепочки.",
+        "source": "Обработка SW-ITEM-013 по SW-RECIPE-001.",
+        "acquisitionType": "Рубка в меню обработки.",
+        "processing": "SW-ITEM-027 ×10 обрабатывается по SW-RECIPE-002 в SW-ITEM-014; количество результата не фиксируется.",
+        "usage": "Промежуточный материал для получения SW-ITEM-014.",
+        "productionSequence": "SW-ITEM-013 ×10 → SW-ITEM-027 ×10 → SW-ITEM-014; выход переменный."
       },
       "acquisition": [
-        "Рубка брёвен"
+        "Обработка брёвен рубкой"
       ],
       "production": [
-        "Бревно ×10 → рубка → необработанный пиломатериал",
-        "Необработанный пиломатериал ×10 → рубка → древесина"
+        "Бревно → рубка → необработанный пиломатериал"
       ],
       "usage": [
-        "Промежуточный компонент обработки древесины"
+        "Обработка в древесину"
       ],
       "relatedObjects": [
         "Бревно",
@@ -1395,15 +1403,13 @@
         "SW-ITEM-013",
         "SW-ITEM-014"
       ],
-      "resources": [
-        "trees"
-      ],
+      "resources": [],
       "productions": [
         "wood-processing"
       ],
       "recipes": [
-        "wood-plank",
-        "plywood"
+        "SW-RECIPE-001",
+        "SW-RECIPE-002"
       ],
       "cities": [],
       "images": [],
@@ -1413,7 +1419,8 @@
         "BDO Codex"
       ],
       "checkedAt": "2026-10-13",
-      "status": "curated"
+      "status": "curated",
+      "gameId": 4669
     },
     {
       "id": "SW-ITEM-028",
@@ -2199,9 +2206,9 @@
         "summary": "Подтверждённый самостоятельный материал без добавления неподтверждённых игровых свойств и связей.",
         "source": "Данные, предоставленные пользователем.",
         "acquisitionType": "Не подтверждён предоставленными данными.",
-        "processing": "Не подтверждено предоставленными данными.",
+        "processing": "SW-ITEM-150 ×10 обрабатывается рубкой по SW-RECIPE-004; количество результата не фиксируется.",
         "usage": "Подтверждена как материал рецепта ящика с древесиной из Серендии; связь с рецептом будет добавлена после появления всех входных Item-объектов.",
-        "productionSequence": "Не подтверждена предоставленными данными."
+        "productionSequence": "SW-ITEM-150 ×10 → SW-RECIPE-004 → SW-ITEM-044; выход переменный."
       },
       "acquisition": [],
       "production": [],
@@ -2209,10 +2216,17 @@
         "Материал рецепта ящика с древесиной из Серендии"
       ],
       "relatedObjects": [],
-      "relatedItemIds": [],
-      "resources": [],
+      "relatedItemIds": [
+        "SW-ITEM-150"
+      ],
+      "resources": [
+        "bdo-resource-wood-pine"
+      ],
       "productions": [],
-      "recipes": [],
+      "recipes": [
+        "SW-RECIPE-004",
+        "SW-RECIPE-018"
+      ],
       "cities": [],
       "images": [],
       "source": [
@@ -3724,6 +3738,101 @@
       "description": "Для рубки леса",
       "checkedAt": "2026-08-31",
       "status": "active"
+    },
+    {
+      "id": "SW-ITEM-149",
+      "gameId": 4051,
+      "name": "Кусок железа",
+      "category": "Материалы",
+      "itemType": "Металл",
+      "grade": "Обычный",
+      "description": "Промежуточный материал железной цепочки обработки.",
+      "acquisition": [
+        "Нагревание железной руды"
+      ],
+      "usage": [
+        "Нагревание для получения слитка железа"
+      ],
+      "relatedObjects": [
+        "Железная руда",
+        "Слиток железа",
+        "Нагревание"
+      ],
+      "relatedItemIds": [
+        "SW-ITEM-003",
+        "SW-ITEM-004"
+      ],
+      "resources": [],
+      "productions": [],
+      "recipes": [
+        "SW-RECIPE-021",
+        "SW-RECIPE-022"
+      ],
+      "cities": [],
+      "images": [],
+      "source": [
+        "Данные, предоставленные пользователем"
+      ],
+      "checkedAt": "2026-10-22",
+      "status": "curated"
+    },
+    {
+      "id": "SW-ITEM-150",
+      "name": "Доска из сосны",
+      "category": "Материалы",
+      "itemType": "Обработанная древесина",
+      "grade": "Обычный",
+      "description": "Промежуточный материал сосновой цепочки между сосновой древесиной и фанерой из сосны.",
+      "archive": {
+        "title": "Модуль доски из сосны",
+        "description": "Локальный Atlas-объект для отделения сосновой цепочки от универсальной древесной цепочки; внешний игровой ID не назначен.",
+        "status": "curated",
+        "source": "StartWave Calpheon Archive starter chain",
+        "checkedAt": "2026-10-24"
+      },
+      "atlas": {
+        "view": "Item Atlas View",
+        "title": "Доска из сосны",
+        "summary": "Промежуточный материал сосновой цепочки без назначенного external ID.",
+        "source": "Обработка SW-ITEM-016 по SW-RECIPE-023.",
+        "acquisitionType": "Рубка в меню обработки.",
+        "processing": "SW-ITEM-150 ×10 обрабатывается по SW-RECIPE-004 в SW-ITEM-044; количество результата не фиксируется.",
+        "usage": "Промежуточный материал для получения фанеры из сосны.",
+        "productionSequence": "SW-ITEM-016 ×5 → SW-ITEM-150 ×10 → SW-ITEM-044; выход переменный."
+      },
+      "acquisition": [
+        "Обработка сосновой древесины рубкой"
+      ],
+      "production": [
+        "Сосновая древесина → рубка → доска из сосны"
+      ],
+      "usage": [
+        "Обработка в фанеру из сосны"
+      ],
+      "relatedObjects": [
+        "Сосна",
+        "Фанера из сосны",
+        "Рубка"
+      ],
+      "relatedItemIds": [
+        "SW-ITEM-016",
+        "SW-ITEM-044"
+      ],
+      "resources": [
+        "bdo-resource-wood-pine"
+      ],
+      "productions": [],
+      "recipes": [
+        "SW-RECIPE-023",
+        "SW-RECIPE-004"
+      ],
+      "cities": [],
+      "images": [],
+      "source": [
+        "StartWave Calpheon Archive starter chain"
+      ],
+      "checkedAt": "2026-10-24",
+      "status": "curated"
     }
   ]
 }

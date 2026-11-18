@@ -12,12 +12,14 @@
     return error;
   };
 
-  const request = async (table, searchParams) => {
+  const PAGE_SIZE = 250;
+  const memo = new Map();
+  const requestPage = async (table, searchParams, from) => {
     const url = new URL(`/rest/v1/${table}`, SUPABASE_URL);
     for (const [name, value] of Object.entries(searchParams)) url.searchParams.set(name, value);
     const response = await fetch(url, {
       method: 'GET',
-      headers: { Accept: 'application/json', apikey: SUPABASE_PUBLISHABLE_KEY }
+      headers: { Accept: 'application/json', apikey: SUPABASE_PUBLISHABLE_KEY, Prefer: 'count=exact', Range: `${from}-${from + PAGE_SIZE - 1}` }
     });
     if (!response.ok) {
       const error = new Error(`Live data request failed: HTTP ${response.status}`);
@@ -31,15 +33,45 @@
       error.code = 'LIVE_DATA_INVALID_RESPONSE';
       throw error;
     }
+    const contentRange = response.headers?.get?.('content-range') || '';
+    const match = contentRange.match(/^(?:(\d+)-(\d+)|(\*))\/(\d+|\*)$/);
+    if (!match) {
+      const error = new Error(`Live data response lacks a valid Content-Range for ${table}`);
+      error.code = 'LIVE_DATA_INCOMPLETE_RESPONSE';
+      throw error;
+    }
+    return { rows, end: match[2] == null ? from - 1 : Number(match[2]), total: match[4] === '*' ? null : Number(match[4]) };
+  };
+
+  const request = async (table, searchParams) => {
+    const rows = [];
+    let from = 0;
+    let expectedTotal = null;
+    do {
+      const page = await requestPage(table, searchParams, from);
+      rows.push(...page.rows);
+      expectedTotal = page.total;
+      if (!page.rows.length || (expectedTotal != null && rows.length >= expectedTotal)) break;
+      from = page.end + 1;
+    } while (true);
+    if (expectedTotal == null || rows.length !== expectedTotal) {
+      const error = new Error(`Incomplete ${table} response: received ${rows.length}, expected ${expectedTotal ?? 'known total'}`);
+      error.code = 'LIVE_DATA_INCOMPLETE_RESPONSE';
+      throw error;
+    }
     return rows;
   };
 
-  const loadItems = async () => {
+  const memoize = (key, loader) => {
+    if (!memo.has(key)) memo.set(key, loader().catch((error) => { memo.delete(key); throw error; }));
+    return memo.get(key);
+  };
+
+  const loadItems = () => memoize('items', async () => {
     const rows = await request('items', {
       select: 'id,name,name_en,category,item_type,status',
       status: 'in.(curated,active)',
-      order: 'id.asc',
-      limit: '1000'
+      order: 'id.asc'
     });
     return rows.map((row) => ({
       id: row.id,
@@ -48,6 +80,118 @@
       category: row.category,
       itemType: row.item_type,
       status: row.status
+    }));
+  });
+
+  const loadRecipeArchiveRecipes = () => memoize('recipe-archive', async () => {
+    let recipeRows;
+    try {
+      recipeRows = await request('recipes', {
+        select: 'id,name,method,workplace,result_item_id,result_quantity,status',
+        status: 'in.(curated,active)',
+        order: 'id.asc'
+      });
+    } catch (error) { error.endpoint = 'recipes'; throw error; }
+    let inputRows;
+    try {
+      inputRows = recipeRows.length ? await request('recipe_inputs', {
+        select: 'recipe_id,item_id,quantity',
+        recipe_id: `in.(${recipeRows.map((row) => row.id).join(',')})`,
+        order: 'recipe_id.asc,item_id.asc'
+      }) : [];
+    } catch (error) { error.endpoint = 'recipe_inputs'; throw error; }
+    const inputsByRecipe = new Map();
+    inputRows.forEach((row) => {
+      if (!inputsByRecipe.has(row.recipe_id)) inputsByRecipe.set(row.recipe_id, []);
+      inputsByRecipe.get(row.recipe_id).push(row);
+    });
+    return recipeRows.map((row) => {
+      const inputs = inputsByRecipe.get(row.id) || [];
+      return {
+        id: row.id,
+        name: row.name,
+        recipeType: 'Рецепт обработки',
+        description: '',
+        materialItemIds: inputs.map((input) => input.item_id),
+        materialQuantities: Object.fromEntries(inputs.map((input) => [input.item_id, input.quantity])),
+        resultItemId: row.result_item_id,
+        resultQuantity: row.result_quantity == null ? null : Number(row.result_quantity),
+        productionIds: [],
+        method: row.method || 'Не указан',
+        workplace: row.workplace || 'Не указано',
+        status: row.status,
+        inputs: inputs.map((input) => ({
+          itemId: input.item_id,
+          quantity: input.quantity == null ? null : Number(input.quantity)
+        }))
+      };
+    });
+  });
+
+  const loadRecipeArchive = async () => {
+    const [items, recipes] = await Promise.all([loadItems(), loadRecipeArchiveRecipes()]);
+    return { items, recipes };
+  };
+
+  const toDate = (value) => value ? String(value).slice(0, 10) : '';
+
+  const loadRegionNames = async () => {
+    const rows = await request('regions', {
+      select: 'id,name',
+      status: 'in.(curated,active)',
+      order: 'id.asc'
+    });
+    return new Map(rows.map((row) => [row.id, row.name]));
+  };
+
+  const loadCities = async () => {
+    const [rows, regions] = await Promise.all([
+      request('cities', {
+        select: 'id,name,name_en,city_type,status,region_id,updated_at',
+        status: 'in.(curated,active)',
+        order: 'id.asc'
+      }),
+      loadRegionNames()
+    ]);
+    return rows.map((row) => ({
+      id: row.id,
+      name: row.name,
+      nameEn: row.name_en,
+      region: regions.get(row.region_id) || row.region_id || 'Не указан',
+      cityType: row.city_type || 'Не указан',
+      description: '',
+      status: row.status,
+      checkedAt: toDate(row.updated_at),
+      coordinates: null,
+      source: [],
+      nodes: [],
+      resources: [],
+      production: [],
+      trade: [],
+      images: []
+    }));
+  };
+
+  const loadNodes = async () => {
+    const rows = await request('nodes', {
+      select: 'id,name,name_en,node_type,status,updated_at',
+      status: 'in.(curated,active)',
+      order: 'id.asc'
+    });
+    return rows.map((row) => ({
+      id: row.id,
+      name: row.name,
+      nameEn: row.name_en,
+      region: 'Не указан',
+      nodeType: row.node_type || 'Не указан',
+      status: row.status,
+      checkedAt: toDate(row.updated_at),
+      coordinates: null,
+      source: [],
+      resources: [],
+      workers: [],
+      production: [],
+      images: []
     }));
   };
 
@@ -63,7 +207,7 @@
     }));
   };
 
-  const loadRecipes = async () => {
+  const loadRecipesWithEmbeddedInputs = async () => {
     const rows = await request('recipes', {
       select: 'id,name,method,workplace,result_item_id,result_quantity,status,recipe_inputs(item_id,quantity)',
       status: 'in.(curated,active)',
@@ -157,7 +301,7 @@
     }
   };
 
-  const loadCities = async () => {
+  const loadCitiesWithRegions = async () => {
     const rows = await request('cities', {
       select: 'id,name,name_en,city_type,status,region_id',
       order: 'id.asc',
@@ -173,7 +317,7 @@
     }));
   };
 
-  const loadNodes = async () => {
+  const loadNodesWithRegions = async () => {
     const rows = await request('nodes', {
       select: 'id,name,name_en,node_type,status,node_regions!inner(region_id,regions(name))',
       order: 'id.asc',
@@ -269,7 +413,8 @@
   window.StartWaveBdoData = Object.freeze({
     loadItems,
     loadBdoExternalIdentities,
-    loadRecipes,
+    loadRecipes: loadRecipeArchiveRecipes,
+    loadRecipeArchive,
     loadBdoCurrentMarket,
     loadCities,
     loadNodes,
