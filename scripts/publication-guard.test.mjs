@@ -6,6 +6,9 @@ import path from "node:path";
 import test from "node:test";
 
 const sourceRoot = path.resolve(import.meta.dirname, "..");
+const privateKeyMarker = ["-----BEGIN ", "PRIVATE KEY-----"].join("");
+const privateKeyEndMarker = ["-----END ", "PRIVATE KEY-----"].join("");
+const credentialAssignment = ["API_", "KEY=super-secret-value"].join("");
 
 function fixture() {
   const root = mkdtempSync(path.join(tmpdir(), "startwave-guard-v2-"));
@@ -48,6 +51,20 @@ test("secrets, env files, databases, and unknown paths fail", () => {
     const base = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim();
     const head = commit(root, file, content);
     assert.equal(run(root, ["--range", base, head]).status, 1, file);
+  }
+});
+
+test("reconstructed private-key and credential markers fail on an allowed path", () => {
+  for (const [content, reason] of [
+    [`${privateKeyMarker}\nsynthetic-test-fixture\n${privateKeyEndMarker}\n`, /contains a private key marker/],
+    [`${credentialAssignment}\n`, /contains a credential assignment/]
+  ]) {
+    const root = fixture();
+    const base = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim();
+    const head = commit(root, "README.md", content);
+    const result = run(root, ["--range", base, head]);
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, reason);
   }
 });
 
@@ -188,8 +205,8 @@ test("owner-approved full snapshot bypasses only the repository allowlist", () =
 
 test("owner-approved staged mode cannot bypass safety-denied path categories", () => {
   for (const [file, content] of [
-    [".env", "API_KEY=super-secret-value\n"],
-    ["certificate.pem", "-----BEGIN PRIVATE KEY-----\nsynthetic-test-fixture\n-----END PRIVATE KEY-----\n"],
+    [".env", `${credentialAssignment}\n`],
+    ["certificate.pem", `${privateKeyMarker}\nsynthetic-test-fixture\n${privateKeyEndMarker}\n`],
     ["signing.key", "synthetic-safe-key-fixture\n"],
     ["cache.db", "synthetic-safe-database-fixture\n"],
     ["nested/.env.local", "SAFE_FIXTURE=yes\n"],
@@ -208,8 +225,8 @@ test("owner-approved staged mode cannot bypass safety-denied path categories", (
 
 test("owner-approved outgoing mode cannot bypass safety-denied file types", () => {
   for (const [file, content] of [
-    [".env", "API_KEY=super-secret-value\n"],
-    ["certificate.pem", "-----BEGIN PRIVATE KEY-----\nsynthetic-test-fixture\n-----END PRIVATE KEY-----\n"],
+    [".env", `${credentialAssignment}\n`],
+    ["certificate.pem", `${privateKeyMarker}\nsynthetic-test-fixture\n${privateKeyEndMarker}\n`],
     ["signing.key", "synthetic-safe-key-fixture\n"],
     ["cache.sqlite", "synthetic-safe-database-fixture\n"]
   ]) {
