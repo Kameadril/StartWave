@@ -35,6 +35,11 @@ jobs:
           GAMES/bdo/tools/publication-data-exporter.test.mjs
           GAMES/bdo/tools/atlas-agent/reconciliation-normalization.test.mjs
           scripts/publication-guard.test.mjs
+          scripts/cloudflare-preview-policy.test.mjs
+          scripts/cloudflare-preview-workflow.test.mjs
+          GAMES/bdo/site/tests/bdo-browser-provenance.test.mjs
+          GAMES/bdo/site/tests/bdo-browser-runner.test.mjs
+          GAMES/bdo/site/tests/bdo-publication-workflow.test.mjs
 
       - name: Run Publication Guard
         env:
@@ -54,3 +59,22 @@ jobs:
 
       - name: Validate BDO public artifact
         run: npm run validate:public:bdo
+
+  native-materializer:
+    runs-on: macos-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Build native materializer
+        run: make -B -C GAMES/bdo/site/tools
+
+      - name: Test native materializer
+        run: node --test GAMES/bdo/site/tests/bdo-owner-materializer.test.mjs
