@@ -161,7 +161,10 @@ try {
     if (args.length !== 3) throw new Error("--ci-range requires HEAD_SHA EVENT_BASE_SHA FIRST_PUSH_BASE_REF");
     const head = requireCommitSha(args[0], "CI head");
     const firstPush = args[1] === zeroSha;
-    const base = firstPush ? resolveRemoteBranch(args[2]) : requireCommitSha(args[1], "CI event base");
+    let base = firstPush ? resolveRemoteBranch(args[2]) : requireCommitSha(args[1], "CI event base");
+    if (!firstPush && spawnSyncGit(["merge-base", "--is-ancestor", base, head]) !== 0) {
+      base = requireCommitSha(git(["merge-base", base, head]).trim(), "CI merge base");
+    }
     for (const { commit, file } of introducedChanges(base, head, { allowEmpty: firstPush })) checkGitSpec(file, `${commit}:${file}`);
   } else if (mode === "--outgoing") {
     const input = await new Promise((resolve) => { let data = ""; process.stdin.setEncoding("utf8"); process.stdin.on("data", (chunk) => data += chunk); process.stdin.on("end", () => resolve(data)); });
@@ -189,6 +192,9 @@ try {
     };
     const artifactRoot = path.resolve(repositoryRoot, artifactName);
     if (!artifactRoot.startsWith(`${repositoryRoot}${path.sep}`)) throw new Error("Artifact path escapes repository root");
+    const artifactRootInfo = await lstat(artifactRoot);
+    if (artifactRootInfo.isSymbolicLink()) throw new Error("Artifact root must not be a symbolic link");
+    if (!artifactRootInfo.isDirectory()) throw new Error("Artifact root must be a directory");
     await walkArtifact(artifactRoot, artifactPolicy, artifactName);
   } else throw new Error("Usage: publication-guard.sh --staged | --outgoing | --range BASE HEAD | --ci-range HEAD EVENT_BASE FIRST_PUSH_BASE_REF | --artifact DIR");
 } catch (error) {

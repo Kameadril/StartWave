@@ -1,11 +1,14 @@
 import assert from "node:assert/strict";
-import { mkdtemp, mkdir, symlink, writeFile } from "node:fs/promises";
-import { tmpdir } from "node:os";
+import { mkdir, rm, symlink, writeFile } from "node:fs/promises";
 import path from "node:path";
-import test from "node:test";
+import test, { after } from "node:test";
+import { repositoryTestTemp } from "./repository-test-temp.mjs";
 import { createManifest, fetchAllCiJobs, selectSuccessfulCiRun, validateCiJobs, validateControllerIdentity, validateInputs, verifyManifest } from "./cloudflare-preview-policy.mjs";
 
 const sha = "a".repeat(40);
+const repositoryRoot = path.resolve(import.meta.dirname, "..");
+const artifactRoots = [];
+after(async () => { for (const root of artifactRoots) await rm(root, { recursive: true, force: true }); });
 const realSuccessfulRun = {
   id: 44113063509,
   workflow_id: 367941129,
@@ -18,7 +21,8 @@ const realSuccessfulRun = {
 };
 
 async function artifact() {
-  const root = await mkdtemp(path.join(tmpdir(), "startwave-preview-artifact-"));
+  const root = await repositoryTestTemp(repositoryRoot, "preview-artifact-");
+  artifactRoots.push(root);
   await mkdir(path.join(root, "assets", "css"), { recursive: true });
   await writeFile(path.join(root, "index.html"), "<h1>StartWave</h1>\n");
   await writeFile(path.join(root, "assets", "css", "style.css"), "body {}\n");

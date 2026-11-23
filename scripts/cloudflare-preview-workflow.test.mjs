@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
-import { access, mkdtemp, readFile } from "node:fs/promises";
+import { access, readFile, rm } from "node:fs/promises";
 import path from "node:path";
-import { tmpdir } from "node:os";
 import { spawnSync } from "node:child_process";
 import test from "node:test";
+import { repositoryTestTemp } from "./repository-test-temp.mjs";
 
 const workflowPath = path.resolve(import.meta.dirname, "..", ".github", "workflows", "cloudflare-preview.yml");
 const workflow = await readFile(workflowPath, "utf8");
@@ -23,7 +23,7 @@ test("raw dispatch input enters shell only through one environment variable", ()
 });
 
 test("hostile commit inputs are rejected without shell execution", async () => {
-  const root = await mkdtemp(path.join(tmpdir(), "startwave-shell-injection-"));
+  const root = await repositoryTestTemp(path.resolve(import.meta.dirname, ".."), "shell-injection-");
   const marker = path.join(root, "executed");
   const policy = path.resolve(import.meta.dirname, "cloudflare-preview-policy.mjs");
   const payloads = [
@@ -36,14 +36,14 @@ test("hostile commit inputs are rejected without shell execution", async () => {
     `a|touch ${marker}`,
     `a&&touch ${marker}`
   ];
-  for (const raw of payloads) {
+  try { for (const raw of payloads) {
     const result = spawnSync("/bin/bash", ["-c", 'node "$POLICY" validate --commit "$RAW_COMMIT_SHA" --project startwave'], {
       encoding: "utf8",
       env: { ...process.env, POLICY: policy, RAW_COMMIT_SHA: raw }
     });
     assert.notEqual(result.status, 0, `payload must be rejected: ${JSON.stringify(raw)}`);
     await assert.rejects(access(marker), `payload executed a command: ${JSON.stringify(raw)}`);
-  }
+  } } finally { await rm(root, { recursive: true, force: true }); }
 });
 
 test("all third-party actions are pinned to immutable commit SHAs", () => {

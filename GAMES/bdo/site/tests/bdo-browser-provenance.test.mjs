@@ -1,17 +1,16 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { appendFile, copyFile, cp, mkdir, mkdtemp, readFile, realpath, rename, rm, symlink, writeFile } from 'node:fs/promises';
-import os from 'node:os';
+import { appendFile, copyFile, cp, mkdir, readFile, rename, rm, symlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import test from 'node:test';
 import { publicSourceMap, requiredPublicFiles, snapshotLimits, verifyPublicRoot } from './bdo-browser-provenance.mjs';
+import { repositoryTestTemp } from '../../../../scripts/repository-test-temp.mjs';
 
 const root = path.resolve(import.meta.dirname, '../../../..');
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
-const canonicalTmp = await realpath(os.tmpdir());
 
 const fixture = async () => {
-  const publicRoot = await mkdtemp(path.join(canonicalTmp, 'startwave-bdo-provenance-'));
+  const publicRoot = await repositoryTestTemp(root, 'bdo-provenance-');
   await mkdir(path.join(publicRoot, 'assets/js'), { recursive: true });
   await mkdir(path.join(publicRoot, 'assets/data'), { recursive: true });
   for (const relative of requiredPublicFiles.filter((file) => file.startsWith('assets/js/'))) {

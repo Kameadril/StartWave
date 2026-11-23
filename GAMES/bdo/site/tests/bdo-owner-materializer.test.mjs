@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
-import { chmodSync, closeSync, constants, copyFileSync, lstatSync, mkdirSync, mkdtempSync, openSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
+import { chmodSync, closeSync, constants, copyFileSync, lstatSync, mkdirSync, openSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { rm } from 'node:fs/promises';
-import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import test from 'node:test';
+import { repositoryTestTemp } from '../../../../scripts/repository-test-temp.mjs';
 
 const here = path.dirname(new URL(import.meta.url).pathname);
 const root = path.resolve(here, '../../../..');
@@ -15,8 +15,8 @@ const fixture = path.join(here, 'fixtures/bdo-owner-materializer');
 
 const openDirectory = (target) => openSync(target, constants.O_RDONLY);
 const invoke = (args, fds) => spawnSync(tool, args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe', ...fds] });
-const makeOwnerRoot = () => {
-  const base = mkdtempSync(path.join(os.tmpdir(), 'startwave-materializer-'));
+const makeOwnerRoot = async () => {
+  const base = await repositoryTestTemp(root, 'materializer-');
   const publicationParent = path.join(base, 'publications');
   const anchorParent = path.join(base, 'anchors');
   mkdirSync(publicationParent, { mode: 0o700 }); mkdirSync(anchorParent, { mode: 0o700 });
@@ -36,7 +36,7 @@ const addInheritedAcl = (target) => {
 };
 
 test('materialize and independent seal-anchor create exact immutable candidate', async () => {
-  const item = makeOwnerRoot();
+  const item = await makeOwnerRoot();
   const sourceFd = openDirectory(fixture), publicationFd = openDirectory(item.publicationParent), anchorFd = openDirectory(item.anchorParent);
   try {
     const materialized = invoke(['materialize', '--source-fd', '3', '--publication-parent-fd', '4', '--publication-leaf', 'candidate'], [sourceFd, publicationFd]);
@@ -50,7 +50,7 @@ test('materialize and independent seal-anchor create exact immutable candidate',
 });
 
 test('existing publication is never overwritten', async () => {
-  const item = makeOwnerRoot(); mkdirSync(path.join(item.publicationParent, 'candidate')); writeFileSync(path.join(item.publicationParent, 'candidate', 'sentinel'), 'unchanged');
+  const item = await makeOwnerRoot(); mkdirSync(path.join(item.publicationParent, 'candidate')); writeFileSync(path.join(item.publicationParent, 'candidate', 'sentinel'), 'unchanged');
   const sourceFd = openDirectory(fixture), publicationFd = openDirectory(item.publicationParent);
   try {
     const result = invoke(['materialize', '--source-fd', '3', '--publication-parent-fd', '4', '--publication-leaf', 'candidate'], [sourceFd, publicationFd]);
@@ -59,7 +59,7 @@ test('existing publication is never overwritten', async () => {
 });
 
 test('malformed leaf and source symlink fail closed without final target', async () => {
-  const item = makeOwnerRoot(); const source = path.join(item.base, 'source');
+  const item = await makeOwnerRoot(); const source = path.join(item.base, 'source');
   mkdirSync(path.join(source, 'assets/js'), { recursive: true }); mkdirSync(path.join(source, 'assets/data'), { recursive: true });
   for (const relative of ['assets/js/bdo-live-data.js','assets/js/bdo-recipes.js','assets/js/bdo-items.js','assets/js/bdo-productions.js','assets/data/bdo-productions.json','assets/data/bdo-items.json','assets/data/bdo-recipes.json','production.html','recipes.html','items.html']) {
     const target = path.join(source, relative); mkdirSync(path.dirname(target), { recursive: true }); copyFileSync(path.join(fixture, relative), target);
@@ -74,7 +74,7 @@ test('malformed leaf and source symlink fail closed without final target', async
 });
 
 test('inherited extended ACL on owner-only parent is blocked before publication', async () => {
-  const item = makeOwnerRoot();
+  const item = await makeOwnerRoot();
   addInheritedAcl(item.publicationParent);
   const sourceFd = openDirectory(fixture), publicationFd = openDirectory(item.publicationParent);
   try {
@@ -90,7 +90,7 @@ test('inherited extended ACL on owner-only parent is blocked before publication'
 });
 
 test('extended ACL on final publication candidate is blocked before anchor sealing', async () => {
-  const item = makeOwnerRoot();
+  const item = await makeOwnerRoot();
   const sourceFd = openDirectory(fixture), publicationFd = openDirectory(item.publicationParent), anchorFd = openDirectory(item.anchorParent);
   const publication = path.join(item.publicationParent, 'candidate');
   try {

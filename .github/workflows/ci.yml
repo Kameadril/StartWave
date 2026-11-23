@@ -76,4 +76,4 @@ jobs:
       - name: Verify committed and source-built native materializers
         run: >-
           node GAMES/bdo/site/tests/bdo-owner-materializer-provenance.mjs
-          --build-dir "$RUNNER_TEMP/startwave-native-materializer"
+          --build-dir "$GITHUB_WORKSPACE/.startwave-agent/tmp/native-materializer"

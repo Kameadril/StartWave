@@ -2,19 +2,19 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { spawn } from 'node:child_process';
 import { closeSync, fstatSync, openSync } from 'node:fs';
-import { copyFile, cp, mkdir, mkdtemp, readFile, readdir, realpath, rm, symlink, writeFile } from 'node:fs/promises';
-import os from 'node:os';
+import { copyFile, cp, mkdir, readFile, readdir, rm, symlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 import test, { after } from 'node:test';
 import { publicSourceMap, requiredPublicFiles } from './bdo-browser-provenance.mjs';
+import { repositoryTestTemp } from '../../../../scripts/repository-test-temp.mjs';
 
 const root = path.resolve(import.meta.dirname, '../../../..');
 const runner = path.join(root, 'GAMES/bdo/site/tests/bdo-browser-runner.mjs');
 const server = path.join(root, 'GAMES/bdo/site/tests/bdo-browser-server.mjs');
 const fakeBrowser = path.join(root, 'GAMES/bdo/site/tests/bdo-browser-fake-child.mjs');
-const canonicalTmp = await realpath(os.tmpdir());
-const fixtureRoot = await mkdtemp(path.join(canonicalTmp, 'startwave-bdo-public-fixture-'));
+const tempParent = path.join(root, '.startwave-agent', 'tmp');
+const fixtureRoot = await repositoryTestTemp(root, 'bdo-public-fixture-');
 const required = requiredPublicFiles;
 await mkdir(path.join(fixtureRoot, 'assets/js'), { recursive: true });
 await mkdir(path.join(fixtureRoot, 'assets/data'), { recursive: true });
@@ -36,7 +36,7 @@ await writeFile(fixtureAnchor, JSON.stringify({ schemaVersion: 1, publicationRoo
 const fixtureAnchorFd = openSync(fixtureAnchor, 'r');
 const fixtureAnchorIdentity = fstatSync(fixtureAnchorFd, { bigint: true });
 after(() => { closeSync(fixtureAnchorFd); return rm(fixtureRoot, { recursive: true, force: true }); });
-const profiles = async () => (await readdir(os.tmpdir())).filter((name) => name.startsWith('startwave-bdo-browser-')).sort();
+const profiles = async () => (await readdir(tempParent)).filter((name) => name.startsWith('bdo-browser-profile-')).sort();
 
 const run = ({ env = {}, signalAt } = {}) => new Promise((resolve, reject) => {
   const child = spawn(process.execPath, [
@@ -70,7 +70,7 @@ const pidExists = (pid) => {
   catch (error) { if (error.code === 'ESRCH') return false; throw error; }
 };
 const isolatedFixture = async () => {
-  const parent = await mkdtemp(path.join(canonicalTmp, 'startwave-bdo-server-fixture-'));
+  const parent = await repositoryTestTemp(root, 'bdo-server-fixture-');
   const publicRoot = path.join(parent, 'public');
   await cp(fixtureRoot, publicRoot, { recursive: true });
   return { parent, publicRoot, manifestPath: path.join(publicRoot, 'manifest.json'), manifestSha256: fixtureManifestSha256 };
@@ -144,6 +144,26 @@ test('timeout exits 1 and removes its temporary profile', async () => {
   assert.equal(result.code, 1, result.stderr);
   assert.match(result.stderr, /timeout: browser startup/);
   assert.deepEqual(await profiles(), before);
+});
+
+test('overall deadline aborts a hanging DevTools fetch and cleans children', async () => {
+  const before = await profiles();
+  const result = await run({ env: {
+    BDO_BROWSER_TEST_FAKE_BROWSER_SCRIPT: fakeBrowser,
+    BDO_BROWSER_TEST_HANG_FETCH: '1',
+    BDO_BROWSER_TEST_TIMEOUT_MS: '250'
+  } });
+  assert.equal(result.code, 1, result.stderr);
+  assert.match(result.stderr, /timeout: DevTools target discovery/);
+  for (const pid of pidsFrom(result.stderr)) assert.equal(pidExists(pid), false, `orphan PID ${pid}`);
+  assert.deepEqual(await profiles(), before);
+});
+
+test('every DevTools command is bounded by the overall deadline', async () => {
+  const source = await readFile(runner, 'utf8');
+  assert.match(source, /failAfter\(cdp\.send\('Runtime\.enable'\), 'Runtime\.enable'\)/);
+  assert.match(source, /failAfter\(cdp\.send\('Runtime\.evaluate'/);
+  assert.doesNotMatch(source, /await cdp\.send\(/);
 });
 
 test('browser crash exits 1 immediately and removes its temporary profile', async () => {

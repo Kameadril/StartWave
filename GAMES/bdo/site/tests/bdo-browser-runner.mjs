@@ -1,11 +1,11 @@
 import { constants, fstatSync } from 'node:fs';
-import { access, mkdtemp, readFile, rm } from 'node:fs/promises';
+import { access, readFile, rm } from 'node:fs/promises';
 import { spawn } from 'node:child_process';
-import os from 'node:os';
 import path from 'node:path';
 import process from 'node:process';
 import { verifyPublicRoot } from './bdo-browser-provenance.mjs';
 import { parseArgs, parseInheritedFd, verifyTrustAnchor } from './bdo-publication-workflow-lib.mjs';
+import { repositoryTestTemp } from '../../../../scripts/repository-test-temp.mjs';
 
 const root = path.resolve(import.meta.dirname, '../../../..');
 const runnerArgs = parseArgs(process.argv.slice(2));
@@ -38,6 +38,17 @@ const failAfter = async (promise, label, ms = remaining()) => {
   } finally {
     clearTimeout(timer);
   }
+};
+
+const fetchBeforeDeadline = async (url, label) => {
+  const controller = new AbortController();
+  const ms = remaining();
+  const timer = setTimeout(() => controller.abort(new Error(`timeout: ${label} (${ms} ms)`)), ms);
+  try { return await fetch(url, { signal: controller.signal }); }
+  catch (error) {
+    if (controller.signal.aborted) throw controller.signal.reason;
+    throw error;
+  } finally { clearTimeout(timer); }
 };
 
 const waitForLine = (stream, prefix) => new Promise((resolve, reject) => {
@@ -248,7 +259,7 @@ try {
     console.error(`BDO browser version: ${version}`);
     versionProbe = undefined;
   }
-  profile = await mkdtemp(path.join(os.tmpdir(), 'startwave-bdo-browser-'));
+  profile = await repositoryTestTemp(root, 'bdo-browser-profile-');
   console.error(`BDO browser profile: ${profile}`);
   await testPhase('profile-created');
   const browserCommand = process.env.BDO_BROWSER_TEST_FAKE_BROWSER_SCRIPT ? process.execPath : browserBin;
@@ -273,20 +284,21 @@ try {
   console.error(`BDO browser CDP ready: time=${timestamp()} pid=${browser.pid} port=${port}`);
   let page;
   while (remaining()) {
-    const targets = await fetch(`http://127.0.0.1:${port}/json/list`).then((response) => response.json());
+    const response = await fetchBeforeDeadline(`http://127.0.0.1:${port}/json/list`, 'DevTools target discovery');
+    const targets = await failAfter(response.json(), 'DevTools target response');
     page = targets.find((target) => target.type === 'page' && target.url === harnessUrl);
     if (page) break;
     await delay(25);
   }
   if (!page) throw new Error('browser page target not found');
   cdp = await failAfter(connect(page.webSocketDebuggerUrl), 'DevTools connection');
-  await cdp.send('Runtime.enable');
+  await failAfter(cdp.send('Runtime.enable'), 'Runtime.enable');
   let state;
   while (remaining()) {
-    const evaluated = await cdp.send('Runtime.evaluate', {
+    const evaluated = await failAfter(cdp.send('Runtime.evaluate', {
       expression: `(() => ({ status: document.documentElement.dataset.testStatus || '', summary: document.getElementById('summary')?.textContent || '', rows: [...document.querySelectorAll('#results li')].map((node) => node.textContent) }))()`,
       returnByValue: true
-    });
+    }), 'Runtime.evaluate');
     state = evaluated.result.value;
     if (state && (state.status === 'pass' || state.status === 'fail')) break;
     await delay(25);

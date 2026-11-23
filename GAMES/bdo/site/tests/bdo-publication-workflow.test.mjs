@@ -1,19 +1,19 @@
 import assert from 'node:assert/strict';
 import { appendFileSync, closeSync, fstatSync, openSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
-import { copyFile, mkdir, mkdtemp, realpath, rm, writeFile } from 'node:fs/promises';
-import os from 'node:os';
+import { copyFile, mkdir, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import test from 'node:test';
 import { publicSourceMap, requiredPublicFiles, snapshotLimits } from './bdo-browser-provenance.mjs';
 import { parseArgs, preparePublication, readBoundedFd, recordTrustAnchor, sha256, verifyTrustAnchor } from './bdo-publication-workflow-lib.mjs';
+import { repositoryTestTemp } from '../../../../scripts/repository-test-temp.mjs';
 
 const root = path.resolve(import.meta.dirname, '../../../..');
 const launcher = path.join(root, 'GAMES/bdo/site/tests/bdo-browser-launcher.mjs');
 const runner = path.join(root, 'GAMES/bdo/site/tests/bdo-browser-runner.mjs');
 
 const fixture = async () => {
-  const base = await mkdtemp(path.join(await realpath(os.tmpdir()), 'startwave-v3-2-workflow-'));
+  const base = await repositoryTestTemp(root, 'v3-2-workflow-');
   const publication = path.join(base, 'publication');
   await mkdir(publication);
   const files = {};
@@ -109,7 +109,7 @@ test('anchor read rejects a post-fstat growth before accepting bytes', async () 
 });
 
 test('anchor read rejects an already oversized file before allocation', async () => {
-  const base = await mkdtemp(path.join(await realpath(os.tmpdir()), 'startwave-v3-2-limit-'));
+  const base = await repositoryTestTemp(root, 'v3-2-limit-');
   const target = path.join(base, 'oversized-anchor');
   await writeFile(target, Buffer.alloc(snapshotLimits.maxManifestBytes + 1));
   const fd = openSync(target, 'r');
