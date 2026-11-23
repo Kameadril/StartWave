@@ -8,7 +8,9 @@ import test from 'node:test';
 
 const here = path.dirname(new URL(import.meta.url).pathname);
 const root = path.resolve(here, '../../../..');
-const tool = path.join(root, 'GAMES/bdo/site/tools/bdo-owner-materializer');
+const tool = process.env.BDO_OWNER_MATERIALIZER
+  ? path.resolve(process.env.BDO_OWNER_MATERIALIZER)
+  : path.join(root, 'GAMES/bdo/site/tools/bdo-owner-materializer');
 const fixture = path.join(here, 'fixtures/bdo-owner-materializer');
 
 const openDirectory = (target) => openSync(target, constants.O_RDONLY);

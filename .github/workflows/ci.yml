@@ -73,8 +73,7 @@ jobs:
         with:
           node-version: 22
 
-      - name: Build native materializer
-        run: make -B -C GAMES/bdo/site/tools
-
-      - name: Test native materializer
-        run: node --test GAMES/bdo/site/tests/bdo-owner-materializer.test.mjs
+      - name: Verify committed and source-built native materializers
+        run: >-
+          node GAMES/bdo/site/tests/bdo-owner-materializer-provenance.mjs
+          --build-dir "$RUNNER_TEMP/startwave-native-materializer"
