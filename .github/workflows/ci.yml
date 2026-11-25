@@ -34,6 +34,7 @@ jobs:
           tools/startwave-agent/bdo-web-search.test.mjs
           GAMES/bdo/tools/publication-data-exporter.test.mjs
           GAMES/bdo/tools/atlas-agent/reconciliation-normalization.test.mjs
+          scripts/repository-test-temp.test.mjs
           scripts/publication-guard.test.mjs
           scripts/cloudflare-preview-policy.test.mjs
           scripts/cloudflare-preview-workflow.test.mjs

@@ -151,10 +151,43 @@ test('overall deadline aborts a hanging DevTools fetch and cleans children', asy
   const result = await run({ env: {
     BDO_BROWSER_TEST_FAKE_BROWSER_SCRIPT: fakeBrowser,
     BDO_BROWSER_TEST_HANG_FETCH: '1',
-    BDO_BROWSER_TEST_TIMEOUT_MS: '250'
+    BDO_BROWSER_TEST_TIMEOUT_MS: '500'
   } });
   assert.equal(result.code, 1, result.stderr);
   assert.match(result.stderr, /timeout: DevTools target discovery/);
+  for (const pid of pidsFrom(result.stderr)) assert.equal(pidExists(pid), false, `orphan PID ${pid}`);
+  assert.deepEqual(await profiles(), before);
+});
+
+test('overall deadline actively terminates a stalled DevTools WebSocket handshake', async () => {
+  const before = await profiles();
+  const started = Date.now();
+  const result = await run({ env: {
+    BDO_BROWSER_TEST_FAKE_BROWSER_SCRIPT: fakeBrowser,
+    BDO_BROWSER_TEST_HANG_WEBSOCKET: '1',
+    BDO_BROWSER_TEST_TIMEOUT_MS: '500'
+  } });
+  assert.equal(result.code, 1, result.stderr);
+  assert.match(result.stderr, /timeout: DevTools connection/);
+  assert.match(result.stderr, /FAKE_WS_OPEN/);
+  assert.match(result.stderr, /BDO browser exit: .* code=0 signal=-/);
+  assert.doesNotMatch(result.stderr, /BDO browser exit: .* code=9/);
+  assert.ok(Date.now() - started < 2_000, `stalled handshake took ${Date.now() - started} ms`);
+  for (const pid of pidsFrom(result.stderr)) assert.equal(pidExists(pid), false, `orphan PID ${pid}`);
+  assert.deepEqual(await profiles(), before);
+});
+
+test('immediate CDP child termination is observed without a cancellation timeout', async () => {
+  const before = await profiles();
+  const result = await run({ env: {
+    BDO_BROWSER_TEST_FAKE_BROWSER_SCRIPT: fakeBrowser,
+    BDO_BROWSER_TEST_HANG_WEBSOCKET: '1',
+    BDO_BROWSER_TEST_TIMEOUT_MS: '500'
+  } });
+  assert.equal(result.code, 1, result.stderr);
+  assert.match(result.stderr, /timeout: DevTools connection/);
+  assert.doesNotMatch(result.stderr, /timeout: DevTools connection cancellation/);
+  assert.match(result.stderr, /BDO browser exit: .* code=0 signal=-/);
   for (const pid of pidsFrom(result.stderr)) assert.equal(pidExists(pid), false, `orphan PID ${pid}`);
   assert.deepEqual(await profiles(), before);
 });

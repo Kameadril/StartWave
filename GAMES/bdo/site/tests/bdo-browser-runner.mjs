@@ -1,6 +1,6 @@
 import { constants, fstatSync } from 'node:fs';
 import { access, readFile, rm } from 'node:fs/promises';
-import { spawn } from 'node:child_process';
+import { fork, spawn } from 'node:child_process';
 import path from 'node:path';
 import process from 'node:process';
 import { verifyPublicRoot } from './bdo-browser-provenance.mjs';
@@ -114,25 +114,81 @@ const waitForDevTools = async (file) => {
   throw new Error(`timeout: browser startup (${timeoutMs} ms)`);
 };
 
+let connectingCdpChild;
+const stopCdpChild = async (child, label) => {
+  if (!child || child.exitCode !== null || child.signalCode !== null) return;
+  let observeExit;
+  const exited = new Promise((resolve) => {
+    observeExit = resolve;
+    child.once('exit', observeExit);
+  });
+  try {
+    if (child.exitCode !== null || child.signalCode !== null) return;
+    child.kill('SIGTERM');
+    await failAfter(exited, label, 1_000);
+  } finally {
+    child.off('exit', observeExit);
+  }
+};
 const connect = async (url) => {
-  const socket = new WebSocket(url);
-  await new Promise((resolve, reject) => {
-    socket.addEventListener('open', resolve, { once: true });
-    socket.addEventListener('error', () => reject(new Error('browser DevTools WebSocket failed')), { once: true });
+  const child = fork(path.join(import.meta.dirname, 'bdo-browser-cdp-child.mjs'), [url], {
+    stdio: ['ignore', 'ignore', 'ignore', 'ipc']
   });
-  let id = 0;
+  connectingCdpChild = child;
   const pending = new Map();
-  socket.addEventListener('message', ({ data }) => {
-    const message = JSON.parse(data);
-    if (!message.id || !pending.has(message.id)) return;
-    const { resolve, reject } = pending.get(message.id); pending.delete(message.id);
-    message.error ? reject(new Error(message.error.message)) : resolve(message.result);
+  let id = 0;
+  let opened = false;
+  const failPending = (error) => {
+    for (const item of pending.values()) item.reject(error);
+    pending.clear();
+  };
+  child.on('message', (message) => {
+    if (message.type === 'response' && pending.has(message.id)) {
+      const item = pending.get(message.id); pending.delete(message.id);
+      message.error ? item.reject(new Error(message.error)) : item.resolve(message.result);
+    } else if (message.type === 'closed' && opened) {
+      failPending(new Error('browser DevTools WebSocket closed'));
+    } else if (message.type === 'error' && opened) {
+      failPending(new Error(message.error));
+    }
   });
+  child.on('error', (error) => { if (opened) failPending(error); });
+  child.on('exit', (code, signal) => {
+    if (opened) failPending(new Error(`browser DevTools child exited (code=${code}, signal=${signal})`));
+  });
+  try {
+    await failAfter(new Promise((resolve, reject) => {
+      const onMessage = (message) => {
+        if (message.type === 'open') { cleanup(); opened = true; resolve(); }
+        else if (message.type === 'error') { cleanup(); reject(new Error(message.error)); }
+      };
+      const onError = (error) => { cleanup(); reject(error); };
+      const onExit = (code, signal) => { cleanup(); reject(new Error(`browser DevTools child exited before connection (code=${code}, signal=${signal})`)); };
+      const cleanup = () => {
+        child.off('message', onMessage);
+        child.off('error', onError);
+        child.off('exit', onExit);
+      };
+      child.on('message', onMessage);
+      child.once('error', onError);
+      child.once('exit', onExit);
+    }), 'DevTools connection');
+  } catch (error) {
+    await stopCdpChild(child, 'DevTools connection cancellation');
+    await delay(100);
+    throw error;
+  } finally {
+    if (connectingCdpChild === child) connectingCdpChild = undefined;
+  }
   const send = (method, params = {}) => new Promise((resolve, reject) => {
     const callId = ++id; pending.set(callId, { resolve, reject });
-    socket.send(JSON.stringify({ id: callId, method, params }));
+    child.send({ id: callId, method, params });
   });
-  return { socket, send };
+  const close = async () => {
+    failPending(new Error('browser DevTools connection closed by cleanup'));
+    await stopCdpChild(child, 'DevTools child cleanup');
+  };
+  return { child, send, close };
 };
 
 let server;
@@ -153,7 +209,8 @@ const childExit = (name, child) => child?.once('exit', (code, signal) => {
 const cleanup = () => {
   if (cleanupPromise) return cleanupPromise;
   cleanupPromise = (async () => {
-    try { cdp?.socket.close(); } catch {}
+    try { await stopCdpChild(connectingCdpChild, 'connecting DevTools child cleanup'); } catch {}
+    try { if (cdp) await cdp.close(); } catch {}
     const failures = [];
     for (const [name, child] of [['version-probe', versionProbe], ['browser', browser], ['server', server]]) {
       try { await stopChild(child); } catch (error) { failures.push(`${name}: ${error.message}`); }
@@ -291,7 +348,7 @@ try {
     await delay(25);
   }
   if (!page) throw new Error('browser page target not found');
-  cdp = await failAfter(connect(page.webSocketDebuggerUrl), 'DevTools connection');
+  cdp = await connect(page.webSocketDebuggerUrl);
   await failAfter(cdp.send('Runtime.enable'), 'Runtime.enable');
   let state;
   while (remaining()) {

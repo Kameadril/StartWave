@@ -47,6 +47,7 @@
     "scripts/publication-guard.mjs",
     "scripts/publication-guard.test.mjs",
     "scripts/repository-test-temp.mjs",
+    "scripts/repository-test-temp.test.mjs",
     "scripts/cloudflare-preview-policy.mjs",
     "scripts/cloudflare-preview-policy.test.mjs",
     "scripts/cloudflare-preview-workflow.test.mjs",
