@@ -1,0 +1,181 @@
+name: Cloudflare gated preview
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        description: Full lowercase commit SHA with successful CI
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: cloudflare-preview-startwave-${{ github.run_id }}
+  cancel-in-progress: false
+
+env:
+  EXPECTED_REPOSITORY: Kameadril/StartWave
+  PROJECT: startwave
+
+jobs:
+  trusted-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      commit_sha: ${{ steps.policy.outputs.commit_sha }}
+      project: ${{ steps.policy.outputs.project }}
+      preview_branch: ${{ steps.policy.outputs.preview_branch }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.workflow_sha }}
+          path: controller
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - name: Verify trusted controller identity and input
+        id: policy
+        env:
+          GITHUB_WORKFLOW_SHA: ${{ github.workflow_sha }}
+          RAW_COMMIT_SHA: ${{ inputs.commit_sha }}
+        run: |
+          node controller/scripts/cloudflare-preview-policy.mjs validate --commit "$RAW_COMMIT_SHA" --project "$PROJECT" --github-output "$GITHUB_OUTPUT"
+          node controller/scripts/cloudflare-preview-policy.mjs verify-controller --repository controller --commit "$RAW_COMMIT_SHA" --project "$PROJECT"
+      - name: Check out candidate as inert data
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ steps.policy.outputs.commit_sha }}
+          path: candidate-data
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Statically inspect candidate before execution
+        run: |
+          test "$(git -C candidate-data rev-parse HEAD)" = "${{ steps.policy.outputs.commit_sha }}"
+          cmp controller/.github/workflows/ci.yml candidate-data/.github/workflows/ci.yml
+          mkdir -p inspection/scripts
+          cp controller/.startwave-public-guard.json inspection/.startwave-public-guard.json
+          cp controller/scripts/publication-guard.mjs inspection/scripts/publication-guard.mjs
+          cp -R candidate-data/.git inspection/.git
+          node inspection/scripts/publication-guard.mjs --ci-range "${{ steps.policy.outputs.commit_sha }}" 0000000000000000000000000000000000000000 refs/remotes/origin/factory
+      - name: Require successful trusted CI for exact candidate SHA
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node controller/scripts/cloudflare-preview-policy.mjs verify-ci-status --commit "${{ steps.policy.outputs.commit_sha }}" --project "$PROJECT"
+
+  untrusted-build:
+    needs: trusted-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ needs.trusted-gate.outputs.commit_sha }}
+          persist-credentials: false
+      - run: test "$(git rev-parse HEAD)" = "${{ needs.trusted-gate.outputs.commit_sha }}"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - name: Build candidate without credentials or trusted controller
+        run: npm run build
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: untrusted-startwave-${{ needs.trusted-gate.outputs.commit_sha }}
+          path: dist
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+
+  trusted-verify:
+    needs: [trusted-gate, untrusted-build]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.workflow_sha }}
+          path: controller
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - name: Re-verify trusted controller identity
+        env:
+          GITHUB_WORKFLOW_SHA: ${{ github.workflow_sha }}
+        run: node controller/scripts/cloudflare-preview-policy.mjs verify-controller --repository controller --commit "${{ needs.trusted-gate.outputs.commit_sha }}" --project "${{ needs.trusted-gate.outputs.project }}"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: untrusted-startwave-${{ needs.trusted-gate.outputs.commit_sha }}
+          path: verified/dist
+      - name: Validate and bind artifact on clean trusted runner
+        run: |
+          mkdir -p verified/scripts
+          cp controller/scripts/publication-guard.mjs verified/scripts/publication-guard.mjs
+          cp controller/.startwave-public-guard.json verified/.startwave-public-guard.json
+          git -C controller rev-parse --git-dir > /dev/null
+          cp -R controller/.git verified/.git
+          node verified/scripts/publication-guard.mjs --artifact dist
+          node controller/scripts/cloudflare-preview-policy.mjs write-manifest --artifact verified/dist --output verified/cloudflare-preview-manifest.json --commit "${{ needs.trusted-gate.outputs.commit_sha }}" --project "${{ needs.trusted-gate.outputs.project }}"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: verified-startwave-${{ needs.trusted-gate.outputs.commit_sha }}
+          path: |
+            verified/dist
+            verified/cloudflare-preview-manifest.json
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+
+  deploy-preview:
+    needs: [trusted-gate, trusted-verify]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: cloudflare-startwave-preview
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.workflow_sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - name: Re-verify trusted controller identity
+        env:
+          GITHUB_WORKFLOW_SHA: ${{ github.workflow_sha }}
+        run: node scripts/cloudflare-preview-policy.mjs verify-controller --repository . --commit "${{ needs.trusted-gate.outputs.commit_sha }}" --project "${{ needs.trusted-gate.outputs.project }}"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: verified-startwave-${{ needs.trusted-gate.outputs.commit_sha }}
+          path: verified-preview
+      - name: Re-verify artifact before secrets are used
+        id: policy
+        run: |
+          node scripts/cloudflare-preview-policy.mjs validate --commit "${{ needs.trusted-gate.outputs.commit_sha }}" --project "${{ needs.trusted-gate.outputs.project }}" --github-output "$GITHUB_OUTPUT"
+          node scripts/cloudflare-preview-policy.mjs verify-manifest --artifact verified-preview/dist --manifest verified-preview/cloudflare-preview-manifest.json --commit "${{ needs.trusted-gate.outputs.commit_sha }}" --project "${{ needs.trusted-gate.outputs.project }}"
+      - name: Prepare pinned Wrangler without credentials
+        env:
+          npm_config_cache: ${{ runner.temp }}/startwave-wrangler-cache
+        run: npx --yes wrangler@4.164.0 --version
+      - name: Deploy verified artifact to startwave preview only
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.STARTWAVE_CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.STARTWAVE_CLOUDFLARE_API_TOKEN }}
+          COMMIT_SHA: ${{ steps.policy.outputs.commit_sha }}
+          PREVIEW_BRANCH: ${{ steps.policy.outputs.preview_branch }}
+          npm_config_cache: ${{ runner.temp }}/startwave-wrangler-cache
+        run: |
+          node --input-type=module -e '
+            const endpoint = `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/startwave`;
+            const response = await fetch(endpoint, { headers: { Authorization: `Bearer ${process.env.CLOUDFLARE_API_TOKEN}` } });
+            if (!response.ok) throw new Error(`Pages project preflight failed with HTTP ${response.status}`);
+            const body = await response.json(); const project = body.result;
+            if (!body.success || project?.name !== "startwave") throw new Error("startwave is not visible to its dedicated token");
+            if (!project.production_branch || project.production_branch === process.env.PREVIEW_BRANCH) throw new Error("refusing production-branch deployment");
+            if (project.source?.config?.preview_deployment_setting !== "none") throw new Error("automatic Pages previews are not disabled");
+          '
+          npx --yes wrangler@4.164.0 pages deploy verified-preview/dist --project-name startwave --branch "$PREVIEW_BRANCH" --commit-hash "$COMMIT_SHA" --commit-message "CI-gated preview for $COMMIT_SHA" --commit-dirty=false

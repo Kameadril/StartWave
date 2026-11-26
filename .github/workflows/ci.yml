@@ -34,19 +34,47 @@ jobs:
           tools/startwave-agent/bdo-web-search.test.mjs
           GAMES/bdo/tools/publication-data-exporter.test.mjs
           GAMES/bdo/tools/atlas-agent/reconciliation-normalization.test.mjs
+          scripts/repository-test-temp.test.mjs
+          scripts/publication-guard.test.mjs
+          scripts/cloudflare-preview-policy.test.mjs
+          scripts/cloudflare-preview-workflow.test.mjs
+          GAMES/bdo/site/tests/bdo-browser-provenance.test.mjs
+          GAMES/bdo/site/tests/bdo-browser-runner.test.mjs
+          GAMES/bdo/site/tests/bdo-publication-workflow.test.mjs
 
       - name: Run Publication Guard
         env:
           HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
           BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
-        run: |
-          printf '%s %s %s %s\n' \
-            "refs/heads/ci" "$HEAD_SHA" \
-            "refs/heads/base" "$BASE_SHA" \
-            | sh scripts/publication-guard.sh --outgoing
+          FIRST_PUSH_BASE_REF: refs/remotes/origin/factory
+        run: sh scripts/publication-guard.sh --ci-range "$HEAD_SHA" "$BASE_SHA" "$FIRST_PUSH_BASE_REF"
 
       - name: Build main site
         run: npm run build
 
+      - name: Validate main public artifact
+        run: npm run validate:public
+
       - name: Build BDO site
         run: npm run build:bdo
+
+      - name: Validate BDO public artifact
+        run: npm run validate:public:bdo
+
+  native-materializer:
+    runs-on: macos-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verify committed and source-built native materializers
+        run: >-
+          node GAMES/bdo/site/tests/bdo-owner-materializer-provenance.mjs
+          --build-dir "$GITHUB_WORKSPACE/.startwave-agent/tmp/native-materializer"

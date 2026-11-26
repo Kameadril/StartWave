@@ -3,6 +3,9 @@
   "private": true,
   "scripts": {
     "build": "node infra/build-public.mjs",
-    "build:bdo": "node infra/build-bdo-public.mjs"
+    "build:bdo": "node infra/build-bdo-public.mjs",
+    "test:publication-guard": "node --test scripts/publication-guard.test.mjs",
+    "validate:public": "node scripts/publication-guard.mjs --artifact dist",
+    "validate:public:bdo": "node scripts/publication-guard.mjs --artifact dist-bdo"
   }
 }

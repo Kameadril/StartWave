@@ -1,10 +1,17 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
+  "git": {
+    "firstPushBaseRefs": [
+      "refs/remotes/origin/factory"
+    ]
+  },
   "allowedExact": [
     ".gitignore",
     ".startwave-public-guard.json",
     ".githooks/pre-commit",
     ".githooks/pre-push",
+    ".github/workflows/ci.yml",
+    ".github/workflows/cloudflare-preview.yml",
     "README.md",
     "CHANGELOG.md",
     "CONTRIBUTING.md",
@@ -24,16 +31,26 @@
     "services.html",
     "assets/data/daily-cards.js",
     "assets/data/daily-wave-data.js",
+    "docs/ATLAS_PRE_MIGRATION_SHA256.txt",
     "docs/COMPONENTS.md",
     "docs/STARTWAVE_CHECKLIST.md",
     "docs/STARTWAVE_GAMES_ARCHITECTURE.md",
     "docs/STARTWAVE_PHILOSOPHY.md",
+    "docs/STARTWAVE_PRE_MIGRATION_INVENTORY.md",
     "docs/STARTWAVE_RELEASE.md",
     "docs/STARTWAVE_STYLE_GUIDE.md",
     "docs/STARTWAVE_TERMS.md",
     "docs/PUBLICATION_POLICY.md",
     "docs/BDO_SUBDOMAIN_MIGRATION.md",
+    "docs/OWNER_APPROVED_FULL_SNAPSHOT.md",
     "scripts/publication-guard.sh",
+    "scripts/publication-guard.mjs",
+    "scripts/publication-guard.test.mjs",
+    "scripts/repository-test-temp.mjs",
+    "scripts/repository-test-temp.test.mjs",
+    "scripts/cloudflare-preview-policy.mjs",
+    "scripts/cloudflare-preview-policy.test.mjs",
+    "scripts/cloudflare-preview-workflow.test.mjs",
     "scripts/install-publication-guard.sh",
     "scripts/install-publication-guard.ps1"
   ],
@@ -78,6 +95,14 @@
     "GAMES/Mir_Kameadril/",
     "assets/data/bdo-"
   ],
+  "deniedSegments": [
+    "agents",
+    "credentials",
+    "keys",
+    "logs",
+    "private",
+    "secrets"
+  ],
   "deniedExact": [
     "AGENTS.md",
     "PROJECT_SPEC.md",
@@ -103,5 +128,53 @@
     ".sqlite",
     ".sqlite-shm",
     ".sqlite-wal"
-  ]
+  ],
+  "artifacts": {
+    "dist": {
+      "allowedExact": [
+        "_redirects",
+        "ai.html",
+        "entertainment.html",
+        "games.html",
+        "index.html",
+        "profile.html",
+        "services.html"
+      ],
+      "allowedPrefixes": [
+        "assets/"
+      ]
+    },
+    "dist-bdo": {
+      "allowedExact": [
+        "alchemy.html",
+        "auction.html",
+        "barter.html",
+        "cities.html",
+        "cooking.html",
+        "crafting.html",
+        "database.html",
+        "farming.html",
+        "fishing.html",
+        "index.html",
+        "items.html",
+        "knowledge-chain.html",
+        "knowledge-layer.html",
+        "nodes.html",
+        "notes.html",
+        "player-knowledge.html",
+        "production.html",
+        "recipes.html",
+        "region-calpheon.html",
+        "regions.html",
+        "resources.html",
+        "robots.txt",
+        "sitemap.xml",
+        "workers.html",
+        "world-connection.html"
+      ],
+      "allowedPrefixes": [
+        "assets/"
+      ]
+    }
+  }
 }
