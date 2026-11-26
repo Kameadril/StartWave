@@ -10,7 +10,7 @@ https://startwave.nighfalll.workers.dev/
 
 Зеркало:
 
-https://startwave-portal.pages.dev/
+https://startwave.space
 
 ## О проекте
 
